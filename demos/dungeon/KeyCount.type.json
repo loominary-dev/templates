@@ -3,8 +3,7 @@
   "baseClass": "Label",
   "defaults": {
     "text": "0",
-    "fontSize": 10,
-    "screenSpace": true
+    "fontSize": 10
   },
   "components": []
 }

@@ -3,7 +3,6 @@
   "baseClass": "Sprite",
   "defaults": {
     "spriteKey": "Player.sprite.json",
-    "travels": true,
     "collision": {
       "layer": 1,
       "mask": 54

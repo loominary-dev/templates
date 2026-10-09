@@ -5,11 +5,14 @@ Space or J. Bats chase you once you are close, spiders and rats keep to
 their rounds. The key is in the dark room; the locked door is in the
 Crossing, and the chest behind it. Your best time is saved.
 
-Each room is its own scene. The start scene, `scenes/Dungeon`, holds the
-player, the HUD and the lantern, and its **Level** object holds the room:
-walking through a doorway runs **Go to scene** with the doorway's name, so
-the room changes and everything in the start scene stays. Run any room on
-its own and the start scene loads around it.
+Each room is its own scene, and the game starts in the Entrance. The
+singleton scene `scenes/singletons/Game` is loaded once beside the rooms and
+kept: it holds the **Rooms** Scene Manager, the player with its lantern, and
+the HUD on a screen-fixed Layer. Walking through a doorway runs **Change
+scene** with the doorway's name and **Place** with the marker named after
+the room it is leaving, so the player arrives a step inside the doorway it
+came through. Run any room on its own
+and the singleton comes with it.
 
 Built on the **Top-down Movement**, **Bullet**, **Follow**, **Patrol** and
 **Health** behaviours. Every rule is in `events/`.

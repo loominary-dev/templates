@@ -233,6 +233,36 @@
         {
           "scope": "Player",
           "className": "Node",
+          "name": "onCreated",
+          "params": []
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Rooms",
+          "className": "SceneManager",
+          "name": "place",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Player1",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "Entry",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "Player",
+          "className": "Node",
           "name": "onCollisionStarted",
           "params": [
             {
@@ -241,13 +271,20 @@
               "valueKind": "string"
             }
           ]
+        },
+        {
+          "scope": "Rooms",
+          "className": "SceneManager",
+          "name": "isChanging",
+          "params": [],
+          "not": true
         }
       ],
       "actions": [
         {
-          "scope": "system",
-          "className": "VisualScriptComponent",
-          "name": "goToScene",
+          "scope": "Rooms",
+          "className": "SceneManager",
+          "name": "changeScene",
           "params": [
             {
               "type": "value",
@@ -256,11 +293,35 @@
               "name": "overlappingObject",
               "params": [],
               "returnType": "String"
-            },
+            }
+          ]
+        },
+        {
+          "scope": "Rooms",
+          "className": "SceneManager",
+          "name": "place",
+          "params": [
             {
               "type": "literal",
-              "value": "",
+              "value": "Player1",
               "valueKind": "string"
+            },
+            {
+              "type": "op",
+              "op": "+",
+              "left": {
+                "type": "literal",
+                "value": "From",
+                "valueKind": "string"
+              },
+              "right": {
+                "type": "value",
+                "scope": "Rooms",
+                "className": "SceneManager",
+                "name": "currentScene",
+                "params": [],
+                "returnType": "String"
+              }
             }
           ]
         }
@@ -969,17 +1030,29 @@
           "onComponent": true
         },
         {
-          "scope": "system",
-          "className": "VisualScriptComponent",
-          "name": "goToScene",
+          "scope": "Rooms",
+          "className": "SceneManager",
+          "name": "changeScene",
           "params": [
             {
               "type": "value",
-              "scope": "system",
-              "className": "VisualScriptComponent",
-              "name": "currentLevel",
+              "scope": "Rooms",
+              "className": "SceneManager",
+              "name": "currentScene",
               "params": [],
               "returnType": "String"
+            }
+          ]
+        },
+        {
+          "scope": "Rooms",
+          "className": "SceneManager",
+          "name": "place",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Player1",
+              "valueKind": "string"
             },
             {
               "type": "literal",
@@ -1093,13 +1166,13 @@
     {
       "conditions": [
         {
-          "scope": "system",
-          "className": "VisualScriptComponent",
-          "name": "levelIs",
+          "scope": "Rooms",
+          "className": "SceneManager",
+          "name": "isLoaded",
           "params": [
             {
               "type": "literal",
-              "value": "scenes/DarkRoom.scene.json",
+              "value": "DarkRoom",
               "valueKind": "string"
             }
           ]
@@ -1118,13 +1191,13 @@
     {
       "conditions": [
         {
-          "scope": "system",
-          "className": "VisualScriptComponent",
-          "name": "levelIs",
+          "scope": "Rooms",
+          "className": "SceneManager",
+          "name": "isLoaded",
           "params": [
             {
               "type": "literal",
-              "value": "scenes/DarkRoom.scene.json",
+              "value": "DarkRoom",
               "valueKind": "string"
             }
           ],

@@ -2,8 +2,7 @@
   "schemaVersion": 2,
   "baseClass": "Sprite",
   "defaults": {
-    "spriteKey": "Coin.sprite.json",
-    "screenSpace": true
+    "spriteKey": "Coin.sprite.json"
   },
   "components": []
 }

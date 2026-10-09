@@ -25,15 +25,6 @@
       "floorSnap": 3
     },
     {
-      "componentClass": "CameraFollow",
-      "smoothing": 0.12,
-      "clamp": true,
-      "boundsLeft": 0,
-      "boundsTop": 0,
-      "boundsRight": 1404,
-      "boundsBottom": 180
-    },
-    {
       "componentClass": "PlayerRules"
     }
   ]

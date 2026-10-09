@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 2,
+  "baseClass": "SceneManager",
+  "defaults": {
+    "transition": "Fade",
+    "fadeTime": 0.2
+  },
+  "components": []
+}

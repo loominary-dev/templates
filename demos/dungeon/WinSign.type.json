@@ -4,7 +4,6 @@
   "defaults": {
     "text": "You found the treasure!",
     "fontSize": 14,
-    "screenSpace": true,
     "visible": false
   },
   "components": []

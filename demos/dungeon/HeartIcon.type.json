@@ -2,8 +2,7 @@
   "schemaVersion": 2,
   "baseClass": "Sprite",
   "defaults": {
-    "spriteKey": "Heart.sprite.json",
-    "screenSpace": true
+    "spriteKey": "Heart.sprite.json"
   },
   "components": []
 }

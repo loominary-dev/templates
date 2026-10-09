@@ -100,16 +100,15 @@ type_json("Sprite", {"_name": "Player", "spriteKey": "Player.sprite.json", "coll
           [{"componentClass": "PhysicsBody", "bodyType": "Dynamic"},
            {"componentClass": "Platformer", "maxSpeed": 110, "acceleration": 900, "deceleration": 1200, "jumpStrength": 330, "jumpCut": 0.6,
             "coyoteTime": 0.1, "jumpBuffer": 0.1, "floorSnap": 3},
-           {"componentClass": "CameraFollow", "smoothing": 0.12, "clamp": True, "boundsLeft": 0, "boundsTop": 0, "boundsRight": LEVEL_W, "boundsBottom": 180},
            {"componentClass": "PlayerRules"}])
 type_json("Sprite", {"_name": "Slime", "spriteKey": "Slime.sprite.json", "collision": {"layer": ENEMY, "mask": PLAYER}},
           [{"componentClass": "Patrol", "axis": "Horizontal", "distance": 54, "speed": 28}, {"componentClass": "SlimeRules"}])
 type_json("Sprite", {"_name": "Coin", "spriteKey": "Coin.sprite.json", "collision": {"layer": PICKUP, "mask": PLAYER}})
 type_json("Sprite", {"_name": "Spikes", "spriteKey": "Spikes.sprite.json", "collision": {"layer": HAZARD, "mask": PLAYER}})
 type_json("Sprite", {"_name": "Flag", "spriteKey": "Flag.sprite.json", "collision": {"layer": PICKUP, "mask": PLAYER}})
-type_json("Sprite", {"_name": "CoinIcon", "spriteKey": "Coin.sprite.json", "screenSpace": True})
-type_json("Label", {"_name": "CoinCount", "text": "0", "fontSize": 10, "screenSpace": True})
-type_json("Label", {"_name": "WinSign", "text": "You made it!", "fontSize": 14, "screenSpace": True, "visible": False})
+type_json("Sprite", {"_name": "CoinIcon", "spriteKey": "Coin.sprite.json"})
+type_json("Label", {"_name": "CoinCount", "text": "0", "fontSize": 10})
+type_json("Label", {"_name": "WinSign", "text": "You made it!", "fontSize": 14, "visible": False})
 
 # ── the level ──
 # 18 px cells, 10 rows (one screen tall), as wide as it reads. '#' ground, '=' a
@@ -174,9 +173,9 @@ def place(name, type_name, x, y, **extra):
     o = dict({"id": uid(n[0]), "parent": uid(1), "name": name, "type": type_name, "x": x, "y": y}, **extra)
     objects.append(o)
     return o
-# The backdrop is a Type of its own, since a behaviour belongs to a Type: a tile map that slides at parallax.
-type_json("Tilemap", {"_name": "Sky"}, [{"componentClass": "Parallax", "factorX": 0.4, "factorY": 1}])
-objects.append({"id": uid(2), "parent": uid(1), "name": "Sky1", "type": "Sky", "tilesetKey": "assets/tiles/Sky.tileset.json",
+# The backdrop: a Layer following four tenths of the camera's sideways movement, holding the sky's tile map.
+objects.append({"id": uid(800), "parent": uid(1), "name": "Backdrop", "type": "Layer", "parallaxX": 0.4})
+objects.append({"id": uid(2), "parent": uid(800), "name": "Sky", "type": "Tilemap", "tilesetKey": "assets/tiles/Sky.tileset.json",
                 "cellWidth": BACK, "cellHeight": BACK, "cells": back_cells})
 objects.append({"id": uid(3), "parent": uid(1), "name": "Ground", "type": "Tilemap", "tilesetKey": "assets/tiles/Ground.tileset.json",
                 "cellWidth": CELL, "cellHeight": CELL, "cells": cells})
@@ -197,9 +196,13 @@ for r in range(H):
         elif ch == "P":
             start = (cx, (r + 1) * CELL - 12)
             place("Player1", "Player", start[0], start[1])
-place("CoinIcon1", "CoinIcon", 12, 12)
-place("CoinCount1", "CoinCount", 22, 6)
-place("WinSign1", "WinSign", 110, 70)
+# The camera follows the player, kept inside the level, and is the view from the start.
+place("Camera1", "Camera", start[0], 90, target="Player1", smoothing=0.12, keepInBounds=True,
+      boundsLeft=0, boundsTop=0, boundsRight=LEVEL_W, boundsBottom=H * CELL, currentAtStart=True)
+# The HUD: a Layer fixed to the screen, its children placed in the game's own pixels from the view's top-left.
+objects.append({"id": uid(801), "parent": uid(1), "name": "HUD", "type": "Layer", "parallaxX": 0, "parallaxY": 0, "zoomWithCamera": False})
+for name, t, x, y in [("CoinIcon1", "CoinIcon", 12, 12), ("CoinCount1", "CoinCount", 22, 6), ("WinSign1", "WinSign", 110, 70)]:
+    place(name, t, x, y)["parent"] = uid(801)
 write("scenes/Level.scene.json", {"schemaVersion": 3, "objects": objects})
 
 # ── the rules ──
@@ -275,9 +278,11 @@ A small complete platform game: run and jump with the arrow keys or WASD and
 Space, collect the coins, squash the slimes by landing on them, mind the
 spikes, and reach the flag. Your best coin count is saved.
 
-Built on the **Platformer** behaviour and a tilemap level. Every rule is in
-`events/PlayerRules` and `events/SlimeRules`; the level is painted in
-`scenes/Level`.
+Built on the **Platformer** behaviour and a tilemap level. A **Camera** follows
+the player and keeps inside the level; the sky sits on a **Layer** that follows
+four tenths of the camera's movement, and the coin count on a Layer fixed to
+the screen. Every rule is in `events/PlayerRules` and `events/SlimeRules`; the
+level is painted in `scenes/Level`.
 
 Art and sounds by [Kenney](https://kenney.nl) (Pixel Platformer, Digital
 Audio, Impact Sounds), CC0. Generated by `tools/make-platformer-demo.py`.

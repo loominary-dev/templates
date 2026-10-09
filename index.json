@@ -18,7 +18,7 @@
     {
       "id": "dungeon",
       "name": "Dungeon demo",
-      "description": "Six rooms seen from above on Kenney's Tiny Dungeon art: bats that chase, spiders and rats on patrol, arrows, a dark room lit by a lantern, a key, a locked door and a chest. Each room is its own scene under a start scene that keeps the player.",
+      "description": "Six rooms seen from above on Kenney's Tiny Dungeon art: bats that chase, spiders and rats on patrol, arrows, a dark room lit by a lantern, a key, a locked door and a chest. Each room is its own scene, changed by a Scene Manager in a singleton that keeps the player and the HUD.",
       "path": "demos/dungeon"
     }
   ]

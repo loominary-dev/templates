@@ -1,6 +1,6 @@
 """The Dungeon demo, generated from Kenney's Tiny Dungeon pack: six rooms seen
-from above, each its own scene, swapped under a start scene that keeps the
-player, the HUD and the lantern. Bats that chase, spiders and rats on patrol,
+from above, each its own scene, changed by a Scene Manager that lives in a
+singleton scene with the player, the HUD and the lantern. Bats that chase, spiders and rats on patrol,
 arrows from a pool, a dark room lit by a lantern and two braziers, a key, a
 locked door and a chest. Made by this script rather than by hand, so a format
 change is a re-run.
@@ -17,7 +17,7 @@ from PIL import Image
 td, da, im = sys.argv[1], sys.argv[2], sys.argv[3]
 out = os.path.abspath(sys.argv[4] if len(sys.argv) > 4 else os.path.join(os.path.dirname(__file__), "..", "demos", "dungeon"))
 shutil.rmtree(out, ignore_errors=True)
-for d in ["assets/art", "assets/sounds", "assets/tiles", "scenes", "events"]: os.makedirs(os.path.join(out, d))
+for d in ["assets/art", "assets/sounds", "assets/tiles", "scenes/singletons", "events"]: os.makedirs(os.path.join(out, d))
 
 def write(rel, data):
     with open(os.path.join(out, rel), "w") as f:
@@ -133,7 +133,8 @@ pillar = Image.new("RGBA", (16, 32))
 pillar.paste(tile(6), (0, 0)); pillar.paste(tile(18), (0, 16))
 arrow = tile(131).rotate(-90)  # the pack's points up; a Bullet's heading 0 is right
 
-sprite("Player", 16, 16, [("idle", [tile(112)], 400, "loop")], [box("body", 8, 9, 10, 12)])
+# The player collides by its feet, so a doorway one cell wide is easy to walk through.
+sprite("Player", 16, 16, [("idle", [tile(112)], 400, "loop")], [box("body", 8, 8, 10, 8)])
 sprite("Bat", 16, 16, [("fly", [tile(120)], 400, "loop")], [box("body", 8, 8, 12, 10, sensor=True)])
 sprite("Spider", 16, 16, [("walk", [tile(122)], 400, "loop")], [box("body", 8, 9, 12, 10, sensor=True)])
 sprite("Rat", 16, 16, [("run", [tile(123)], 400, "loop")], [box("body", 8, 10, 12, 8, sensor=True)])
@@ -165,7 +166,7 @@ def type_json(base, defaults, components=()):
     write(defaults.get("_name") + ".type.json", {"schemaVersion": 2, "baseClass": base,
         "defaults": {k: v for k, v in defaults.items() if k != "_name"}, "components": list(components)})
 
-type_json("Sprite", {"_name": "Player", "spriteKey": "Player.sprite.json", "travels": True,
+type_json("Sprite", {"_name": "Player", "spriteKey": "Player.sprite.json",
                      "collision": {"layer": PLAYER, "mask": SOLID | ENEMY | PICKUP | DOOR}},
           [{"componentClass": "PhysicsBody", "bodyType": "Dynamic"},
            {"componentClass": "TopDownMovement", "maxSpeed": 90, "acceleration": 900, "deceleration": 1200, "face": "Mirror"},
@@ -195,11 +196,13 @@ type_json("Node", {"_name": "Doorway", "collision": {"layer": DOOR, "mask": PLAY
 type_json("Node", {"_name": "Marker"})
 type_json("Light", {"_name": "Lantern", "spriteKey": "Glow.sprite.json", "tint": 0xFFD9A0, "opacity": 0.55, "scaleX": 1.3, "scaleY": 1.3, "radius": 2, "lightHeight": 12})
 type_json("Light", {"_name": "FireLight", "spriteKey": "Glow.sprite.json", "tint": 0xFF9A40, "scaleX": 1.4, "scaleY": 1.4, "radius": 3, "lightHeight": 16})
-type_json("Sprite", {"_name": "HeartIcon", "spriteKey": "Heart.sprite.json", "screenSpace": True})
-type_json("Sprite", {"_name": "KeyIcon", "spriteKey": "Key.sprite.json", "screenSpace": True})
+type_json("Sprite", {"_name": "HeartIcon", "spriteKey": "Heart.sprite.json"})
+type_json("Sprite", {"_name": "KeyIcon", "spriteKey": "Key.sprite.json"})
 for counter in ["HealthCount", "KeyCount", "TimeLabel"]:
-    type_json("Label", {"_name": counter, "text": "0", "fontSize": 10, "screenSpace": True})
-type_json("Label", {"_name": "WinSign", "text": "You found the treasure!", "fontSize": 14, "screenSpace": True, "visible": False})
+    type_json("Label", {"_name": counter, "text": "0", "fontSize": 10})
+type_json("Label", {"_name": "WinSign", "text": "You found the treasure!", "fontSize": 14, "visible": False})
+# The Scene Manager: changes what Scenery holds, with a short fade.
+type_json("SceneManager", {"_name": "Rooms", "transition": "Fade", "fadeTime": 0.2})
 
 # ── the tiles: walls solid and casting shadows, floors open ──
 WALLS = [40, 57, 58, 59]
@@ -332,7 +335,7 @@ for room, rows in ROOMS.items():
             x, y = centre(c, r)
             if ch == "D":
                 to = NEIGHBOURS[room][side(c, r)]
-                # Named after the room it leads to: the player's rule passes that name to Go to scene.
+                # Named after the room it leads to: the player's rule passes that name to Change scene.
                 place(to, "Doorway", x, y)
                 dx, dy = inward(c, r)
                 # Where a player coming from that room arrives, a step inside.
@@ -349,22 +352,23 @@ for room, rows in ROOMS.items():
                 if t == "Brazier": place("FireLight%d" % counts[t], "FireLight", x, y - 4)
     write("scenes/%s.scene.json" % room, {"schemaVersion": 3, "objects": objects})
 
-# ── the start scene: the level holder, the player, the HUD ──
+# ── the singleton: the Scene Manager, the player and the HUD, loaded once and kept ──
 ex, ey = centre(3, 5)
-start = [
-    {"id": uid(1), "name": "Dungeon"},
-    {"id": uid(2), "parent": uid(1), "name": "Level", "holdsLevel": True},
-    {"id": uid(3), "parent": uid(2), "name": "Entrance", "sceneInstance": "scenes/Entrance.scene.json"},
-    {"id": uid(4), "parent": uid(1), "name": "Player1", "type": "Player", "x": ex, "y": ey},
-    {"id": uid(5), "parent": uid(4), "name": "Lantern1", "type": "Lantern", "x": 0, "y": 0, "visible": False},
-    {"id": uid(6), "parent": uid(1), "name": "HeartIcon1", "type": "HeartIcon", "x": 12, "y": 12},
-    {"id": uid(7), "parent": uid(1), "name": "HealthCount1", "type": "HealthCount", "x": 22, "y": 6, "text": "3"},
-    {"id": uid(8), "parent": uid(1), "name": "KeyIcon1", "type": "KeyIcon", "x": 12, "y": 28},
-    {"id": uid(9), "parent": uid(1), "name": "KeyCount1", "type": "KeyCount", "x": 22, "y": 22},
-    {"id": uid(10), "parent": uid(1), "name": "WinSign1", "type": "WinSign", "x": 74, "y": 70},
-    {"id": uid(11), "parent": uid(1), "name": "TimeLabel1", "type": "TimeLabel", "x": 140, "y": 92, "visible": False},
+game = [
+    {"id": uid(1), "name": "Game"},
+    {"id": uid(2), "parent": uid(1), "name": "Rooms1", "type": "Rooms"},
+    {"id": uid(3), "parent": uid(1), "name": "Player1", "type": "Player", "x": ex, "y": ey},
+    {"id": uid(4), "parent": uid(3), "name": "Lantern1", "type": "Lantern", "x": 0, "y": 0, "visible": False},
+    # The HUD: a Layer fixed to the screen, its children in the game's own pixels from the view's top-left.
+    {"id": uid(5), "parent": uid(1), "name": "HUD", "type": "Layer", "parallaxX": 0, "parallaxY": 0, "zoomWithCamera": False},
+    {"id": uid(6), "parent": uid(5), "name": "HeartIcon1", "type": "HeartIcon", "x": 12, "y": 12},
+    {"id": uid(7), "parent": uid(5), "name": "HealthCount1", "type": "HealthCount", "x": 22, "y": 6, "text": "3"},
+    {"id": uid(8), "parent": uid(5), "name": "KeyIcon1", "type": "KeyIcon", "x": 12, "y": 28},
+    {"id": uid(9), "parent": uid(5), "name": "KeyCount1", "type": "KeyCount", "x": 22, "y": 22},
+    {"id": uid(10), "parent": uid(5), "name": "WinSign1", "type": "WinSign", "x": 74, "y": 70},
+    {"id": uid(11), "parent": uid(5), "name": "TimeLabel1", "type": "TimeLabel", "x": 140, "y": 92, "visible": False},
 ]
-write("scenes/Dungeon.scene.json", {"schemaVersion": 3, "objects": start})
+write("scenes/singletons/Game.scene.json", {"schemaVersion": 3, "objects": game})
 
 # ── the rules ──
 def lit(v, kind=None):
@@ -411,8 +415,13 @@ player_rules = [
     rule([pressed("Shoot"), comp("Player", "TopDownMovement", "isBeingPushed", **{"not": True})],
          [sheet("createObject", s("Arrow"), lit(1)), line("Arrow", "Node", "setPosition", me_x, me_y),
           comp("Arrow", "Bullet", "setHeading", facing), line("audio", "Audio", "playSound", s("shoot"))]),
+    # The game starts with the player at the first room's Entry, whichever room that is.
+    rule([line("Player", "Node", "onCreated")], [line("Rooms", "SceneManager", "place", s("Player1"), s("Entry"))]),
     # A doorway is named after the room it leads to; the player arrives at the marker named after the room it left.
-    rule([line("Player", "Node", "onCollisionStarted", s("Doorway"))], [sheet("goToScene", touched, s(""))]),
+    # Place waits for the room to arrive. Not while a change is under way: the player is still in the doorway.
+    rule([line("Player", "Node", "onCollisionStarted", s("Doorway")), line("Rooms", "SceneManager", "isChanging", **{"not": True})],
+         [line("Rooms", "SceneManager", "changeScene", touched),
+          line("Rooms", "SceneManager", "place", s("Player1"), op("+", s("From"), value("Rooms", "SceneManager", "currentScene", returnType="String")))]),
     hurt_by("Bat"), hurt_by("Spider"), hurt_by("Rat"),
     rule([line("Player", "Node", "onCollisionStarted", s("Key"))],
          [line("variables", "Variables", "addToVariable", s("keys"), lit(1)), line("variables", "Variables", "setVariable", s("gotKey"), lit(1)),
@@ -428,15 +437,16 @@ player_rules = [
           line("audio", "Audio", "playSound", s("win"))],
          [rule([line("system", "System", "isSaved", s("best"), **{"not": True})], [line("system", "System", "saveNumber", s("best"), var("time"))]),
           rule([compare(var("time"), LT, value("system", "System", "savedNumber", s("best")))], [line("system", "System", "saveNumber", s("best"), var("time"))])]),
-    # Dying: back to the room it died in, at that room's start, whole again.
+    # Dying: the room it died in, loaded afresh; the player arrives at its Entry, whole again.
     rule([comp("Player", "Health", "isDead"), once()],
-         [comp("Player", "Health", "restore"), sheet("goToScene", value("system", "VisualScriptComponent", "currentLevel", returnType="String"), s("Entry"))]),
+         [comp("Player", "Health", "restore"), line("Rooms", "SceneManager", "changeScene", value("Rooms", "SceneManager", "currentScene", returnType="String")),
+          line("Rooms", "SceneManager", "place", s("Player1"), s("Entry"))]),
     # The time, and the HUD.
     rule([compare(var("won"), EQ, lit(0))], [line("variables", "Variables", "addToVariable", s("time"), value("system", "System", "getDeltaTime"))]),
     rule([], [line("HealthCount", "Label", "setNumber", health), line("KeyCount", "Label", "setNumber", var("keys"))]),
     # The lantern is lit only in the dark room.
-    rule([sheet("levelIs", s("scenes/DarkRoom.scene.json"))], [line("Lantern", "Node", "show")]),
-    rule([sheet("levelIs", s("scenes/DarkRoom.scene.json"), **{"not": True})], [line("Lantern", "Node", "hide")]),
+    rule([line("Rooms", "SceneManager", "isLoaded", s("DarkRoom"))], [line("Lantern", "Node", "show")]),
+    rule([line("Rooms", "SceneManager", "isLoaded", s("DarkRoom"), **{"not": True})], [line("Lantern", "Node", "hide")]),
 ]
 write("events/PlayerRules.vscript.json", {"rules": player_rules, "vars": []})
 
@@ -455,7 +465,8 @@ write("events/KeyRules.vscript.json", {"rules": [rule([line("self", "Node", "onC
 write("events/DoorRules.vscript.json", {"rules": [rule([line("self", "Node", "onCreated"), compare(var("doorOpen"), EQ, lit(1))], [line("self", "Node", "queueDestroy")])], "vars": []})
 
 def keys(*codes): return {"bindings": [{"kind": "key", "code": c} for c in codes]}
-write("project.json", {"schemaVersion": 2, "name": "Dungeon demo", "entryScene": "scenes/Dungeon.scene.json",
+write("project.json", {"schemaVersion": 2, "name": "Dungeon demo", "entryScene": "scenes/Entrance.scene.json",
+    "singletons": ["scenes/singletons/Game.scene.json"],
     "collisionLayers": {"1": "Player", "2": "Walls", "3": "Enemy", "4": "Arrow", "5": "Pickup", "6": "Door"},
     "input": {"Move Left": keys(37, 65), "Move Right": keys(39, 68), "Move Up": keys(38, 87), "Move Down": keys(40, 83),
               "Shoot": keys(32, 74), "Pause": keys(27)},
@@ -468,11 +479,14 @@ Space or J. Bats chase you once you are close, spiders and rats keep to
 their rounds. The key is in the dark room; the locked door is in the
 Crossing, and the chest behind it. Your best time is saved.
 
-Each room is its own scene. The start scene, `scenes/Dungeon`, holds the
-player, the HUD and the lantern, and its **Level** object holds the room:
-walking through a doorway runs **Go to scene** with the doorway's name, so
-the room changes and everything in the start scene stays. Run any room on
-its own and the start scene loads around it.
+Each room is its own scene, and the game starts in the Entrance. The
+singleton scene `scenes/singletons/Game` is loaded once beside the rooms and
+kept: it holds the **Rooms** Scene Manager, the player with its lantern, and
+the HUD on a screen-fixed Layer. Walking through a doorway runs **Change
+scene** with the doorway's name and **Place** with the marker named after
+the room it is leaving, so the player arrives a step inside the doorway it
+came through. Run any room on its own
+and the singleton comes with it.
 
 Built on the **Top-down Movement**, **Bullet**, **Follow**, **Patrol** and
 **Health** behaviours. Every rule is in `events/`.

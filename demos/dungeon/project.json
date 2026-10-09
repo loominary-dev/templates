@@ -1,7 +1,10 @@
 {
   "schemaVersion": 2,
   "name": "Dungeon demo",
-  "entryScene": "scenes/Dungeon.scene.json",
+  "entryScene": "scenes/Entrance.scene.json",
+  "singletons": [
+    "scenes/singletons/Game.scene.json"
+  ],
   "collisionLayers": {
     "1": "Player",
     "2": "Walls",
