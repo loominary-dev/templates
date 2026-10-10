@@ -2,7 +2,11 @@
   "schemaVersion": 2,
   "baseClass": "Sprite",
   "defaults": {
-    "spriteKey": "Player.sprite.json"
+    "spriteKey": "Player.sprite.json",
+    "collision": {
+      "layer": 1,
+      "mask": -1
+    }
   },
   "components": [
     {
@@ -11,14 +15,17 @@
     },
     {
       "componentClass": "Platformer",
-      "wallSlideSpeed": 120,
+      "maxSpeed": 110,
+      "acceleration": 900,
+      "deceleration": 1200,
+      "jumpStrength": 330,
+      "jumpCut": 0.6,
+      "coyoteTime": 0.1,
+      "jumpBuffer": 0.1,
+      "floorSnap": 3,
+      "wallSlideSpeed": 60,
       "wallJump": true,
-      "maxSpeed": 220,
-      "acceleration": 1500,
-      "deceleration": 1500,
-      "jumpStrength": 520,
-      "floorSnap": 4,
-      "wallJumpAway": 220
+      "wallJumpAway": 120
     },
     {
       "componentClass": "PlayerRules"

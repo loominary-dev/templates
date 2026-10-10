@@ -184,18 +184,26 @@ counts = {}
 def numbered(t):
     counts[t] = counts.get(t, 0) + 1
     return "%s%d" % (t, counts[t])
-start = None
+# Plain objects that only group others, to keep the Hierarchy short: the coins
+# under Rewards, the slimes and spikes under Danger.
+REWARDS, DANGER = uid(802), uid(803)
+objects.append({"id": REWARDS, "parent": uid(1), "name": "Rewards"})
+objects.append({"id": DANGER, "parent": uid(1), "name": "Danger"})
+def under(group, name, type_name, x, y):
+    place(name, type_name, x, y)["parent"] = group
+start = flag = None
 for r in range(H):
     for c in range(W):
         ch = LEVEL[r][c]
         cx, cy = c * CELL + 9, r * CELL + 9
-        if ch == "c": place(numbered("Coin"), "Coin", cx, cy)
-        elif ch == "s": place(numbered("Spikes"), "Spikes", cx, cy)
-        elif ch == "F": place(numbered("Flag"), "Flag", cx, cy)
-        elif ch == "S": place(numbered("Slime"), "Slime", cx, (r + 1) * CELL - 12)
-        elif ch == "P":
-            start = (cx, (r + 1) * CELL - 12)
-            place("Player1", "Player", start[0], start[1])
+        if ch == "c": under(REWARDS, numbered("Coin"), "Coin", cx, cy)
+        elif ch == "s": under(DANGER, numbered("Spikes"), "Spikes", cx, cy)
+        elif ch == "S": under(DANGER, numbered("Slime"), "Slime", cx, (r + 1) * CELL - 12)
+        elif ch == "F": flag = (cx, cy)
+        elif ch == "P": start = (cx, (r + 1) * CELL - 12)
+# The flag and the player after the groups, so they are drawn in front of them.
+place("Flag1", "Flag", flag[0], flag[1])
+place("Player1", "Player", start[0], start[1])
 # The camera follows the player, kept inside the level, and is the view from the start.
 place("Camera1", "Camera", start[0], 90, target="Player1", smoothing=0.12, keepInBounds=True,
       boundsLeft=0, boundsTop=0, boundsRight=LEVEL_W, boundsBottom=H * CELL, currentAtStart=True)

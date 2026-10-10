@@ -2,7 +2,11 @@
   "schemaVersion": 2,
   "baseClass": "Sprite",
   "defaults": {
-    "spriteKey": "Ledge.sprite.json"
+    "spriteKey": "Ledge.sprite.json",
+    "collision": {
+      "layer": 4,
+      "mask": -1
+    }
   },
   "components": [
     {

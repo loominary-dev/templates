@@ -2,17 +2,22 @@
   "schemaVersion": 2,
   "name": "Platformer",
   "entryScene": "scenes/Level.scene.json",
+  "collisionLayers": {
+    "1": "Player",
+    "3": "Ground"
+  },
   "display": {
-    "width": 640,
-    "height": 360,
+    "width": 320,
+    "height": 180,
     "windowWidth": 1280,
     "windowHeight": 720,
     "presentMode": "fit",
     "displayMode": "windowed",
-    "autoResize": true
+    "autoResize": true,
+    "wholeWindowScale": true
   },
   "physics": {
     "engine": "arcade",
-    "gravity": 1200
+    "gravity": 700
   }
 }

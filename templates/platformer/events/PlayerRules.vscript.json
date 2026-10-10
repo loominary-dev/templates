@@ -103,6 +103,275 @@
         }
       ],
       "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "Player",
+          "className": "Platformer",
+          "name": "onJumped",
+          "params": [],
+          "onComponent": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Player",
+          "className": "Sprite",
+          "name": "setAnimation",
+          "params": [
+            {
+              "type": "literal",
+              "value": "jump",
+              "valueKind": "string"
+            }
+          ]
+        },
+        {
+          "scope": "audio",
+          "className": "Audio",
+          "name": "playSound",
+          "params": [
+            {
+              "type": "literal",
+              "value": "jump",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "Player",
+          "className": "Platformer",
+          "name": "onStartedFalling",
+          "params": [],
+          "onComponent": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Player",
+          "className": "Sprite",
+          "name": "setAnimation",
+          "params": [
+            {
+              "type": "literal",
+              "value": "jump",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "Player",
+          "className": "Platformer",
+          "name": "onLanded",
+          "params": [],
+          "onComponent": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Player",
+          "className": "Sprite",
+          "name": "setAnimation",
+          "params": [
+            {
+              "type": "literal",
+              "value": "idle",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "Player",
+          "className": "Platformer",
+          "name": "isOnFloor",
+          "params": [],
+          "onComponent": true
+        },
+        {
+          "scope": "Player",
+          "className": "Platformer",
+          "name": "isMoving",
+          "params": [],
+          "onComponent": true
+        },
+        {
+          "scope": "Player",
+          "className": "Sprite",
+          "name": "isAnimationPlaying",
+          "params": [
+            {
+              "type": "literal",
+              "value": "walk",
+              "valueKind": "string"
+            }
+          ],
+          "not": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Player",
+          "className": "Sprite",
+          "name": "setAnimation",
+          "params": [
+            {
+              "type": "literal",
+              "value": "walk",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "Player",
+          "className": "Platformer",
+          "name": "isOnFloor",
+          "params": [],
+          "onComponent": true
+        },
+        {
+          "scope": "Player",
+          "className": "Platformer",
+          "name": "isMoving",
+          "params": [],
+          "onComponent": true,
+          "not": true
+        },
+        {
+          "scope": "Player",
+          "className": "Sprite",
+          "name": "isAnimationPlaying",
+          "params": [
+            {
+              "type": "literal",
+              "value": "idle",
+              "valueKind": "string"
+            }
+          ],
+          "not": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Player",
+          "className": "Sprite",
+          "name": "setAnimation",
+          "params": [
+            {
+              "type": "literal",
+              "value": "idle",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "system",
+          "className": "System",
+          "name": "compare",
+          "params": [
+            {
+              "type": "value",
+              "scope": "self",
+              "className": "Platformer",
+              "name": "getFacing",
+              "params": [],
+              "returnType": "Float",
+              "onComponent": true
+            },
+            {
+              "type": "literal",
+              "value": 0
+            },
+            {
+              "type": "literal",
+              "value": -1
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "self",
+          "className": "Node",
+          "name": "setMirrored",
+          "params": [
+            {
+              "type": "literal",
+              "value": true,
+              "valueKind": "bool"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "system",
+          "className": "System",
+          "name": "compare",
+          "params": [
+            {
+              "type": "value",
+              "scope": "self",
+              "className": "Platformer",
+              "name": "getFacing",
+              "params": [],
+              "returnType": "Float",
+              "onComponent": true
+            },
+            {
+              "type": "literal",
+              "value": 0
+            },
+            {
+              "type": "literal",
+              "value": 1
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "self",
+          "className": "Node",
+          "name": "setMirrored",
+          "params": [
+            {
+              "type": "literal",
+              "value": false,
+              "valueKind": "bool"
+            }
+          ]
+        }
+      ],
+      "subRules": []
     }
   ],
   "vars": []

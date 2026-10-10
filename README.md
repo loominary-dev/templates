@@ -19,6 +19,8 @@ folder into the new project, so nothing here is built into the editor.
   format change is a re-run of the script rather than a hand edit.
   `demos/dungeon` by `tools/make-dungeon-demo.py`, from Kenney's Tiny Dungeon
   and the same two sound packs.
+  `templates/platformer` by `tools/make-platformer-template.py`, from Pixel
+  Platformer and Digital Audio.
 
 ## Adding one
 

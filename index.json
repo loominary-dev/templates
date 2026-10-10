@@ -4,7 +4,7 @@
     {
       "id": "platformer",
       "name": "Platformer",
-      "description": "A player that runs and jumps, ground to stand on, a wall to slide down and jump off, a ledge to drop through.",
+      "description": "The smallest working platform game, on Kenney's Pixel Platformer art: a player that runs and jumps, ground to stand on, a ledge to drop through, a wall to slide down and jump off, and a camera that follows.",
       "path": "templates/platformer"
     }
   ],
