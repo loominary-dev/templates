@@ -9,7 +9,7 @@ script rather than by hand, so a format change is a re-run.
 The packs: https://kenney.nl/assets/pixel-platformer and /digital-audio, both
 CC0. Needs Pillow.
 """
-import base64, json, os, shutil, struct, sys
+import base64, json, math, os, shutil, struct, sys
 from PIL import Image
 
 pp, da = sys.argv[1], sys.argv[2]
@@ -47,21 +47,30 @@ def next_id():
     return uid(seq[0])
 
 def sprite(name, size, animations, collision, height=None):
-    """A sprite document: `animations` is [(name, [frame images], duration ms, play mode)], `collision` the shared shapes."""
+    w, h = size, (height or size)
+    """A sprite as its two files: the document, and the picture beside it holding every frame's pixels as a grid."""
     layer = next_id()
-    anims, cels = [], []
+    anims, cels, pictures = [], [], []
     for aname, frames, duration, mode in animations:
         fids = []
         for f in frames:
             fid = next_id()
             fids.append(fid)
-            cels.append({"layerId": layer, "frameId": fid, "pixels": argb(f)})
+            cels.append({"layerId": layer, "frameId": fid, "at": len(pictures)})
+            pictures.append(f)
         anims.append({"id": next_id(), "name": aname, "loop": mode == "loop", "playMode": mode, "repeatTo": 0, "repeatCount": 0,
                       "collision": collision, "points": [], "collisionShared": True, "pointsShared": False,
                       "frames": [{"id": fid, "duration": duration, "pivotX": 0.5, "pivotY": 0.5, "collision": [], "points": []} for fid in fids]})
-    write(name + ".sprite.json", {"width": size, "height": height or size, "colorMode": "rgba", "palette": [],
+    columns = max(1, math.ceil(math.sqrt(len(pictures))))
+    rows = max(1, math.ceil(len(pictures) / columns))
+    sheet = Image.new("RGBA", (w * columns, h * rows), (0, 0, 0, 0))
+    for i, pic in enumerate(pictures):
+        sheet.paste(pic.convert("RGBA"), ((i % columns) * w, (i // columns) * h))
+    sheet.save(os.path.join(out, name + ".sprite.png"))
+    write(name + ".sprite.json", {"width": w, "height": h, "colorMode": "rgba", "sheet": {"columns": columns}, "palette": [],
         "layers": [{"id": layer, "name": "Layer 1", "visible": True, "opacity": 1, "locked": False, "blendMode": "normal", "reference": False}],
         "animations": anims, "cels": cels})
+    return name + ".sprite.json"
 
 def box(name, cx, cy, w, h, **extra):
     return dict({"name": name, "kind": "box", "cx": cx, "cy": cy, "w": w, "h": h}, **extra)

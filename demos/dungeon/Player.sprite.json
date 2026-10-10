@@ -2,6 +2,9 @@
   "width": 16,
   "height": 16,
   "colorMode": "rgba",
+  "sheet": {
+    "columns": 1
+  },
   "palette": [],
   "layers": [
     {
@@ -51,7 +54,7 @@
     {
       "layerId": "d1000000-0000-4000-8000-000000000101",
       "frameId": "d1000000-0000-4000-8000-000000000102",
-      "pixels": "////////////////////////////////MSY//zEmP/8xJj//MSY//zEmP/////////////////////////////////////////////////8xJj//MSY//zEmP/8xJj//MSY//zEmP/8xJj//MSY///////////////////////////////////////8xJj//MSY//zEmP/8xJj//Smy9/0psvf9KbL3/MSY//zEmP/8xJj////////////////////////////8xJj//MSY//zEmP/82O3b/Smy9/0psvf9KbL3/Smy9/zY7dv8xJj//MSY//zEmP///////////////////////MSY//zEmP/82O3b/Smy9/0psvf9KbL3/Smy9/0psvf9KbL3/Njt2/zEmP/8xJj///////////////////////zEmP/8xJj//apUl/2qVJf9qlSX/s+FD/7PhQ/+z4UP/apUl/2qVJf8xJj//MSY///////////////////////8xJj//MSY//0psvf+Cwvf/gsL3/2Wa4f9lmuH/ZZrh/4LC9/+Cwvf/MSY//zEmP///////////////////////MSY//zEmP/+Cwvf/gsL3/0QrJv+Cwvf/gsL3/4LC9/9EKyb/gsL3/zEmP/8xJj///////////////////////zEmP/8xJj//ZZrh/4LC9/9EKyb/gsL3/4LC9/+Cwvf/RCsm/2Wa4f8xJj//MSY///////////////////////8xJj//MSY//zEmP/9lmuH/gsL3/zY7dv82O3b/Njt2/2Wa4f9KbL3/MSY//zEmP/////////////////8xJj//MSY//zEmP/9qlSX/Njt2/zY7dv82O3b/Smy9/zY7dv82O3b/apUl/zEmP/8xJj//MSY///////8xJj//MSY//zEmP/9KbL3/apUl/2qVJf8xJj//MSY//zEmP/8xJj//apUl/2qVJf9KbL3/MSY//zEmP/8xJj//MSY//zEmP/9KbL3/ZZrh/0psvf9qlSX/Smy9/0psvf9qlSX/apUl/2qVJf9KbL3/ZZrh/0psvf8xJj//MSY//zEmP/8xJj//Smy9/0psvf8xJj//apUl/2qVJf9qlSX/Smy9/0psvf9qlSX/MSY//0psvf9KbL3/MSY//zEmP/8xJj//MSY//zEmP/8xJj//MSY//zY7dv82O3b/MSY//zEmP/82O3b/Njt2/zEmP/8xJj//MSY//zEmP/8xJj///////zEmP/8xJj//MSY//zEmP/9KbL3/Smy9/zEmP/8xJj//Smy9/0psvf8xJj//MSY//zEmP/8xJj///////w=="
+      "at": 0
     }
   ]
 }
