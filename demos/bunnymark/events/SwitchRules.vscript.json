@@ -1,0 +1,103 @@
+{
+  "rules": [
+    {
+      "conditions": [
+        {
+          "scope": "system",
+          "className": "VisualScriptComponent",
+          "name": "triggerOnce",
+          "params": []
+        }
+      ],
+      "actions": [
+        {
+          "scope": "system",
+          "className": "VisualScriptComponent",
+          "name": "preloadObjectType",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Bunny",
+              "valueKind": "string"
+            }
+          ]
+        },
+        {
+          "scope": "system",
+          "className": "VisualScriptComponent",
+          "name": "preloadScene",
+          "params": [
+            {
+              "type": "literal",
+              "value": "scenes/BunnyTree.scene.json",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isActionPressed",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Bunnies",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Benches",
+          "className": "SceneManager",
+          "name": "changeScene",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Bunnies",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isActionPressed",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Trees",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Benches",
+          "className": "SceneManager",
+          "name": "changeScene",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Trees",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    }
+  ]
+}

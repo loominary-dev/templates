@@ -1,0 +1,47 @@
+{
+  "rules": [
+    {
+      "conditions": [],
+      "actions": [
+        {
+          "scope": "WaterCount",
+          "className": "Label",
+          "name": "setNumber",
+          "params": [
+            {
+              "type": "value",
+              "scope": "self",
+              "className": "Fluid",
+              "name": "particleCount",
+              "params": [],
+              "returnType": "Float",
+              "onComponent": true
+            }
+          ]
+        },
+        {
+          "scope": "variables",
+          "className": "Variables",
+          "name": "setVariable",
+          "params": [
+            {
+              "type": "literal",
+              "value": "waterMs",
+              "valueKind": "string"
+            },
+            {
+              "type": "value",
+              "scope": "self",
+              "className": "Fluid",
+              "name": "stepTime",
+              "params": [],
+              "returnType": "Float",
+              "onComponent": true
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    }
+  ]
+}

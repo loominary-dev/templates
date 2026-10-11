@@ -1,0 +1,35 @@
+{
+  "rules": [
+    {
+      "conditions": [
+        {
+          "scope": "self",
+          "className": "Node",
+          "name": "onContactStarted",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Crate",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "audio",
+          "className": "Audio",
+          "name": "playSound",
+          "params": [
+            {
+              "type": "literal",
+              "value": "bump",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    }
+  ]
+}

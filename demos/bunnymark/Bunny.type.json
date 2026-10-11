@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 2,
+  "baseClass": "Sprite",
+  "defaults": {
+    "collisionEnabled": false,
+    "spriteKey": "Bunny.sprite.json"
+  },
+  "components": [
+    {
+      "componentClass": "BunnyRules"
+    }
+  ]
+}

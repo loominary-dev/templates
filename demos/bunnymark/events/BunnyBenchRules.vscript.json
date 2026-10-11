@@ -1,0 +1,183 @@
+{
+  "rules": [
+    {
+      "conditions": [
+        {
+          "scope": "system",
+          "className": "VisualScriptComponent",
+          "name": "objectTypeIsPreloaded",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Bunny",
+              "valueKind": "string"
+            }
+          ]
+        },
+        {
+          "scope": "system",
+          "className": "VisualScriptComponent",
+          "name": "triggerOnce",
+          "params": []
+        },
+        {
+          "scope": "system",
+          "className": "System",
+          "name": "repeat",
+          "params": [
+            {
+              "type": "literal",
+              "value": 100
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "system",
+          "className": "VisualScriptComponent",
+          "name": "createObject",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Bunny",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "system",
+          "className": "VisualScriptComponent",
+          "name": "objectTypeIsPreloaded",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Bunny",
+              "valueKind": "string"
+            }
+          ]
+        },
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isMouseDown",
+          "params": [
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "scope": "system",
+          "className": "System",
+          "name": "repeat",
+          "params": [
+            {
+              "type": "literal",
+              "value": 10
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "system",
+          "className": "VisualScriptComponent",
+          "name": "createObject",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Bunny",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isMouseDown",
+          "params": [
+            {
+              "type": "literal",
+              "value": 1
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "system",
+          "className": "VisualScriptComponent",
+          "name": "destroyNewest",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Bunny",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 10
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [],
+      "actions": [
+        {
+          "scope": "FpsText",
+          "className": "Label",
+          "name": "setNumber",
+          "params": [
+            {
+              "type": "value",
+              "scope": "system",
+              "className": "System",
+              "name": "getFps",
+              "params": [],
+              "returnType": "Float"
+            }
+          ]
+        },
+        {
+          "scope": "CountText",
+          "className": "Label",
+          "name": "setNumber",
+          "params": [
+            {
+              "type": "value",
+              "scope": "Bunny",
+              "className": "Node",
+              "name": "count",
+              "params": [],
+              "returnType": "Float"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 2,
+  "baseClass": "Sprite",
+  "defaults": {
+    "spriteKey": "Pool.sprite.json",
+    "collision": {
+      "layer": 4,
+      "mask": 2
+    }
+  },
+  "components": [
+    {
+      "componentClass": "FluidZone",
+      "density": 2,
+      "drag": 2.5,
+      "angularDrag": 2
+    }
+  ]
+}

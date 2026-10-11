@@ -1,0 +1,42 @@
+{
+  "rules": [
+    {
+      "conditions": [
+        {
+          "scope": "self",
+          "className": "Node",
+          "name": "onCreated",
+          "params": []
+        }
+      ],
+      "actions": [
+        {
+          "scope": "self",
+          "className": "Rotate",
+          "name": "setSpeed",
+          "params": [
+            {
+              "type": "value",
+              "scope": "system",
+              "className": "System",
+              "name": "random",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": 0.1
+                },
+                {
+                  "type": "literal",
+                  "value": 2
+                }
+              ],
+              "returnType": "Float"
+            }
+          ],
+          "onComponent": true
+        }
+      ],
+      "subRules": []
+    }
+  ]
+}

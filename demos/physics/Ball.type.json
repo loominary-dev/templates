@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 2,
+  "baseClass": "Sprite",
+  "defaults": {
+    "collision": {
+      "layer": 2,
+      "mask": 3
+    },
+    "spriteKey": "Ball.sprite.json"
+  },
+  "components": [
+    {
+      "componentClass": "PhysicsBody",
+      "bodyType": "Dynamic",
+      "bounceX": 0.5,
+      "bounceY": 0.5
+    },
+    {
+      "componentClass": "DragRules"
+    }
+  ]
+}

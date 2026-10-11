@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 2,
+  "name": "Particles demo",
+  "entryScene": "scenes/Basin.scene.json",
+  "collisionLayers": {
+    "1": "Solid",
+    "2": "Body",
+    "3": "Drain",
+    "4": "Air"
+  },
+  "input": {
+    "Tap": {
+      "bindings": [
+        {
+          "kind": "key",
+          "code": 87
+        }
+      ]
+    },
+    "Sand": {
+      "bindings": [
+        {
+          "kind": "key",
+          "code": 83
+        }
+      ]
+    },
+    "Drain": {
+      "bindings": [
+        {
+          "kind": "key",
+          "code": 68
+        }
+      ]
+    },
+    "Fan": {
+      "bindings": [
+        {
+          "kind": "key",
+          "code": 70
+        }
+      ]
+    },
+    "Clear": {
+      "bindings": [
+        {
+          "kind": "key",
+          "code": 67
+        }
+      ]
+    }
+  },
+  "display": {
+    "width": 960,
+    "height": 540,
+    "windowWidth": 960,
+    "windowHeight": 540,
+    "presentMode": "fit",
+    "displayMode": "windowed",
+    "autoResize": true
+  },
+  "physics": {
+    "engine": "box2d",
+    "gravity": 980
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "rules": [
+    {
+      "conditions": [
+        {
+          "scope": "self",
+          "className": "PhysicsBody",
+          "name": "hasJoint",
+          "params": [
+            {
+              "type": "literal",
+              "value": "pivot",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true,
+          "not": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "self",
+          "className": "PhysicsBody",
+          "name": "hingeTo",
+          "params": [
+            {
+              "type": "literal",
+              "value": "",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "pivot",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true
+        }
+      ],
+      "subRules": []
+    }
+  ]
+}

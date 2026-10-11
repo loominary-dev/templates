@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 2,
+  "baseClass": "Sprite",
+  "defaults": {
+    "spriteKey": "Spark.sprite.json",
+    "collisionEnabled": false,
+    "blendMode": "add"
+  },
+  "components": [
+    {
+      "componentClass": "Fluid",
+      "layers": 3,
+      "kind": "Water",
+      "radius": 3,
+      "maxCount": 600,
+      "pressure": 0,
+      "viscosity": 0,
+      "coupling": 0,
+      "gravityScale": 0.6,
+      "lifetime": 1.2,
+      "fadeOut": true,
+      "colorOverLife": true,
+      "color": 16769658,
+      "endColor": 12593168,
+      "pictureScale": 2
+    }
+  ]
+}

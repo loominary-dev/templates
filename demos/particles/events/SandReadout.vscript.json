@@ -1,0 +1,60 @@
+{
+  "rules": [
+    {
+      "conditions": [],
+      "actions": [
+        {
+          "scope": "SandCount",
+          "className": "Label",
+          "name": "setNumber",
+          "params": [
+            {
+              "type": "value",
+              "scope": "self",
+              "className": "Fluid",
+              "name": "particleCount",
+              "params": [],
+              "returnType": "Float",
+              "onComponent": true
+            }
+          ]
+        },
+        {
+          "scope": "StepTime",
+          "className": "Label",
+          "name": "setNumber",
+          "params": [
+            {
+              "type": "op",
+              "op": "+",
+              "left": {
+                "type": "value",
+                "scope": "variables",
+                "className": "Variables",
+                "name": "getVariable",
+                "params": [
+                  {
+                    "type": "literal",
+                    "value": "waterMs",
+                    "valueKind": "string"
+                  }
+                ],
+                "returnType": "Float"
+              },
+              "right": {
+                "type": "value",
+                "scope": "self",
+                "className": "Fluid",
+                "name": "stepTime",
+                "params": [],
+                "returnType": "Float",
+                "onComponent": true
+              }
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    }
+  ]
+}

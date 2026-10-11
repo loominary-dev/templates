@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 2,
+  "baseClass": "Sprite",
+  "defaults": {
+    "spriteKey": "Chain.sprite.json",
+    "collisionEnabled": false
+  },
+  "components": []
+}

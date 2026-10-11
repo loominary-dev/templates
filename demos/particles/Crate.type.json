@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 2,
+  "baseClass": "Sprite",
+  "defaults": {
+    "spriteKey": "Crate.sprite.json",
+    "collision": {
+      "layer": 2,
+      "mask": 3
+    }
+  },
+  "components": [
+    {
+      "componentClass": "PhysicsBody",
+      "bodyType": "Dynamic"
+    },
+    {
+      "componentClass": "DragRules"
+    }
+  ]
+}

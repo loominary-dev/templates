@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 2,
+  "baseClass": "Sprite",
+  "defaults": {
+    "spriteKey": "Fan.sprite.json",
+    "collisionEnabled": false
+  },
+  "components": [
+    {
+      "componentClass": "Rotate",
+      "speed": 0
+    }
+  ]
+}

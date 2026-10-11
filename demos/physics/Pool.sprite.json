@@ -1,0 +1,61 @@
+{
+  "width": 300,
+  "height": 100,
+  "colorMode": "rgba",
+  "sheet": {
+    "columns": 1
+  },
+  "palette": [],
+  "layers": [
+    {
+      "id": "p1000000-0000-4000-8000-000000000137",
+      "name": "Layer 1",
+      "visible": true,
+      "opacity": 1,
+      "locked": false,
+      "blendMode": "normal",
+      "reference": false
+    }
+  ],
+  "animations": [
+    {
+      "id": "p1000000-0000-4000-8000-000000000139",
+      "name": "still",
+      "loop": true,
+      "playMode": "loop",
+      "repeatTo": 0,
+      "repeatCount": 0,
+      "collision": [
+        {
+          "name": "water",
+          "kind": "box",
+          "cx": 150,
+          "cy": 50,
+          "w": 300,
+          "h": 100,
+          "sensor": true
+        }
+      ],
+      "points": [],
+      "collisionShared": true,
+      "pointsShared": true,
+      "frames": [
+        {
+          "id": "p1000000-0000-4000-8000-000000000138",
+          "duration": 400,
+          "pivotX": 0.5,
+          "pivotY": 0.5,
+          "collision": [],
+          "points": []
+        }
+      ]
+    }
+  ],
+  "cels": [
+    {
+      "layerId": "p1000000-0000-4000-8000-000000000137",
+      "frameId": "p1000000-0000-4000-8000-000000000138",
+      "at": 0
+    }
+  ]
+}

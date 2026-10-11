@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 2,
+  "baseClass": "Sprite",
+  "defaults": {
+    "spriteKey": "Grinder.sprite.json",
+    "collisionEnabled": false
+  },
+  "components": [
+    {
+      "componentClass": "Emitter",
+      "system": "Sparks1",
+      "group": "sparks",
+      "on": true,
+      "rate": 90,
+      "speed": 280,
+      "speedVariation": 0.4,
+      "spread": 50
+    },
+    {
+      "componentClass": "Rotate",
+      "speed": 360
+    }
+  ]
+}

@@ -1,0 +1,546 @@
+{
+  "vars": [
+    {
+      "name": "vx",
+      "type": "number",
+      "value": 0
+    },
+    {
+      "name": "vy",
+      "type": "number",
+      "value": 0
+    }
+  ],
+  "rules": [
+    {
+      "conditions": [
+        {
+          "scope": "self",
+          "className": "Node",
+          "name": "onCreated",
+          "params": []
+        }
+      ],
+      "actions": [
+        {
+          "scope": "system",
+          "className": "VisualScriptComponent",
+          "name": "setSheetVar",
+          "params": [
+            {
+              "type": "literal",
+              "value": "vx",
+              "valueKind": "string"
+            },
+            {
+              "type": "value",
+              "scope": "system",
+              "className": "System",
+              "name": "random",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": 0
+                },
+                {
+                  "type": "literal",
+                  "value": 600
+                }
+              ],
+              "returnType": "Float"
+            }
+          ]
+        },
+        {
+          "scope": "system",
+          "className": "VisualScriptComponent",
+          "name": "setSheetVar",
+          "params": [
+            {
+              "type": "literal",
+              "value": "vy",
+              "valueKind": "string"
+            },
+            {
+              "type": "value",
+              "scope": "system",
+              "className": "System",
+              "name": "random",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": -300
+                },
+                {
+                  "type": "literal",
+                  "value": 300
+                }
+              ],
+              "returnType": "Float"
+            }
+          ]
+        },
+        {
+          "scope": "self",
+          "className": "Node",
+          "name": "setPosition",
+          "params": [
+            {
+              "type": "literal",
+              "value": -400
+            },
+            {
+              "type": "literal",
+              "value": -300
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [],
+      "actions": [
+        {
+          "scope": "self",
+          "className": "Node",
+          "name": "setPosition",
+          "params": [
+            {
+              "type": "op",
+              "op": "+",
+              "left": {
+                "type": "value",
+                "scope": "self",
+                "className": "Node",
+                "name": "getPositionX",
+                "params": [],
+                "returnType": "Float"
+              },
+              "right": {
+                "type": "op",
+                "op": "*",
+                "left": {
+                  "type": "value",
+                  "scope": "system",
+                  "className": "VisualScriptComponent",
+                  "name": "sheetVar",
+                  "params": [
+                    {
+                      "type": "literal",
+                      "value": "vx",
+                      "valueKind": "string"
+                    }
+                  ],
+                  "returnType": "Float"
+                },
+                "right": {
+                  "type": "value",
+                  "scope": "system",
+                  "className": "System",
+                  "name": "getDeltaTime",
+                  "params": [],
+                  "returnType": "Float"
+                }
+              }
+            },
+            {
+              "type": "op",
+              "op": "+",
+              "left": {
+                "type": "value",
+                "scope": "self",
+                "className": "Node",
+                "name": "getPositionY",
+                "params": [],
+                "returnType": "Float"
+              },
+              "right": {
+                "type": "op",
+                "op": "*",
+                "left": {
+                  "type": "value",
+                  "scope": "system",
+                  "className": "VisualScriptComponent",
+                  "name": "sheetVar",
+                  "params": [
+                    {
+                      "type": "literal",
+                      "value": "vy",
+                      "valueKind": "string"
+                    }
+                  ],
+                  "returnType": "Float"
+                },
+                "right": {
+                  "type": "value",
+                  "scope": "system",
+                  "className": "System",
+                  "name": "getDeltaTime",
+                  "params": [],
+                  "returnType": "Float"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "scope": "system",
+          "className": "VisualScriptComponent",
+          "name": "addSheetVar",
+          "params": [
+            {
+              "type": "literal",
+              "value": "vy",
+              "valueKind": "string"
+            },
+            {
+              "type": "op",
+              "op": "*",
+              "left": {
+                "type": "literal",
+                "value": 1800
+              },
+              "right": {
+                "type": "value",
+                "scope": "system",
+                "className": "System",
+                "name": "getDeltaTime",
+                "params": [],
+                "returnType": "Float"
+              }
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "self",
+          "className": "Node",
+          "name": "comparePositionX",
+          "params": [
+            {
+              "type": "literal",
+              "value": 5
+            },
+            {
+              "type": "literal",
+              "value": 400
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "system",
+          "className": "VisualScriptComponent",
+          "name": "setSheetVar",
+          "params": [
+            {
+              "type": "literal",
+              "value": "vx",
+              "valueKind": "string"
+            },
+            {
+              "type": "op",
+              "op": "*",
+              "left": {
+                "type": "value",
+                "scope": "system",
+                "className": "VisualScriptComponent",
+                "name": "sheetVar",
+                "params": [
+                  {
+                    "type": "literal",
+                    "value": "vx",
+                    "valueKind": "string"
+                  }
+                ],
+                "returnType": "Float"
+              },
+              "right": {
+                "type": "literal",
+                "value": -1
+              }
+            }
+          ]
+        },
+        {
+          "scope": "self",
+          "className": "Node",
+          "name": "setPositionX",
+          "params": [
+            {
+              "type": "literal",
+              "value": 400
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "self",
+          "className": "Node",
+          "name": "comparePositionX",
+          "params": [
+            {
+              "type": "literal",
+              "value": 0
+            },
+            {
+              "type": "literal",
+              "value": -400
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "system",
+          "className": "VisualScriptComponent",
+          "name": "setSheetVar",
+          "params": [
+            {
+              "type": "literal",
+              "value": "vx",
+              "valueKind": "string"
+            },
+            {
+              "type": "op",
+              "op": "*",
+              "left": {
+                "type": "value",
+                "scope": "system",
+                "className": "VisualScriptComponent",
+                "name": "sheetVar",
+                "params": [
+                  {
+                    "type": "literal",
+                    "value": "vx",
+                    "valueKind": "string"
+                  }
+                ],
+                "returnType": "Float"
+              },
+              "right": {
+                "type": "literal",
+                "value": -1
+              }
+            }
+          ]
+        },
+        {
+          "scope": "self",
+          "className": "Node",
+          "name": "setPositionX",
+          "params": [
+            {
+              "type": "literal",
+              "value": -400
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "self",
+          "className": "Node",
+          "name": "comparePositionY",
+          "params": [
+            {
+              "type": "literal",
+              "value": 5
+            },
+            {
+              "type": "literal",
+              "value": 300
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "system",
+          "className": "VisualScriptComponent",
+          "name": "setSheetVar",
+          "params": [
+            {
+              "type": "literal",
+              "value": "vy",
+              "valueKind": "string"
+            },
+            {
+              "type": "op",
+              "op": "*",
+              "left": {
+                "type": "value",
+                "scope": "system",
+                "className": "VisualScriptComponent",
+                "name": "sheetVar",
+                "params": [
+                  {
+                    "type": "literal",
+                    "value": "vy",
+                    "valueKind": "string"
+                  }
+                ],
+                "returnType": "Float"
+              },
+              "right": {
+                "type": "literal",
+                "value": -0.85
+              }
+            }
+          ]
+        },
+        {
+          "scope": "self",
+          "className": "Node",
+          "name": "setPositionY",
+          "params": [
+            {
+              "type": "literal",
+              "value": 300
+            }
+          ]
+        }
+      ],
+      "subRules": [
+        {
+          "conditions": [
+            {
+              "scope": "system",
+              "className": "System",
+              "name": "compare",
+              "params": [
+                {
+                  "type": "value",
+                  "scope": "system",
+                  "className": "System",
+                  "name": "random",
+                  "params": [
+                    {
+                      "type": "literal",
+                      "value": 0
+                    },
+                    {
+                      "type": "literal",
+                      "value": 1
+                    }
+                  ],
+                  "returnType": "Float"
+                },
+                {
+                  "type": "literal",
+                  "value": 4
+                },
+                {
+                  "type": "literal",
+                  "value": 0.5
+                }
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "scope": "system",
+              "className": "VisualScriptComponent",
+              "name": "addSheetVar",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "vy",
+                  "valueKind": "string"
+                },
+                {
+                  "type": "op",
+                  "op": "*",
+                  "left": {
+                    "type": "value",
+                    "scope": "system",
+                    "className": "System",
+                    "name": "random",
+                    "params": [
+                      {
+                        "type": "literal",
+                        "value": 0
+                      },
+                      {
+                        "type": "literal",
+                        "value": 6
+                      }
+                    ],
+                    "returnType": "Float"
+                  },
+                  "right": {
+                    "type": "literal",
+                    "value": -60
+                  }
+                }
+              ]
+            }
+          ],
+          "subRules": []
+        }
+      ]
+    },
+    {
+      "conditions": [
+        {
+          "scope": "self",
+          "className": "Node",
+          "name": "comparePositionY",
+          "params": [
+            {
+              "type": "literal",
+              "value": 0
+            },
+            {
+              "type": "literal",
+              "value": -300
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "system",
+          "className": "VisualScriptComponent",
+          "name": "setSheetVar",
+          "params": [
+            {
+              "type": "literal",
+              "value": "vy",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "scope": "self",
+          "className": "Node",
+          "name": "setPositionY",
+          "params": [
+            {
+              "type": "literal",
+              "value": -300
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    }
+  ]
+}

@@ -20,6 +20,27 @@
       "name": "Dungeon demo",
       "description": "Six rooms seen from above on Kenney's Tiny Dungeon art: bats that chase, spiders and rats on patrol, arrows, a dark room lit by a lantern, a key, a locked door and a chest. Each room is its own scene, changed by a Scene Manager in a singleton that keeps the player and the HUD.",
       "path": "demos/dungeon"
+    },
+    {
+      "id": "physics",
+      "name": "Physics demo",
+      "minEditor": "1.0.42",
+      "description": "A playground on the Box2D solver: a rope bridge of hinged planks, a car on wheel joints that picks up crates, a wrecking ball, a see-saw, a pool that floats what falls in, a fan, and everything draggable with the mouse.",
+      "path": "demos/physics"
+    },
+    {
+      "id": "particles",
+      "name": "Particles demo",
+      "minEditor": "1.0.42",
+      "description": "A basin of water, sand and sparks, each a sprite with a Fluid behaviour: a tap and a hopper that pour, a plughole that drains, a fan that blows, crates that float, and the mouse to splash and pour.",
+      "path": "demos/particles"
+    },
+    {
+      "id": "bunnymark",
+      "name": "BunnyMark",
+      "minEditor": "1.0.42",
+      "description": "How many moving pictures before the frame rate drops: bouncing bunnies each moved by its own visual script, and trees of slowly turning bunnies. Hold the left button to add ten a frame, the right to take ten away.",
+      "path": "demos/bunnymark"
     }
   ]
 }

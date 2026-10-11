@@ -1,0 +1,1259 @@
+{
+  "rules": [
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isActionPressed",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Tap",
+              "valueKind": "string"
+            }
+          ]
+        },
+        {
+          "scope": "system",
+          "className": "System",
+          "name": "compare",
+          "params": [
+            {
+              "type": "value",
+              "scope": "variables",
+              "className": "Variables",
+              "name": "getVariable",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "tap",
+                  "valueKind": "string"
+                }
+              ],
+              "returnType": "Float"
+            },
+            {
+              "type": "literal",
+              "value": 0
+            },
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "variables",
+          "className": "Variables",
+          "name": "setVariable",
+          "params": [
+            {
+              "type": "literal",
+              "value": "tap",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 2
+            }
+          ]
+        },
+        {
+          "scope": "Tap",
+          "className": "Emitter",
+          "name": "setOn",
+          "params": [
+            {
+              "type": "literal",
+              "value": true,
+              "valueKind": "bool"
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "audio",
+          "className": "Audio",
+          "name": "playSound",
+          "params": [
+            {
+              "type": "literal",
+              "value": "click",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isActionPressed",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Tap",
+              "valueKind": "string"
+            }
+          ]
+        },
+        {
+          "scope": "system",
+          "className": "System",
+          "name": "compare",
+          "params": [
+            {
+              "type": "value",
+              "scope": "variables",
+              "className": "Variables",
+              "name": "getVariable",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "tap",
+                  "valueKind": "string"
+                }
+              ],
+              "returnType": "Float"
+            },
+            {
+              "type": "literal",
+              "value": 0
+            },
+            {
+              "type": "literal",
+              "value": 1
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "variables",
+          "className": "Variables",
+          "name": "setVariable",
+          "params": [
+            {
+              "type": "literal",
+              "value": "tap",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "scope": "Tap",
+          "className": "Emitter",
+          "name": "setOn",
+          "params": [
+            {
+              "type": "literal",
+              "value": false,
+              "valueKind": "bool"
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "audio",
+          "className": "Audio",
+          "name": "playSound",
+          "params": [
+            {
+              "type": "literal",
+              "value": "click",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "system",
+          "className": "System",
+          "name": "compare",
+          "params": [
+            {
+              "type": "value",
+              "scope": "variables",
+              "className": "Variables",
+              "name": "getVariable",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "tap",
+                  "valueKind": "string"
+                }
+              ],
+              "returnType": "Float"
+            },
+            {
+              "type": "literal",
+              "value": 0
+            },
+            {
+              "type": "literal",
+              "value": 2
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "variables",
+          "className": "Variables",
+          "name": "setVariable",
+          "params": [
+            {
+              "type": "literal",
+              "value": "tap",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 1
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isActionPressed",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Sand",
+              "valueKind": "string"
+            }
+          ]
+        },
+        {
+          "scope": "system",
+          "className": "System",
+          "name": "compare",
+          "params": [
+            {
+              "type": "value",
+              "scope": "variables",
+              "className": "Variables",
+              "name": "getVariable",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "sand",
+                  "valueKind": "string"
+                }
+              ],
+              "returnType": "Float"
+            },
+            {
+              "type": "literal",
+              "value": 0
+            },
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "variables",
+          "className": "Variables",
+          "name": "setVariable",
+          "params": [
+            {
+              "type": "literal",
+              "value": "sand",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 2
+            }
+          ]
+        },
+        {
+          "scope": "Hopper",
+          "className": "Emitter",
+          "name": "setOn",
+          "params": [
+            {
+              "type": "literal",
+              "value": true,
+              "valueKind": "bool"
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "audio",
+          "className": "Audio",
+          "name": "playSound",
+          "params": [
+            {
+              "type": "literal",
+              "value": "click",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isActionPressed",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Sand",
+              "valueKind": "string"
+            }
+          ]
+        },
+        {
+          "scope": "system",
+          "className": "System",
+          "name": "compare",
+          "params": [
+            {
+              "type": "value",
+              "scope": "variables",
+              "className": "Variables",
+              "name": "getVariable",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "sand",
+                  "valueKind": "string"
+                }
+              ],
+              "returnType": "Float"
+            },
+            {
+              "type": "literal",
+              "value": 0
+            },
+            {
+              "type": "literal",
+              "value": 1
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "variables",
+          "className": "Variables",
+          "name": "setVariable",
+          "params": [
+            {
+              "type": "literal",
+              "value": "sand",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "scope": "Hopper",
+          "className": "Emitter",
+          "name": "setOn",
+          "params": [
+            {
+              "type": "literal",
+              "value": false,
+              "valueKind": "bool"
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "audio",
+          "className": "Audio",
+          "name": "playSound",
+          "params": [
+            {
+              "type": "literal",
+              "value": "click",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "system",
+          "className": "System",
+          "name": "compare",
+          "params": [
+            {
+              "type": "value",
+              "scope": "variables",
+              "className": "Variables",
+              "name": "getVariable",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "sand",
+                  "valueKind": "string"
+                }
+              ],
+              "returnType": "Float"
+            },
+            {
+              "type": "literal",
+              "value": 0
+            },
+            {
+              "type": "literal",
+              "value": 2
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "variables",
+          "className": "Variables",
+          "name": "setVariable",
+          "params": [
+            {
+              "type": "literal",
+              "value": "sand",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 1
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isActionPressed",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Drain",
+              "valueKind": "string"
+            }
+          ]
+        },
+        {
+          "scope": "system",
+          "className": "System",
+          "name": "compare",
+          "params": [
+            {
+              "type": "value",
+              "scope": "variables",
+              "className": "Variables",
+              "name": "getVariable",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "drain",
+                  "valueKind": "string"
+                }
+              ],
+              "returnType": "Float"
+            },
+            {
+              "type": "literal",
+              "value": 0
+            },
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "variables",
+          "className": "Variables",
+          "name": "setVariable",
+          "params": [
+            {
+              "type": "literal",
+              "value": "drain",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 2
+            }
+          ]
+        },
+        {
+          "scope": "Plug",
+          "className": "Drain",
+          "name": "setOn",
+          "params": [
+            {
+              "type": "literal",
+              "value": true,
+              "valueKind": "bool"
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "audio",
+          "className": "Audio",
+          "name": "playSound",
+          "params": [
+            {
+              "type": "literal",
+              "value": "click",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isActionPressed",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Drain",
+              "valueKind": "string"
+            }
+          ]
+        },
+        {
+          "scope": "system",
+          "className": "System",
+          "name": "compare",
+          "params": [
+            {
+              "type": "value",
+              "scope": "variables",
+              "className": "Variables",
+              "name": "getVariable",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "drain",
+                  "valueKind": "string"
+                }
+              ],
+              "returnType": "Float"
+            },
+            {
+              "type": "literal",
+              "value": 0
+            },
+            {
+              "type": "literal",
+              "value": 1
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "variables",
+          "className": "Variables",
+          "name": "setVariable",
+          "params": [
+            {
+              "type": "literal",
+              "value": "drain",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "scope": "Plug",
+          "className": "Drain",
+          "name": "setOn",
+          "params": [
+            {
+              "type": "literal",
+              "value": false,
+              "valueKind": "bool"
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "audio",
+          "className": "Audio",
+          "name": "playSound",
+          "params": [
+            {
+              "type": "literal",
+              "value": "click",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "system",
+          "className": "System",
+          "name": "compare",
+          "params": [
+            {
+              "type": "value",
+              "scope": "variables",
+              "className": "Variables",
+              "name": "getVariable",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "drain",
+                  "valueKind": "string"
+                }
+              ],
+              "returnType": "Float"
+            },
+            {
+              "type": "literal",
+              "value": 0
+            },
+            {
+              "type": "literal",
+              "value": 2
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "variables",
+          "className": "Variables",
+          "name": "setVariable",
+          "params": [
+            {
+              "type": "literal",
+              "value": "drain",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 1
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isActionPressed",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Fan",
+              "valueKind": "string"
+            }
+          ]
+        },
+        {
+          "scope": "system",
+          "className": "System",
+          "name": "compare",
+          "params": [
+            {
+              "type": "value",
+              "scope": "variables",
+              "className": "Variables",
+              "name": "getVariable",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "fan",
+                  "valueKind": "string"
+                }
+              ],
+              "returnType": "Float"
+            },
+            {
+              "type": "literal",
+              "value": 0
+            },
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "variables",
+          "className": "Variables",
+          "name": "setVariable",
+          "params": [
+            {
+              "type": "literal",
+              "value": "fan",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 2
+            }
+          ]
+        },
+        {
+          "scope": "Breeze",
+          "className": "Field",
+          "name": "setStrength",
+          "params": [
+            {
+              "type": "literal",
+              "value": 500
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "audio",
+          "className": "Audio",
+          "name": "playSound",
+          "params": [
+            {
+              "type": "literal",
+              "value": "click",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isActionPressed",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Fan",
+              "valueKind": "string"
+            }
+          ]
+        },
+        {
+          "scope": "system",
+          "className": "System",
+          "name": "compare",
+          "params": [
+            {
+              "type": "value",
+              "scope": "variables",
+              "className": "Variables",
+              "name": "getVariable",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "fan",
+                  "valueKind": "string"
+                }
+              ],
+              "returnType": "Float"
+            },
+            {
+              "type": "literal",
+              "value": 0
+            },
+            {
+              "type": "literal",
+              "value": 1
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "variables",
+          "className": "Variables",
+          "name": "setVariable",
+          "params": [
+            {
+              "type": "literal",
+              "value": "fan",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "scope": "Breeze",
+          "className": "Field",
+          "name": "setStrength",
+          "params": [
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "audio",
+          "className": "Audio",
+          "name": "playSound",
+          "params": [
+            {
+              "type": "literal",
+              "value": "click",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "system",
+          "className": "System",
+          "name": "compare",
+          "params": [
+            {
+              "type": "value",
+              "scope": "variables",
+              "className": "Variables",
+              "name": "getVariable",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "fan",
+                  "valueKind": "string"
+                }
+              ],
+              "returnType": "Float"
+            },
+            {
+              "type": "literal",
+              "value": 0
+            },
+            {
+              "type": "literal",
+              "value": 2
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "variables",
+          "className": "Variables",
+          "name": "setVariable",
+          "params": [
+            {
+              "type": "literal",
+              "value": "fan",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 1
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "system",
+          "className": "VisualScriptComponent",
+          "name": "triggerOnce",
+          "params": []
+        }
+      ],
+      "actions": [
+        {
+          "scope": "variables",
+          "className": "Variables",
+          "name": "setVariable",
+          "params": [
+            {
+              "type": "literal",
+              "value": "tap",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "scope": "system",
+          "className": "VisualScriptComponent",
+          "name": "preloadObjectType",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Crate",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "system",
+          "className": "System",
+          "name": "compare",
+          "params": [
+            {
+              "type": "value",
+              "scope": "system",
+              "className": "System",
+              "name": "getElapsedTime",
+              "params": [],
+              "returnType": "Float"
+            },
+            {
+              "type": "literal",
+              "value": 4
+            },
+            {
+              "type": "literal",
+              "value": 6
+            }
+          ]
+        },
+        {
+          "scope": "system",
+          "className": "VisualScriptComponent",
+          "name": "triggerOnce",
+          "params": []
+        }
+      ],
+      "actions": [],
+      "subRules": [
+        {
+          "conditions": [
+            {
+              "scope": "system",
+              "className": "System",
+              "name": "repeat",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": 3
+                }
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "scope": "system",
+              "className": "VisualScriptComponent",
+              "name": "createObject",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "Crate",
+                  "valueKind": "string"
+                },
+                {
+                  "type": "literal",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "scope": "Crate",
+              "className": "Node",
+              "name": "setPosition",
+              "params": [
+                {
+                  "type": "value",
+                  "scope": "system",
+                  "className": "System",
+                  "name": "random",
+                  "params": [
+                    {
+                      "type": "literal",
+                      "value": -250
+                    },
+                    {
+                      "type": "literal",
+                      "value": 120
+                    }
+                  ],
+                  "returnType": "Float"
+                },
+                {
+                  "type": "literal",
+                  "value": -180
+                }
+              ]
+            }
+          ],
+          "subRules": []
+        }
+      ]
+    },
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isActionPressed",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Clear",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Water",
+          "className": "Fluid",
+          "name": "destroyAll",
+          "params": [],
+          "onComponent": true
+        },
+        {
+          "scope": "Sand",
+          "className": "Fluid",
+          "name": "destroyAll",
+          "params": [],
+          "onComponent": true
+        },
+        {
+          "scope": "audio",
+          "className": "Audio",
+          "name": "playSound",
+          "params": [
+            {
+              "type": "literal",
+              "value": "click",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isMousePressed",
+          "params": [
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Water",
+          "className": "Fluid",
+          "name": "pushInCircle",
+          "params": [
+            {
+              "type": "value",
+              "scope": "input",
+              "className": "Input",
+              "name": "worldPositionX",
+              "params": [],
+              "returnType": "Float"
+            },
+            {
+              "type": "value",
+              "scope": "input",
+              "className": "Input",
+              "name": "worldPositionY",
+              "params": [],
+              "returnType": "Float"
+            },
+            {
+              "type": "literal",
+              "value": 70
+            },
+            {
+              "type": "literal",
+              "value": 0
+            },
+            {
+              "type": "literal",
+              "value": -450
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "Sand",
+          "className": "Fluid",
+          "name": "pushInCircle",
+          "params": [
+            {
+              "type": "value",
+              "scope": "input",
+              "className": "Input",
+              "name": "worldPositionX",
+              "params": [],
+              "returnType": "Float"
+            },
+            {
+              "type": "value",
+              "scope": "input",
+              "className": "Input",
+              "name": "worldPositionY",
+              "params": [],
+              "returnType": "Float"
+            },
+            {
+              "type": "literal",
+              "value": 70
+            },
+            {
+              "type": "literal",
+              "value": 0
+            },
+            {
+              "type": "literal",
+              "value": -300
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "audio",
+          "className": "Audio",
+          "name": "playSound",
+          "params": [
+            {
+              "type": "literal",
+              "value": "splash",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isMousePressed",
+          "params": [
+            {
+              "type": "literal",
+              "value": 1
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Water",
+          "className": "Fluid",
+          "name": "makeInCircle",
+          "params": [
+            {
+              "type": "value",
+              "scope": "input",
+              "className": "Input",
+              "name": "worldPositionX",
+              "params": [],
+              "returnType": "Float"
+            },
+            {
+              "type": "value",
+              "scope": "input",
+              "className": "Input",
+              "name": "worldPositionY",
+              "params": [],
+              "returnType": "Float"
+            },
+            {
+              "type": "literal",
+              "value": 24
+            },
+            {
+              "type": "literal",
+              "value": "poured",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true
+        }
+      ],
+      "subRules": []
+    }
+  ]
+}

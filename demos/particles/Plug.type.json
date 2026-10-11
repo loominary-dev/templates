@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 2,
+  "baseClass": "Sprite",
+  "defaults": {
+    "spriteKey": "Plug.sprite.json",
+    "collision": {
+      "layer": 4,
+      "mask": 0
+    }
+  },
+  "components": [
+    {
+      "componentClass": "Drain",
+      "system": "Water1",
+      "on": false
+    }
+  ]
+}

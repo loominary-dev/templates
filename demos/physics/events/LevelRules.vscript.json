@@ -1,0 +1,961 @@
+{
+  "rules": [
+    {
+      "conditions": [
+        {
+          "scope": "Plank",
+          "className": "Node",
+          "name": "nameIs",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Plank1",
+              "valueKind": "string"
+            }
+          ]
+        },
+        {
+          "scope": "Plank",
+          "className": "PhysicsBody",
+          "name": "hasJoint",
+          "params": [
+            {
+              "type": "literal",
+              "value": "link",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true,
+          "not": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Plank",
+          "className": "PhysicsBody",
+          "name": "hingeTo",
+          "params": [
+            {
+              "type": "literal",
+              "value": "PostL",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "left",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "link",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "Plank",
+          "className": "Node",
+          "name": "nameIs",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Plank2",
+              "valueKind": "string"
+            }
+          ]
+        },
+        {
+          "scope": "Plank",
+          "className": "PhysicsBody",
+          "name": "hasJoint",
+          "params": [
+            {
+              "type": "literal",
+              "value": "link",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true,
+          "not": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Plank",
+          "className": "PhysicsBody",
+          "name": "hingeTo",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Plank1",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "left",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "link",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "Plank",
+          "className": "Node",
+          "name": "nameIs",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Plank3",
+              "valueKind": "string"
+            }
+          ]
+        },
+        {
+          "scope": "Plank",
+          "className": "PhysicsBody",
+          "name": "hasJoint",
+          "params": [
+            {
+              "type": "literal",
+              "value": "link",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true,
+          "not": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Plank",
+          "className": "PhysicsBody",
+          "name": "hingeTo",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Plank2",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "left",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "link",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "Plank",
+          "className": "Node",
+          "name": "nameIs",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Plank4",
+              "valueKind": "string"
+            }
+          ]
+        },
+        {
+          "scope": "Plank",
+          "className": "PhysicsBody",
+          "name": "hasJoint",
+          "params": [
+            {
+              "type": "literal",
+              "value": "link",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true,
+          "not": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Plank",
+          "className": "PhysicsBody",
+          "name": "hingeTo",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Plank3",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "left",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "link",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "Plank",
+          "className": "Node",
+          "name": "nameIs",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Plank5",
+              "valueKind": "string"
+            }
+          ]
+        },
+        {
+          "scope": "Plank",
+          "className": "PhysicsBody",
+          "name": "hasJoint",
+          "params": [
+            {
+              "type": "literal",
+              "value": "link",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true,
+          "not": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Plank",
+          "className": "PhysicsBody",
+          "name": "hingeTo",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Plank4",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "left",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "link",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "Plank",
+          "className": "Node",
+          "name": "nameIs",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Plank6",
+              "valueKind": "string"
+            }
+          ]
+        },
+        {
+          "scope": "Plank",
+          "className": "PhysicsBody",
+          "name": "hasJoint",
+          "params": [
+            {
+              "type": "literal",
+              "value": "link",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true,
+          "not": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Plank",
+          "className": "PhysicsBody",
+          "name": "hingeTo",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Plank5",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "left",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "link",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "Plank",
+          "className": "Node",
+          "name": "nameIs",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Plank7",
+              "valueKind": "string"
+            }
+          ]
+        },
+        {
+          "scope": "Plank",
+          "className": "PhysicsBody",
+          "name": "hasJoint",
+          "params": [
+            {
+              "type": "literal",
+              "value": "link",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true,
+          "not": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Plank",
+          "className": "PhysicsBody",
+          "name": "hingeTo",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Plank6",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "left",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "link",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "Plank",
+          "className": "Node",
+          "name": "nameIs",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Plank8",
+              "valueKind": "string"
+            }
+          ]
+        },
+        {
+          "scope": "Plank",
+          "className": "PhysicsBody",
+          "name": "hasJoint",
+          "params": [
+            {
+              "type": "literal",
+              "value": "link",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true,
+          "not": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Plank",
+          "className": "PhysicsBody",
+          "name": "hingeTo",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Plank7",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "left",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "link",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "Plank",
+          "className": "Node",
+          "name": "nameIs",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Plank9",
+              "valueKind": "string"
+            }
+          ]
+        },
+        {
+          "scope": "Plank",
+          "className": "PhysicsBody",
+          "name": "hasJoint",
+          "params": [
+            {
+              "type": "literal",
+              "value": "link",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true,
+          "not": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Plank",
+          "className": "PhysicsBody",
+          "name": "hingeTo",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Plank8",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "left",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "link",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "Plank",
+          "className": "Node",
+          "name": "nameIs",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Plank10",
+              "valueKind": "string"
+            }
+          ]
+        },
+        {
+          "scope": "Plank",
+          "className": "PhysicsBody",
+          "name": "hasJoint",
+          "params": [
+            {
+              "type": "literal",
+              "value": "link",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true,
+          "not": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Plank",
+          "className": "PhysicsBody",
+          "name": "hingeTo",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Plank9",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "left",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "link",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "Plank",
+          "className": "Node",
+          "name": "nameIs",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Plank10",
+              "valueKind": "string"
+            }
+          ]
+        },
+        {
+          "scope": "Plank",
+          "className": "PhysicsBody",
+          "name": "hasJoint",
+          "params": [
+            {
+              "type": "literal",
+              "value": "end",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true,
+          "not": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Plank",
+          "className": "PhysicsBody",
+          "name": "hingeTo",
+          "params": [
+            {
+              "type": "literal",
+              "value": "PostR",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "right",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "end",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isActionPressed",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Grab",
+              "valueKind": "string"
+            }
+          ]
+        },
+        {
+          "scope": "Crate",
+          "className": "Node",
+          "name": "isWithinDistanceOf",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Car",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 70
+            }
+          ]
+        },
+        {
+          "scope": "Crate",
+          "className": "PhysicsBody",
+          "name": "isAttached",
+          "params": [],
+          "onComponent": true,
+          "not": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Crate",
+          "className": "PhysicsBody",
+          "name": "attachTo",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Car1",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "audio",
+          "className": "Audio",
+          "name": "playSound",
+          "params": [
+            {
+              "type": "literal",
+              "value": "grab",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isActionPressed",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Drop",
+              "valueKind": "string"
+            }
+          ]
+        },
+        {
+          "scope": "Crate",
+          "className": "PhysicsBody",
+          "name": "isAttached",
+          "params": [],
+          "onComponent": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Crate",
+          "className": "PhysicsBody",
+          "name": "detach",
+          "params": [],
+          "onComponent": true
+        },
+        {
+          "scope": "audio",
+          "className": "Audio",
+          "name": "playSound",
+          "params": [
+            {
+              "type": "literal",
+              "value": "drop",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isActionPressed",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Fan",
+              "valueKind": "string"
+            }
+          ]
+        },
+        {
+          "scope": "system",
+          "className": "System",
+          "name": "compare",
+          "params": [
+            {
+              "type": "value",
+              "scope": "variables",
+              "className": "Variables",
+              "name": "getVariable",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "fan",
+                  "valueKind": "string"
+                }
+              ],
+              "returnType": "Float"
+            },
+            {
+              "type": "literal",
+              "value": 0
+            },
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "variables",
+          "className": "Variables",
+          "name": "setVariable",
+          "params": [
+            {
+              "type": "literal",
+              "value": "fan",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 2
+            }
+          ]
+        },
+        {
+          "scope": "Breeze",
+          "className": "Field",
+          "name": "setStrength",
+          "params": [
+            {
+              "type": "literal",
+              "value": 900
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "Fan",
+          "className": "Rotate",
+          "name": "setSpeed",
+          "params": [
+            {
+              "type": "literal",
+              "value": 720
+            }
+          ],
+          "onComponent": true
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isActionPressed",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Fan",
+              "valueKind": "string"
+            }
+          ]
+        },
+        {
+          "scope": "system",
+          "className": "System",
+          "name": "compare",
+          "params": [
+            {
+              "type": "value",
+              "scope": "variables",
+              "className": "Variables",
+              "name": "getVariable",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "fan",
+                  "valueKind": "string"
+                }
+              ],
+              "returnType": "Float"
+            },
+            {
+              "type": "literal",
+              "value": 0
+            },
+            {
+              "type": "literal",
+              "value": 1
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "variables",
+          "className": "Variables",
+          "name": "setVariable",
+          "params": [
+            {
+              "type": "literal",
+              "value": "fan",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "scope": "Breeze",
+          "className": "Field",
+          "name": "setStrength",
+          "params": [
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "Fan",
+          "className": "Rotate",
+          "name": "setSpeed",
+          "params": [
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ],
+          "onComponent": true
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "system",
+          "className": "System",
+          "name": "compare",
+          "params": [
+            {
+              "type": "value",
+              "scope": "variables",
+              "className": "Variables",
+              "name": "getVariable",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "fan",
+                  "valueKind": "string"
+                }
+              ],
+              "returnType": "Float"
+            },
+            {
+              "type": "literal",
+              "value": 0
+            },
+            {
+              "type": "literal",
+              "value": 2
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "variables",
+          "className": "Variables",
+          "name": "setVariable",
+          "params": [
+            {
+              "type": "literal",
+              "value": "fan",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 1
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    }
+  ]
+}

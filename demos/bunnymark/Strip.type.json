@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 2,
+  "baseClass": "Sprite",
+  "defaults": {
+    "collisionEnabled": false,
+    "spriteKey": "Strip.sprite.json"
+  },
+  "components": []
+}

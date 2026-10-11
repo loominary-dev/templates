@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "assets": [
+    {
+      "uuid": "f1000000-0000-4000-8000-000000000900",
+      "key": "splash",
+      "path": "assets/sounds/splash.ogg"
+    },
+    {
+      "uuid": "f1000000-0000-4000-8000-000000000901",
+      "key": "click",
+      "path": "assets/sounds/click.ogg"
+    }
+  ]
+}

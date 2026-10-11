@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 2,
+  "name": "BunnyMark",
+  "entryScene": "scenes/Bunnies.scene.json",
+  "singletons": [
+    "scenes/singletons/Bench.scene.json"
+  ],
+  "input": {
+    "Bunnies": {
+      "bindings": [
+        {
+          "kind": "key",
+          "code": 49
+        }
+      ]
+    },
+    "Trees": {
+      "bindings": [
+        {
+          "kind": "key",
+          "code": 50
+        }
+      ]
+    }
+  },
+  "display": {
+    "width": 800,
+    "height": 600,
+    "windowWidth": 800,
+    "windowHeight": 600,
+    "presentMode": "fit",
+    "displayMode": "windowed",
+    "autoResize": true
+  },
+  "physics": {
+    "engine": "arcade",
+    "gravity": 0
+  }
+}

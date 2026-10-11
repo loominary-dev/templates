@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 2,
+  "baseClass": "Sprite",
+  "defaults": {
+    "spriteKey": "Grain.sprite.json",
+    "collisionEnabled": false
+  },
+  "components": [
+    {
+      "componentClass": "Fluid",
+      "layers": 3,
+      "kind": "Powder",
+      "radius": 5,
+      "maxCount": 2000,
+      "pictureScale": 1.8,
+      "color": 14267755,
+      "density": 1.6
+    },
+    {
+      "componentClass": "SandReadout"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "assets": [
+    {
+      "uuid": "p1000000-0000-4000-8000-000000000900",
+      "key": "bump",
+      "path": "assets/sounds/bump.ogg"
+    },
+    {
+      "uuid": "p1000000-0000-4000-8000-000000000901",
+      "key": "grab",
+      "path": "assets/sounds/grab.ogg"
+    },
+    {
+      "uuid": "p1000000-0000-4000-8000-000000000902",
+      "key": "drop",
+      "path": "assets/sounds/drop.ogg"
+    },
+    {
+      "uuid": "p1000000-0000-4000-8000-000000000903",
+      "key": "swing",
+      "path": "assets/sounds/swing.ogg"
+    }
+  ]
+}

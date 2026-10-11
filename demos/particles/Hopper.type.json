@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 2,
+  "baseClass": "Sprite",
+  "defaults": {
+    "spriteKey": "Hopper.sprite.json",
+    "collisionEnabled": false
+  },
+  "components": [
+    {
+      "componentClass": "Emitter",
+      "system": "Sand1",
+      "group": "hopper",
+      "on": false,
+      "rate": 70,
+      "speed": 240,
+      "speedVariation": 0.1,
+      "spread": 6,
+      "shape": "Line",
+      "width": 30
+    }
+  ]
+}
