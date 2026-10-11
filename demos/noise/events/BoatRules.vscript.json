@@ -1,0 +1,222 @@
+{
+  "rules": [
+    {
+      "conditions": [],
+      "actions": [
+        {
+          "scope": "self",
+          "className": "Node",
+          "name": "setRotation",
+          "params": [
+            {
+              "type": "op",
+              "op": "*",
+              "left": {
+                "type": "value",
+                "scope": "self",
+                "className": "Noise",
+                "name": "noiseAt",
+                "params": [
+                  {
+                    "type": "literal",
+                    "value": 0
+                  },
+                  {
+                    "type": "literal",
+                    "value": 0
+                  },
+                  {
+                    "type": "op",
+                    "op": "*",
+                    "left": {
+                      "type": "value",
+                      "scope": "system",
+                      "className": "System",
+                      "name": "getElapsedTime",
+                      "params": [],
+                      "returnType": "Float"
+                    },
+                    "right": {
+                      "type": "literal",
+                      "value": 0.2
+                    }
+                  }
+                ],
+                "returnType": "Float",
+                "onComponent": true
+              },
+              "right": {
+                "type": "literal",
+                "value": 540
+              }
+            }
+          ]
+        },
+        {
+          "scope": "self",
+          "className": "Node",
+          "name": "moveAtAngle",
+          "params": [
+            {
+              "type": "op",
+              "op": "*",
+              "left": {
+                "type": "literal",
+                "value": 26
+              },
+              "right": {
+                "type": "value",
+                "scope": "system",
+                "className": "System",
+                "name": "getDeltaTime",
+                "params": [],
+                "returnType": "Float"
+              }
+            },
+            {
+              "type": "value",
+              "scope": "self",
+              "className": "Node",
+              "name": "getRotation",
+              "params": [],
+              "returnType": "Float"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "self",
+          "className": "Node",
+          "name": "comparePositionX",
+          "params": [
+            {
+              "type": "literal",
+              "value": 5
+            },
+            {
+              "type": "literal",
+              "value": 332
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "self",
+          "className": "Node",
+          "name": "setPositionX",
+          "params": [
+            {
+              "type": "literal",
+              "value": -332
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "self",
+          "className": "Node",
+          "name": "comparePositionX",
+          "params": [
+            {
+              "type": "literal",
+              "value": 0
+            },
+            {
+              "type": "literal",
+              "value": -332
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "self",
+          "className": "Node",
+          "name": "setPositionX",
+          "params": [
+            {
+              "type": "literal",
+              "value": 332
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "self",
+          "className": "Node",
+          "name": "comparePositionY",
+          "params": [
+            {
+              "type": "literal",
+              "value": 5
+            },
+            {
+              "type": "literal",
+              "value": 192
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "self",
+          "className": "Node",
+          "name": "setPositionY",
+          "params": [
+            {
+              "type": "literal",
+              "value": -192
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "self",
+          "className": "Node",
+          "name": "comparePositionY",
+          "params": [
+            {
+              "type": "literal",
+              "value": 0
+            },
+            {
+              "type": "literal",
+              "value": -192
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "self",
+          "className": "Node",
+          "name": "setPositionY",
+          "params": [
+            {
+              "type": "literal",
+              "value": 192
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    }
+  ]
+}

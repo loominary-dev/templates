@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "image": "assets/art/terrain.png",
+  "tileWidth": 16,
+  "tileHeight": 16,
+  "tiles": [
+    {
+      "id": 0,
+      "x": 0,
+      "y": 0,
+      "collision": []
+    },
+    {
+      "id": 1,
+      "x": 16,
+      "y": 0,
+      "collision": []
+    },
+    {
+      "id": 2,
+      "x": 32,
+      "y": 0,
+      "collision": []
+    },
+    {
+      "id": 3,
+      "x": 48,
+      "y": 0,
+      "collision": []
+    },
+    {
+      "id": 4,
+      "x": 64,
+      "y": 0,
+      "collision": []
+    },
+    {
+      "id": 5,
+      "x": 80,
+      "y": 0,
+      "collision": []
+    },
+    {
+      "id": 6,
+      "x": 96,
+      "y": 0,
+      "collision": []
+    }
+  ]
+}

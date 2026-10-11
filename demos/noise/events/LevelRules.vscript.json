@@ -1,0 +1,63 @@
+{
+  "rules": [
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isActionPressed",
+          "params": [
+            {
+              "type": "literal",
+              "value": "New island",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Island",
+          "className": "Noise",
+          "name": "newSeed",
+          "params": [],
+          "onComponent": true
+        },
+        {
+          "scope": "Island",
+          "className": "IslandMaker",
+          "name": "grow",
+          "params": [],
+          "onComponent": true
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isActionPressed",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Weather",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Sky",
+          "className": "Weather",
+          "name": "toggle",
+          "params": [],
+          "onComponent": true
+        }
+      ],
+      "subRules": []
+    }
+  ]
+}

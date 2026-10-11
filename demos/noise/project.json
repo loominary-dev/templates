@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 2,
+  "name": "Noise world",
+  "entryScene": "scenes/World.scene.json",
+  "input": {
+    "New island": {
+      "bindings": [
+        {
+          "kind": "key",
+          "code": 78
+        }
+      ]
+    },
+    "Weather": {
+      "bindings": [
+        {
+          "kind": "key",
+          "code": 87
+        }
+      ]
+    }
+  },
+  "display": {
+    "width": 640,
+    "height": 360,
+    "windowWidth": 1280,
+    "windowHeight": 720,
+    "presentMode": "fit",
+    "displayMode": "windowed",
+    "autoResize": true,
+    "wholeWindowScale": true
+  },
+  "physics": {
+    "engine": "arcade",
+    "gravity": 0
+  }
+}

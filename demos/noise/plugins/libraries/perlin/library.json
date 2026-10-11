@@ -1,0 +1,16 @@
+{
+  "name": "perlin",
+  "version": "0.5",
+  "kind": "native",
+  "source": "src",
+  "license": "MIT or public domain (stb)",
+  "homepage": "https://github.com/nothings/stb",
+  "defines": [],
+  "header": "native/stb_perlin.h",
+  "build": {
+    "sources": [],
+    "include": [],
+    "link": []
+  },
+  "native": {}
+}

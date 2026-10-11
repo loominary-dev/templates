@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 2,
+  "baseClass": "Sprite",
+  "defaults": {
+    "spriteKey": "Boat.sprite.json",
+    "collisionEnabled": false
+  },
+  "components": [
+    {
+      "componentClass": "Noise",
+      "scale": 1,
+      "seed": 9
+    },
+    {
+      "componentClass": "BoatRules"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 2,
+  "baseClass": "Tilemap",
+  "defaults": {},
+  "components": [
+    {
+      "componentClass": "Noise",
+      "scale": 0.11,
+      "octaves": 5
+    },
+    {
+      "componentClass": "IslandMaker"
+    }
+  ]
+}

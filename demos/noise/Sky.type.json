@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 2,
+  "baseClass": "Node",
+  "defaults": {},
+  "components": [
+    {
+      "componentClass": "Noise",
+      "scale": 0.012,
+      "seed": 3
+    },
+    {
+      "componentClass": "Weather"
+    }
+  ]
+}

@@ -41,6 +41,13 @@
       "minEditor": "1.0.42",
       "description": "How many moving pictures before the frame rate drops: bouncing bunnies each moved by its own visual script, and trees of slowly turning bunnies. Hold the left button to add ten a frame, the right to take ten away.",
       "path": "demos/bunnymark"
+    },
+    {
+      "id": "noise",
+      "name": "Noise world",
+      "minEditor": "1.0.42",
+      "description": "A native C library in a game: stb_perlin's noise grows an island on a tile map, drifts clouds over it and steers a boat, through a behaviour that offers its numbers to rules. Built on the first Run with your C++ compiler.",
+      "path": "demos/noise"
     }
   ]
 }
