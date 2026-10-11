@@ -1,0 +1,314 @@
+{
+  "rules": [
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isActionPressed",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Scene1",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Scenes",
+          "className": "SceneManager",
+          "name": "changeScene",
+          "params": [
+            {
+              "type": "literal",
+              "value": "scenes/Basin.scene.json",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isActionPressed",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Scene2",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Scenes",
+          "className": "SceneManager",
+          "name": "changeScene",
+          "params": [
+            {
+              "type": "literal",
+              "value": "scenes/DeepPoolInPasses.scene.json",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isActionPressed",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Scene3",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Scenes",
+          "className": "SceneManager",
+          "name": "changeScene",
+          "params": [
+            {
+              "type": "literal",
+              "value": "scenes/SettledPoolSleeps.scene.json",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isActionPressed",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Scene4",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Scenes",
+          "className": "SceneManager",
+          "name": "changeScene",
+          "params": [
+            {
+              "type": "literal",
+              "value": "scenes/ElasticJelly.scene.json",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isActionPressed",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Scene5",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Scenes",
+          "className": "SceneManager",
+          "name": "changeScene",
+          "params": [
+            {
+              "type": "literal",
+              "value": "scenes/SpringNet.scene.json",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isActionPressed",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Scene6",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Scenes",
+          "className": "SceneManager",
+          "name": "changeScene",
+          "params": [
+            {
+              "type": "literal",
+              "value": "scenes/WallsOfParticles.scene.json",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isActionPressed",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Scene7",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Scenes",
+          "className": "SceneManager",
+          "name": "changeScene",
+          "params": [
+            {
+              "type": "literal",
+              "value": "scenes/OilAndWaterRepel.scene.json",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isActionPressed",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Scene8",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Scenes",
+          "className": "SceneManager",
+          "name": "changeScene",
+          "params": [
+            {
+              "type": "literal",
+              "value": "scenes/ColourMixing.scene.json",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isActionPressed",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Scene9",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Scenes",
+          "className": "SceneManager",
+          "name": "changeScene",
+          "params": [
+            {
+              "type": "literal",
+              "value": "scenes/ColourBySpeed.scene.json",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isActionPressed",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Scene0",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Scenes",
+          "className": "SceneManager",
+          "name": "changeScene",
+          "params": [
+            {
+              "type": "literal",
+              "value": "scenes/ObjectsIntoParticles.scene.json",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    }
+  ]
+}

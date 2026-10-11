@@ -1,0 +1,26 @@
+{
+  "rules": [
+    {
+      "conditions": [],
+      "actions": [
+        {
+          "scope": "PassesMs",
+          "className": "Label",
+          "name": "setNumber",
+          "params": [
+            {
+              "type": "value",
+              "scope": "self",
+              "className": "Fluid",
+              "name": "stepTime",
+              "params": [],
+              "returnType": "Float",
+              "onComponent": true
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    }
+  ]
+}

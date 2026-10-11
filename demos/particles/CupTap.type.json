@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 2,
+  "baseClass": "Sprite",
+  "defaults": {
+    "spriteKey": "Tap.sprite.json",
+    "collisionEnabled": false
+  },
+  "components": [
+    {
+      "componentClass": "Emitter",
+      "system": "Walled1",
+      "group": "water",
+      "on": true,
+      "rate": 60,
+      "speed": 250,
+      "spread": 4,
+      "shape": "Line",
+      "width": 20
+    }
+  ]
+}

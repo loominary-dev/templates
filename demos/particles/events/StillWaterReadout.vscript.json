@@ -1,0 +1,79 @@
+{
+  "rules": [
+    {
+      "conditions": [],
+      "actions": [
+        {
+          "scope": "StillMs",
+          "className": "Label",
+          "name": "setNumber",
+          "params": [
+            {
+              "type": "value",
+              "scope": "self",
+              "className": "Fluid",
+              "name": "stepTime",
+              "params": [],
+              "returnType": "Float",
+              "onComponent": true
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "self",
+          "className": "Fluid",
+          "name": "isAsleep",
+          "params": [],
+          "onComponent": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "SleepState",
+          "className": "Label",
+          "name": "setText",
+          "params": [
+            {
+              "type": "literal",
+              "value": "asleep: nothing is stepped",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "self",
+          "className": "Fluid",
+          "name": "isAsleep",
+          "params": [],
+          "onComponent": true,
+          "not": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "SleepState",
+          "className": "Label",
+          "name": "setText",
+          "params": [
+            {
+              "type": "literal",
+              "value": "awake",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    }
+  ]
+}

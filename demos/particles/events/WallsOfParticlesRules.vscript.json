@@ -1,0 +1,357 @@
+{
+  "rules": [
+    {
+      "conditions": [
+        {
+          "scope": "system",
+          "className": "VisualScriptComponent",
+          "name": "triggerOnce",
+          "params": []
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Walled",
+          "className": "Fluid",
+          "name": "destroyAll",
+          "params": [],
+          "onComponent": true
+        },
+        {
+          "scope": "Walled",
+          "className": "Fluid",
+          "name": "fillObject",
+          "params": [
+            {
+              "type": "literal",
+              "value": "CupBase",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "cup",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "Walled",
+          "className": "Fluid",
+          "name": "fillObject",
+          "params": [
+            {
+              "type": "literal",
+              "value": "CupLeft",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "cup",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "Walled",
+          "className": "Fluid",
+          "name": "fillObject",
+          "params": [
+            {
+              "type": "literal",
+              "value": "CupRight",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "cup",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "Walled",
+          "className": "Fluid",
+          "name": "setGroupKind",
+          "params": [
+            {
+              "type": "literal",
+              "value": "cup",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 3
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "Walled",
+          "className": "Fluid",
+          "name": "colourGroup",
+          "params": [
+            {
+              "type": "literal",
+              "value": "cup",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 10527920
+            }
+          ],
+          "onComponent": true
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isActionPressed",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Reset",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Walled",
+          "className": "Fluid",
+          "name": "destroyAll",
+          "params": [],
+          "onComponent": true
+        },
+        {
+          "scope": "Walled",
+          "className": "Fluid",
+          "name": "fillObject",
+          "params": [
+            {
+              "type": "literal",
+              "value": "CupBase",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "cup",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "Walled",
+          "className": "Fluid",
+          "name": "fillObject",
+          "params": [
+            {
+              "type": "literal",
+              "value": "CupLeft",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "cup",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "Walled",
+          "className": "Fluid",
+          "name": "fillObject",
+          "params": [
+            {
+              "type": "literal",
+              "value": "CupRight",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "cup",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "Walled",
+          "className": "Fluid",
+          "name": "setGroupKind",
+          "params": [
+            {
+              "type": "literal",
+              "value": "cup",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 3
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "Walled",
+          "className": "Fluid",
+          "name": "colourGroup",
+          "params": [
+            {
+              "type": "literal",
+              "value": "cup",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 10527920
+            }
+          ],
+          "onComponent": true
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isActionPressed",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Act",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Walled",
+          "className": "Fluid",
+          "name": "setGroupKind",
+          "params": [
+            {
+              "type": "literal",
+              "value": "cup",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "Walled",
+          "className": "Fluid",
+          "name": "colourGroup",
+          "params": [
+            {
+              "type": "literal",
+              "value": "cup",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 4892927
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "audio",
+          "className": "Audio",
+          "name": "playSound",
+          "params": [
+            {
+              "type": "literal",
+              "value": "click",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isMousePressed",
+          "params": [
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Walled",
+          "className": "Fluid",
+          "name": "pushInCircle",
+          "params": [
+            {
+              "type": "value",
+              "scope": "input",
+              "className": "Input",
+              "name": "worldPositionX",
+              "params": [],
+              "returnType": "Float"
+            },
+            {
+              "type": "value",
+              "scope": "input",
+              "className": "Input",
+              "name": "worldPositionY",
+              "params": [],
+              "returnType": "Float"
+            },
+            {
+              "type": "literal",
+              "value": 70
+            },
+            {
+              "type": "literal",
+              "value": 0
+            },
+            {
+              "type": "literal",
+              "value": -450
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "audio",
+          "className": "Audio",
+          "name": "playSound",
+          "params": [
+            {
+              "type": "literal",
+              "value": "splash",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    }
+  ]
+}

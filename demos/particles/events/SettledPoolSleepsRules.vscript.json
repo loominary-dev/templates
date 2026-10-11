@@ -1,0 +1,152 @@
+{
+  "rules": [
+    {
+      "conditions": [
+        {
+          "scope": "system",
+          "className": "VisualScriptComponent",
+          "name": "triggerOnce",
+          "params": []
+        }
+      ],
+      "actions": [
+        {
+          "scope": "StillWater",
+          "className": "Fluid",
+          "name": "fillObject",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Pool",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "pool",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isMousePressed",
+          "params": [
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "StillWater",
+          "className": "Fluid",
+          "name": "pushInCircle",
+          "params": [
+            {
+              "type": "value",
+              "scope": "input",
+              "className": "Input",
+              "name": "worldPositionX",
+              "params": [],
+              "returnType": "Float"
+            },
+            {
+              "type": "value",
+              "scope": "input",
+              "className": "Input",
+              "name": "worldPositionY",
+              "params": [],
+              "returnType": "Float"
+            },
+            {
+              "type": "literal",
+              "value": 70
+            },
+            {
+              "type": "literal",
+              "value": 0
+            },
+            {
+              "type": "literal",
+              "value": -450
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "audio",
+          "className": "Audio",
+          "name": "playSound",
+          "params": [
+            {
+              "type": "literal",
+              "value": "splash",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isMousePressed",
+          "params": [
+            {
+              "type": "literal",
+              "value": 1
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "StillWater",
+          "className": "Fluid",
+          "name": "makeInCircle",
+          "params": [
+            {
+              "type": "value",
+              "scope": "input",
+              "className": "Input",
+              "name": "worldPositionX",
+              "params": [],
+              "returnType": "Float"
+            },
+            {
+              "type": "value",
+              "scope": "input",
+              "className": "Input",
+              "name": "worldPositionY",
+              "params": [],
+              "returnType": "Float"
+            },
+            {
+              "type": "literal",
+              "value": 22
+            },
+            {
+              "type": "literal",
+              "value": "poured",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true
+        }
+      ],
+      "subRules": []
+    }
+  ]
+}

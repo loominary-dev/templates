@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 3,
+  "objects": [
+    {
+      "id": "f1000000-0000-4000-8000-000000003001",
+      "name": "Demo"
+    },
+    {
+      "id": "f1000000-0000-4000-8000-000000003002",
+      "parent": "f1000000-0000-4000-8000-000000003001",
+      "name": "Scenes1",
+      "type": "Scenes"
+    },
+    {
+      "id": "f1000000-0000-4000-8000-000000003003",
+      "parent": "f1000000-0000-4000-8000-000000003001",
+      "name": "Switcher1",
+      "type": "Switcher"
+    },
+    {
+      "id": "f1000000-0000-4000-8000-000000003004",
+      "parent": "f1000000-0000-4000-8000-000000003001",
+      "name": "SceneList1",
+      "type": "SceneList",
+      "x": -470,
+      "y": 254,
+      "text": "1 Basin   2 Deep pool in passes   3 A settled pool sleeps   4 Elastic jelly   5 Spring net   6 Walls made of particles   7 Oil and water repel   8 Colour mixing   9 Colour by speed   0 Objects into particles"
+    }
+  ]
+}

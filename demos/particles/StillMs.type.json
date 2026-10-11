@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 2,
+  "baseClass": "Label",
+  "defaults": {
+    "text": "",
+    "fontSize": 13
+  },
+  "components": []
+}

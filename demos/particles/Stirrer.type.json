@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 2,
+  "baseClass": "Sprite",
+  "defaults": {
+    "spriteKey": "Grinder.sprite.json",
+    "collisionEnabled": false
+  },
+  "components": [
+    {
+      "componentClass": "Field",
+      "kind": "Vortex",
+      "strength": 0,
+      "range": 170,
+      "pull": 0.2,
+      "affects": "Particles"
+    },
+    {
+      "componentClass": "Rotate",
+      "speed": 0
+    }
+  ]
+}

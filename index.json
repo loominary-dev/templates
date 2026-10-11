@@ -31,8 +31,8 @@
     {
       "id": "particles",
       "name": "Particles demo",
-      "minEditor": "1.0.42",
-      "description": "A basin of water, sand and sparks, each a sprite with a Fluid behaviour: a tap and a hopper that pour, a plughole that drains, a fan that blows, crates that float, and the mouse to splash and pour.",
+      "minEditor": "1.0.44",
+      "description": "Water, sand and sparks on the Fluid behaviour, and a scene for each of its kinds: a deep pool in passes, a pool that sleeps, elastic jelly, a spring net, walls made of particles, oil and water that repel, colour mixing, colour by speed, and objects turned into particles. Keys 1 to 0 change scene.",
       "path": "demos/particles"
     },
     {

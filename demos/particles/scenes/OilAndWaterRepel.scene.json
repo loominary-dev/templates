@@ -1,0 +1,118 @@
+{
+  "schemaVersion": 3,
+  "objects": [
+    {
+      "id": "f1000000-0000-4000-8000-000000002500",
+      "name": "OilAndWaterRepel"
+    },
+    {
+      "id": "f1000000-0000-4000-8000-000000002501",
+      "parent": "f1000000-0000-4000-8000-000000002500",
+      "name": "OilAndWaterRepelLevel1",
+      "type": "OilAndWaterRepelLevel",
+      "x": 0,
+      "y": 0
+    },
+    {
+      "id": "f1000000-0000-4000-8000-000000002502",
+      "parent": "f1000000-0000-4000-8000-000000002500",
+      "name": "Title",
+      "type": "Caption",
+      "x": -470,
+      "y": -262,
+      "text": "Oil and water repel"
+    },
+    {
+      "id": "f1000000-0000-4000-8000-000000002503",
+      "parent": "f1000000-0000-4000-8000-000000002500",
+      "name": "About1",
+      "type": "Help",
+      "x": -470,
+      "y": -244,
+      "text": "Two groups in one fluid, the amber one made repulsive: it pushes the blue away wherever they meet,"
+    },
+    {
+      "id": "f1000000-0000-4000-8000-000000002504",
+      "parent": "f1000000-0000-4000-8000-000000002500",
+      "name": "About2",
+      "type": "Help",
+      "x": -470,
+      "y": -226,
+      "text": "so however hard they are stirred they part again."
+    },
+    {
+      "id": "f1000000-0000-4000-8000-000000002505",
+      "parent": "f1000000-0000-4000-8000-000000002500",
+      "name": "Controls",
+      "type": "Help",
+      "x": -470,
+      "y": -208,
+      "text": "Click to splash them together.   Space pours more oil into the middle.   R starts again."
+    },
+    {
+      "id": "f1000000-0000-4000-8000-000000002506",
+      "parent": "f1000000-0000-4000-8000-000000002500",
+      "name": "Floor",
+      "type": "Floor",
+      "x": 0,
+      "y": 240,
+      "scaleX": 0.875
+    },
+    {
+      "id": "f1000000-0000-4000-8000-000000002507",
+      "parent": "f1000000-0000-4000-8000-000000002500",
+      "name": "SideL",
+      "type": "Side",
+      "x": -270.0,
+      "y": 110.0,
+      "scaleY": 0.8571428571428571
+    },
+    {
+      "id": "f1000000-0000-4000-8000-000000002508",
+      "parent": "f1000000-0000-4000-8000-000000002500",
+      "name": "SideR",
+      "type": "Side",
+      "x": 270.0,
+      "y": 110.0,
+      "scaleY": 0.8571428571428571
+    },
+    {
+      "id": "f1000000-0000-4000-8000-000000002509",
+      "parent": "f1000000-0000-4000-8000-000000002500",
+      "name": "OilWater1",
+      "type": "OilWater",
+      "x": -460,
+      "y": 250
+    },
+    {
+      "id": "f1000000-0000-4000-8000-000000002510",
+      "parent": "f1000000-0000-4000-8000-000000002500",
+      "name": "WaterSpot",
+      "type": "Mould",
+      "x": -120,
+      "y": 150,
+      "scaleX": 11.5,
+      "scaleY": 7.5
+    },
+    {
+      "id": "f1000000-0000-4000-8000-000000002511",
+      "parent": "f1000000-0000-4000-8000-000000002500",
+      "name": "OilSpot",
+      "type": "Mould",
+      "x": 120,
+      "y": 150,
+      "scaleX": 11.5,
+      "scaleY": 7.5
+    },
+    {
+      "id": "f1000000-0000-4000-8000-000000002512",
+      "parent": "f1000000-0000-4000-8000-000000002500",
+      "name": "OilDrop",
+      "type": "Mould",
+      "x": 0,
+      "y": -120,
+      "scaleX": 3.5,
+      "scaleY": 3.5
+    }
+  ]
+}

@@ -1,0 +1,118 @@
+{
+  "schemaVersion": 3,
+  "objects": [
+    {
+      "id": "f1000000-0000-4000-8000-000000002800",
+      "name": "ObjectsIntoParticles"
+    },
+    {
+      "id": "f1000000-0000-4000-8000-000000002801",
+      "parent": "f1000000-0000-4000-8000-000000002800",
+      "name": "ObjectsIntoParticlesLevel1",
+      "type": "ObjectsIntoParticlesLevel",
+      "x": 0,
+      "y": 0
+    },
+    {
+      "id": "f1000000-0000-4000-8000-000000002802",
+      "parent": "f1000000-0000-4000-8000-000000002800",
+      "name": "Title",
+      "type": "Caption",
+      "x": -470,
+      "y": -262,
+      "text": "Objects into particles"
+    },
+    {
+      "id": "f1000000-0000-4000-8000-000000002803",
+      "parent": "f1000000-0000-4000-8000-000000002800",
+      "name": "About1",
+      "type": "Help",
+      "x": -470,
+      "y": -244,
+      "text": "Turn into particles puts a particle wherever an object's picture is opaque, coloured from its pixel."
+    },
+    {
+      "id": "f1000000-0000-4000-8000-000000002804",
+      "parent": "f1000000-0000-4000-8000-000000002800",
+      "name": "About2",
+      "type": "Help",
+      "x": -470,
+      "y": -226,
+      "text": "Made elastic, the pictures fall and bounce looking like themselves; left as water, they melt."
+    },
+    {
+      "id": "f1000000-0000-4000-8000-000000002805",
+      "parent": "f1000000-0000-4000-8000-000000002800",
+      "name": "Controls",
+      "type": "Help",
+      "x": -470,
+      "y": -208,
+      "text": "E turns them into elastic particles.   M melts them into water.   R puts them back.   Click to knock the pieces about."
+    },
+    {
+      "id": "f1000000-0000-4000-8000-000000002806",
+      "parent": "f1000000-0000-4000-8000-000000002800",
+      "name": "Floor",
+      "type": "Floor",
+      "x": 0,
+      "y": 240,
+      "scaleX": 1.0625
+    },
+    {
+      "id": "f1000000-0000-4000-8000-000000002807",
+      "parent": "f1000000-0000-4000-8000-000000002800",
+      "name": "SideL",
+      "type": "Side",
+      "x": -330.0,
+      "y": 130.0,
+      "scaleY": 0.7142857142857143
+    },
+    {
+      "id": "f1000000-0000-4000-8000-000000002808",
+      "parent": "f1000000-0000-4000-8000-000000002800",
+      "name": "SideR",
+      "type": "Side",
+      "x": 330.0,
+      "y": 130.0,
+      "scaleY": 0.7142857142857143
+    },
+    {
+      "id": "f1000000-0000-4000-8000-000000002809",
+      "parent": "f1000000-0000-4000-8000-000000002800",
+      "name": "Bits1",
+      "type": "Bits",
+      "x": -460,
+      "y": 250
+    },
+    {
+      "id": "f1000000-0000-4000-8000-000000002810",
+      "parent": "f1000000-0000-4000-8000-000000002800",
+      "name": "Heart1",
+      "type": "Heart",
+      "x": -200,
+      "y": -60,
+      "scaleX": 6,
+      "scaleY": 6
+    },
+    {
+      "id": "f1000000-0000-4000-8000-000000002811",
+      "parent": "f1000000-0000-4000-8000-000000002800",
+      "name": "Star1",
+      "type": "Star",
+      "x": 0,
+      "y": -60,
+      "scaleX": 6,
+      "scaleY": 6
+    },
+    {
+      "id": "f1000000-0000-4000-8000-000000002812",
+      "parent": "f1000000-0000-4000-8000-000000002800",
+      "name": "Gem1",
+      "type": "Gem",
+      "x": 200,
+      "y": -60,
+      "scaleX": 6,
+      "scaleY": 6
+    }
+  ]
+}

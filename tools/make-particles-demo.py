@@ -15,7 +15,7 @@ from demo_kit import *
 
 da = sys.argv[1]
 out = sys.argv[2] if len(sys.argv) > 2 else os.path.join(os.path.dirname(__file__), "..", "demos", "particles")
-d = Demo(out, ["scenes", "events"], "f1000000")
+d = Demo(out, ["scenes/singletons", "events"], "f1000000")
 W, H = 960, 540
 
 def panel(w, h, fill, edge, radius=3):
@@ -49,6 +49,16 @@ plug = canvas(60, 10)
 ImageDraw.Draw(plug).rectangle([0, 0, 59, 9], fill=(30, 30, 36, 255))
 d.sprite("Plug", 60, 10, [("still", [plug], 400, "loop")], [box("hole", 30, 5, 60, 10, sensor=True)])
 d.sprite("Breeze", 260, 100, [("still", [panel(260, 100, (255, 255, 255, 16), (255, 255, 255, 40), 8)], 400, "loop")], [box("air", 130, 50, 260, 100, sensor=True)])
+peg = canvas(18, 18)
+ImageDraw.Draw(peg).ellipse([1, 1, 16, 16], fill=STONE, outline=STONE_EDGE, width=2)
+d.sprite("Peg", 18, 18, [("still", [peg], 400, "loop")], [circle("body", 9, 9, 9)])
+# Pictures to turn into particles: drawn small, shown four times over.
+HEART = ["..rr...rr..", ".rRRr.rRRr.", "rRWRRrRRRRr", "rRRRRRRRRRr", "rRRRRRRRRRr", ".rRRRRRRRr.", "..rRRRRRr..", "...rRRRr...", "....rRr....", ".....r....."]
+d.sprite("Heart", 11, 10, [("still", [drawn(HEART, {"r": (150, 20, 40, 255), "R": (230, 50, 70, 255), "W": (255, 210, 220, 255)})], 400, "loop")], [])
+STAR = [".....y.....", "....yYy....", "....yYy....", "yyyyYYYyyyy", ".yYYYYYYYy.", "..yYYYYYy..", "..yYYyYYy..", ".yYYy.yYYy.", ".yy.....yy."]
+d.sprite("Star", 11, 9, [("still", [drawn(STAR, {"y": (200, 140, 20, 255), "Y": (255, 214, 60, 255)})], 400, "loop")], [])
+GEM = ["...gggg...", "..gGGGGg..", ".gGWGGGGg.", "gGGGGGGGGg", ".gGGGGGGg.", "..gGGGGg..", "...gGGg...", "....gg...."]
+d.sprite("Gem", 10, 8, [("still", [drawn(GEM, {"g": (20, 110, 90, 255), "G": (40, 200, 160, 255), "W": (200, 255, 240, 255)})], 400, "loop")], [])
 
 d.sounds({"splash": (da, "phaserDown2.ogg"), "click": (da, "pepSound1.ogg")})
 
@@ -146,9 +156,255 @@ d.write("events/SandReadout.vscript.json", {"rules": [rule([], [
     line("SandCount", "Label", "setNumber", cvalue("self", "Fluid", "particleCount")),
     line("StepTime", "Label", "setNumber", op("+", var("waterMs"), cvalue("self", "Fluid", "stepTime")))])]})
 
+# ── the feature scenes: one each, named for what it shows ──
+MOULD = 16
+d.type_json("Peg", "Sprite", {"spriteKey": "Peg.sprite.json", "collision": {"layer": SOLID, "mask": EVERYTHING}})
+# A hidden shape that particles are laid in (Fill with particles) and that nothing meets: a pool or a block
+# placed in the scene, rather than at coordinates (the Fluid works in the physics world's space, which in a
+# running game is offset from the scene's by the camera; see the engine's TODO).
+d.type_json("Mould", "Node", {"collision": {"layer": MOULD, "mask": 0, "shapes": [box("shape", 0, 0, 20, 20)]}})
+d.type_json("Dropper", "Node", {"collision": {"layer": MOULD, "mask": 0, "shapes": [box("shape", 0, 0, 20, 20)]}})
+for pic in ["Heart", "Star", "Gem"]:
+    d.type_json(pic, "Sprite", {"spriteKey": pic + ".sprite.json", "collisionEnabled": False})
+def water_type(name, picture="Drop", readout=None, **k):
+    extra = []
+    if readout:
+        # A fluid says its own numbers: a value is read in the sheet of the object it belongs to.
+        extra = [{"componentClass": name + "Readout"}]
+        d.write("events/%sReadout.vscript.json" % name, {"rules": readout})
+    d.type_json(name, "Sprite", {"spriteKey": picture + ".sprite.json", "collisionEnabled": False}, [fluid(**dict({"kind": "Water", "radius": 4, "pictureScale": 2.6}, **k))] + extra)
+water_type("PoolOnePass", maxCount=1500, color=0x4AA8FF, substeps=1, sleep=False,
+           readout=[rule([], [line("OneMs", "Label", "setNumber", cvalue("self", "Fluid", "stepTime"))])])
+water_type("PoolPasses", maxCount=1500, color=0x4AA8FF, substeps=0, sleep=False,
+           readout=[rule([], [line("PassesMs", "Label", "setNumber", cvalue("self", "Fluid", "stepTime"))])])
+water_type("StillWater", radius=5, maxCount=1500, color=0x4AA8FF, readout=[
+    rule([], [line("StillMs", "Label", "setNumber", cvalue("self", "Fluid", "stepTime"))]),
+    rule([comp("self", "Fluid", "isAsleep")], [line("SleepState", "Label", "setText", s("asleep: nothing is stepped"))]),
+    rule([not_(comp("self", "Fluid", "isAsleep"))], [line("SleepState", "Label", "setText", s("awake"))])])
+water_type("Jelly", maxCount=2500, color=0x7CE06A, pictureScale=2.2, stiffness=0.3)
+water_type("Net", maxCount=2500, color=0xD79BFF, pictureScale=2.2, stiffness=0.25)
+water_type("Walled", maxCount=2500, color=0x4AA8FF)
+water_type("OilWater", maxCount=2500)
+water_type("Mixing", maxCount=2500, colorMixing=0.5)
+water_type("Foam", maxCount=2500, color=0x1E5AA8, colorBySpeed=True, speedColor=0xFFFFFF, fullSpeed=380)
+water_type("Bits", radius=3, maxCount=3000, pictureScale=2.0, stiffness=0.35)
+d.type_json("CupTap", "Sprite", {"spriteKey": "Tap.sprite.json", "collisionEnabled": False},
+            [emitter(system="Walled1", group="water", on=True, rate=60, speed=250, spread=4, shape="Line", width=20)])
+d.type_json("FoamTap", "Sprite", {"spriteKey": "Tap.sprite.json", "collisionEnabled": False},
+            [emitter(system="Foam1", group="water", on=True, rate=110, speed=420, speedVariation=0.1, spread=6, shape="Line", width=24)])
+d.type_json("FoamPlug", "Sprite", {"spriteKey": "Plug.sprite.json", "collision": {"layer": DRAIN, "mask": 0}},
+            [{"componentClass": "Drain", "system": "Foam1", "on": True}])
+d.type_json("Stirrer", "Sprite", {"spriteKey": "Grinder.sprite.json", "collisionEnabled": False},
+            [{"componentClass": "Field", "kind": "Vortex", "strength": 0, "range": 170, "pull": 0.2, "affects": "Particles"}, {"componentClass": "Rotate", "speed": 0}])
+for name in ["OneMs", "PassesMs", "StillMs", "SleepState"]:
+    d.type_json(name, "Label", {"text": "", "fontSize": 13})
+
+def mould(place, name, cx, cy, w, h, type_name="Mould", **extra):
+    place(name, type_name, cx, cy, scaleX=w / 20, scaleY=h / 20, **extra)
+def fill(t, mould_name, group): return fl(t, "fillObject", s(mould_name), group if isinstance(group, dict) else s(group))
+
+def tank(place, cx, floor_y, width, height, tag):
+    """A floor and two sides around a box of open water `width` across and `height` deep."""
+    place("Floor" + tag, "Floor", cx, floor_y, scaleX=(width + 40) / 640)
+    for side, sx in [("L", -1), ("R", 1)]:
+        place("Side" + side + tag, "Side", cx + sx * (width / 2 + 10), floor_y - 10 - height / 2, scaleY=height / 280)
+
+FEATURES = []
+def feature(file, title, about, controls, build, rules):
+    """A scene: its own objects under one root, a Level whose sheet holds its rules, and two lines saying what it shows."""
+    seq = [0]
+    root = d.uid(2000 + len(FEATURES) * 100)
+    objects = [{"id": root, "name": file}]
+    def place(name, type_name, x, y, **extra):
+        seq[0] += 1
+        objects.append(dict({"id": d.uid(2000 + len(FEATURES) * 100 + seq[0]), "parent": root, "name": name, "type": type_name, "x": x, "y": y}, **extra))
+    sheet_name = file + "Rules"
+    level = file + "Level"
+    d.type_json(level, "Node", {}, [{"componentClass": sheet_name}])
+    place(level + "1", level, 0, 0)
+    place("Title", "Caption", -470, -262, text=title)
+    lines = about if isinstance(about, list) else [about]
+    for k, text in enumerate(lines): place("About%d" % (k + 1), "Help", -470, -244 + 18 * k, text=text)
+    place("Controls", "Help", -470, -244 + 18 * len(lines), text=controls)
+    build(place)
+    d.scene("scenes/%s.scene.json" % file, objects)
+    d.write("events/%s.vscript.json" % sheet_name, {"rules": rules})
+    FEATURES.append((file, title))
+
+def fl(t, name, *params): return comp(t, "Fluid", name, *params)
+splash = lambda t: rule([mouse_pressed(LEFT_BUTTON)], [fl(t, "pushInCircle", px, py, lit(70), lit(0), lit(-450)), line("audio", "Audio", "playSound", s("splash"))])
+pour = lambda t, g: rule([mouse_pressed(RIGHT_BUTTON)], [fl(t, "makeInCircle", px, py, lit(22), s(g))])
+
+def deep(place):
+    tank(place, -200, 240, 180, 440, "A"); tank(place, 200, 240, 180, 440, "B")
+    place("PoolOnePass1", "PoolOnePass", -460, 250); place("PoolPasses1", "PoolPasses", -460, 250)
+    mould(place, "PoolA", -200, 10, 170, 420); mould(place, "PoolB", 200, 10, 170, 420)
+    place("LeftCaption", "Caption", -290, -150, text="One pass a step, ms:"); place("OneMs1", "OneMs", -150, -150)
+    place("RightCaption", "Caption", 110, -150, text="Passes worked out, ms:"); place("PassesMs1", "PassesMs", 265, -150)
+fill_deep = [fl("PoolOnePass", "destroyAll"), fl("PoolPasses", "destroyAll"),
+             fill("PoolOnePass", "PoolA", "pool"), fill("PoolPasses", "PoolB", "pool")]
+feature("DeepPoolInPasses", "Deep pool in passes",
+        ["The same deep pool twice. Left, the solver runs once a step: the pool packs down and churns.",
+         "Right, in the passes LiquidFun works out from gravity and the radius (Substeps 0): it keeps its depth and lies still."],
+        "Space fills both again.   Click to splash.   The numbers are each pool's step time, milliseconds.",
+        deep,
+        [rule([once()], fill_deep), rule([pressed("Act")], fill_deep),
+         rule([mouse_pressed(LEFT_BUTTON)], [fl("PoolOnePass", "pushInCircle", px, py, lit(60), lit(0), lit(-450)), fl("PoolPasses", "pushInCircle", px, py, lit(60), lit(0), lit(-450))])])
+
+def still(place):
+    tank(place, 0, 240, 600, 200, "")
+    place("StillWater1", "StillWater", -460, 250)
+    mould(place, "Pool", 0, 175, 590, 110)
+    place("StateCaption", "Caption", -100, -150, text="The pool is"); place("SleepState1", "SleepState", -10, -150)
+    place("MsCaption", "Caption", -100, -132, text="Step time, ms:"); place("StillMs1", "StillMs", 10, -132)
+feature("SettledPoolSleeps", "A settled pool sleeps",
+        ["Leave the pool alone: once every particle has stayed slow for two seconds the whole system sleeps,",
+         "and its step costs nothing until something disturbs it."],
+        "Click to splash and wake it.   Right click to pour a drop in.",
+        still,
+        [rule([once()], [fill("StillWater", "Pool", "pool")]),
+         splash("StillWater"), pour("StillWater", "poured")])
+
+def jelly_drop(where):
+    group = op("+", s("jelly"), var("blocks"))
+    return [line("variables", "Variables", "setVariable", s("blocks"), op("+", var("blocks"), lit(1))),
+            fill("Jelly", where, group), fl("Jelly", "setGroupKind", group, lit(1))]
+def jelly(place):
+    tank(place, 0, 240, 640, 260, "")
+    place("Jelly1", "Jelly", -460, 250)
+    place("Ramp", "Shelf", -150, 70, rotation=0.35, scaleX=1.6); place("Step", "Shelf", 170, 150, scaleX=1.2)
+    for name, x in [("BlockA", -200), ("BlockB", 0), ("BlockC", 200)]: mould(place, name, x, -170, 56, 48)
+    mould(place, "Dropper1", 0, -170, 56, 48, "Dropper")
+feature("ElasticJelly", "Elastic jelly",
+        ["Each block is a group made elastic: it keeps the shape it was made in, squashes when it lands and springs back,",
+         "and slides off the ramp whole."],
+        "Space drops another block.   Click to knock them about.",
+        jelly,
+        [rule([once()], [line("variables", "Variables", "setVariable", s("blocks"), lit(0))] + jelly_drop("BlockA") + jelly_drop("BlockB") + jelly_drop("BlockC")),
+         rule([pressed("Act")], [line("Dropper", "Node", "setPosition", random(-260, 260), lit(-170))] + jelly_drop("Dropper1")),
+         rule([mouse_pressed(LEFT_BUTTON)], [fl("Jelly", "pushInCircle", px, py, lit(80), lit(0), lit(-500))])])
+
+def net_drop():
+    group = op("+", s("net"), var("nets"))
+    return [line("variables", "Variables", "setVariable", s("nets"), op("+", var("nets"), lit(1))),
+            fill("Net", "Strip", group), fl("Net", "setGroupKind", group, lit(2))]
+def net(place):
+    tank(place, 0, 240, 640, 260, "")
+    place("Net1", "Net", -460, 250)
+    mould(place, "Strip", 0, -170, 380, 20)
+    for i, (x, y) in enumerate([(-150, 40), (0, 90), (150, 40)]):
+        place("Peg%d" % (i + 1), "Peg", x, y)
+feature("SpringNet", "Spring net",
+        ["A strip made a spring group: every neighbour pair keeps its length and nothing more,", "so it falls like a net and drapes over the pegs."],
+        "Space drops another net.   Click to toss them.",
+        net,
+        [rule([once()], [line("variables", "Variables", "setVariable", s("nets"), lit(0))] + net_drop()),
+         rule([pressed("Act")], net_drop()),
+         rule([mouse_pressed(LEFT_BUTTON)], [fl("Net", "pushInCircle", px, py, lit(90), lit(0), lit(-500))])])
+
+cup_build = [fl("Walled", "destroyAll"), fl("Walled", "fillObject", s("CupBase"), s("cup")), fl("Walled", "fillObject", s("CupLeft"), s("cup")),
+             fl("Walled", "fillObject", s("CupRight"), s("cup")), fl("Walled", "setGroupKind", s("cup"), lit(3)), fl("Walled", "colourGroup", s("cup"), lit(0xA0A4B0))]
+def walls(place):
+    tank(place, 0, 240, 640, 200, "")
+    place("Walled1", "Walled", -460, 250)
+    place("CupBase", "Mould", 0, 120, scaleX=11, scaleY=0.8)
+    place("CupLeft", "Mould", -118, 50, rotation=-0.35, scaleX=0.8, scaleY=7.5)
+    place("CupRight", "Mould", 118, 50, rotation=0.35, scaleX=0.8, scaleY=7.5)
+    place("CupTap1", "CupTap", -10, -200, rotation=math.pi / 2)
+feature("WallsOfParticles", "Walls made of particles",
+        ["The cup is particles laid in three hidden shapes and made a wall group: they stand where they are,", "and the water poured in rests on them."],
+        "Space makes the cup plain water, and it gives way.   R builds it again.   Click to splash.",
+        walls,
+        [rule([once()], cup_build), rule([pressed("Reset")], cup_build),
+         rule([pressed("Act")], [fl("Walled", "setGroupKind", s("cup"), lit(0)), fl("Walled", "colourGroup", s("cup"), lit(0x4AA8FF)), click]),
+         splash("Walled")])
+
+oil_start = [fl("OilWater", "destroyAll"),
+             fl("OilWater", "setColor", lit(0x4AA8FF)), fill("OilWater", "WaterSpot", "water"),
+             fl("OilWater", "setColor", lit(0xE8B23A)), fill("OilWater", "OilSpot", "oil"),
+             fl("OilWater", "setGroupKind", s("oil"), lit(4))]
+def oil(place):
+    tank(place, 0, 240, 520, 240, "")
+    place("OilWater1", "OilWater", -460, 250)
+    mould(place, "WaterSpot", -120, 150, 230, 150); mould(place, "OilSpot", 120, 150, 230, 150); mould(place, "OilDrop", 0, -120, 70, 70)
+feature("OilAndWaterRepel", "Oil and water repel",
+        ["Two groups in one fluid, the amber one made repulsive: it pushes the blue away wherever they meet,", "so however hard they are stirred they part again."],
+        "Click to splash them together.   Space pours more oil into the middle.   R starts again.",
+        oil,
+        [rule([once()], oil_start), rule([pressed("Reset")], oil_start),
+         rule([mouse_pressed(LEFT_BUTTON)], [fl("OilWater", "pushInCircle", px, py, lit(110), lit(0), lit(-500))]),
+         rule([pressed("Act")], [fl("OilWater", "setColor", lit(0xE8B23A)), fill("OilWater", "OilDrop", "oil"),
+                                 fl("OilWater", "setGroupKind", s("oil"), lit(4))])])
+
+mix_start = [fl("Mixing", "destroyAll"),
+             fl("Mixing", "setColor", lit(0xE8324A)), fill("Mixing", "RedSpot", "red"),
+             fl("Mixing", "setColor", lit(0x3A62F0)), fill("Mixing", "BlueSpot", "blue")]
+def mixing(place):
+    tank(place, 0, 240, 520, 240, "")
+    place("Mixing1", "Mixing", -460, 250)
+    mould(place, "RedSpot", -120, 150, 230, 150); mould(place, "BlueSpot", 120, 150, 230, 150)
+    place("Stirrer1", "Stirrer", 0, 160)
+feature("ColourMixing", "Colour mixing",
+        ["Red and blue water with Colour mixing on: touching particles' colours drift toward each other's,", "so where they meet it turns purple, and stirred it all does."],
+        "Space starts and stops the stirrer.   Click to splash.   R starts again.",
+        mixing,
+        [rule([once()], mix_start + [line("variables", "Variables", "setVariable", s("stir"), lit(0))]), rule([pressed("Reset")], mix_start)]
+        + toggle("Act", "stir", [comp("Stirrer", "Field", "setStrength", lit(900)), comp("Stirrer", "Rotate", "setSpeed", lit(240)), click],
+                 [comp("Stirrer", "Field", "setStrength", lit(0)), comp("Stirrer", "Rotate", "setSpeed", lit(0)), click])
+        + [splash("Mixing")])
+
+def foam(place):
+    tank(place, 0, 240, 640, 180, "")
+    place("Foam1", "Foam", -460, 250)
+    mould(place, "FoamPool", 0, 190, 630, 80)
+    place("FoamTap1", "FoamTap", -200, -200, rotation=math.pi / 2)
+    place("FoamPlug1", "FoamPlug", 220, 232)
+feature("ColourBySpeed", "Colour by speed",
+        ["Deep blue water drawn toward white the faster each particle goes (Colour by speed):", "the falling stream and every splash foam, and the pool settles dark."],
+        "Space turns the tap on and off.   Click to splash.",
+        foam,
+        [rule([once()], [line("variables", "Variables", "setVariable", s("foamtap"), lit(1)), fill("Foam", "FoamPool", "pool")])]
+        + toggle("Act", "foamtap", [comp("FoamTap", "Emitter", "setOn", b(True)), click], [comp("FoamTap", "Emitter", "setOn", b(False)), click])
+        + [splash("Foam")])
+
+PICTURES = [("Heart1", "heart"), ("Star1", "star"), ("Gem1", "gem")]
+def into(place):
+    tank(place, 0, 240, 640, 200, "")
+    place("Bits1", "Bits", -460, 250)
+    for (name, _), x in zip(PICTURES, [-200, 0, 200]):
+        place(name, name[:-1], x, -60, scaleX=6, scaleY=6)
+feature("ObjectsIntoParticles", "Objects into particles",
+        ["Turn into particles puts a particle wherever an object's picture is opaque, coloured from its pixel.",
+         "Made elastic, the pictures fall and bounce looking like themselves; left as water, they melt."],
+        "E turns them into elastic particles.   M melts them into water.   R puts them back.   Click to knock the pieces about.",
+        into,
+        [rule([pressed("Elastic")], [a for name, g in PICTURES for a in (fl("Bits", "turnIntoParticles", s(name), s(g), lit(128), lit(1)), fl("Bits", "setGroupKind", s(g), lit(1)))] + [click]),
+         rule([pressed("Melt")], [fl("Bits", "turnIntoParticles", s(name), s(g), lit(128), lit(1)) for name, g in PICTURES] + [click]),
+         rule([mouse_pressed(LEFT_BUTTON)], [fl("Bits", "pushInCircle", px, py, lit(80), lit(0), lit(-500))]),
+         rule([pressed("Reset")], [line("Scenes", "SceneManager", "changeScene", s("scenes/ObjectsIntoParticles.scene.json"))])])
+
+# ── the singleton: the Scene Manager, the keys that change scene, and the list of scenes ──
+SCENES = [("Basin", "Basin")] + FEATURES
+d.type_json("Scenes", "SceneManager", {"transition": "Fade", "fadeTime": 0.15})
+d.type_json("Switcher", "Node", {}, [{"componentClass": "SwitchRules"}])
+d.type_json("SceneList", "Label", {"text": "", "fontSize": 13})
+keys_for = [str((i + 1) % 10) for i in range(len(SCENES))]
+listing = "   ".join("%s %s" % (k, title) for k, (_, title) in zip(keys_for, SCENES))
+d.scene("scenes/singletons/Demo.scene.json", [
+    {"id": d.uid(3001), "name": "Demo"},
+    {"id": d.uid(3002), "parent": d.uid(3001), "name": "Scenes1", "type": "Scenes"},
+    {"id": d.uid(3003), "parent": d.uid(3001), "name": "Switcher1", "type": "Switcher"},
+    {"id": d.uid(3004), "parent": d.uid(3001), "name": "SceneList1", "type": "SceneList", "x": -470, "y": 254, "text": listing},
+])
+d.write("events/SwitchRules.vscript.json", {"rules": [
+    rule([pressed("Scene" + k)], [line("Scenes", "SceneManager", "changeScene", s("scenes/%s.scene.json" % f))]) for k, (f, _) in zip(keys_for, SCENES)]})
+
 d.write("project.json", {"schemaVersion": 2, "name": "Particles demo", "entryScene": "scenes/Basin.scene.json",
-    "collisionLayers": {"1": "Solid", "2": "Body", "3": "Drain", "4": "Air"},
-    "input": {"Tap": keys(87), "Sand": keys(83), "Drain": keys(68), "Fan": keys(70), "Clear": keys(67)},
+    "collisionLayers": {"1": "Solid", "2": "Body", "3": "Drain", "4": "Air", "5": "Mould"},
+    "singletons": ["scenes/singletons/Demo.scene.json"],
+    "input": dict({"Tap": keys(87), "Sand": keys(83), "Drain": keys(68), "Fan": keys(70), "Clear": keys(67),
+                   "Act": keys(32), "Elastic": keys(69), "Melt": keys(77), "Reset": keys(82)},
+                  **{"Scene" + k: keys(ord(k)) for k in keys_for}),
     "display": {"width": W, "height": H, "windowWidth": W, "windowHeight": H, "presentMode": "fit", "displayMode": "windowed", "autoResize": True},
     "physics": {"engine": "box2d", "gravity": 980}})
 d.write("README.md", """# Particles demo
@@ -169,6 +425,27 @@ life for the sparks).
 
 On Box2D, so the water pushes the crates and they push back. The crates
 are dropped in once the basin has water, six seconds in.
+
+## The other scenes
+
+Keys **1** to **0** change scene (a Scene Manager in the singleton scene
+`scenes/singletons/Demo`); each scene says what it shows and its keys.
+
+| Key | Scene | What it shows |
+|---|---|---|
+| 2 | Deep pool in passes | the same deep pool stepped once a step and in LiquidFun's passes (**Substeps** 0): one packs down and churns, the other holds |
+| 3 | A settled pool sleeps | **Sleep**: once everything is slow the system stops stepping, and **Particles are asleep** says so |
+| 4 | Elastic jelly | **Make group … elastic**: blocks that keep their shape |
+| 5 | Spring net | **Make group … spring**: a strip that drapes like a net |
+| 6 | Walls made of particles | **Make group … wall**: a cup of particles that holds water, then made plain |
+| 7 | Oil and water repel | **Make group … repulsive**: two groups that part again however they are stirred |
+| 8 | Colour mixing | **Colour mixing**: red and blue water turning purple where they meet |
+| 9 | Colour by speed | **Colour by speed**: a stream and splashes that foam white |
+| 0 | Objects into particles | **Turn … into particles**: pictures made elastic, or melted |
+
+The pools and blocks are laid with **Fill … with particles** into hidden
+shapes placed in each scene (the Mould and Dropper objects), so they land
+where the scene shows them.
 
 Generated by `tools/make-particles-demo.py`; the pictures are drawn there and
 the sounds are Kenney's (Digital Audio), CC0.

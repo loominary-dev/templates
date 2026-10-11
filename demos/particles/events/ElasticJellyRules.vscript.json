@@ -1,0 +1,554 @@
+{
+  "rules": [
+    {
+      "conditions": [
+        {
+          "scope": "system",
+          "className": "VisualScriptComponent",
+          "name": "triggerOnce",
+          "params": []
+        }
+      ],
+      "actions": [
+        {
+          "scope": "variables",
+          "className": "Variables",
+          "name": "setVariable",
+          "params": [
+            {
+              "type": "literal",
+              "value": "blocks",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "scope": "variables",
+          "className": "Variables",
+          "name": "setVariable",
+          "params": [
+            {
+              "type": "literal",
+              "value": "blocks",
+              "valueKind": "string"
+            },
+            {
+              "type": "op",
+              "op": "+",
+              "left": {
+                "type": "value",
+                "scope": "variables",
+                "className": "Variables",
+                "name": "getVariable",
+                "params": [
+                  {
+                    "type": "literal",
+                    "value": "blocks",
+                    "valueKind": "string"
+                  }
+                ],
+                "returnType": "Float"
+              },
+              "right": {
+                "type": "literal",
+                "value": 1
+              }
+            }
+          ]
+        },
+        {
+          "scope": "Jelly",
+          "className": "Fluid",
+          "name": "fillObject",
+          "params": [
+            {
+              "type": "literal",
+              "value": "BlockA",
+              "valueKind": "string"
+            },
+            {
+              "type": "op",
+              "op": "+",
+              "left": {
+                "type": "literal",
+                "value": "jelly",
+                "valueKind": "string"
+              },
+              "right": {
+                "type": "value",
+                "scope": "variables",
+                "className": "Variables",
+                "name": "getVariable",
+                "params": [
+                  {
+                    "type": "literal",
+                    "value": "blocks",
+                    "valueKind": "string"
+                  }
+                ],
+                "returnType": "Float"
+              }
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "Jelly",
+          "className": "Fluid",
+          "name": "setGroupKind",
+          "params": [
+            {
+              "type": "op",
+              "op": "+",
+              "left": {
+                "type": "literal",
+                "value": "jelly",
+                "valueKind": "string"
+              },
+              "right": {
+                "type": "value",
+                "scope": "variables",
+                "className": "Variables",
+                "name": "getVariable",
+                "params": [
+                  {
+                    "type": "literal",
+                    "value": "blocks",
+                    "valueKind": "string"
+                  }
+                ],
+                "returnType": "Float"
+              }
+            },
+            {
+              "type": "literal",
+              "value": 1
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "variables",
+          "className": "Variables",
+          "name": "setVariable",
+          "params": [
+            {
+              "type": "literal",
+              "value": "blocks",
+              "valueKind": "string"
+            },
+            {
+              "type": "op",
+              "op": "+",
+              "left": {
+                "type": "value",
+                "scope": "variables",
+                "className": "Variables",
+                "name": "getVariable",
+                "params": [
+                  {
+                    "type": "literal",
+                    "value": "blocks",
+                    "valueKind": "string"
+                  }
+                ],
+                "returnType": "Float"
+              },
+              "right": {
+                "type": "literal",
+                "value": 1
+              }
+            }
+          ]
+        },
+        {
+          "scope": "Jelly",
+          "className": "Fluid",
+          "name": "fillObject",
+          "params": [
+            {
+              "type": "literal",
+              "value": "BlockB",
+              "valueKind": "string"
+            },
+            {
+              "type": "op",
+              "op": "+",
+              "left": {
+                "type": "literal",
+                "value": "jelly",
+                "valueKind": "string"
+              },
+              "right": {
+                "type": "value",
+                "scope": "variables",
+                "className": "Variables",
+                "name": "getVariable",
+                "params": [
+                  {
+                    "type": "literal",
+                    "value": "blocks",
+                    "valueKind": "string"
+                  }
+                ],
+                "returnType": "Float"
+              }
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "Jelly",
+          "className": "Fluid",
+          "name": "setGroupKind",
+          "params": [
+            {
+              "type": "op",
+              "op": "+",
+              "left": {
+                "type": "literal",
+                "value": "jelly",
+                "valueKind": "string"
+              },
+              "right": {
+                "type": "value",
+                "scope": "variables",
+                "className": "Variables",
+                "name": "getVariable",
+                "params": [
+                  {
+                    "type": "literal",
+                    "value": "blocks",
+                    "valueKind": "string"
+                  }
+                ],
+                "returnType": "Float"
+              }
+            },
+            {
+              "type": "literal",
+              "value": 1
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "variables",
+          "className": "Variables",
+          "name": "setVariable",
+          "params": [
+            {
+              "type": "literal",
+              "value": "blocks",
+              "valueKind": "string"
+            },
+            {
+              "type": "op",
+              "op": "+",
+              "left": {
+                "type": "value",
+                "scope": "variables",
+                "className": "Variables",
+                "name": "getVariable",
+                "params": [
+                  {
+                    "type": "literal",
+                    "value": "blocks",
+                    "valueKind": "string"
+                  }
+                ],
+                "returnType": "Float"
+              },
+              "right": {
+                "type": "literal",
+                "value": 1
+              }
+            }
+          ]
+        },
+        {
+          "scope": "Jelly",
+          "className": "Fluid",
+          "name": "fillObject",
+          "params": [
+            {
+              "type": "literal",
+              "value": "BlockC",
+              "valueKind": "string"
+            },
+            {
+              "type": "op",
+              "op": "+",
+              "left": {
+                "type": "literal",
+                "value": "jelly",
+                "valueKind": "string"
+              },
+              "right": {
+                "type": "value",
+                "scope": "variables",
+                "className": "Variables",
+                "name": "getVariable",
+                "params": [
+                  {
+                    "type": "literal",
+                    "value": "blocks",
+                    "valueKind": "string"
+                  }
+                ],
+                "returnType": "Float"
+              }
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "Jelly",
+          "className": "Fluid",
+          "name": "setGroupKind",
+          "params": [
+            {
+              "type": "op",
+              "op": "+",
+              "left": {
+                "type": "literal",
+                "value": "jelly",
+                "valueKind": "string"
+              },
+              "right": {
+                "type": "value",
+                "scope": "variables",
+                "className": "Variables",
+                "name": "getVariable",
+                "params": [
+                  {
+                    "type": "literal",
+                    "value": "blocks",
+                    "valueKind": "string"
+                  }
+                ],
+                "returnType": "Float"
+              }
+            },
+            {
+              "type": "literal",
+              "value": 1
+            }
+          ],
+          "onComponent": true
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isActionPressed",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Act",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Dropper",
+          "className": "Node",
+          "name": "setPosition",
+          "params": [
+            {
+              "type": "value",
+              "scope": "system",
+              "className": "System",
+              "name": "random",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": -260
+                },
+                {
+                  "type": "literal",
+                  "value": 260
+                }
+              ],
+              "returnType": "Float"
+            },
+            {
+              "type": "literal",
+              "value": -170
+            }
+          ]
+        },
+        {
+          "scope": "variables",
+          "className": "Variables",
+          "name": "setVariable",
+          "params": [
+            {
+              "type": "literal",
+              "value": "blocks",
+              "valueKind": "string"
+            },
+            {
+              "type": "op",
+              "op": "+",
+              "left": {
+                "type": "value",
+                "scope": "variables",
+                "className": "Variables",
+                "name": "getVariable",
+                "params": [
+                  {
+                    "type": "literal",
+                    "value": "blocks",
+                    "valueKind": "string"
+                  }
+                ],
+                "returnType": "Float"
+              },
+              "right": {
+                "type": "literal",
+                "value": 1
+              }
+            }
+          ]
+        },
+        {
+          "scope": "Jelly",
+          "className": "Fluid",
+          "name": "fillObject",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Dropper1",
+              "valueKind": "string"
+            },
+            {
+              "type": "op",
+              "op": "+",
+              "left": {
+                "type": "literal",
+                "value": "jelly",
+                "valueKind": "string"
+              },
+              "right": {
+                "type": "value",
+                "scope": "variables",
+                "className": "Variables",
+                "name": "getVariable",
+                "params": [
+                  {
+                    "type": "literal",
+                    "value": "blocks",
+                    "valueKind": "string"
+                  }
+                ],
+                "returnType": "Float"
+              }
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "Jelly",
+          "className": "Fluid",
+          "name": "setGroupKind",
+          "params": [
+            {
+              "type": "op",
+              "op": "+",
+              "left": {
+                "type": "literal",
+                "value": "jelly",
+                "valueKind": "string"
+              },
+              "right": {
+                "type": "value",
+                "scope": "variables",
+                "className": "Variables",
+                "name": "getVariable",
+                "params": [
+                  {
+                    "type": "literal",
+                    "value": "blocks",
+                    "valueKind": "string"
+                  }
+                ],
+                "returnType": "Float"
+              }
+            },
+            {
+              "type": "literal",
+              "value": 1
+            }
+          ],
+          "onComponent": true
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isMousePressed",
+          "params": [
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Jelly",
+          "className": "Fluid",
+          "name": "pushInCircle",
+          "params": [
+            {
+              "type": "value",
+              "scope": "input",
+              "className": "Input",
+              "name": "worldPositionX",
+              "params": [],
+              "returnType": "Float"
+            },
+            {
+              "type": "value",
+              "scope": "input",
+              "className": "Input",
+              "name": "worldPositionY",
+              "params": [],
+              "returnType": "Float"
+            },
+            {
+              "type": "literal",
+              "value": 80
+            },
+            {
+              "type": "literal",
+              "value": 0
+            },
+            {
+              "type": "literal",
+              "value": -500
+            }
+          ],
+          "onComponent": true
+        }
+      ],
+      "subRules": []
+    }
+  ]
+}

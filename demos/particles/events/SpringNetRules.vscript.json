@@ -1,0 +1,316 @@
+{
+  "rules": [
+    {
+      "conditions": [
+        {
+          "scope": "system",
+          "className": "VisualScriptComponent",
+          "name": "triggerOnce",
+          "params": []
+        }
+      ],
+      "actions": [
+        {
+          "scope": "variables",
+          "className": "Variables",
+          "name": "setVariable",
+          "params": [
+            {
+              "type": "literal",
+              "value": "nets",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "scope": "variables",
+          "className": "Variables",
+          "name": "setVariable",
+          "params": [
+            {
+              "type": "literal",
+              "value": "nets",
+              "valueKind": "string"
+            },
+            {
+              "type": "op",
+              "op": "+",
+              "left": {
+                "type": "value",
+                "scope": "variables",
+                "className": "Variables",
+                "name": "getVariable",
+                "params": [
+                  {
+                    "type": "literal",
+                    "value": "nets",
+                    "valueKind": "string"
+                  }
+                ],
+                "returnType": "Float"
+              },
+              "right": {
+                "type": "literal",
+                "value": 1
+              }
+            }
+          ]
+        },
+        {
+          "scope": "Net",
+          "className": "Fluid",
+          "name": "fillObject",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Strip",
+              "valueKind": "string"
+            },
+            {
+              "type": "op",
+              "op": "+",
+              "left": {
+                "type": "literal",
+                "value": "net",
+                "valueKind": "string"
+              },
+              "right": {
+                "type": "value",
+                "scope": "variables",
+                "className": "Variables",
+                "name": "getVariable",
+                "params": [
+                  {
+                    "type": "literal",
+                    "value": "nets",
+                    "valueKind": "string"
+                  }
+                ],
+                "returnType": "Float"
+              }
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "Net",
+          "className": "Fluid",
+          "name": "setGroupKind",
+          "params": [
+            {
+              "type": "op",
+              "op": "+",
+              "left": {
+                "type": "literal",
+                "value": "net",
+                "valueKind": "string"
+              },
+              "right": {
+                "type": "value",
+                "scope": "variables",
+                "className": "Variables",
+                "name": "getVariable",
+                "params": [
+                  {
+                    "type": "literal",
+                    "value": "nets",
+                    "valueKind": "string"
+                  }
+                ],
+                "returnType": "Float"
+              }
+            },
+            {
+              "type": "literal",
+              "value": 2
+            }
+          ],
+          "onComponent": true
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isActionPressed",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Act",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "variables",
+          "className": "Variables",
+          "name": "setVariable",
+          "params": [
+            {
+              "type": "literal",
+              "value": "nets",
+              "valueKind": "string"
+            },
+            {
+              "type": "op",
+              "op": "+",
+              "left": {
+                "type": "value",
+                "scope": "variables",
+                "className": "Variables",
+                "name": "getVariable",
+                "params": [
+                  {
+                    "type": "literal",
+                    "value": "nets",
+                    "valueKind": "string"
+                  }
+                ],
+                "returnType": "Float"
+              },
+              "right": {
+                "type": "literal",
+                "value": 1
+              }
+            }
+          ]
+        },
+        {
+          "scope": "Net",
+          "className": "Fluid",
+          "name": "fillObject",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Strip",
+              "valueKind": "string"
+            },
+            {
+              "type": "op",
+              "op": "+",
+              "left": {
+                "type": "literal",
+                "value": "net",
+                "valueKind": "string"
+              },
+              "right": {
+                "type": "value",
+                "scope": "variables",
+                "className": "Variables",
+                "name": "getVariable",
+                "params": [
+                  {
+                    "type": "literal",
+                    "value": "nets",
+                    "valueKind": "string"
+                  }
+                ],
+                "returnType": "Float"
+              }
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "Net",
+          "className": "Fluid",
+          "name": "setGroupKind",
+          "params": [
+            {
+              "type": "op",
+              "op": "+",
+              "left": {
+                "type": "literal",
+                "value": "net",
+                "valueKind": "string"
+              },
+              "right": {
+                "type": "value",
+                "scope": "variables",
+                "className": "Variables",
+                "name": "getVariable",
+                "params": [
+                  {
+                    "type": "literal",
+                    "value": "nets",
+                    "valueKind": "string"
+                  }
+                ],
+                "returnType": "Float"
+              }
+            },
+            {
+              "type": "literal",
+              "value": 2
+            }
+          ],
+          "onComponent": true
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isMousePressed",
+          "params": [
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Net",
+          "className": "Fluid",
+          "name": "pushInCircle",
+          "params": [
+            {
+              "type": "value",
+              "scope": "input",
+              "className": "Input",
+              "name": "worldPositionX",
+              "params": [],
+              "returnType": "Float"
+            },
+            {
+              "type": "value",
+              "scope": "input",
+              "className": "Input",
+              "name": "worldPositionY",
+              "params": [],
+              "returnType": "Float"
+            },
+            {
+              "type": "literal",
+              "value": 90
+            },
+            {
+              "type": "literal",
+              "value": 0
+            },
+            {
+              "type": "literal",
+              "value": -500
+            }
+          ],
+          "onComponent": true
+        }
+      ],
+      "subRules": []
+    }
+  ]
+}

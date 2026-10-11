@@ -1,0 +1,358 @@
+{
+  "rules": [
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isActionPressed",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Elastic",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Bits",
+          "className": "Fluid",
+          "name": "turnIntoParticles",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Heart1",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "heart",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 128
+            },
+            {
+              "type": "literal",
+              "value": 1
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "Bits",
+          "className": "Fluid",
+          "name": "setGroupKind",
+          "params": [
+            {
+              "type": "literal",
+              "value": "heart",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 1
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "Bits",
+          "className": "Fluid",
+          "name": "turnIntoParticles",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Star1",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "star",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 128
+            },
+            {
+              "type": "literal",
+              "value": 1
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "Bits",
+          "className": "Fluid",
+          "name": "setGroupKind",
+          "params": [
+            {
+              "type": "literal",
+              "value": "star",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 1
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "Bits",
+          "className": "Fluid",
+          "name": "turnIntoParticles",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Gem1",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "gem",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 128
+            },
+            {
+              "type": "literal",
+              "value": 1
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "Bits",
+          "className": "Fluid",
+          "name": "setGroupKind",
+          "params": [
+            {
+              "type": "literal",
+              "value": "gem",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 1
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "audio",
+          "className": "Audio",
+          "name": "playSound",
+          "params": [
+            {
+              "type": "literal",
+              "value": "click",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isActionPressed",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Melt",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Bits",
+          "className": "Fluid",
+          "name": "turnIntoParticles",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Heart1",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "heart",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 128
+            },
+            {
+              "type": "literal",
+              "value": 1
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "Bits",
+          "className": "Fluid",
+          "name": "turnIntoParticles",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Star1",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "star",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 128
+            },
+            {
+              "type": "literal",
+              "value": 1
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "Bits",
+          "className": "Fluid",
+          "name": "turnIntoParticles",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Gem1",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "gem",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 128
+            },
+            {
+              "type": "literal",
+              "value": 1
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "audio",
+          "className": "Audio",
+          "name": "playSound",
+          "params": [
+            {
+              "type": "literal",
+              "value": "click",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isMousePressed",
+          "params": [
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Bits",
+          "className": "Fluid",
+          "name": "pushInCircle",
+          "params": [
+            {
+              "type": "value",
+              "scope": "input",
+              "className": "Input",
+              "name": "worldPositionX",
+              "params": [],
+              "returnType": "Float"
+            },
+            {
+              "type": "value",
+              "scope": "input",
+              "className": "Input",
+              "name": "worldPositionY",
+              "params": [],
+              "returnType": "Float"
+            },
+            {
+              "type": "literal",
+              "value": 80
+            },
+            {
+              "type": "literal",
+              "value": 0
+            },
+            {
+              "type": "literal",
+              "value": -500
+            }
+          ],
+          "onComponent": true
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isActionPressed",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Reset",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Scenes",
+          "className": "SceneManager",
+          "name": "changeScene",
+          "params": [
+            {
+              "type": "literal",
+              "value": "scenes/ObjectsIntoParticles.scene.json",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    }
+  ]
+}

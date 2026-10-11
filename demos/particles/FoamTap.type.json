@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 2,
+  "baseClass": "Sprite",
+  "defaults": {
+    "spriteKey": "Tap.sprite.json",
+    "collisionEnabled": false
+  },
+  "components": [
+    {
+      "componentClass": "Emitter",
+      "system": "Foam1",
+      "group": "water",
+      "on": true,
+      "rate": 110,
+      "speed": 420,
+      "speedVariation": 0.1,
+      "spread": 6,
+      "shape": "Line",
+      "width": 24
+    }
+  ]
+}
