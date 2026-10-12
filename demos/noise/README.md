@@ -13,7 +13,10 @@ first Run with your C++ compiler (Editor Settings ▸ Build toolchain).
   heights: deep water to snow. **N** takes a new seed and grows another.
 - **Weather** drifts clouds over it, each as thick as the noise says at its
   place and the moment. **W** fades them out and in.
-- The boat's heading wanders by its own Noise, read in `events/BoatRules`.
+- The boat's heading wanders by its own Noise, read in `events/BoatRules`,
+  and it bobs by the library's own **Perlin** tile in the rule picker
+  (`plugins/libraries/perlin/src/PerlinWords.hx`, written by the header
+  importer): **noise3** called straight from the sheet, no behaviour between.
 
 Open Project Settings ▸ Libraries to see the library and build it again.
 

@@ -6,6 +6,11 @@
   "license": "MIT or public domain (stb)",
   "homepage": "https://github.com/nothings/stb",
   "defines": [],
+  "tile": {
+    "name": "Perlin",
+    "class": "PerlinWords",
+    "title": "Perlin — the perlin library's functions"
+  },
   "header": "native/stb_perlin.h",
   "build": {
     "sources": [],

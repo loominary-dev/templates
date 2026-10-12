@@ -257,6 +257,8 @@ d.scene("scenes/World.scene.json", objects)
 t = value("system", "System", "getElapsedTime")
 d.write("events/BoatRules.vscript.json", {"rules": [
     # The heading wanders by the boat's own Noise, read at the moment; the boat keeps to the screen.
+    # It bobs by the library's own tile, Perlin, with no behaviour between: the words a native library's functions become.
+    rule([], [line("self", "Node", "setScaleXY", op("+", lit(1), op("*", value("lib:PerlinWords", "PerlinWords", "noise3", op("*", t, lit(0.7)), lit(9), lit(0), lit(0), lit(0), lit(0)), lit(0.15))))]),
     rule([], [line("self", "Node", "setRotation", op("*", cvalue("self", "Noise", "noiseAt", lit(0), lit(0), op("*", t, lit(0.2))), lit(540))),
               line("self", "Node", "moveAtAngle", op("*", lit(26), dt()), value("self", "Node", "getRotation"))]),
     rule([line("self", "Node", "comparePositionX", lit(OBJ_GT), lit(W // 2 + 12))], [line("self", "Node", "setPositionX", lit(-W // 2 - 12))]),
@@ -288,7 +290,10 @@ first Run with your C++ compiler (Editor Settings ▸ Build toolchain).
   heights: deep water to snow. **N** takes a new seed and grows another.
 - **Weather** drifts clouds over it, each as thick as the noise says at its
   place and the moment. **W** fades them out and in.
-- The boat's heading wanders by its own Noise, read in `events/BoatRules`.
+- The boat's heading wanders by its own Noise, read in `events/BoatRules`,
+  and it bobs by the library's own **Perlin** tile in the rule picker
+  (`plugins/libraries/perlin/src/PerlinWords.hx`, written by the header
+  importer): **noise3** called straight from the sheet, no behaviour between.
 
 Open Project Settings ▸ Libraries to see the library and build it again.
 
