@@ -38,7 +38,7 @@
     {
       "id": "bunnymark",
       "name": "BunnyMark",
-      "minEditor": "1.0.42",
+      "minEditor": "1.0.45",
       "description": "How many moving pictures before the frame rate drops: bouncing bunnies each moved by its own visual script, and trees of slowly turning bunnies. Hold the left button to add ten a frame, the right to take ten away.",
       "path": "demos/bunnymark"
     },

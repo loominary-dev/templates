@@ -9,11 +9,6 @@
       "name": "elapsed",
       "type": "number",
       "value": 0
-    },
-    {
-      "name": "fps",
-      "type": "number",
-      "value": 0
     }
   ],
   "rules": [
@@ -34,12 +29,44 @@
           "params": [
             {
               "type": "literal",
-              "value": "batch",
+              "value": "red",
               "valueKind": "string"
             },
             {
               "type": "literal",
-              "value": 0
+              "value": 255
+            }
+          ]
+        },
+        {
+          "scope": "variables",
+          "className": "Variables",
+          "name": "setVariable",
+          "params": [
+            {
+              "type": "literal",
+              "value": "green",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 255
+            }
+          ]
+        },
+        {
+          "scope": "variables",
+          "className": "Variables",
+          "name": "setVariable",
+          "params": [
+            {
+              "type": "literal",
+              "value": "blue",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 255
             }
           ]
         }
@@ -64,74 +91,92 @@
         {
           "scope": "variables",
           "className": "Variables",
-          "name": "addToVariable",
+          "name": "setVariable",
           "params": [
             {
               "type": "literal",
-              "value": "batch",
+              "value": "red",
               "valueKind": "string"
             },
             {
+              "type": "value",
+              "scope": "system",
+              "className": "System",
+              "name": "random",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": 60
+                },
+                {
+                  "type": "literal",
+                  "value": 256
+                }
+              ],
+              "returnType": "Float"
+            }
+          ]
+        },
+        {
+          "scope": "variables",
+          "className": "Variables",
+          "name": "setVariable",
+          "params": [
+            {
               "type": "literal",
-              "value": 1
+              "value": "green",
+              "valueKind": "string"
+            },
+            {
+              "type": "value",
+              "scope": "system",
+              "className": "System",
+              "name": "random",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": 60
+                },
+                {
+                  "type": "literal",
+                  "value": 256
+                }
+              ],
+              "returnType": "Float"
+            }
+          ]
+        },
+        {
+          "scope": "variables",
+          "className": "Variables",
+          "name": "setVariable",
+          "params": [
+            {
+              "type": "literal",
+              "value": "blue",
+              "valueKind": "string"
+            },
+            {
+              "type": "value",
+              "scope": "system",
+              "className": "System",
+              "name": "random",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": 60
+                },
+                {
+                  "type": "literal",
+                  "value": 256
+                }
+              ],
+              "returnType": "Float"
             }
           ]
         }
       ],
-      "subRules": [
-        {
-          "conditions": [
-            {
-              "scope": "system",
-              "className": "System",
-              "name": "compare",
-              "params": [
-                {
-                  "type": "value",
-                  "scope": "variables",
-                  "className": "Variables",
-                  "name": "getVariable",
-                  "params": [
-                    {
-                      "type": "literal",
-                      "value": "batch",
-                      "valueKind": "string"
-                    }
-                  ],
-                  "returnType": "Float"
-                },
-                {
-                  "type": "literal",
-                  "value": 4
-                },
-                {
-                  "type": "literal",
-                  "value": 8
-                }
-              ]
-            }
-          ],
-          "actions": [
-            {
-              "scope": "variables",
-              "className": "Variables",
-              "name": "setVariable",
-              "params": [
-                {
-                  "type": "literal",
-                  "value": "batch",
-                  "valueKind": "string"
-                },
-                {
-                  "type": "literal",
-                  "value": 1
-                }
-              ]
-            }
-          ],
-          "subRules": []
-        }
-      ]
+      "subRules": []
     },
     {
       "conditions": [
@@ -367,101 +412,50 @@
       ],
       "actions": [
         {
-          "scope": "system",
-          "className": "VisualScriptComponent",
-          "name": "setSheetVar",
-          "params": [
-            {
-              "type": "literal",
-              "value": "fps",
-              "valueKind": "string"
-            },
-            {
-              "type": "op",
-              "op": "+",
-              "left": {
-                "type": "op",
-                "op": "/",
-                "left": {
-                  "type": "value",
-                  "scope": "system",
-                  "className": "VisualScriptComponent",
-                  "name": "sheetVar",
-                  "params": [
-                    {
-                      "type": "literal",
-                      "value": "frames",
-                      "valueKind": "string"
-                    }
-                  ],
-                  "returnType": "Float"
-                },
-                "right": {
-                  "type": "value",
-                  "scope": "system",
-                  "className": "VisualScriptComponent",
-                  "name": "sheetVar",
-                  "params": [
-                    {
-                      "type": "literal",
-                      "value": "elapsed",
-                      "valueKind": "string"
-                    }
-                  ],
-                  "returnType": "Float"
-                }
-              },
-              "right": {
-                "type": "literal",
-                "value": 0.5
-              }
-            }
-          ]
-        },
-        {
           "scope": "FpsText",
           "className": "Label",
           "name": "setNumber",
           "params": [
             {
-              "type": "op",
-              "op": "-",
-              "left": {
-                "type": "value",
-                "scope": "system",
-                "className": "VisualScriptComponent",
-                "name": "sheetVar",
-                "params": [
-                  {
-                    "type": "literal",
-                    "value": "fps",
-                    "valueKind": "string"
+              "type": "value",
+              "scope": "system",
+              "className": "System",
+              "name": "round",
+              "params": [
+                {
+                  "type": "op",
+                  "op": "/",
+                  "left": {
+                    "type": "value",
+                    "scope": "system",
+                    "className": "VisualScriptComponent",
+                    "name": "sheetVar",
+                    "params": [
+                      {
+                        "type": "literal",
+                        "value": "frames",
+                        "valueKind": "string"
+                      }
+                    ],
+                    "returnType": "Float"
+                  },
+                  "right": {
+                    "type": "value",
+                    "scope": "system",
+                    "className": "VisualScriptComponent",
+                    "name": "sheetVar",
+                    "params": [
+                      {
+                        "type": "literal",
+                        "value": "elapsed",
+                        "valueKind": "string"
+                      }
+                    ],
+                    "returnType": "Float"
                   }
-                ],
-                "returnType": "Float"
-              },
-              "right": {
-                "type": "op",
-                "op": "%",
-                "left": {
-                  "type": "value",
-                  "scope": "system",
-                  "className": "VisualScriptComponent",
-                  "name": "sheetVar",
-                  "params": [
-                    {
-                      "type": "literal",
-                      "value": "fps",
-                      "valueKind": "string"
-                    }
-                  ],
-                  "returnType": "Float"
-                },
-                "right": {
-                  "type": "literal",
-                  "value": 1
                 }
-              }
+              ],
+              "returnType": "Float"
             }
           ]
         },
