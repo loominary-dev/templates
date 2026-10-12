@@ -309,6 +309,37 @@
         }
       ],
       "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isActionPressed",
+          "params": [
+            {
+              "type": "literal",
+              "value": "SceneP",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Scenes",
+          "className": "SceneManager",
+          "name": "changeScene",
+          "params": [
+            {
+              "type": "literal",
+              "value": "scenes/PictureIntoWater.scene.json",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
     }
   ]
 }

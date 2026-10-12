@@ -7,7 +7,7 @@ back.
 
     python3 tools/make-particles-demo.py <kenney digital-audio dir> [demos/particles]
 
-Everything is drawn here; the sounds are Kenney's (CC0). Needs Pillow.
+Everything is drawn here but the factory picture (tools/art); it and the sounds are Kenney's (CC0). Needs Pillow.
 """
 import os, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -383,18 +383,43 @@ feature("ObjectsIntoParticles", "Objects into particles",
          rule([mouse_pressed(LEFT_BUTTON)], [fl("Bits", "pushInCircle", px, py, lit(80), lit(0), lit(-500))]),
          rule([pressed("Reset")], [line("Scenes", "SceneManager", "changeScene", s("scenes/ObjectsIntoParticles.scene.json"))])])
 
+# A whole picture into water: Kenney's factory sample (CC0, tools/art), its licence line along the foot left off.
+factory = Image.open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "art", "kenney-factory.png")).convert("RGBA")
+factory = factory.crop((0, 0, factory.width, 452))
+d.sprite("Factory", factory.width, factory.height, [("still", [factory], 400, "loop")], [])
+d.type_json("Factory", "Sprite", {"spriteKey": "Factory.sprite.json", "collisionEnabled": False})
+water_type("Flood", radius=3.5, maxCount=12000, pictureScale=2.0,
+           readout=[rule([], [line("WaterCount", "Label", "setNumber", cvalue("self", "Fluid", "particleCount")),
+                              line("StepTime", "Label", "setNumber", cvalue("self", "Fluid", "stepTime"))])])
+def picture(place):
+    # Walls start below the captions, just above the picture; its water fills less than that.
+    tank(place, 0, 262, 912, 440, "")
+    place("Flood1", "Flood", -500, 250)
+    place("Factory1", "Factory", 0, 22, scaleX=0.9, scaleY=0.9)
+    place("CountCaption", "Caption", 380, -262, text="Particles"); place("WaterCount1", "WaterCount", 440, -262)
+    place("StepCaption", "Caption", 380, -244, text="ms"); place("StepTime1", "StepTime", 440, -244)
+feature("PictureIntoWater", "A picture into water",
+        ["Turn into particles on a whole picture: about eight thousand particles, each coloured from its pixel. Art: Kenney (CC0)."],
+        "M melts it.   R puts it back.   Click to splash.",
+        picture,
+        [rule([pressed("Melt")], [fl("Flood", "turnIntoParticles", s("Factory1"), s("picture"), lit(128), lit(1)), click]),
+         rule([mouse_pressed(LEFT_BUTTON)], [fl("Flood", "pushInCircle", px, py, lit(80), lit(0), lit(-500)), line("audio", "Audio", "playSound", s("splash"))]),
+         rule([pressed("Reset")], [line("Scenes", "SceneManager", "changeScene", s("scenes/PictureIntoWater.scene.json"))])])
+
 # ── the singleton: the Scene Manager, the keys that change scene, and the list of scenes ──
 SCENES = [("Basin", "Basin")] + FEATURES
 d.type_json("Scenes", "SceneManager", {"transition": "Fade", "fadeTime": 0.15})
 d.type_json("Switcher", "Node", {}, [{"componentClass": "SwitchRules"}])
 d.type_json("SceneList", "Label", {"text": "", "fontSize": 13})
-keys_for = [str((i + 1) % 10) for i in range(len(SCENES))]
-listing = "   ".join("%s %s" % (k, title) for k, (_, title) in zip(keys_for, SCENES))
+# 1 to 9 and 0, then P for the picture.
+keys_for = [str((i + 1) % 10) for i in range(min(10, len(SCENES)))] + ["P"] * (len(SCENES) > 10)
+named = ["%s %s" % (k, title) for k, (_, title) in zip(keys_for, SCENES)]
+listing = "   ".join(named[:6]) + "\n" + "   ".join(named[6:])
 d.scene("scenes/singletons/Demo.scene.json", [
     {"id": d.uid(3001), "name": "Demo"},
     {"id": d.uid(3002), "parent": d.uid(3001), "name": "Scenes1", "type": "Scenes"},
     {"id": d.uid(3003), "parent": d.uid(3001), "name": "Switcher1", "type": "Switcher"},
-    {"id": d.uid(3004), "parent": d.uid(3001), "name": "SceneList1", "type": "SceneList", "x": -470, "y": 254, "text": listing},
+    {"id": d.uid(3004), "parent": d.uid(3001), "name": "SceneList1", "type": "SceneList", "x": -470, "y": 238, "text": listing},
 ])
 d.write("events/SwitchRules.vscript.json", {"rules": [
     rule([pressed("Scene" + k)], [line("Scenes", "SceneManager", "changeScene", s("scenes/%s.scene.json" % f))]) for k, (f, _) in zip(keys_for, SCENES)]})
@@ -428,7 +453,7 @@ are dropped in once the basin has water, six seconds in.
 
 ## The other scenes
 
-Keys **1** to **0** change scene (a Scene Manager in the singleton scene
+Keys **1** to **0**, and **P**, change scene (a Scene Manager in the singleton scene
 `scenes/singletons/Demo`); each scene says what it shows and its keys.
 
 | Key | Scene | What it shows |
@@ -442,12 +467,13 @@ Keys **1** to **0** change scene (a Scene Manager in the singleton scene
 | 8 | Colour mixing | **Colour mixing**: red and blue water turning purple where they meet |
 | 9 | Colour by speed | **Colour by speed**: a stream and splashes that foam white |
 | 0 | Objects into particles | **Turn … into particles**: pictures made elastic, or melted |
+| P | A picture into water | a whole picture, Kenney's factory sample, melted into about eight thousand particles in its own colours |
 
 The pools and blocks are laid with **Fill … with particles** into hidden
 shapes placed in each scene (the Mould and Dropper objects), so they land
 where the scene shows them.
 
 Generated by `tools/make-particles-demo.py`; the pictures are drawn there and
-the sounds are Kenney's (Digital Audio), CC0.
+the sounds are Kenney's (Digital Audio), CC0, and so is the factory picture (tools/art/kenney-factory.png).
 """)
 print("wrote", d.out)
