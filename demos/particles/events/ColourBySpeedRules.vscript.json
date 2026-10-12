@@ -62,8 +62,8 @@
           ]
         },
         {
-          "scope": "system",
-          "className": "System",
+          "scope": "maths",
+          "className": "Maths",
           "name": "compare",
           "params": [
             {
@@ -151,8 +151,8 @@
           ]
         },
         {
-          "scope": "system",
-          "className": "System",
+          "scope": "maths",
+          "className": "Maths",
           "name": "compare",
           "params": [
             {
@@ -228,8 +228,8 @@
     {
       "conditions": [
         {
-          "scope": "system",
-          "className": "System",
+          "scope": "maths",
+          "className": "Maths",
           "name": "compare",
           "params": [
             {

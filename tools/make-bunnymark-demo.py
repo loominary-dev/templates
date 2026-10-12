@@ -154,7 +154,7 @@ def bench(kind, count_scope, make, ready):
         rule([], [add_sheet_var("frames", lit(1)), add_sheet_var("elapsed", dt()),
                   line("CountText", "Label", "setNumber", value(count_scope, "Node", "count"))]),
         rule([compare(elapsed, GE, lit(FPS_EVERY))],
-             [line("FpsText", "Label", "setNumber", value("system", "System", "round", op("/", frames, elapsed))),
+             [line("FpsText", "Label", "setNumber", value("maths", "Maths", "round", op("/", frames, elapsed))),
               set_sheet_var("frames", lit(0)), set_sheet_var("elapsed", lit(0))]),
     ]
 BENCH_VARS = [{"name": n, "type": "number", "value": 0} for n in ["frames", "elapsed"]]

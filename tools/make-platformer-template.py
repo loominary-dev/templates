@@ -222,8 +222,8 @@ player_rules = [
     rule([comp("Player", "Platformer", "isOnFloor"), comp("Player", "Platformer", "isMoving", **{"not": True}), line("Player", "Sprite", "isAnimationPlaying", s("idle"), **{"not": True})],
          [line("Player", "Sprite", "setAnimation", s("idle"))]),
     # Facing left draws the picture mirrored.
-    rule([line("system", "System", "compare", facing, lit(EQ), lit(-1))], [line("self", "Node", "setMirrored", b(True))]),
-    rule([line("system", "System", "compare", facing, lit(EQ), lit(1))], [line("self", "Node", "setMirrored", b(False))]),
+    rule([line("maths", "Maths", "compare", facing, lit(EQ), lit(-1))], [line("self", "Node", "setMirrored", b(True))]),
+    rule([line("maths", "Maths", "compare", facing, lit(EQ), lit(1))], [line("self", "Node", "setMirrored", b(False))]),
 ]
 write("events/PlayerRules.vscript.json", {"rules": player_rules, "vars": []})
 

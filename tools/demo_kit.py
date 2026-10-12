@@ -122,12 +122,12 @@ def var(name): return value("variables", "Variables", "getVariable", s(name))
 def sheet_var(name): return value("system", "VisualScriptComponent", "sheetVar", s(name))
 def set_sheet_var(name, v): return sheet("setSheetVar", s(name), v)
 def add_sheet_var(name, v): return sheet("addSheetVar", s(name), v)
-def random(lo, hi): return value("system", "System", "random", lit(lo), lit(hi))
+def random(lo, hi): return value("maths", "Maths", "random", lit(lo), lit(hi))
 def dt(): return value("system", "System", "getDeltaTime")
 def rule(conditions, actions, sub=()): return {"conditions": conditions, "actions": actions, "subRules": list(sub)}
 # System's Compare orders its operators =, ≠, <, ≤, >, ≥; an object's own comparisons (position, scale…) <, ≤, =, ≠, ≥, >.
 EQ, NE, LT, LE, GT, GE = 0, 1, 2, 3, 4, 5
 OBJ_LT, OBJ_LE, OBJ_EQ, OBJ_NE, OBJ_GE, OBJ_GT = 0, 1, 2, 3, 4, 5
-def compare(left, o, right): return system("compare", left, lit(o), right)
+def compare(left, o, right): return line("maths", "Maths", "compare", left, lit(o), right)
 LEFT_BUTTON, RIGHT_BUTTON = 0, 1
 def keys(*codes): return {"bindings": [{"kind": "key", "code": c} for c in codes]}

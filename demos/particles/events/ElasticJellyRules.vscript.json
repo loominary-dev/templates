@@ -367,8 +367,8 @@
           "params": [
             {
               "type": "value",
-              "scope": "system",
-              "className": "System",
+              "scope": "maths",
+              "className": "Maths",
               "name": "random",
               "params": [
                 {

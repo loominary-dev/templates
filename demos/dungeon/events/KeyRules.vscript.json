@@ -9,8 +9,8 @@
           "params": []
         },
         {
-          "scope": "system",
-          "className": "System",
+          "scope": "maths",
+          "className": "Maths",
           "name": "compare",
           "params": [
             {

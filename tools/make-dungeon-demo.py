@@ -399,7 +399,7 @@ def var(name): return value("variables", "Variables", "getVariable", s(name))
 def rule(conditions, actions, sub=()):
     return {"conditions": conditions, "actions": actions, "subRules": list(sub)}
 EQ, NE, LT, LE, GT, GE = 0, 1, 2, 3, 4, 5
-def compare(left, o, right): return line("system", "System", "compare", left, lit(o), right)
+def compare(left, o, right): return line("maths", "Maths", "compare", left, lit(o), right)
 
 me_x, me_y = value("self", "Node", "getPositionX"), value("self", "Node", "getPositionY")
 facing = value("self", "TopDownMovement", "facingAngle", onComponent=True)

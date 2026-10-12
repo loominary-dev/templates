@@ -100,8 +100,8 @@
             },
             {
               "type": "value",
-              "scope": "system",
-              "className": "System",
+              "scope": "maths",
+              "className": "Maths",
               "name": "random",
               "params": [
                 {
@@ -129,8 +129,8 @@
             },
             {
               "type": "value",
-              "scope": "system",
-              "className": "System",
+              "scope": "maths",
+              "className": "Maths",
               "name": "random",
               "params": [
                 {
@@ -158,8 +158,8 @@
             },
             {
               "type": "value",
-              "scope": "system",
-              "className": "System",
+              "scope": "maths",
+              "className": "Maths",
               "name": "random",
               "params": [
                 {
@@ -227,8 +227,8 @@
             },
             {
               "type": "value",
-              "scope": "system",
-              "className": "System",
+              "scope": "maths",
+              "className": "Maths",
               "name": "random",
               "params": [
                 {
@@ -244,8 +244,8 @@
             },
             {
               "type": "value",
-              "scope": "system",
-              "className": "System",
+              "scope": "maths",
+              "className": "Maths",
               "name": "random",
               "params": [
                 {
@@ -318,8 +318,8 @@
             },
             {
               "type": "value",
-              "scope": "system",
-              "className": "System",
+              "scope": "maths",
+              "className": "Maths",
               "name": "random",
               "params": [
                 {
@@ -335,8 +335,8 @@
             },
             {
               "type": "value",
-              "scope": "system",
-              "className": "System",
+              "scope": "maths",
+              "className": "Maths",
               "name": "random",
               "params": [
                 {
@@ -449,8 +449,8 @@
     {
       "conditions": [
         {
-          "scope": "system",
-          "className": "System",
+          "scope": "maths",
+          "className": "Maths",
           "name": "compare",
           "params": [
             {
@@ -486,8 +486,8 @@
           "params": [
             {
               "type": "value",
-              "scope": "system",
-              "className": "System",
+              "scope": "maths",
+              "className": "Maths",
               "name": "round",
               "params": [
                 {

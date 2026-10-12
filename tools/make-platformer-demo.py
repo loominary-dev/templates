@@ -256,8 +256,8 @@ player_rules = [
          [line("Player", "Sprite", "setAnimation", s("walk"))]),
     rule([comp("Player", "Platformer", "isOnFloor"), comp("Player", "Platformer", "isMoving", **{"not": True}), line("Player", "Sprite", "isAnimationPlaying", s("idle"), **{"not": True})],
          [line("Player", "Sprite", "setAnimation", s("idle"))]),
-    rule([line("system", "System", "compare", facing, lit(EQ), lit(-1))], [line("self", "Node", "setMirrored", b(True))]),
-    rule([line("system", "System", "compare", facing, lit(EQ), lit(1))], [line("self", "Node", "setMirrored", b(False))]),
+    rule([line("maths", "Maths", "compare", facing, lit(EQ), lit(-1))], [line("self", "Node", "setMirrored", b(True))]),
+    rule([line("maths", "Maths", "compare", facing, lit(EQ), lit(1))], [line("self", "Node", "setMirrored", b(False))]),
     # Coins: the one touched goes, the count goes up and the HUD shows it.
     rule([line("Player", "Node", "onCollisionStarted", s("Coin"))],
          [line("Coin", "Node", "queueDestroy"), line("variables", "Variables", "addToVariable", s("coins"), lit(1)),
@@ -273,7 +273,7 @@ player_rules = [
     # The flag: the sign shows, the player stops, and a better coin count than the saved best is kept.
     rule([line("Player", "Node", "onCollisionStarted", s("Flag"))],
          [line("WinSign", "Node", "show"), comp("Player", "Platformer", "setEnabled", b(False)), line("audio", "Audio", "playSound", s("win"))],
-         [rule([line("system", "System", "compare", coins, lit(GT), value("system", "System", "savedNumber", s("best")))],
+         [rule([line("maths", "Maths", "compare", coins, lit(GT), value("system", "System", "savedNumber", s("best")))],
                [line("system", "System", "saveNumber", s("best"), coins)])]),
 ]
 write("events/PlayerRules.vscript.json", {"rules": player_rules, "vars": []})
