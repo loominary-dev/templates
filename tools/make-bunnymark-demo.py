@@ -68,10 +68,11 @@ d.sprite("Strip", W, 26, [("still", [strip], 400, "loop")], [])
 
 # ── Types ──
 no_collision = {"collisionEnabled": False}
-d.type_json("Bunny", "Sprite", dict(no_collision, spriteKey="Bunny.sprite.json"), [{"componentClass": "BunnyRules"}])
-# The trees: a bunny turning, a smaller one on it turning, and a smaller one again.
+d.type_json("Bunny", "Sprite", dict(no_collision, spriteKey="Bunny.sprite.json"), [{"componentClass": "BunnyRules"}, {"componentClass": "BatchTint"}])
+# The trees: a bunny turning, a smaller one on it turning, and a smaller one again. Only the root is tinted: a tint carries down to the twigs.
 for name in ["TreeBunny", "Twig"]:
-    d.type_json(name, "Sprite", dict(no_collision, spriteKey="Bunny.sprite.json"), [{"componentClass": "Rotate", "speed": 0}, {"componentClass": "TreeRules"}])
+    d.type_json(name, "Sprite", dict(no_collision, spriteKey="Bunny.sprite.json"), [{"componentClass": "Rotate", "speed": 0}, {"componentClass": "TreeRules"}]
+                + ([{"componentClass": "BatchTint"}] if name == "TreeBunny" else []))
 d.type_json("Benches", "SceneManager", {"transition": "None"})
 d.type_json("Backing", "Sprite", dict(no_collision, spriteKey="Backing.sprite.json"))
 d.type_json("Strip", "Sprite", dict(no_collision, spriteKey="Strip.sprite.json"))
@@ -94,7 +95,7 @@ def hud(first_id, what):
         {"id": u(first_id + 3), "parent": u(first_id), "name": "CountCaption", "type": "Caption", "x": 8, "y": 30, "text": what},
         {"id": u(first_id + 4), "parent": u(first_id), "name": "CountText1", "type": "CountText", "x": 60, "y": 28},
         {"id": u(first_id + 5), "parent": u(first_id), "name": "Help", "type": "Caption", "x": 8, "y": H - 24,
-         "text": "Hold left to add ten a frame, right to take ten away. 1 and 2 change scene."},
+         "text": "Hold left to add ten a frame, each press a new colour; right takes ten away. 1 and 2 change scene."},
     ]
 d.scene("scenes/Bunnies.scene.json", [{"id": d.uid(1), "name": "Bunnies"},
     {"id": d.uid(2), "parent": d.uid(1), "name": "BunnyBench1", "type": "BunnyBench", "x": 0, "y": 0}] + hud(10, "Bunnies"))
@@ -128,22 +129,42 @@ bunny_rules = [
 ]
 d.write("events/BunnyRules.vscript.json", {"vars": [{"name": "vx", "type": "number", "value": 0}, {"name": "vy", "type": "number", "value": 0}], "rules": bunny_rules})
 
+# Each press of the left button starts a batch in the next of these colours; the first hundred are left white.
+TINTS = ["ff6b6b", "ffb35c", "ffe45c", "86f06b", "5ce0d0", "6ba8ff", "a77bff", "ff6bd2"]
+batch = var("batch")
+d.write("events/BatchTint.vscript.json", {"rules": [
+    rule([line("self", "Node", "onCreated")], [],
+         [rule([compare(batch, EQ, lit(i + 1))], [line("self", "Node", "setTint", s(c))]) for i, c in enumerate(TINTS)])]})
+
 tree_rules = [rule([line("self", "Node", "onCreated")], [comp("self", "Rotate", "setSpeed", random(0.1, 2))])]
 d.write("events/TreeRules.vscript.json", {"rules": tree_rules})
 
+FPS_EVERY = 0.5   # seconds between readings of the frame rate, so the number can be read
+
 def bench(kind, count_scope, make, ready):
     # Create draws a Type's picture once Preload object type (or Preload scene) has loaded it: nothing is made before.
+    frames, elapsed, fps = sheet_var("frames"), sheet_var("elapsed"), sheet_var("fps")
     return [
+        # Each scene starts white; then before the making below, so a press's first ten already take its colour.
+        rule([once()], [line("variables", "Variables", "setVariable", s("batch"), lit(0))]),
+        rule([mouse_pressed(LEFT_BUTTON)], [line("variables", "Variables", "addToVariable", s("batch"), lit(1))],
+             [rule([compare(var("batch"), GT, lit(len(TINTS)))], [line("variables", "Variables", "setVariable", s("batch"), lit(1))])]),
         rule([ready, once(), system("repeat", lit(100))], [make]),
         rule([ready, mouse_down(LEFT_BUTTON), system("repeat", lit(10))], [make]),
         rule([mouse_down(RIGHT_BUTTON)], [sheet("destroyNewest", s(kind), lit(10))]),
-        rule([], [line("FpsText", "Label", "setNumber", value("system", "System", "getFps")),
+        # The frames over the last half second, shown as a whole number: n + 0.5 less its fraction rounds it.
+        rule([], [add_sheet_var("frames", lit(1)), add_sheet_var("elapsed", dt()),
                   line("CountText", "Label", "setNumber", value(count_scope, "Node", "count"))]),
+        rule([compare(elapsed, GE, lit(FPS_EVERY))],
+             [set_sheet_var("fps", op("+", op("/", frames, elapsed), lit(0.5))),
+              line("FpsText", "Label", "setNumber", op("-", fps, op("%", fps, lit(1)))),
+              set_sheet_var("frames", lit(0)), set_sheet_var("elapsed", lit(0))]),
     ]
-d.write("events/BunnyBenchRules.vscript.json", {"rules": bench("Bunny", "Bunny", sheet("createObject", s("Bunny"), lit(0)),
+BENCH_VARS = [{"name": n, "type": "number", "value": 0} for n in ["frames", "elapsed", "fps"]]
+d.write("events/BunnyBenchRules.vscript.json", {"vars": BENCH_VARS, "rules": bench("Bunny", "Bunny", sheet("createObject", s("Bunny"), lit(0)),
     sheet("objectTypeIsPreloaded", s("Bunny")))})
 # A tree anywhere on the screen, kept a little in from its edges.
-d.write("events/TreeBenchRules.vscript.json", {"rules": bench("TreeBunny", "TreeBunny",
+d.write("events/TreeBenchRules.vscript.json", {"vars": BENCH_VARS, "rules": bench("TreeBunny", "TreeBunny",
     sheet("createScene", s("scenes/BunnyTree.scene.json"), lit(0), random(L + 30, -L - 30), random(T + 30, -T - 30)),
     sheet("sceneIsPreloaded", s("scenes/BunnyTree.scene.json")))})
 d.write("events/SwitchRules.vscript.json", {"rules": [
@@ -173,7 +194,10 @@ HUD shows the frames a second and the count.
 
 Hold the left mouse button to add ten a frame, the right to take ten away
 (**Destroy the newest**), and watch for stutter, dropped frames and the
-frame rate.
+frame rate. Each press of the left button starts a batch in a new colour, as
+pixi's does: `events/BatchTint` sets the tint when a bunny (or a tree's
+root, whose twigs take it from there) is made. The frame rate shown is the
+average over each half second, rounded, so it can be read.
 
 Generated by `tools/make-bunnymark-demo.py`; everything is drawn there.
 """)

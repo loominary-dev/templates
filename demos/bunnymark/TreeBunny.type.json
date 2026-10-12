@@ -12,6 +12,9 @@
     },
     {
       "componentClass": "TreeRules"
+    },
+    {
+      "componentClass": "BatchTint"
     }
   ]
 }

@@ -1,0 +1,401 @@
+{
+  "rules": [
+    {
+      "conditions": [
+        {
+          "scope": "self",
+          "className": "Node",
+          "name": "onCreated",
+          "params": []
+        }
+      ],
+      "actions": [],
+      "subRules": [
+        {
+          "conditions": [
+            {
+              "scope": "system",
+              "className": "System",
+              "name": "compare",
+              "params": [
+                {
+                  "type": "value",
+                  "scope": "variables",
+                  "className": "Variables",
+                  "name": "getVariable",
+                  "params": [
+                    {
+                      "type": "literal",
+                      "value": "batch",
+                      "valueKind": "string"
+                    }
+                  ],
+                  "returnType": "Float"
+                },
+                {
+                  "type": "literal",
+                  "value": 0
+                },
+                {
+                  "type": "literal",
+                  "value": 1
+                }
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "scope": "self",
+              "className": "Node",
+              "name": "setTint",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "ff6b6b",
+                  "valueKind": "string"
+                }
+              ]
+            }
+          ],
+          "subRules": []
+        },
+        {
+          "conditions": [
+            {
+              "scope": "system",
+              "className": "System",
+              "name": "compare",
+              "params": [
+                {
+                  "type": "value",
+                  "scope": "variables",
+                  "className": "Variables",
+                  "name": "getVariable",
+                  "params": [
+                    {
+                      "type": "literal",
+                      "value": "batch",
+                      "valueKind": "string"
+                    }
+                  ],
+                  "returnType": "Float"
+                },
+                {
+                  "type": "literal",
+                  "value": 0
+                },
+                {
+                  "type": "literal",
+                  "value": 2
+                }
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "scope": "self",
+              "className": "Node",
+              "name": "setTint",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "ffb35c",
+                  "valueKind": "string"
+                }
+              ]
+            }
+          ],
+          "subRules": []
+        },
+        {
+          "conditions": [
+            {
+              "scope": "system",
+              "className": "System",
+              "name": "compare",
+              "params": [
+                {
+                  "type": "value",
+                  "scope": "variables",
+                  "className": "Variables",
+                  "name": "getVariable",
+                  "params": [
+                    {
+                      "type": "literal",
+                      "value": "batch",
+                      "valueKind": "string"
+                    }
+                  ],
+                  "returnType": "Float"
+                },
+                {
+                  "type": "literal",
+                  "value": 0
+                },
+                {
+                  "type": "literal",
+                  "value": 3
+                }
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "scope": "self",
+              "className": "Node",
+              "name": "setTint",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "ffe45c",
+                  "valueKind": "string"
+                }
+              ]
+            }
+          ],
+          "subRules": []
+        },
+        {
+          "conditions": [
+            {
+              "scope": "system",
+              "className": "System",
+              "name": "compare",
+              "params": [
+                {
+                  "type": "value",
+                  "scope": "variables",
+                  "className": "Variables",
+                  "name": "getVariable",
+                  "params": [
+                    {
+                      "type": "literal",
+                      "value": "batch",
+                      "valueKind": "string"
+                    }
+                  ],
+                  "returnType": "Float"
+                },
+                {
+                  "type": "literal",
+                  "value": 0
+                },
+                {
+                  "type": "literal",
+                  "value": 4
+                }
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "scope": "self",
+              "className": "Node",
+              "name": "setTint",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "86f06b",
+                  "valueKind": "string"
+                }
+              ]
+            }
+          ],
+          "subRules": []
+        },
+        {
+          "conditions": [
+            {
+              "scope": "system",
+              "className": "System",
+              "name": "compare",
+              "params": [
+                {
+                  "type": "value",
+                  "scope": "variables",
+                  "className": "Variables",
+                  "name": "getVariable",
+                  "params": [
+                    {
+                      "type": "literal",
+                      "value": "batch",
+                      "valueKind": "string"
+                    }
+                  ],
+                  "returnType": "Float"
+                },
+                {
+                  "type": "literal",
+                  "value": 0
+                },
+                {
+                  "type": "literal",
+                  "value": 5
+                }
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "scope": "self",
+              "className": "Node",
+              "name": "setTint",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "5ce0d0",
+                  "valueKind": "string"
+                }
+              ]
+            }
+          ],
+          "subRules": []
+        },
+        {
+          "conditions": [
+            {
+              "scope": "system",
+              "className": "System",
+              "name": "compare",
+              "params": [
+                {
+                  "type": "value",
+                  "scope": "variables",
+                  "className": "Variables",
+                  "name": "getVariable",
+                  "params": [
+                    {
+                      "type": "literal",
+                      "value": "batch",
+                      "valueKind": "string"
+                    }
+                  ],
+                  "returnType": "Float"
+                },
+                {
+                  "type": "literal",
+                  "value": 0
+                },
+                {
+                  "type": "literal",
+                  "value": 6
+                }
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "scope": "self",
+              "className": "Node",
+              "name": "setTint",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "6ba8ff",
+                  "valueKind": "string"
+                }
+              ]
+            }
+          ],
+          "subRules": []
+        },
+        {
+          "conditions": [
+            {
+              "scope": "system",
+              "className": "System",
+              "name": "compare",
+              "params": [
+                {
+                  "type": "value",
+                  "scope": "variables",
+                  "className": "Variables",
+                  "name": "getVariable",
+                  "params": [
+                    {
+                      "type": "literal",
+                      "value": "batch",
+                      "valueKind": "string"
+                    }
+                  ],
+                  "returnType": "Float"
+                },
+                {
+                  "type": "literal",
+                  "value": 0
+                },
+                {
+                  "type": "literal",
+                  "value": 7
+                }
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "scope": "self",
+              "className": "Node",
+              "name": "setTint",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "a77bff",
+                  "valueKind": "string"
+                }
+              ]
+            }
+          ],
+          "subRules": []
+        },
+        {
+          "conditions": [
+            {
+              "scope": "system",
+              "className": "System",
+              "name": "compare",
+              "params": [
+                {
+                  "type": "value",
+                  "scope": "variables",
+                  "className": "Variables",
+                  "name": "getVariable",
+                  "params": [
+                    {
+                      "type": "literal",
+                      "value": "batch",
+                      "valueKind": "string"
+                    }
+                  ],
+                  "returnType": "Float"
+                },
+                {
+                  "type": "literal",
+                  "value": 0
+                },
+                {
+                  "type": "literal",
+                  "value": 8
+                }
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "scope": "self",
+              "className": "Node",
+              "name": "setTint",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "ff6bd2",
+                  "valueKind": "string"
+                }
+              ]
+            }
+          ],
+          "subRules": []
+        }
+      ]
+    }
+  ]
+}

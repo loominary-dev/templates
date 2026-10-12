@@ -8,6 +8,9 @@
   "components": [
     {
       "componentClass": "BunnyRules"
+    },
+    {
+      "componentClass": "BatchTint"
     }
   ]
 }

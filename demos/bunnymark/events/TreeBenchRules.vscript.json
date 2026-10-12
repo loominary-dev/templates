@@ -1,5 +1,138 @@
 {
+  "vars": [
+    {
+      "name": "frames",
+      "type": "number",
+      "value": 0
+    },
+    {
+      "name": "elapsed",
+      "type": "number",
+      "value": 0
+    },
+    {
+      "name": "fps",
+      "type": "number",
+      "value": 0
+    }
+  ],
   "rules": [
+    {
+      "conditions": [
+        {
+          "scope": "system",
+          "className": "VisualScriptComponent",
+          "name": "triggerOnce",
+          "params": []
+        }
+      ],
+      "actions": [
+        {
+          "scope": "variables",
+          "className": "Variables",
+          "name": "setVariable",
+          "params": [
+            {
+              "type": "literal",
+              "value": "batch",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isMousePressed",
+          "params": [
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "variables",
+          "className": "Variables",
+          "name": "addToVariable",
+          "params": [
+            {
+              "type": "literal",
+              "value": "batch",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 1
+            }
+          ]
+        }
+      ],
+      "subRules": [
+        {
+          "conditions": [
+            {
+              "scope": "system",
+              "className": "System",
+              "name": "compare",
+              "params": [
+                {
+                  "type": "value",
+                  "scope": "variables",
+                  "className": "Variables",
+                  "name": "getVariable",
+                  "params": [
+                    {
+                      "type": "literal",
+                      "value": "batch",
+                      "valueKind": "string"
+                    }
+                  ],
+                  "returnType": "Float"
+                },
+                {
+                  "type": "literal",
+                  "value": 4
+                },
+                {
+                  "type": "literal",
+                  "value": 8
+                }
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "scope": "variables",
+              "className": "Variables",
+              "name": "setVariable",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "batch",
+                  "valueKind": "string"
+                },
+                {
+                  "type": "literal",
+                  "value": 1
+                }
+              ]
+            }
+          ],
+          "subRules": []
+        }
+      ]
+    },
     {
       "conditions": [
         {
@@ -215,15 +348,36 @@
       "conditions": [],
       "actions": [
         {
-          "scope": "FpsText",
-          "className": "Label",
-          "name": "setNumber",
+          "scope": "system",
+          "className": "VisualScriptComponent",
+          "name": "addSheetVar",
           "params": [
+            {
+              "type": "literal",
+              "value": "frames",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "scope": "system",
+          "className": "VisualScriptComponent",
+          "name": "addSheetVar",
+          "params": [
+            {
+              "type": "literal",
+              "value": "elapsed",
+              "valueKind": "string"
+            },
             {
               "type": "value",
               "scope": "system",
               "className": "System",
-              "name": "getFps",
+              "name": "getDeltaTime",
               "params": [],
               "returnType": "Float"
             }
@@ -241,6 +395,173 @@
               "name": "count",
               "params": [],
               "returnType": "Float"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "system",
+          "className": "System",
+          "name": "compare",
+          "params": [
+            {
+              "type": "value",
+              "scope": "system",
+              "className": "VisualScriptComponent",
+              "name": "sheetVar",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "elapsed",
+                  "valueKind": "string"
+                }
+              ],
+              "returnType": "Float"
+            },
+            {
+              "type": "literal",
+              "value": 5
+            },
+            {
+              "type": "literal",
+              "value": 0.5
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "system",
+          "className": "VisualScriptComponent",
+          "name": "setSheetVar",
+          "params": [
+            {
+              "type": "literal",
+              "value": "fps",
+              "valueKind": "string"
+            },
+            {
+              "type": "op",
+              "op": "+",
+              "left": {
+                "type": "op",
+                "op": "/",
+                "left": {
+                  "type": "value",
+                  "scope": "system",
+                  "className": "VisualScriptComponent",
+                  "name": "sheetVar",
+                  "params": [
+                    {
+                      "type": "literal",
+                      "value": "frames",
+                      "valueKind": "string"
+                    }
+                  ],
+                  "returnType": "Float"
+                },
+                "right": {
+                  "type": "value",
+                  "scope": "system",
+                  "className": "VisualScriptComponent",
+                  "name": "sheetVar",
+                  "params": [
+                    {
+                      "type": "literal",
+                      "value": "elapsed",
+                      "valueKind": "string"
+                    }
+                  ],
+                  "returnType": "Float"
+                }
+              },
+              "right": {
+                "type": "literal",
+                "value": 0.5
+              }
+            }
+          ]
+        },
+        {
+          "scope": "FpsText",
+          "className": "Label",
+          "name": "setNumber",
+          "params": [
+            {
+              "type": "op",
+              "op": "-",
+              "left": {
+                "type": "value",
+                "scope": "system",
+                "className": "VisualScriptComponent",
+                "name": "sheetVar",
+                "params": [
+                  {
+                    "type": "literal",
+                    "value": "fps",
+                    "valueKind": "string"
+                  }
+                ],
+                "returnType": "Float"
+              },
+              "right": {
+                "type": "op",
+                "op": "%",
+                "left": {
+                  "type": "value",
+                  "scope": "system",
+                  "className": "VisualScriptComponent",
+                  "name": "sheetVar",
+                  "params": [
+                    {
+                      "type": "literal",
+                      "value": "fps",
+                      "valueKind": "string"
+                    }
+                  ],
+                  "returnType": "Float"
+                },
+                "right": {
+                  "type": "literal",
+                  "value": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "scope": "system",
+          "className": "VisualScriptComponent",
+          "name": "setSheetVar",
+          "params": [
+            {
+              "type": "literal",
+              "value": "frames",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "scope": "system",
+          "className": "VisualScriptComponent",
+          "name": "setSheetVar",
+          "params": [
+            {
+              "type": "literal",
+              "value": "elapsed",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 0
             }
           ]
         }
