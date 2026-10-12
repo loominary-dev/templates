@@ -704,8 +704,8 @@
                 },
                 {
                   "type": "value",
-                  "scope": "system",
-                  "className": "System",
+                  "scope": "save",
+                  "className": "Save",
                   "name": "savedNumber",
                   "params": [
                     {
@@ -721,8 +721,8 @@
           ],
           "actions": [
             {
-              "scope": "system",
-              "className": "System",
+              "scope": "save",
+              "className": "Save",
               "name": "saveNumber",
               "params": [
                 {

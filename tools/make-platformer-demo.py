@@ -273,8 +273,8 @@ player_rules = [
     # The flag: the sign shows, the player stops, and a better coin count than the saved best is kept.
     rule([line("Player", "Node", "onCollisionStarted", s("Flag"))],
          [line("WinSign", "Node", "show"), comp("Player", "Platformer", "setEnabled", b(False)), line("audio", "Audio", "playSound", s("win"))],
-         [rule([line("maths", "Maths", "compare", coins, lit(GT), value("system", "System", "savedNumber", s("best")))],
-               [line("system", "System", "saveNumber", s("best"), coins)])]),
+         [rule([line("maths", "Maths", "compare", coins, lit(GT), value("save", "Save", "savedNumber", s("best")))],
+               [line("save", "Save", "saveNumber", s("best"), coins)])]),
 ]
 write("events/PlayerRules.vscript.json", {"rules": player_rules, "vars": []})
 slime_rules = [

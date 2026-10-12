@@ -442,8 +442,8 @@ player_rules = [
          [line("Chest", "Sprite", "setAnimation", s("open")), line("WinSign", "Node", "show"), line("TimeLabel", "Node", "show"), line("TimeLabel", "Label", "setNumber", var("time")),
           comp("Player", "TopDownMovement", "setEnabled", b(False)), line("variables", "Variables", "setVariable", s("won"), lit(1)),
           line("audio", "Audio", "playSound", s("win"))],
-         [rule([line("system", "System", "isSaved", s("best"), **{"not": True})], [line("system", "System", "saveNumber", s("best"), var("time"))]),
-          rule([compare(var("time"), LT, value("system", "System", "savedNumber", s("best")))], [line("system", "System", "saveNumber", s("best"), var("time"))])]),
+         [rule([line("save", "Save", "isSaved", s("best"), **{"not": True})], [line("save", "Save", "saveNumber", s("best"), var("time"))]),
+          rule([compare(var("time"), LT, value("save", "Save", "savedNumber", s("best")))], [line("save", "Save", "saveNumber", s("best"), var("time"))])]),
     # Dying: the room it died in, loaded afresh; the player arrives at its Entry, whole again.
     rule([comp("Player", "Health", "isDead"), once()],
          [comp("Player", "Health", "restore"), line("Rooms", "SceneManager", "changeScene", value("Rooms", "SceneManager", "currentScene", returnType="String")),
