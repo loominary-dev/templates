@@ -181,7 +181,7 @@
     {
       "conditions": [
         {
-          "scope": "system",
+          "scope": "objects",
           "className": "VisualScriptComponent",
           "name": "objectTypeIsPreloaded",
           "params": [
@@ -212,7 +212,7 @@
       ],
       "actions": [
         {
-          "scope": "system",
+          "scope": "objects",
           "className": "VisualScriptComponent",
           "name": "createObject",
           "params": [
@@ -233,7 +233,7 @@
     {
       "conditions": [
         {
-          "scope": "system",
+          "scope": "objects",
           "className": "VisualScriptComponent",
           "name": "objectTypeIsPreloaded",
           "params": [
@@ -269,7 +269,7 @@
       ],
       "actions": [
         {
-          "scope": "system",
+          "scope": "objects",
           "className": "VisualScriptComponent",
           "name": "createObject",
           "params": [
@@ -303,7 +303,7 @@
       ],
       "actions": [
         {
-          "scope": "system",
+          "scope": "objects",
           "className": "VisualScriptComponent",
           "name": "destroyNewest",
           "params": [

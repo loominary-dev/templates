@@ -945,7 +945,7 @@
           ]
         },
         {
-          "scope": "system",
+          "scope": "objects",
           "className": "VisualScriptComponent",
           "name": "preloadObjectType",
           "params": [
@@ -1009,7 +1009,7 @@
           ],
           "actions": [
             {
-              "scope": "system",
+              "scope": "objects",
               "className": "VisualScriptComponent",
               "name": "createObject",
               "params": [

@@ -110,7 +110,10 @@ def cvalue(scope, cls, name, *params, **k): return value(scope, cls, name, *para
 def op(o, left, right): return {"type": "op", "op": o, "left": left, "right": right}
 def line(scope, cls, name, *params, **k): return dict({"scope": scope, "className": cls, "name": name, "params": list(params)}, **k)
 def comp(scope, cls, name, *params, **k): return line(scope, cls, name, *params, onComponent=True, **k)
-def sheet(name, *params, **k): return line("system", "VisualScriptComponent", name, *params, **k)
+# The sheet's own words run on the sheet; the picker lists the ray words under Physics and the making, pooling and family words under Objects.
+PHYSICS_WORDS = ['lineIsClear', 'pickByRay', 'pickInBox', 'queryCount', 'rayHitDistance', 'rayHitX', 'rayHitY', 'rayNormalX', 'rayNormalY']
+OBJECT_WORDS = ['createObject', 'createScene', 'destroyNewest', 'forgetAllPools', 'forgetPool', 'isSetAside', 'keepReady', 'keepSceneReady', 'letGo', 'letGoAll', 'objectTypeIsPreloaded', 'pickChild', 'pickClosestAbove', 'pickDescendant', 'pickParent', 'preloadObjectType', 'preloadScene', 'sceneIsPreloaded', 'scenePreloadLoaded', 'scenePreloadProgress', 'scenePreloadTotal', 'stepPreloadScene', 'unparkObject']
+def sheet(name, *params, **k): return line("physics" if name in PHYSICS_WORDS else "objects" if name in OBJECT_WORDS else "system", "VisualScriptComponent", name, *params, **k)
 def system(name, *params, **k): return line("system", "System", name, *params, **k)
 def once(): return sheet("triggerOnce")
 def held(command): return line("input", "Input", "isActionOn", s(command))

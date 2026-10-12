@@ -11,7 +11,7 @@
       ],
       "actions": [
         {
-          "scope": "system",
+          "scope": "objects",
           "className": "VisualScriptComponent",
           "name": "preloadObjectType",
           "params": [
@@ -23,7 +23,7 @@
           ]
         },
         {
-          "scope": "system",
+          "scope": "objects",
           "className": "VisualScriptComponent",
           "name": "preloadScene",
           "params": [

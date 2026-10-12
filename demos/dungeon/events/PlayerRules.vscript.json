@@ -11,7 +11,7 @@
       ],
       "actions": [
         {
-          "scope": "system",
+          "scope": "objects",
           "className": "VisualScriptComponent",
           "name": "keepReady",
           "params": [
@@ -158,7 +158,7 @@
       ],
       "actions": [
         {
-          "scope": "system",
+          "scope": "objects",
           "className": "VisualScriptComponent",
           "name": "createObject",
           "params": [

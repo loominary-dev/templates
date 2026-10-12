@@ -181,7 +181,7 @@
     {
       "conditions": [
         {
-          "scope": "system",
+          "scope": "objects",
           "className": "VisualScriptComponent",
           "name": "sceneIsPreloaded",
           "params": [
@@ -212,7 +212,7 @@
       ],
       "actions": [
         {
-          "scope": "system",
+          "scope": "objects",
           "className": "VisualScriptComponent",
           "name": "createScene",
           "params": [
@@ -267,7 +267,7 @@
     {
       "conditions": [
         {
-          "scope": "system",
+          "scope": "objects",
           "className": "VisualScriptComponent",
           "name": "sceneIsPreloaded",
           "params": [
@@ -303,7 +303,7 @@
       ],
       "actions": [
         {
-          "scope": "system",
+          "scope": "objects",
           "className": "VisualScriptComponent",
           "name": "createScene",
           "params": [
@@ -371,7 +371,7 @@
       ],
       "actions": [
         {
-          "scope": "system",
+          "scope": "objects",
           "className": "VisualScriptComponent",
           "name": "destroyNewest",
           "params": [
