@@ -1,0 +1,115 @@
+{
+  "version": 1,
+  "sprite": "Ring.sprite.json",
+  "animations": [
+    "grow"
+  ],
+  "animationSpeed": "fixed",
+  "randomness": "normal",
+  "blend": "mix",
+  "emission": {
+    "mode": "continuous",
+    "rate": 6,
+    "rateOverTime": {
+      "shape": "Hold"
+    },
+    "cycle": 2,
+    "repeat": true,
+    "shape": "box",
+    "width": 200,
+    "height": 120,
+    "edgeOnly": true,
+    "direction": "facing",
+    "angle": 0,
+    "spread": 360,
+    "warmUp": 0,
+    "lifetime": {
+      "value": 1.6,
+      "spread": 0.4
+    },
+    "maxParticles": 600,
+    "local": false,
+    "offScreen": true,
+    "under": false
+  },
+  "start": {
+    "speed": {
+      "value": 0,
+      "spread": 0
+    },
+    "spin": {
+      "value": 0,
+      "spread": 0
+    },
+    "angle": "travel",
+    "angleSpread": 0,
+    "size": {
+      "value": 1.4,
+      "spread": 0.4
+    },
+    "opacity": {
+      "value": 0.9,
+      "spread": 0
+    },
+    "color": -1,
+    "color2": -1,
+    "offsetX": 0,
+    "offsetY": 0
+  },
+  "life": {
+    "size": {
+      "shape": "Hold"
+    },
+    "opacity": {
+      "shape": "Linear",
+      "end": 0,
+      "endSpread": 0
+    },
+    "color": {
+      "shape": "Gradient",
+      "stops": [
+        0,
+        -12160,
+        1,
+        -32608
+      ]
+    },
+    "speed": {
+      "shape": "Hold"
+    },
+    "spin": {
+      "shape": "Hold"
+    },
+    "direction": {
+      "shape": "Hold"
+    }
+  },
+  "forces": {
+    "gravityX": 0,
+    "gravityY": 0,
+    "drag": 0,
+    "windX": 0,
+    "windY": 0,
+    "windOverTime": {
+      "shape": "Hold"
+    },
+    "windCycle": 2,
+    "windRepeat": true,
+    "windSpread": 0,
+    "push": 0,
+    "swirl": 0,
+    "turbulence": 0,
+    "turbulenceStrength": 0,
+    "speedJitter": 0
+  },
+  "collision": {
+    "on": false,
+    "mask": -1,
+    "radius": 0,
+    "onHit": "bounce",
+    "bounce": 0.6,
+    "friction": 0.8,
+    "bounceSpin": 0,
+    "bounces": 0
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 2,
+  "baseClass": "Particles",
+  "defaults": {
+    "effectKey": "assets/effects/MagicWorld.effect.json",
+    "spriteKey": "Puff.sprite.json"
+  },
+  "components": []
+}

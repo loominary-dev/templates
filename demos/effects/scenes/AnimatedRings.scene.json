@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 3,
+  "objects": [
+    {
+      "id": "e1000000-0000-4000-8000-000000002400",
+      "name": "AnimatedRings"
+    },
+    {
+      "id": "e1000000-0000-4000-8000-000000002401",
+      "parent": "e1000000-0000-4000-8000-000000002400",
+      "name": "AnimatedRingsLevel1",
+      "type": "AnimatedRingsLevel",
+      "x": 0,
+      "y": 0
+    },
+    {
+      "id": "e1000000-0000-4000-8000-000000002402",
+      "parent": "e1000000-0000-4000-8000-000000002400",
+      "name": "Title",
+      "type": "Caption",
+      "x": -470,
+      "y": -262,
+      "text": "Animated particles"
+    },
+    {
+      "id": "e1000000-0000-4000-8000-000000002403",
+      "parent": "e1000000-0000-4000-8000-000000002400",
+      "name": "About1",
+      "type": "Help",
+      "x": -470,
+      "y": -244,
+      "text": "Each particle plays the sprite's 'grow' animation: on the left its four frames are spread across the particle's life, so every ring grows once however long it lives;"
+    },
+    {
+      "id": "e1000000-0000-4000-8000-000000002404",
+      "parent": "e1000000-0000-4000-8000-000000002400",
+      "name": "About2",
+      "type": "Help",
+      "x": -470,
+      "y": -226,
+      "text": "on the right they run at the animation's own pace, born only on the edge of a box."
+    },
+    {
+      "id": "e1000000-0000-4000-8000-000000002405",
+      "parent": "e1000000-0000-4000-8000-000000002400",
+      "name": "Controls",
+      "type": "Help",
+      "x": -470,
+      "y": -208,
+      "text": ""
+    },
+    {
+      "id": "e1000000-0000-4000-8000-000000002406",
+      "parent": "e1000000-0000-4000-8000-000000002400",
+      "name": "RingsOverLife1",
+      "type": "RingsOverLife",
+      "x": -230,
+      "y": 60
+    },
+    {
+      "id": "e1000000-0000-4000-8000-000000002407",
+      "parent": "e1000000-0000-4000-8000-000000002400",
+      "name": "RingsOwnPace1",
+      "type": "RingsOwnPace",
+      "x": 230,
+      "y": 60
+    },
+    {
+      "id": "e1000000-0000-4000-8000-000000002408",
+      "parent": "e1000000-0000-4000-8000-000000002400",
+      "name": "LeftCaption",
+      "type": "Caption",
+      "x": -330,
+      "y": -60,
+      "text": "The frames spread over each ring's life"
+    },
+    {
+      "id": "e1000000-0000-4000-8000-000000002409",
+      "parent": "e1000000-0000-4000-8000-000000002400",
+      "name": "RightCaption",
+      "type": "Caption",
+      "x": 130,
+      "y": -60,
+      "text": "The frames at the animation's own pace, on a box's edge"
+    }
+  ]
+}

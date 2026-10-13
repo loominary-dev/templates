@@ -1,0 +1,129 @@
+{
+  "version": 1,
+  "sprite": "Spark.sprite.json",
+  "animations": [],
+  "animationSpeed": "fixed",
+  "randomness": "normal",
+  "blend": "add",
+  "emission": {
+    "mode": "burst",
+    "rate": 90,
+    "rateOverTime": {
+      "shape": "Hold"
+    },
+    "cycle": 2,
+    "repeat": true,
+    "shape": "point",
+    "width": 32,
+    "height": 32,
+    "edgeOnly": false,
+    "direction": "facing",
+    "angle": 0,
+    "spread": 360,
+    "warmUp": 0,
+    "lifetime": {
+      "value": 1.8,
+      "spread": 0.3
+    },
+    "maxParticles": 600,
+    "local": false,
+    "offScreen": true,
+    "under": false
+  },
+  "start": {
+    "speed": {
+      "value": 260,
+      "spread": 20
+    },
+    "spin": {
+      "value": 0,
+      "spread": 0
+    },
+    "angle": "travel",
+    "angleSpread": 0,
+    "size": {
+      "value": 1.2,
+      "spread": 0.3
+    },
+    "opacity": {
+      "value": 1,
+      "spread": 0
+    },
+    "color": -1,
+    "color2": -1,
+    "offsetX": 0,
+    "offsetY": 0
+  },
+  "life": {
+    "size": {
+      "shape": "Linear",
+      "end": 0.4,
+      "endSpread": 0
+    },
+    "opacity": {
+      "shape": "Custom",
+      "points": [
+        0,
+        1,
+        0.7,
+        1,
+        1,
+        0
+      ]
+    },
+    "color": {
+      "shape": "Gradient",
+      "stops": [
+        0,
+        -1,
+        0.3,
+        -8096,
+        0.7,
+        -44928,
+        1,
+        8397055
+      ]
+    },
+    "speed": {
+      "shape": "Ease",
+      "ease": "Quad",
+      "direction": "Out",
+      "end": 0.1,
+      "endSpread": 0
+    },
+    "spin": {
+      "shape": "Hold"
+    },
+    "direction": {
+      "shape": "Hold"
+    }
+  },
+  "forces": {
+    "gravityX": 0,
+    "gravityY": 120,
+    "drag": 0,
+    "windX": 0,
+    "windY": 0,
+    "windOverTime": {
+      "shape": "Hold"
+    },
+    "windCycle": 2,
+    "windRepeat": true,
+    "windSpread": 0,
+    "push": 0,
+    "swirl": 0,
+    "turbulence": 0,
+    "turbulenceStrength": 0,
+    "speedJitter": 0.3
+  },
+  "collision": {
+    "on": false,
+    "mask": -1,
+    "radius": 0,
+    "onHit": "bounce",
+    "bounce": 0.6,
+    "friction": 0.8,
+    "bounceSpin": 0,
+    "bounces": 0
+  }
+}

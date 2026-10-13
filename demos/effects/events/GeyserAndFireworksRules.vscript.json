@@ -1,0 +1,56 @@
+{
+  "rules": [
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isMousePressed",
+          "params": [
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Firework",
+          "className": "Node",
+          "name": "setPosition",
+          "params": [
+            {
+              "type": "value",
+              "scope": "input",
+              "className": "Input",
+              "name": "worldPositionX",
+              "params": [],
+              "returnType": "Float"
+            },
+            {
+              "type": "value",
+              "scope": "input",
+              "className": "Input",
+              "name": "worldPositionY",
+              "params": [],
+              "returnType": "Float"
+            }
+          ]
+        },
+        {
+          "scope": "Firework",
+          "className": "Particles",
+          "name": "burst",
+          "params": [
+            {
+              "type": "literal",
+              "value": 90
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    }
+  ]
+}

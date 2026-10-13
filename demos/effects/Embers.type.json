@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 2,
+  "baseClass": "Particles",
+  "defaults": {
+    "effectKey": "assets/effects/Embers.effect.json",
+    "spriteKey": "Spark.sprite.json"
+  },
+  "components": []
+}

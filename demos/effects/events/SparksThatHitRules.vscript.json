@@ -1,0 +1,157 @@
+{
+  "rules": [
+    {
+      "conditions": [
+        {
+          "scope": "Sparks",
+          "className": "Particles",
+          "name": "onParticleHit",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Crate",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Crate",
+          "className": "Node",
+          "name": "setTint",
+          "params": [
+            {
+              "type": "literal",
+              "value": "#ff9040",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "system",
+          "className": "VisualScriptComponent",
+          "name": "every",
+          "params": [
+            {
+              "type": "literal",
+              "value": 1
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Crate",
+          "className": "Node",
+          "name": "setTint",
+          "params": [
+            {
+              "type": "literal",
+              "value": "#ffffff",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "Sparks",
+          "className": "Particles",
+          "name": "isEmitting",
+          "params": []
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Hits",
+          "className": "Label",
+          "name": "setNumber",
+          "params": [
+            {
+              "type": "value",
+              "scope": "Sparks",
+              "className": "Particles",
+              "name": "hitsThisStep",
+              "params": [],
+              "returnType": "Float"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isMousePressed",
+          "params": [
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Grinder",
+          "className": "Node",
+          "name": "setPosition",
+          "params": [
+            {
+              "type": "value",
+              "scope": "input",
+              "className": "Input",
+              "name": "worldPositionX",
+              "params": [],
+              "returnType": "Float"
+            },
+            {
+              "type": "value",
+              "scope": "input",
+              "className": "Input",
+              "name": "worldPositionY",
+              "params": [],
+              "returnType": "Float"
+            }
+          ]
+        },
+        {
+          "scope": "Sparks",
+          "className": "Node",
+          "name": "setPosition",
+          "params": [
+            {
+              "type": "value",
+              "scope": "input",
+              "className": "Input",
+              "name": "worldPositionX",
+              "params": [],
+              "returnType": "Float"
+            },
+            {
+              "type": "value",
+              "scope": "input",
+              "className": "Input",
+              "name": "worldPositionY",
+              "params": [],
+              "returnType": "Float"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    }
+  ]
+}

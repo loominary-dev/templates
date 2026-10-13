@@ -1,0 +1,340 @@
+{
+  "rules": [
+    {
+      "conditions": [],
+      "actions": [
+        {
+          "scope": "WandL",
+          "className": "Node",
+          "name": "setPosition",
+          "params": [
+            {
+              "type": "op",
+              "op": "+",
+              "left": {
+                "type": "op",
+                "op": "*",
+                "left": {
+                  "type": "value",
+                  "scope": "maths",
+                  "className": "Maths",
+                  "name": "cosine",
+                  "params": [
+                    {
+                      "type": "op",
+                      "op": "*",
+                      "left": {
+                        "type": "value",
+                        "scope": "system",
+                        "className": "System",
+                        "name": "getElapsedTime",
+                        "params": [],
+                        "returnType": "Float"
+                      },
+                      "right": {
+                        "type": "literal",
+                        "value": 90
+                      }
+                    }
+                  ],
+                  "returnType": "Float"
+                },
+                "right": {
+                  "type": "literal",
+                  "value": 110
+                }
+              },
+              "right": {
+                "type": "literal",
+                "value": -200
+              }
+            },
+            {
+              "type": "op",
+              "op": "*",
+              "left": {
+                "type": "value",
+                "scope": "maths",
+                "className": "Maths",
+                "name": "sine",
+                "params": [
+                  {
+                    "type": "op",
+                    "op": "*",
+                    "left": {
+                      "type": "value",
+                      "scope": "system",
+                      "className": "System",
+                      "name": "getElapsedTime",
+                      "params": [],
+                      "returnType": "Float"
+                    },
+                    "right": {
+                      "type": "literal",
+                      "value": 90
+                    }
+                  }
+                ],
+                "returnType": "Float"
+              },
+              "right": {
+                "type": "literal",
+                "value": 70
+              }
+            }
+          ]
+        },
+        {
+          "scope": "MagicLocal",
+          "className": "Node",
+          "name": "setPosition",
+          "params": [
+            {
+              "type": "op",
+              "op": "+",
+              "left": {
+                "type": "op",
+                "op": "*",
+                "left": {
+                  "type": "value",
+                  "scope": "maths",
+                  "className": "Maths",
+                  "name": "cosine",
+                  "params": [
+                    {
+                      "type": "op",
+                      "op": "*",
+                      "left": {
+                        "type": "value",
+                        "scope": "system",
+                        "className": "System",
+                        "name": "getElapsedTime",
+                        "params": [],
+                        "returnType": "Float"
+                      },
+                      "right": {
+                        "type": "literal",
+                        "value": 90
+                      }
+                    }
+                  ],
+                  "returnType": "Float"
+                },
+                "right": {
+                  "type": "literal",
+                  "value": 110
+                }
+              },
+              "right": {
+                "type": "literal",
+                "value": -200
+              }
+            },
+            {
+              "type": "op",
+              "op": "*",
+              "left": {
+                "type": "value",
+                "scope": "maths",
+                "className": "Maths",
+                "name": "sine",
+                "params": [
+                  {
+                    "type": "op",
+                    "op": "*",
+                    "left": {
+                      "type": "value",
+                      "scope": "system",
+                      "className": "System",
+                      "name": "getElapsedTime",
+                      "params": [],
+                      "returnType": "Float"
+                    },
+                    "right": {
+                      "type": "literal",
+                      "value": 90
+                    }
+                  }
+                ],
+                "returnType": "Float"
+              },
+              "right": {
+                "type": "literal",
+                "value": 70
+              }
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [],
+      "actions": [
+        {
+          "scope": "WandR",
+          "className": "Node",
+          "name": "setPosition",
+          "params": [
+            {
+              "type": "op",
+              "op": "+",
+              "left": {
+                "type": "op",
+                "op": "*",
+                "left": {
+                  "type": "value",
+                  "scope": "maths",
+                  "className": "Maths",
+                  "name": "cosine",
+                  "params": [
+                    {
+                      "type": "op",
+                      "op": "*",
+                      "left": {
+                        "type": "value",
+                        "scope": "system",
+                        "className": "System",
+                        "name": "getElapsedTime",
+                        "params": [],
+                        "returnType": "Float"
+                      },
+                      "right": {
+                        "type": "literal",
+                        "value": 90
+                      }
+                    }
+                  ],
+                  "returnType": "Float"
+                },
+                "right": {
+                  "type": "literal",
+                  "value": 110
+                }
+              },
+              "right": {
+                "type": "literal",
+                "value": 200
+              }
+            },
+            {
+              "type": "op",
+              "op": "*",
+              "left": {
+                "type": "value",
+                "scope": "maths",
+                "className": "Maths",
+                "name": "sine",
+                "params": [
+                  {
+                    "type": "op",
+                    "op": "*",
+                    "left": {
+                      "type": "value",
+                      "scope": "system",
+                      "className": "System",
+                      "name": "getElapsedTime",
+                      "params": [],
+                      "returnType": "Float"
+                    },
+                    "right": {
+                      "type": "literal",
+                      "value": 90
+                    }
+                  }
+                ],
+                "returnType": "Float"
+              },
+              "right": {
+                "type": "literal",
+                "value": 70
+              }
+            }
+          ]
+        },
+        {
+          "scope": "MagicWorld",
+          "className": "Node",
+          "name": "setPosition",
+          "params": [
+            {
+              "type": "op",
+              "op": "+",
+              "left": {
+                "type": "op",
+                "op": "*",
+                "left": {
+                  "type": "value",
+                  "scope": "maths",
+                  "className": "Maths",
+                  "name": "cosine",
+                  "params": [
+                    {
+                      "type": "op",
+                      "op": "*",
+                      "left": {
+                        "type": "value",
+                        "scope": "system",
+                        "className": "System",
+                        "name": "getElapsedTime",
+                        "params": [],
+                        "returnType": "Float"
+                      },
+                      "right": {
+                        "type": "literal",
+                        "value": 90
+                      }
+                    }
+                  ],
+                  "returnType": "Float"
+                },
+                "right": {
+                  "type": "literal",
+                  "value": 110
+                }
+              },
+              "right": {
+                "type": "literal",
+                "value": 200
+              }
+            },
+            {
+              "type": "op",
+              "op": "*",
+              "left": {
+                "type": "value",
+                "scope": "maths",
+                "className": "Maths",
+                "name": "sine",
+                "params": [
+                  {
+                    "type": "op",
+                    "op": "*",
+                    "left": {
+                      "type": "value",
+                      "scope": "system",
+                      "className": "System",
+                      "name": "getElapsedTime",
+                      "params": [],
+                      "returnType": "Float"
+                    },
+                    "right": {
+                      "type": "literal",
+                      "value": 90
+                    }
+                  }
+                ],
+                "returnType": "Float"
+              },
+              "right": {
+                "type": "literal",
+                "value": 70
+              }
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    }
+  ]
+}

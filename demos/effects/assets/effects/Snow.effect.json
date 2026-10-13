@@ -1,0 +1,116 @@
+{
+  "version": 1,
+  "sprite": "Flake.sprite.json",
+  "animations": [],
+  "animationSpeed": "fixed",
+  "randomness": "normal",
+  "blend": "mix",
+  "emission": {
+    "mode": "continuous",
+    "rate": 60,
+    "rateOverTime": {
+      "shape": "Hold"
+    },
+    "cycle": 2,
+    "repeat": true,
+    "shape": "line",
+    "width": 1000,
+    "height": 32,
+    "edgeOnly": false,
+    "direction": "angle",
+    "angle": 90,
+    "spread": 10,
+    "warmUp": 6,
+    "lifetime": {
+      "value": 7,
+      "spread": 1.5
+    },
+    "maxParticles": 800,
+    "local": false,
+    "offScreen": true,
+    "under": false
+  },
+  "start": {
+    "speed": {
+      "value": 55,
+      "spread": 15
+    },
+    "spin": {
+      "value": 20,
+      "spread": 40
+    },
+    "angle": "travel",
+    "angleSpread": 0,
+    "size": {
+      "value": 0.7,
+      "spread": 0.3
+    },
+    "opacity": {
+      "value": 0.9,
+      "spread": 0.1
+    },
+    "color": -1,
+    "color2": -1,
+    "offsetX": 0,
+    "offsetY": 0
+  },
+  "life": {
+    "size": {
+      "shape": "Hold"
+    },
+    "opacity": {
+      "shape": "Custom",
+      "points": [
+        0,
+        1,
+        0.8,
+        1,
+        1,
+        0
+      ]
+    },
+    "color": {
+      "shape": "Hold"
+    },
+    "speed": {
+      "shape": "Hold"
+    },
+    "spin": {
+      "shape": "Hold"
+    },
+    "direction": {
+      "shape": "Hold"
+    }
+  },
+  "forces": {
+    "gravityX": 0,
+    "gravityY": 0,
+    "drag": 0,
+    "windX": 40,
+    "windY": 0,
+    "windOverTime": {
+      "shape": "Peak",
+      "mid": 1,
+      "end": 0,
+      "endSpread": 0
+    },
+    "windCycle": 5,
+    "windRepeat": true,
+    "windSpread": 0.8,
+    "push": 0,
+    "swirl": 0,
+    "turbulence": 0.6,
+    "turbulenceStrength": 0.8,
+    "speedJitter": 0
+  },
+  "collision": {
+    "on": true,
+    "mask": 1,
+    "radius": 4,
+    "onHit": "stick",
+    "bounce": 0.6,
+    "friction": 0.8,
+    "bounceSpin": 0,
+    "bounces": 0
+  }
+}

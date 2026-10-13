@@ -1,0 +1,125 @@
+{
+  "rules": [
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isActionOn",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Rain",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Rain",
+          "className": "Particles",
+          "name": "stopEmitting",
+          "params": []
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isActionOn",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Rain",
+              "valueKind": "string"
+            }
+          ],
+          "not": true
+        },
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isActionOn",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Snow",
+              "valueKind": "string"
+            }
+          ],
+          "not": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Rain",
+          "className": "Particles",
+          "name": "startEmitting",
+          "params": []
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isActionOn",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Snow",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Snow",
+          "className": "Particles",
+          "name": "startEmitting",
+          "params": []
+        },
+        {
+          "scope": "Rain",
+          "className": "Particles",
+          "name": "stopEmitting",
+          "params": []
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isActionOn",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Snow",
+              "valueKind": "string"
+            }
+          ],
+          "not": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Snow",
+          "className": "Particles",
+          "name": "stopEmitting",
+          "params": []
+        }
+      ],
+      "subRules": []
+    }
+  ]
+}

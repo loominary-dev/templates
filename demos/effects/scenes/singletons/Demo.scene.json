@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 3,
+  "objects": [
+    {
+      "id": "e1000000-0000-4000-8000-000000003001",
+      "name": "Demo"
+    },
+    {
+      "id": "e1000000-0000-4000-8000-000000003002",
+      "parent": "e1000000-0000-4000-8000-000000003001",
+      "name": "Scenes1",
+      "type": "Scenes"
+    },
+    {
+      "id": "e1000000-0000-4000-8000-000000003003",
+      "parent": "e1000000-0000-4000-8000-000000003001",
+      "name": "Switcher1",
+      "type": "Switcher"
+    },
+    {
+      "id": "e1000000-0000-4000-8000-000000003004",
+      "parent": "e1000000-0000-4000-8000-000000003001",
+      "name": "SceneList1",
+      "type": "SceneList",
+      "x": -470,
+      "y": 238,
+      "text": "1 A campfire   2 Rain and snow   3 Sparks that hit   4 Magic   5 Animated particles   6 A geyser and fireworks"
+    }
+  ]
+}

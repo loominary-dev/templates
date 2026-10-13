@@ -1,0 +1,90 @@
+{
+  "width": 32,
+  "height": 32,
+  "colorMode": "rgba",
+  "sheet": {
+    "columns": 2
+  },
+  "palette": [],
+  "layers": [
+    {
+      "id": "e1000000-0000-4000-8000-000000000113",
+      "name": "Layer 1",
+      "visible": true,
+      "opacity": 1,
+      "locked": false,
+      "blendMode": "normal",
+      "reference": false
+    }
+  ],
+  "animations": [
+    {
+      "id": "e1000000-0000-4000-8000-000000000118",
+      "name": "grow",
+      "loop": true,
+      "playMode": "loop",
+      "repeatTo": 0,
+      "repeatCount": 0,
+      "collision": [],
+      "points": [],
+      "collisionShared": true,
+      "pointsShared": true,
+      "frames": [
+        {
+          "id": "e1000000-0000-4000-8000-000000000114",
+          "duration": 120,
+          "pivotX": 0.5,
+          "pivotY": 0.5,
+          "collision": [],
+          "points": []
+        },
+        {
+          "id": "e1000000-0000-4000-8000-000000000115",
+          "duration": 120,
+          "pivotX": 0.5,
+          "pivotY": 0.5,
+          "collision": [],
+          "points": []
+        },
+        {
+          "id": "e1000000-0000-4000-8000-000000000116",
+          "duration": 120,
+          "pivotX": 0.5,
+          "pivotY": 0.5,
+          "collision": [],
+          "points": []
+        },
+        {
+          "id": "e1000000-0000-4000-8000-000000000117",
+          "duration": 120,
+          "pivotX": 0.5,
+          "pivotY": 0.5,
+          "collision": [],
+          "points": []
+        }
+      ]
+    }
+  ],
+  "cels": [
+    {
+      "layerId": "e1000000-0000-4000-8000-000000000113",
+      "frameId": "e1000000-0000-4000-8000-000000000114",
+      "at": 0
+    },
+    {
+      "layerId": "e1000000-0000-4000-8000-000000000113",
+      "frameId": "e1000000-0000-4000-8000-000000000115",
+      "at": 1
+    },
+    {
+      "layerId": "e1000000-0000-4000-8000-000000000113",
+      "frameId": "e1000000-0000-4000-8000-000000000116",
+      "at": 2
+    },
+    {
+      "layerId": "e1000000-0000-4000-8000-000000000113",
+      "frameId": "e1000000-0000-4000-8000-000000000117",
+      "at": 3
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 2,
+  "name": "Particle effects demo",
+  "entryScene": "scenes/Campfire.scene.json",
+  "collisionLayers": {
+    "1": "Solid"
+  },
+  "singletons": [
+    "scenes/singletons/Demo.scene.json"
+  ],
+  "input": {
+    "Rain": {
+      "bindings": [
+        {
+          "kind": "key",
+          "code": 82
+        }
+      ]
+    },
+    "Snow": {
+      "bindings": [
+        {
+          "kind": "key",
+          "code": 83
+        }
+      ]
+    },
+    "Scene1": {
+      "bindings": [
+        {
+          "kind": "key",
+          "code": 49
+        }
+      ]
+    },
+    "Scene2": {
+      "bindings": [
+        {
+          "kind": "key",
+          "code": 50
+        }
+      ]
+    },
+    "Scene3": {
+      "bindings": [
+        {
+          "kind": "key",
+          "code": 51
+        }
+      ]
+    },
+    "Scene4": {
+      "bindings": [
+        {
+          "kind": "key",
+          "code": 52
+        }
+      ]
+    },
+    "Scene5": {
+      "bindings": [
+        {
+          "kind": "key",
+          "code": 53
+        }
+      ]
+    },
+    "Scene6": {
+      "bindings": [
+        {
+          "kind": "key",
+          "code": 54
+        }
+      ]
+    }
+  },
+  "display": {
+    "width": 960,
+    "height": 540,
+    "windowWidth": 960,
+    "windowHeight": 540,
+    "presentMode": "fit",
+    "displayMode": "windowed",
+    "autoResize": true
+  },
+  "physics": {
+    "engine": "arcade",
+    "gravity": 980
+  }
+}

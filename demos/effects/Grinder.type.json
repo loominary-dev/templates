@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 2,
+  "baseClass": "Sprite",
+  "defaults": {
+    "spriteKey": "Grinder.sprite.json"
+  },
+  "components": [
+    {
+      "componentClass": "Rotate",
+      "speed": 240
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 2,
+  "baseClass": "Sprite",
+  "defaults": {
+    "spriteKey": "Floor.sprite.json",
+    "collision": {
+      "layer": 1,
+      "mask": -1,
+      "shapes": [
+        {
+          "name": "body",
+          "kind": "box",
+          "cx": 350.0,
+          "cy": 10.0,
+          "w": 700,
+          "h": 20
+        }
+      ]
+    }
+  },
+  "components": []
+}

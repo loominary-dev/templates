@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 2,
+  "baseClass": "Particles",
+  "defaults": {
+    "effectKey": "assets/effects/RingsOverLife.effect.json",
+    "spriteKey": "Ring.sprite.json"
+  },
+  "components": []
+}

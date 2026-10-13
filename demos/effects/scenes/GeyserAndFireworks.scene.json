@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 3,
+  "objects": [
+    {
+      "id": "e1000000-0000-4000-8000-000000002500",
+      "name": "GeyserAndFireworks"
+    },
+    {
+      "id": "e1000000-0000-4000-8000-000000002501",
+      "parent": "e1000000-0000-4000-8000-000000002500",
+      "name": "GeyserAndFireworksLevel1",
+      "type": "GeyserAndFireworksLevel",
+      "x": 0,
+      "y": 0
+    },
+    {
+      "id": "e1000000-0000-4000-8000-000000002502",
+      "parent": "e1000000-0000-4000-8000-000000002500",
+      "name": "Title",
+      "type": "Caption",
+      "x": -470,
+      "y": -262,
+      "text": "A geyser and fireworks"
+    },
+    {
+      "id": "e1000000-0000-4000-8000-000000002503",
+      "parent": "e1000000-0000-4000-8000-000000002500",
+      "name": "About1",
+      "type": "Help",
+      "x": -470,
+      "y": -244,
+      "text": "The geyser's rate follows a hand-drawn curve over a three-second cycle, round and round: a spurt, a sigh, nothing, again."
+    },
+    {
+      "id": "e1000000-0000-4000-8000-000000002504",
+      "parent": "e1000000-0000-4000-8000-000000002500",
+      "name": "About2",
+      "type": "Help",
+      "x": -470,
+      "y": -226,
+      "text": "A firework is a burst whose motes ease to a stop as they spread, fade late, and change colour four times."
+    },
+    {
+      "id": "e1000000-0000-4000-8000-000000002505",
+      "parent": "e1000000-0000-4000-8000-000000002500",
+      "name": "Controls",
+      "type": "Help",
+      "x": -470,
+      "y": -208,
+      "text": "click: a firework where you point"
+    },
+    {
+      "id": "e1000000-0000-4000-8000-000000002506",
+      "parent": "e1000000-0000-4000-8000-000000002500",
+      "name": "Floor1",
+      "type": "Floor",
+      "x": 0,
+      "y": 250
+    },
+    {
+      "id": "e1000000-0000-4000-8000-000000002507",
+      "parent": "e1000000-0000-4000-8000-000000002500",
+      "name": "Geyser1",
+      "type": "Geyser",
+      "x": -250,
+      "y": 238
+    },
+    {
+      "id": "e1000000-0000-4000-8000-000000002508",
+      "parent": "e1000000-0000-4000-8000-000000002500",
+      "name": "Firework1",
+      "type": "Firework",
+      "x": 0,
+      "y": 0,
+      "emitting": false
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 2,
+  "baseClass": "Particles",
+  "defaults": {
+    "effectKey": "assets/effects/Snow.effect.json",
+    "spriteKey": "Flake.sprite.json"
+  },
+  "components": []
+}

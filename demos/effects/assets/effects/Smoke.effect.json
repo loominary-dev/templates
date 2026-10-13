@@ -1,0 +1,120 @@
+{
+  "version": 1,
+  "sprite": "Puff.sprite.json",
+  "animations": [],
+  "animationSpeed": "fixed",
+  "randomness": "normal",
+  "blend": "mix",
+  "emission": {
+    "mode": "continuous",
+    "rate": 22,
+    "rateOverTime": {
+      "shape": "Hold"
+    },
+    "cycle": 2,
+    "repeat": true,
+    "shape": "circle",
+    "width": 36,
+    "height": 36,
+    "edgeOnly": false,
+    "direction": "angle",
+    "angle": -90,
+    "spread": 30,
+    "warmUp": 2.5,
+    "lifetime": {
+      "value": 3.2,
+      "spread": 0.8
+    },
+    "maxParticles": 300,
+    "local": false,
+    "offScreen": true,
+    "under": false
+  },
+  "start": {
+    "speed": {
+      "value": 40,
+      "spread": 15
+    },
+    "spin": {
+      "value": 0,
+      "spread": 30
+    },
+    "angle": "travel",
+    "angleSpread": 0,
+    "size": {
+      "value": 1.1,
+      "spread": 0.3
+    },
+    "opacity": {
+      "value": 0.5,
+      "spread": 0.1
+    },
+    "color": -1,
+    "color2": -1,
+    "offsetX": 0,
+    "offsetY": 0
+  },
+  "life": {
+    "size": {
+      "shape": "Linear",
+      "end": 3.2,
+      "endSpread": 0.5
+    },
+    "opacity": {
+      "shape": "Ease",
+      "ease": "Quad",
+      "direction": "Out",
+      "end": 0,
+      "endSpread": 0
+    },
+    "color": {
+      "shape": "Gradient",
+      "stops": [
+        0,
+        -6645094,
+        1,
+        4210752
+      ]
+    },
+    "speed": {
+      "shape": "Hold"
+    },
+    "spin": {
+      "shape": "Hold"
+    },
+    "direction": {
+      "shape": "Hold"
+    }
+  },
+  "forces": {
+    "gravityX": 0,
+    "gravityY": -18,
+    "drag": 0.3,
+    "windX": 90,
+    "windY": 0,
+    "windOverTime": {
+      "shape": "Peak",
+      "mid": 1,
+      "end": 0,
+      "endSpread": 0
+    },
+    "windCycle": 6,
+    "windRepeat": true,
+    "windSpread": 0.6,
+    "push": 0,
+    "swirl": 0,
+    "turbulence": 0.8,
+    "turbulenceStrength": 0.5,
+    "speedJitter": 0
+  },
+  "collision": {
+    "on": false,
+    "mask": -1,
+    "radius": 0,
+    "onHit": "bounce",
+    "bounce": 0.6,
+    "friction": 0.8,
+    "bounceSpin": 0,
+    "bounces": 0
+  }
+}

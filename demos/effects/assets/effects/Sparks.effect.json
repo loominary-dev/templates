@@ -1,0 +1,118 @@
+{
+  "version": 1,
+  "sprite": "Spark.sprite.json",
+  "animations": [],
+  "animationSpeed": "fixed",
+  "randomness": "normal",
+  "blend": "add",
+  "emission": {
+    "mode": "continuous",
+    "rate": 160,
+    "rateOverTime": {
+      "shape": "Hold"
+    },
+    "cycle": 2,
+    "repeat": true,
+    "shape": "point",
+    "width": 32,
+    "height": 32,
+    "edgeOnly": false,
+    "direction": "facing",
+    "angle": 0,
+    "spread": 28,
+    "warmUp": 0,
+    "lifetime": {
+      "value": 0.9,
+      "spread": 0.3
+    },
+    "maxParticles": 600,
+    "local": false,
+    "offScreen": true,
+    "under": false
+  },
+  "start": {
+    "speed": {
+      "value": 420,
+      "spread": 120,
+      "random": "even"
+    },
+    "spin": {
+      "value": 0,
+      "spread": 0
+    },
+    "angle": "travel",
+    "angleSpread": 0,
+    "size": {
+      "value": 1,
+      "spread": 0.4
+    },
+    "opacity": {
+      "value": 1,
+      "spread": 0
+    },
+    "color": -1,
+    "color2": -1,
+    "offsetX": 0,
+    "offsetY": 0
+  },
+  "life": {
+    "size": {
+      "shape": "Linear",
+      "end": 0.2,
+      "endSpread": 0
+    },
+    "opacity": {
+      "shape": "Linear",
+      "end": 0,
+      "endSpread": 0.3
+    },
+    "color": {
+      "shape": "Gradient",
+      "stops": [
+        0,
+        -1,
+        0.3,
+        -12192,
+        1,
+        16728064
+      ]
+    },
+    "speed": {
+      "shape": "Hold"
+    },
+    "spin": {
+      "shape": "Hold"
+    },
+    "direction": {
+      "shape": "Hold"
+    }
+  },
+  "forces": {
+    "gravityX": 0,
+    "gravityY": 500,
+    "drag": 0,
+    "windX": 0,
+    "windY": 0,
+    "windOverTime": {
+      "shape": "Hold"
+    },
+    "windCycle": 2,
+    "windRepeat": true,
+    "windSpread": 0,
+    "push": 0,
+    "swirl": 0,
+    "turbulence": 0,
+    "turbulenceStrength": 0,
+    "speedJitter": 0
+  },
+  "collision": {
+    "on": true,
+    "mask": -1,
+    "radius": 2,
+    "onHit": "bounce",
+    "bounce": 0.5,
+    "friction": 0.6,
+    "bounceSpin": 400,
+    "bounces": 2
+  }
+}

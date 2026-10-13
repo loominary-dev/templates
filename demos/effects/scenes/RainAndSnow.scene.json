@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 3,
+  "objects": [
+    {
+      "id": "e1000000-0000-4000-8000-000000002100",
+      "name": "RainAndSnow"
+    },
+    {
+      "id": "e1000000-0000-4000-8000-000000002101",
+      "parent": "e1000000-0000-4000-8000-000000002100",
+      "name": "RainAndSnowLevel1",
+      "type": "RainAndSnowLevel",
+      "x": 0,
+      "y": 0
+    },
+    {
+      "id": "e1000000-0000-4000-8000-000000002102",
+      "parent": "e1000000-0000-4000-8000-000000002100",
+      "name": "Title",
+      "type": "Caption",
+      "x": -470,
+      "y": -262,
+      "text": "Rain and snow"
+    },
+    {
+      "id": "e1000000-0000-4000-8000-000000002103",
+      "parent": "e1000000-0000-4000-8000-000000002100",
+      "name": "About1",
+      "type": "Help",
+      "x": -470,
+      "y": -244,
+      "text": "Rain: a wide line of drops with Even randomness, each swept as a circle through the world's shapes; they bounce once off the roof and the ground, then go."
+    },
+    {
+      "id": "e1000000-0000-4000-8000-000000002104",
+      "parent": "e1000000-0000-4000-8000-000000002100",
+      "name": "About2",
+      "type": "Help",
+      "x": -470,
+      "y": -226,
+      "text": "Snow: flakes with Normal randomness, turning as they fall, on a wind that gusts over five seconds and that each flake feels differently; they stick where they land."
+    },
+    {
+      "id": "e1000000-0000-4000-8000-000000002105",
+      "parent": "e1000000-0000-4000-8000-000000002100",
+      "name": "Controls",
+      "type": "Help",
+      "x": -470,
+      "y": -208,
+      "text": "hold R to stop the rain   hold S for snow instead"
+    },
+    {
+      "id": "e1000000-0000-4000-8000-000000002106",
+      "parent": "e1000000-0000-4000-8000-000000002100",
+      "name": "Floor1",
+      "type": "Floor",
+      "x": 0,
+      "y": 250
+    },
+    {
+      "id": "e1000000-0000-4000-8000-000000002107",
+      "parent": "e1000000-0000-4000-8000-000000002100",
+      "name": "Roof1",
+      "type": "Roof",
+      "x": 180,
+      "y": 60,
+      "rotation": -0.25
+    },
+    {
+      "id": "e1000000-0000-4000-8000-000000002108",
+      "parent": "e1000000-0000-4000-8000-000000002100",
+      "name": "Rain1",
+      "type": "Rain",
+      "x": 0,
+      "y": -300
+    },
+    {
+      "id": "e1000000-0000-4000-8000-000000002109",
+      "parent": "e1000000-0000-4000-8000-000000002100",
+      "name": "Snow1",
+      "type": "Snow",
+      "x": 0,
+      "y": -300,
+      "emitting": false
+    }
+  ]
+}

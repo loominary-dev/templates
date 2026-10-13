@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 2,
+  "baseClass": "Particles",
+  "defaults": {
+    "effectKey": "assets/effects/Geyser.effect.json",
+    "spriteKey": "Drop.sprite.json"
+  },
+  "components": []
+}

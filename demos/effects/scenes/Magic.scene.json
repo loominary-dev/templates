@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 3,
+  "objects": [
+    {
+      "id": "e1000000-0000-4000-8000-000000002300",
+      "name": "Magic"
+    },
+    {
+      "id": "e1000000-0000-4000-8000-000000002301",
+      "parent": "e1000000-0000-4000-8000-000000002300",
+      "name": "MagicLevel1",
+      "type": "MagicLevel",
+      "x": 0,
+      "y": 0
+    },
+    {
+      "id": "e1000000-0000-4000-8000-000000002302",
+      "parent": "e1000000-0000-4000-8000-000000002300",
+      "name": "Title",
+      "type": "Caption",
+      "x": -470,
+      "y": -262,
+      "text": "Magic"
+    },
+    {
+      "id": "e1000000-0000-4000-8000-000000002303",
+      "parent": "e1000000-0000-4000-8000-000000002300",
+      "name": "About1",
+      "type": "Help",
+      "x": -470,
+      "y": -244,
+      "text": "Motes born on a ring, sent outward, pushed from the centre and swirled round it, their size peaking mid-life on a purple-to-cyan gradient."
+    },
+    {
+      "id": "e1000000-0000-4000-8000-000000002304",
+      "parent": "e1000000-0000-4000-8000-000000002300",
+      "name": "About2",
+      "type": "Help",
+      "x": -470,
+      "y": -226,
+      "text": "Both wands orbit; the left one's motes move with it, the right one's stay where they were made."
+    },
+    {
+      "id": "e1000000-0000-4000-8000-000000002305",
+      "parent": "e1000000-0000-4000-8000-000000002300",
+      "name": "Controls",
+      "type": "Help",
+      "x": -470,
+      "y": -208,
+      "text": ""
+    },
+    {
+      "id": "e1000000-0000-4000-8000-000000002306",
+      "parent": "e1000000-0000-4000-8000-000000002300",
+      "name": "WandL1",
+      "type": "WandL",
+      "x": -200,
+      "y": 0
+    },
+    {
+      "id": "e1000000-0000-4000-8000-000000002307",
+      "parent": "e1000000-0000-4000-8000-000000002300",
+      "name": "MagicLocal1",
+      "type": "MagicLocal",
+      "x": -200,
+      "y": 0
+    },
+    {
+      "id": "e1000000-0000-4000-8000-000000002308",
+      "parent": "e1000000-0000-4000-8000-000000002300",
+      "name": "WandR1",
+      "type": "WandR",
+      "x": 200,
+      "y": 0
+    },
+    {
+      "id": "e1000000-0000-4000-8000-000000002309",
+      "parent": "e1000000-0000-4000-8000-000000002300",
+      "name": "MagicWorld1",
+      "type": "MagicWorld",
+      "x": 200,
+      "y": 0
+    },
+    {
+      "id": "e1000000-0000-4000-8000-000000002310",
+      "parent": "e1000000-0000-4000-8000-000000002300",
+      "name": "LeftCaption",
+      "type": "Caption",
+      "x": -260,
+      "y": -130,
+      "text": "Carried with the wand (Move with the emitter: yes)"
+    },
+    {
+      "id": "e1000000-0000-4000-8000-000000002311",
+      "parent": "e1000000-0000-4000-8000-000000002300",
+      "name": "RightCaption",
+      "type": "Caption",
+      "x": 100,
+      "y": -130,
+      "text": "Left in the world (no)"
+    }
+  ]
+}
