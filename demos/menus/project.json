@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 2,
+  "name": "Menus demo",
+  "entryScene": "scenes/Title.scene.json",
+  "singletons": [
+    "scenes/singletons/Menus.scene.json"
+  ],
+  "input": {
+    "Left": {
+      "bindings": [
+        {
+          "kind": "key",
+          "code": 37
+        },
+        {
+          "kind": "key",
+          "code": 65
+        },
+        {
+          "kind": "pad",
+          "code": 14
+        },
+        {
+          "kind": "axis",
+          "code": 0,
+          "sign": -1
+        }
+      ]
+    },
+    "Right": {
+      "bindings": [
+        {
+          "kind": "key",
+          "code": 39
+        },
+        {
+          "kind": "key",
+          "code": 68
+        },
+        {
+          "kind": "pad",
+          "code": 15
+        },
+        {
+          "kind": "axis",
+          "code": 0,
+          "sign": 1
+        }
+      ]
+    },
+    "Jump": {
+      "bindings": [
+        {
+          "kind": "key",
+          "code": 32
+        },
+        {
+          "kind": "key",
+          "code": 38
+        },
+        {
+          "kind": "pad",
+          "code": 0
+        }
+      ]
+    },
+    "Pause": {
+      "bindings": [
+        {
+          "kind": "key",
+          "code": 27
+        },
+        {
+          "kind": "pad",
+          "code": 9
+        }
+      ]
+    }
+  },
+  "display": {
+    "width": 960,
+    "height": 540,
+    "windowWidth": 960,
+    "windowHeight": 540,
+    "presentMode": "fit",
+    "displayMode": "windowed",
+    "autoResize": true
+  },
+  "physics": {
+    "engine": "arcade",
+    "gravity": 980
+  }
+}

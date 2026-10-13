@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 2,
+  "baseClass": "Slider",
+  "defaults": {
+    "min": 0,
+    "max": 1,
+    "value": 0.8,
+    "boxWidth": 240,
+    "boxHeight": 24
+  },
+  "components": []
+}

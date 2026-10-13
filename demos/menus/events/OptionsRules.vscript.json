@@ -1,0 +1,423 @@
+{
+  "vars": [
+    {
+      "name": "Command",
+      "type": "text",
+      "value": "Jump"
+    }
+  ],
+  "rules": [
+    {
+      "conditions": [
+        {
+          "scope": "system",
+          "className": "VisualScriptComponent",
+          "name": "triggerOnce",
+          "params": []
+        }
+      ],
+      "actions": [
+        {
+          "scope": "VolumeSlider",
+          "className": "Control",
+          "name": "takeFocus",
+          "params": []
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "VolumeSlider",
+          "name": "pickAll",
+          "params": []
+        }
+      ],
+      "actions": [
+        {
+          "scope": "VolumeValue",
+          "className": "Label",
+          "name": "setNumber",
+          "params": [
+            {
+              "type": "value",
+              "scope": "VolumeSlider",
+              "className": "Slider",
+              "name": "sliderValue",
+              "params": [],
+              "returnType": "Float"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "system",
+          "className": "VisualScriptComponent",
+          "name": "everyTick",
+          "params": []
+        }
+      ],
+      "actions": [
+        {
+          "scope": "JumpName",
+          "className": "Label",
+          "name": "setText",
+          "params": [
+            {
+              "type": "value",
+              "scope": "input",
+              "className": "Input",
+              "name": "commandBindingName",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "Jump",
+                  "valueKind": "string"
+                },
+                {
+                  "type": "literal",
+                  "value": 0
+                }
+              ],
+              "returnType": "Float"
+            }
+          ]
+        },
+        {
+          "scope": "LeftName",
+          "className": "Label",
+          "name": "setText",
+          "params": [
+            {
+              "type": "value",
+              "scope": "input",
+              "className": "Input",
+              "name": "commandBindingName",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "Left",
+                  "valueKind": "string"
+                },
+                {
+                  "type": "literal",
+                  "value": 0
+                }
+              ],
+              "returnType": "Float"
+            }
+          ]
+        },
+        {
+          "scope": "RightName",
+          "className": "Label",
+          "name": "setText",
+          "params": [
+            {
+              "type": "value",
+              "scope": "input",
+              "className": "Input",
+              "name": "commandBindingName",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "Right",
+                  "valueKind": "string"
+                },
+                {
+                  "type": "literal",
+                  "value": 0
+                }
+              ],
+              "returnType": "Float"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "VolumeSlider",
+          "className": "Slider",
+          "name": "onSliderChanged",
+          "params": []
+        }
+      ],
+      "actions": [
+        {
+          "scope": "audio",
+          "className": "Audio",
+          "name": "setMasterVolume",
+          "params": [
+            {
+              "type": "value",
+              "scope": "VolumeSlider",
+              "className": "Slider",
+              "name": "sliderValue",
+              "params": [],
+              "returnType": "Float"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "RumbleBox",
+          "className": "Checkbox",
+          "name": "onToggled",
+          "params": []
+        },
+        {
+          "scope": "RumbleBox",
+          "className": "Checkbox",
+          "name": "isChecked",
+          "params": []
+        }
+      ],
+      "actions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "rumble",
+          "params": [
+            {
+              "type": "literal",
+              "value": 0.6
+            },
+            {
+              "type": "literal",
+              "value": 0.25
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "JumpButton",
+          "className": "Button",
+          "name": "onPressed",
+          "params": []
+        }
+      ],
+      "actions": [
+        {
+          "scope": "system",
+          "className": "VisualScriptComponent",
+          "name": "setSheetVar",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Command",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "Jump",
+              "valueKind": "string"
+            }
+          ]
+        },
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "listenForInput",
+          "params": []
+        },
+        {
+          "scope": "Prompt",
+          "className": "Node",
+          "name": "show",
+          "params": []
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "LeftButton",
+          "className": "Button",
+          "name": "onPressed",
+          "params": []
+        }
+      ],
+      "actions": [
+        {
+          "scope": "system",
+          "className": "VisualScriptComponent",
+          "name": "setSheetVar",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Command",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "Left",
+              "valueKind": "string"
+            }
+          ]
+        },
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "listenForInput",
+          "params": []
+        },
+        {
+          "scope": "Prompt",
+          "className": "Node",
+          "name": "show",
+          "params": []
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "RightButton",
+          "className": "Button",
+          "name": "onPressed",
+          "params": []
+        }
+      ],
+      "actions": [
+        {
+          "scope": "system",
+          "className": "VisualScriptComponent",
+          "name": "setSheetVar",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Command",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "Right",
+              "valueKind": "string"
+            }
+          ]
+        },
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "listenForInput",
+          "params": []
+        },
+        {
+          "scope": "Prompt",
+          "className": "Node",
+          "name": "show",
+          "params": []
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "hasCapturedInput",
+          "params": []
+        }
+      ],
+      "actions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "bindCapturedTo",
+          "params": [
+            {
+              "type": "value",
+              "scope": "system",
+              "className": "VisualScriptComponent",
+              "name": "sheetVar",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "Command",
+                  "valueKind": "string"
+                }
+              ],
+              "returnType": "Float"
+            }
+          ]
+        },
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "saveBindings",
+          "params": []
+        },
+        {
+          "scope": "Prompt",
+          "className": "Node",
+          "name": "hide",
+          "params": []
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "ResetButton",
+          "className": "Button",
+          "name": "onPressed",
+          "params": []
+        }
+      ],
+      "actions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "resetBindings",
+          "params": []
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "BackButton",
+          "className": "Button",
+          "name": "onPressed",
+          "params": []
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Scenes",
+          "className": "SceneManager",
+          "name": "changeScene",
+          "params": [
+            {
+              "type": "literal",
+              "value": "scenes/Title.scene.json",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    }
+  ]
+}

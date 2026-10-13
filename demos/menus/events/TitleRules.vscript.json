@@ -1,0 +1,92 @@
+{
+  "rules": [
+    {
+      "conditions": [
+        {
+          "scope": "system",
+          "className": "VisualScriptComponent",
+          "name": "triggerOnce",
+          "params": []
+        }
+      ],
+      "actions": [
+        {
+          "scope": "PlayButton",
+          "className": "Control",
+          "name": "takeFocus",
+          "params": []
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "PlayButton",
+          "className": "Button",
+          "name": "onPressed",
+          "params": []
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Scenes",
+          "className": "SceneManager",
+          "name": "changeScene",
+          "params": [
+            {
+              "type": "literal",
+              "value": "scenes/Game.scene.json",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "OptionsButton",
+          "className": "Button",
+          "name": "onPressed",
+          "params": []
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Scenes",
+          "className": "SceneManager",
+          "name": "changeScene",
+          "params": [
+            {
+              "type": "literal",
+              "value": "scenes/Options.scene.json",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "QuitButton",
+          "className": "Button",
+          "name": "onPressed",
+          "params": []
+        }
+      ],
+      "actions": [
+        {
+          "scope": "system",
+          "className": "System",
+          "name": "quitGame",
+          "params": []
+        }
+      ],
+      "subRules": []
+    }
+  ]
+}

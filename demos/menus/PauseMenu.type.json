@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 2,
+  "baseClass": "Layer",
+  "defaults": {
+    "parallaxX": 0,
+    "parallaxY": 0,
+    "zoomWithCamera": false,
+    "visible": false
+  },
+  "components": []
+}

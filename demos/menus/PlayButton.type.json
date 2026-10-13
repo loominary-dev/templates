@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 2,
+  "baseClass": "Button",
+  "defaults": {
+    "text": "Play",
+    "fontSize": 14,
+    "boxWidth": 200,
+    "boxHeight": 36
+  },
+  "components": []
+}

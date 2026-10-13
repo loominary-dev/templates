@@ -58,6 +58,13 @@
       "description": "A scene for each thing a Particles object does: a campfire on colour gradients and curves, rain and snow that collide, sparks whose hits pick the crates they land on, magic carried with a wand or left behind, animated rings, a geyser on a rate curve and fireworks on a click. Keys 1 to 6 change scene.",
       "path": "demos/effects",
       "minEditor": "1.0.48"
+    },
+    {
+      "id": "menus",
+      "name": "Menus demo",
+      "description": "A title screen, an options screen with a volume slider and a rebind table, and a small game with a pause menu: every screen built from the engine's own UI objects under a screen-fixed layer, walked by Tab, the arrows or a pad, and driven by rules.",
+      "path": "demos/menus",
+      "minEditor": "1.0.49"
     }
   ]
 }

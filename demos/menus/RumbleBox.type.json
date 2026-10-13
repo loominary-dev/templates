@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 2,
+  "baseClass": "Checkbox",
+  "defaults": {
+    "text": "Rumble on a jump",
+    "fontSize": 14,
+    "boxWidth": 240,
+    "boxHeight": 28
+  },
+  "components": []
+}
