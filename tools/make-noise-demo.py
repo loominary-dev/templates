@@ -19,7 +19,7 @@ from demo_kit import *
 
 header, codegen = sys.argv[1], sys.argv[2]
 out = sys.argv[3] if len(sys.argv) > 3 else os.path.join(os.path.dirname(__file__), "..", "demos", "noise")
-d = Demo(out, ["scenes", "events", "assets/art", "assets/tiles", "plugins/behaviors", "plugins/objects", "plugins/libraries/perlin/native", "scripts"], "n1000000")
+d = Demo(out, ["scenes", "vscript", "assets/art", "assets/tiles", "plugins/behaviors", "plugins/objects", "plugins/libraries/perlin/native", "scripts"], "n1000000")
 W, H = 640, 360
 T = 16
 COLS, ROWS = W // T, H // T
@@ -255,7 +255,7 @@ d.scene("scenes/World.scene.json", objects)
 
 # ── rules ──
 t = value("system", "System", "getElapsedTime")
-d.write("events/BoatRules.vscript.json", {"rules": [
+d.write("vscript/BoatRules.vscript.json", {"rules": [
     # The heading wanders by the boat's own Noise, read at the moment; the boat keeps to the screen.
     # It bobs by the library's own tile, Perlin, with no behaviour between: the words a native library's functions become.
     rule([], [line("self", "Node", "setScaleXY", op("+", lit(1), op("*", value("lib:PerlinWords", "PerlinWords", "noise3", op("*", t, lit(0.7)), lit(9), lit(0), lit(0), lit(0), lit(0)), lit(0.15))))]),
@@ -266,7 +266,7 @@ d.write("events/BoatRules.vscript.json", {"rules": [
     rule([line("self", "Node", "comparePositionY", lit(OBJ_GT), lit(H // 2 + 12))], [line("self", "Node", "setPositionY", lit(-H // 2 - 12))]),
     rule([line("self", "Node", "comparePositionY", lit(OBJ_LT), lit(-H // 2 - 12))], [line("self", "Node", "setPositionY", lit(H // 2 + 12))]),
 ]})
-d.write("events/LevelRules.vscript.json", {"rules": [
+d.write("vscript/LevelRules.vscript.json", {"rules": [
     rule([pressed("New island")], [comp("Island", "Noise", "newSeed"), comp("Island", "IslandMaker", "grow")]),
     rule([pressed("Weather")], [comp("Sky", "Weather", "toggle")]),
 ]})
@@ -290,7 +290,7 @@ first Run with your C++ compiler (Editor Settings ▸ Build toolchain).
   heights: deep water to snow. **N** takes a new seed and grows another.
 - **Weather** drifts clouds over it, each as thick as the noise says at its
   place and the moment. **W** fades them out and in.
-- The boat's heading wanders by its own Noise, read in `events/BoatRules`,
+- The boat's heading wanders by its own Noise, read in `vscript/BoatRules`,
   and it bobs by the library's own **Perlin** tile in the rule picker
   (`plugins/libraries/perlin/src/PerlinWords.hx`, written by the header
   importer): **noise3** called straight from the sheet, no behaviour between.

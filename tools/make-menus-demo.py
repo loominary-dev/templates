@@ -12,7 +12,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from demo_kit import *
 
 out = sys.argv[1] if len(sys.argv) > 1 else os.path.join(os.path.dirname(__file__), "..", "demos", "menus")
-d = Demo(out, ["scenes/singletons", "events"], "a1000000")
+d = Demo(out, ["scenes/singletons", "vscript"], "a1000000")
 W, H = 960, 540
 
 # ── art ──
@@ -63,7 +63,7 @@ def scene(file, build, rules):
         return oid
     build(place)
     d.scene("scenes/%s.scene.json" % file, objects)
-    d.write("events/%sRules.vscript.json" % (file,), {"rules": rules})
+    d.write("vscript/%sRules.vscript.json" % (file,), {"rules": rules})
     SCENES.append(file)
 SCENES = []
 
@@ -125,7 +125,7 @@ options_rules += [
     rule([pressed_btn("BackButton")], [go("Title")]),
 ]
 scene("Options", options, options_rules)
-d.write("events/OptionsRules.vscript.json", {"vars": [{"name": "Command", "type": "text", "value": "Jump"}], "rules": options_rules})
+d.write("vscript/OptionsRules.vscript.json", {"vars": [{"name": "Command", "type": "text", "value": "Jump"}], "rules": options_rules})
 
 # ── Game: a block that walks and jumps, and a pause menu over it ──
 FLOOR = 150
@@ -155,7 +155,7 @@ game_rules = [
     rule([pressed_btn("TitleButton")], [go("Title")]),
 ]
 scene("Game", game, game_rules)
-d.write("events/GameRules.vscript.json", {"vars": [{"name": "Vy", "type": "number", "value": 0}, {"name": "Paused", "type": "number", "value": 0}], "rules": game_rules})
+d.write("vscript/GameRules.vscript.json", {"vars": [{"name": "Vy", "type": "number", "value": 0}, {"name": "Paused", "type": "number", "value": 0}], "rules": game_rules})
 
 # ── the singleton with the Scene Manager, and the project ──
 d.scene("scenes/singletons/Menus.scene.json", [

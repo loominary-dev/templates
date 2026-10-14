@@ -17,7 +17,7 @@ from PIL import Image
 td, da, im = sys.argv[1], sys.argv[2], sys.argv[3]
 out = os.path.abspath(sys.argv[4] if len(sys.argv) > 4 else os.path.join(os.path.dirname(__file__), "..", "demos", "dungeon"))
 shutil.rmtree(out, ignore_errors=True)
-for d in ["assets/art", "assets/sounds", "assets/tiles", "scenes/singletons", "events"]: os.makedirs(os.path.join(out, d))
+for d in ["assets/art", "assets/sounds", "assets/tiles", "scenes/singletons", "vscript"]: os.makedirs(os.path.join(out, d))
 
 def write(rel, data):
     with open(os.path.join(out, rel), "w") as f:
@@ -455,21 +455,21 @@ player_rules = [
     rule([line("Rooms", "SceneManager", "isLoaded", s("DarkRoom"))], [line("Lantern", "Node", "show")]),
     rule([line("Rooms", "SceneManager", "isLoaded", s("DarkRoom"), **{"not": True})], [line("Lantern", "Node", "hide")]),
 ]
-write("events/PlayerRules.vscript.json", {"rules": player_rules, "vars": []})
+write("vscript/PlayerRules.vscript.json", {"rules": player_rules, "vars": []})
 
 enemy_rules = [
     rule([line("self", "Node", "onCollisionStarted", s("Arrow"))],
          [comp("self", "Health", "damage", lit(1)), comp("Arrow", "Bullet", "endNow"), line("audio", "Audio", "playSound", s("hit"))]),
     rule([comp("self", "Health", "isDead")], [line("self", "Node", "queueDestroy")]),
 ]
-write("events/EnemyRules.vscript.json", {"rules": enemy_rules, "vars": []})
+write("vscript/EnemyRules.vscript.json", {"rules": enemy_rules, "vars": []})
 bat_rules = [
     rule([line("self", "Node", "isWithinDistanceOf", s("Player"), lit(80)), once()], [comp("self", "Follow", "follow", s("Player1"))]),
 ]
-write("events/BatRules.vscript.json", {"rules": bat_rules, "vars": []})
+write("vscript/BatRules.vscript.json", {"rules": bat_rules, "vars": []})
 # A room is built afresh each visit: the key and the door remember, through a variable, that they are gone.
-write("events/KeyRules.vscript.json", {"rules": [rule([line("self", "Node", "onCreated"), compare(var("gotKey"), EQ, lit(1))], [line("self", "Node", "queueDestroy")])], "vars": []})
-write("events/DoorRules.vscript.json", {"rules": [rule([line("self", "Node", "onCreated"), compare(var("doorOpen"), EQ, lit(1))], [line("self", "Node", "queueDestroy")])], "vars": []})
+write("vscript/KeyRules.vscript.json", {"rules": [rule([line("self", "Node", "onCreated"), compare(var("gotKey"), EQ, lit(1))], [line("self", "Node", "queueDestroy")])], "vars": []})
+write("vscript/DoorRules.vscript.json", {"rules": [rule([line("self", "Node", "onCreated"), compare(var("doorOpen"), EQ, lit(1))], [line("self", "Node", "queueDestroy")])], "vars": []})
 
 def keys(*codes): return {"bindings": [{"kind": "key", "code": c} for c in codes]}
 write("project.json", {"schemaVersion": 2, "name": "Dungeon demo", "entryScene": "scenes/Entrance.scene.json",
@@ -496,7 +496,7 @@ came through. Run any room on its own
 and the singleton comes with it.
 
 Built on the **Top-down Movement**, **Bullet**, **Follow**, **Patrol** and
-**Health** behaviours. Every rule is in `events/`.
+**Health** behaviours. Every rule is in `vscript/`.
 
 Art and sounds by [Kenney](https://kenney.nl) (Tiny Dungeon, Digital Audio,
 Impact Sounds), CC0; the key, heart, brazier and glow are drawn by the

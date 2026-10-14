@@ -7,7 +7,7 @@ spikes, and reach the flag. Your best coin count is saved.
 Built on the **Platformer** behaviour and a tilemap level. A **Camera** follows
 the player and keeps inside the level; the sky sits on a **Layer** that follows
 four tenths of the camera's movement, and the coin count on a Layer fixed to
-the screen. Every rule is in `events/PlayerRules` and `events/SlimeRules`; the
+the screen. Every rule is in `vscript/PlayerRules` and `vscript/SlimeRules`; the
 level is painted in `scenes/Level`.
 
 Art and sounds by [Kenney](https://kenney.nl) (Pixel Platformer, Digital

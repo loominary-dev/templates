@@ -6,7 +6,7 @@ to drop through it. Climb the planks to the top of the stone wall, then slide
 down its far side; jump while sliding to jump off it.
 
 - **Player** carries the **Platformer** behaviour beside a **Physics Body**.
-  Its rules in `events/PlayerRules` turn the keys into Platformer commands and
+  Its rules in `vscript/PlayerRules` turn the keys into Platformer commands and
   choose its picture: standing, running or jumping, mirrored when it faces
   left.
 - **Ground** is a tile map painted from `assets/tiles/Ground`.

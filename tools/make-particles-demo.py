@@ -15,7 +15,7 @@ from demo_kit import *
 
 da = sys.argv[1]
 out = sys.argv[2] if len(sys.argv) > 2 else os.path.join(os.path.dirname(__file__), "..", "demos", "particles")
-d = Demo(out, ["scenes/singletons", "events"], "f1000000")
+d = Demo(out, ["scenes/singletons", "vscript"], "f1000000")
 W, H = 960, 540
 
 def panel(w, h, fill, edge, radius=3):
@@ -117,7 +117,7 @@ d.scene("scenes/Basin.scene.json", objects)
 
 px, py = value("input", "Input", "worldPositionX"), value("input", "Input", "worldPositionY")
 def body_(scope, name, *params, **k): return comp(scope, "PhysicsBody", name, *params, **k)
-d.write("events/DragRules.vscript.json", {"rules": [
+d.write("vscript/DragRules.vscript.json", {"rules": [
     rule([mouse_pressed(LEFT_BUTTON), line("self", "Node", "containsPoint", px, py)], [body_("self", "dragToward", px, py)]),
     rule([mouse_down(LEFT_BUTTON), body_("self", "isDragged")], [body_("self", "dragToward", px, py)]),
     rule([not_(mouse_down(LEFT_BUTTON)), body_("self", "isDragged")], [body_("self", "releaseDrag")]),
@@ -147,12 +147,12 @@ level_rules = (
                                             comp("Sand", "Fluid", "pushInCircle", px, py, lit(70), lit(0), lit(-300)), line("audio", "Audio", "playSound", s("splash"))]),
         rule([mouse_pressed(RIGHT_BUTTON)], [comp("Water", "Fluid", "makeInCircle", px, py, lit(24), s("poured"))]),
     ])
-d.write("events/LevelRules.vscript.json", {"rules": level_rules})
+d.write("vscript/LevelRules.vscript.json", {"rules": level_rules})
 # The readouts: each fluid says its own count; the water leaves its step time for the sand to add its own to.
-d.write("events/WaterReadout.vscript.json", {"rules": [rule([], [
+d.write("vscript/WaterReadout.vscript.json", {"rules": [rule([], [
     line("WaterCount", "Label", "setNumber", cvalue("self", "Fluid", "particleCount")),
     line("variables", "Variables", "setVariable", s("waterMs"), cvalue("self", "Fluid", "stepTime"))])]})
-d.write("events/SandReadout.vscript.json", {"rules": [rule([], [
+d.write("vscript/SandReadout.vscript.json", {"rules": [rule([], [
     line("SandCount", "Label", "setNumber", cvalue("self", "Fluid", "particleCount")),
     line("StepTime", "Label", "setNumber", op("+", var("waterMs"), cvalue("self", "Fluid", "stepTime")))])]})
 
@@ -171,7 +171,7 @@ def water_type(name, picture="Drop", readout=None, **k):
     if readout:
         # A fluid says its own numbers: a value is read in the sheet of the object it belongs to.
         extra = [{"componentClass": name + "Readout"}]
-        d.write("events/%sReadout.vscript.json" % name, {"rules": readout})
+        d.write("vscript/%sReadout.vscript.json" % name, {"rules": readout})
     d.type_json(name, "Sprite", {"spriteKey": picture + ".sprite.json", "collisionEnabled": False}, [fluid(**dict({"kind": "Water", "radius": 4, "pictureScale": 2.6}, **k))] + extra)
 water_type("PoolOnePass", maxCount=1500, color=0x4AA8FF, substeps=1, sleep=False,
            readout=[rule([], [line("OneMs", "Label", "setNumber", cvalue("self", "Fluid", "stepTime"))])])
@@ -228,7 +228,7 @@ def feature(file, title, about, controls, build, rules):
     place("Controls", "Help", -470, -244 + 18 * len(lines), text=controls)
     build(place)
     d.scene("scenes/%s.scene.json" % file, objects)
-    d.write("events/%s.vscript.json" % sheet_name, {"rules": rules})
+    d.write("vscript/%s.vscript.json" % sheet_name, {"rules": rules})
     FEATURES.append((file, title))
 
 def fl(t, name, *params): return comp(t, "Fluid", name, *params)
@@ -421,7 +421,7 @@ d.scene("scenes/singletons/Demo.scene.json", [
     {"id": d.uid(3003), "parent": d.uid(3001), "name": "Switcher1", "type": "Switcher"},
     {"id": d.uid(3004), "parent": d.uid(3001), "name": "SceneList1", "type": "SceneList", "x": -470, "y": 238, "text": listing},
 ])
-d.write("events/SwitchRules.vscript.json", {"rules": [
+d.write("vscript/SwitchRules.vscript.json", {"rules": [
     rule([pressed("Scene" + k)], [line("Scenes", "SceneManager", "changeScene", s("scenes/%s.scene.json" % f))]) for k, (f, _) in zip(keys_for, SCENES)]})
 
 d.write("project.json", {"schemaVersion": 2, "name": "Particles demo", "entryScene": "scenes/Basin.scene.json",

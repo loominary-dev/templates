@@ -15,7 +15,7 @@ from PIL import Image
 pp, da = sys.argv[1], sys.argv[2]
 out = os.path.abspath(sys.argv[3] if len(sys.argv) > 3 else os.path.join(os.path.dirname(__file__), "..", "templates", "platformer"))
 shutil.rmtree(out, ignore_errors=True)
-for d in ["assets/art", "assets/sounds", "assets/tiles", "scenes", "events"]: os.makedirs(os.path.join(out, d))
+for d in ["assets/art", "assets/sounds", "assets/tiles", "scenes", "vscript"]: os.makedirs(os.path.join(out, d))
 
 def write(rel, data):
     with open(os.path.join(out, rel), "w") as f:
@@ -225,7 +225,7 @@ player_rules = [
     rule([line("maths", "Maths", "compare", facing, lit(EQ), lit(-1))], [line("self", "Node", "setMirrored", b(True))]),
     rule([line("maths", "Maths", "compare", facing, lit(EQ), lit(1))], [line("self", "Node", "setMirrored", b(False))]),
 ]
-write("events/PlayerRules.vscript.json", {"rules": player_rules, "vars": []})
+write("vscript/PlayerRules.vscript.json", {"rules": player_rules, "vars": []})
 
 write("project.json", {"schemaVersion": 2, "name": "Platformer", "entryScene": "scenes/Level.scene.json",
     "collisionLayers": {"1": "Player", "3": "Ground"},
@@ -239,7 +239,7 @@ to drop through it. Climb the planks to the top of the stone wall, then slide
 down its far side; jump while sliding to jump off it.
 
 - **Player** carries the **Platformer** behaviour beside a **Physics Body**.
-  Its rules in `events/PlayerRules` turn the keys into Platformer commands and
+  Its rules in `vscript/PlayerRules` turn the keys into Platformer commands and
   choose its picture: standing, running or jumping, mirrored when it faces
   left.
 - **Ground** is a tile map painted from `assets/tiles/Ground`.

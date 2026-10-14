@@ -14,7 +14,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from demo_kit import *
 
 out = sys.argv[1] if len(sys.argv) > 1 else os.path.join(os.path.dirname(__file__), "..", "demos", "bunnymark")
-d = Demo(out, ["scenes/singletons", "events"], "b1000000")
+d = Demo(out, ["scenes/singletons", "vscript"], "b1000000")
 W, H = 800, 600
 L, T = -W // 2, -H // 2
 
@@ -127,15 +127,15 @@ bunny_rules = [
          [rule([compare(random(0, 1), GT, lit(0.5))], [add_sheet_var("vy", op("*", random(0, 6), lit(-60)))])]),
     rule([line("self", "Node", "comparePositionY", lit(OBJ_LT), lit(T))], [set_sheet_var("vy", lit(0)), line("self", "Node", "setPositionY", lit(T))]),
 ]
-d.write("events/BunnyRules.vscript.json", {"vars": [{"name": "vx", "type": "number", "value": 0}, {"name": "vy", "type": "number", "value": 0}], "rules": bunny_rules})
+d.write("vscript/BunnyRules.vscript.json", {"vars": [{"name": "vx", "type": "number", "value": 0}, {"name": "vy", "type": "number", "value": 0}], "rules": bunny_rules})
 
 # Each press of the left button picks the colour of the batch; the first hundred are left white (255, 255, 255).
 PARTS = ["red", "green", "blue"]
-d.write("events/BatchTint.vscript.json", {"rules": [
+d.write("vscript/BatchTint.vscript.json", {"rules": [
     rule([line("self", "Node", "onCreated")], [line("self", "Node", "setTintRgb", *[var(c) for c in PARTS])])]})
 
 tree_rules = [rule([line("self", "Node", "onCreated")], [comp("self", "Rotate", "setSpeed", random(0.1, 2))])]
-d.write("events/TreeRules.vscript.json", {"rules": tree_rules})
+d.write("vscript/TreeRules.vscript.json", {"rules": tree_rules})
 
 FPS_EVERY = 0.5   # seconds between readings of the frame rate, so the number can be read
 
@@ -158,13 +158,13 @@ def bench(kind, count_scope, make, ready):
               set_sheet_var("frames", lit(0)), set_sheet_var("elapsed", lit(0))]),
     ]
 BENCH_VARS = [{"name": n, "type": "number", "value": 0} for n in ["frames", "elapsed"]]
-d.write("events/BunnyBenchRules.vscript.json", {"vars": BENCH_VARS, "rules": bench("Bunny", "Bunny", sheet("createObject", s("Bunny"), lit(0)),
+d.write("vscript/BunnyBenchRules.vscript.json", {"vars": BENCH_VARS, "rules": bench("Bunny", "Bunny", sheet("createObject", s("Bunny"), lit(0)),
     sheet("objectTypeIsPreloaded", s("Bunny")))})
 # A tree anywhere on the screen, kept a little in from its edges.
-d.write("events/TreeBenchRules.vscript.json", {"vars": BENCH_VARS, "rules": bench("TreeBunny", "TreeBunny",
+d.write("vscript/TreeBenchRules.vscript.json", {"vars": BENCH_VARS, "rules": bench("TreeBunny", "TreeBunny",
     sheet("createScene", s("scenes/BunnyTree.scene.json"), lit(0), random(L + 30, -L - 30), random(T + 30, -T - 30)),
     sheet("sceneIsPreloaded", s("scenes/BunnyTree.scene.json")))})
-d.write("events/SwitchRules.vscript.json", {"rules": [
+d.write("vscript/SwitchRules.vscript.json", {"rules": [
     rule([once()], [sheet("preloadObjectType", s("Bunny")), sheet("preloadScene", s("scenes/BunnyTree.scene.json"))]),
     rule([pressed("Bunnies")], [line("Benches", "SceneManager", "changeScene", s("Bunnies"))]),
     rule([pressed("Trees")], [line("Benches", "SceneManager", "changeScene", s("Trees"))]),
@@ -181,7 +181,7 @@ How many moving pictures the engine draws before the frame rate drops. The
 HUD shows the frames a second and the count.
 
 - **Bunnies** (press 1): plain bouncing bunnies. Each one has its own visual
-  script, `events/BunnyRules`: a sideways and an upward speed of its own,
+  script, `vscript/BunnyRules`: a sideways and an upward speed of its own,
   gravity every step, a bounce off the bottom and the sides, as pixi.js's
   bunnymark does it.
 - **Trees** (press 2): each one a bunny with a **Rotate** behaviour, with a
@@ -192,7 +192,7 @@ HUD shows the frames a second and the count.
 Hold the left mouse button to add ten a frame, the right to take ten away
 (**Destroy the newest**), and watch for stutter, dropped frames and the
 frame rate. Each press of the left button starts a batch in a new random
-colour, as pixi's does: `events/BatchTint` sets the tint from the red, green
+colour, as pixi's does: `vscript/BatchTint` sets the tint from the red, green
 and blue the press picked when a bunny (or a tree's root, whose twigs take it
 from there) is made. The frame rate shown is the
 average over each half second, rounded, so it can be read.

@@ -14,7 +14,7 @@ from PIL import Image
 pp, da, im = sys.argv[1], sys.argv[2], sys.argv[3]
 out = os.path.abspath(sys.argv[4] if len(sys.argv) > 4 else os.path.join(os.path.dirname(__file__), "..", "demos", "platformer"))
 shutil.rmtree(out, ignore_errors=True)
-for d in ["assets/art", "assets/sounds", "assets/tiles", "scenes", "events"]: os.makedirs(os.path.join(out, d))
+for d in ["assets/art", "assets/sounds", "assets/tiles", "scenes", "vscript"]: os.makedirs(os.path.join(out, d))
 
 def write(rel, data):
     with open(os.path.join(out, rel), "w") as f:
@@ -276,13 +276,13 @@ player_rules = [
          [rule([line("maths", "Maths", "compare", coins, lit(GT), value("save", "Save", "savedNumber", s("best")))],
                [line("save", "Save", "saveNumber", s("best"), coins)])]),
 ]
-write("events/PlayerRules.vscript.json", {"rules": player_rules, "vars": []})
+write("vscript/PlayerRules.vscript.json", {"rules": player_rules, "vars": []})
 slime_rules = [
     rule([line("Slime", "Sprite", "onAnimationFinished")], [line("Slime", "Node", "queueDestroy")]),
     rule([comp("Slime", "Patrol", "isHeadingOut")], [line("Slime", "Node", "setMirrored", b(False))]),
     rule([comp("Slime", "Patrol", "isHeadingOut", **{"not": True})], [line("Slime", "Node", "setMirrored", b(True))]),
 ]
-write("events/SlimeRules.vscript.json", {"rules": slime_rules, "vars": []})
+write("vscript/SlimeRules.vscript.json", {"rules": slime_rules, "vars": []})
 
 write("project.json", {"schemaVersion": 2, "name": "Platformer demo", "entryScene": "scenes/Level.scene.json",
     "collisionLayers": {"1": "Player", "2": "Pickup", "3": "Ground", "4": "Enemy", "5": "Hazard"},
@@ -297,7 +297,7 @@ spikes, and reach the flag. Your best coin count is saved.
 Built on the **Platformer** behaviour and a tilemap level. A **Camera** follows
 the player and keeps inside the level; the sky sits on a **Layer** that follows
 four tenths of the camera's movement, and the coin count on a Layer fixed to
-the screen. Every rule is in `events/PlayerRules` and `events/SlimeRules`; the
+the screen. Every rule is in `vscript/PlayerRules` and `vscript/SlimeRules`; the
 level is painted in `scenes/Level`.
 
 Art and sounds by [Kenney](https://kenney.nl) (Pixel Platformer, Digital

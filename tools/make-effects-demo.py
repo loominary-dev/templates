@@ -13,7 +13,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from demo_kit import *
 
 out = sys.argv[1] if len(sys.argv) > 1 else os.path.join(os.path.dirname(__file__), "..", "demos", "effects")
-d = Demo(out, ["scenes/singletons", "events", "assets/effects"], "e1000000")
+d = Demo(out, ["scenes/singletons", "vscript", "assets/effects"], "e1000000")
 W, H = 960, 540
 
 # ── the pictures ──
@@ -195,7 +195,7 @@ def feature(file, title, about, controls, build, rules):
     place("Controls", "Help", -470, -244 + 18 * len(lines), text=controls)
     build(place)
     d.scene("scenes/%s.scene.json" % file, objects)
-    d.write("events/%s.vscript.json" % sheet_name, {"rules": rules})
+    d.write("vscript/%s.vscript.json" % sheet_name, {"rules": rules})
     SCENES.append((file, title))
 
 # 1. The campfire: fire and smoke on gradients and curves, embers burst where you click.
@@ -301,7 +301,7 @@ d.scene("scenes/singletons/Demo.scene.json", [
     {"id": d.uid(3003), "parent": d.uid(3001), "name": "Switcher1", "type": "Switcher"},
     {"id": d.uid(3004), "parent": d.uid(3001), "name": "SceneList1", "type": "SceneList", "x": -470, "y": 238, "text": listing},
 ])
-d.write("events/SwitchRules.vscript.json", {"rules": [
+d.write("vscript/SwitchRules.vscript.json", {"rules": [
     rule([pressed("Scene" + k)], [line("Scenes", "SceneManager", "changeScene", s("scenes/%s.scene.json" % f))]) for k, (f, _) in zip(keys_for, SCENES)]})
 
 d.write("project.json", {"schemaVersion": 2, "name": "Particle effects demo", "entryScene": "scenes/Campfire.scene.json",
