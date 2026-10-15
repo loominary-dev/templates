@@ -45,6 +45,7 @@ for k in range(4):
     d.type_json("Choice%d" % (k + 1), "Button", {"text": "", "fontSize": 14, "boxWidth": 600, "boxHeight": 30, "visible": False})
 d.type_json("Hint", "Label", {"text": "", "fontSize": 12})
 d.type_json("Purse", "Label", {"text": "", "fontSize": 14})
+d.type_json("PurseValue", "Label", {"text": "0", "fontSize": 14})
 d.type_json("Talk", "Node", {}, [{"componentClass": "TalkRules"}])
 
 # ── the conversation ──
@@ -114,14 +115,15 @@ def place(name, type_name, x, y, parent=None, **extra):
     objects.append(dict({"id": oid, "parent": parent if parent is not None else root, "name": name, "type": type_name, "x": x, "y": y}, **extra))
     return oid
 screen = place("Screen1", "Screen", 0, 0)
-place("Purse1", "Purse", 20, 20, parent=screen, text="Gold: 0")
+place("Purse1", "Purse", 20, 20, parent=screen, text="Gold:")
+place("PurseValue1", "PurseValue", 70, 20, parent=screen)
 place("Box1", "Box", 100, 320, parent=screen)
 place("Portrait1", "Portrait", 164, 420, parent=screen)
 place("Speaker1", "Speaker", 240, 336, parent=screen)
 place("Speech1", "Speech", 240, 364, parent=screen)
 for k in range(4):
     place("Choice%d_1" % (k + 1), "Choice%d" % (k + 1), 240, 364 + k * 34, parent=screen)
-place("Hint1", "Hint", 100, 530, parent=screen, text="Enter, Space or the pad's bottom button go on; the arrows or Tab and Enter choose.")
+place("Hint1", "Hint", 100, 522, parent=screen, text="Enter, Space or the pad's bottom button go on; the arrows or Tab and Enter choose.")
 d.scene("scenes/Talk.scene.json", objects)
 
 def dlg(name, *params): return line("dialogue", "Dialogue", name, *params)
@@ -146,13 +148,14 @@ for k in range(4):
 rules += [
     rule([dlg("onOptions")], [focus("Choice1")]),
     # The file's commands: the portrait's mood, and gold handed over.
-    rule([dlg("onCommand", s("portrait"))], [line("Portrait", "Sprite", "playAnimation", dval("commandArg", lit(0), returnType="String"))]),
-    rule([dlg("onCommand", s("give"))], [add_sheet_var("Gold", dval("commandArg", lit(0))), line("Purse", "Label", "setText", op("+", s("Gold: "), sheet_var("Gold")))]),
+    rule([dlg("onCommand", s("portrait"))], [line("Portrait", "Sprite", "setAnimation", dval("commandArg", lit(0), returnType="String"))]),
+    # The purse shows the file's own $gold, which the give command says has changed.
+    rule([dlg("onCommand", s("give"))], [line("PurseValue", "Label", "setNumber", dval("number", s("gold")))]),
     # Over: the box says so, and Continue starts it again, remembering.
     rule([dlg("onEnded")], [line("Speaker", "Label", "setText", s("")), line("Speech", "Label", "setText", s("(The guard turns away. Press Continue to talk again.)"))] + hide_all),
     rule([pressed("Continue"), not_(dlg("isRunning"))], [dlg("start", s("Guard"))]),
 ]
-d.write("vscript/TalkRules.vscript.json", {"vars": [{"name": "Gold", "type": "number", "value": 0}], "rules": rules})
+d.write("vscript/TalkRules.vscript.json", {"rules": rules})
 
 def pad(code): return {"kind": "pad", "code": code}
 d.write("project.json", {"schemaVersion": 2, "name": "Dialogue demo", "entryScene": "scenes/Talk.scene.json",
@@ -172,7 +175,7 @@ portrait, the speaker's name, the line, and a button per choice.
 - **On options** shows a button per choice (**optionCount**, **optionText**),
   and each button's **On pressed** is **Choose option**.
 - The file's commands do things in the game: `<<portrait cross>>` plays the
-  portrait's animation, `<<give 5>>` adds to the purse.
+  portrait's animation, `<<give 5>>` tells the purse to show the file's `$gold`.
 - The guard remembers: `visited("Guard")` changes his greeting the second
   time, and a choice with `<<if $gold >= 5>>` opens the gate only once you
   have the gold.

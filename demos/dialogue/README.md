@@ -8,7 +8,7 @@ portrait, the speaker's name, the line, and a button per choice.
 - **On options** shows a button per choice (**optionCount**, **optionText**),
   and each button's **On pressed** is **Choose option**.
 - The file's commands do things in the game: `<<portrait cross>>` plays the
-  portrait's animation, `<<give 5>>` adds to the purse.
+  portrait's animation, `<<give 5>>` tells the purse to show the file's `$gold`.
 - The guard remembers: `visited("Guard")` changes his greeting the second
   time, and a choice with `<<if $gold >= 5>>` opens the gate only once you
   have the gold.

@@ -1,11 +1,4 @@
 {
-  "vars": [
-    {
-      "name": "Gold",
-      "type": "number",
-      "value": 0
-    }
-  ],
   "rules": [
     {
       "conditions": [
@@ -592,7 +585,7 @@
         {
           "scope": "Portrait",
           "className": "Sprite",
-          "name": "playAnimation",
+          "name": "setAnimation",
           "params": [
             {
               "type": "value",
@@ -629,57 +622,23 @@
       ],
       "actions": [
         {
-          "scope": "system",
-          "className": "VisualScriptComponent",
-          "name": "addSheetVar",
+          "scope": "PurseValue",
+          "className": "Label",
+          "name": "setNumber",
           "params": [
-            {
-              "type": "literal",
-              "value": "Gold",
-              "valueKind": "string"
-            },
             {
               "type": "value",
               "scope": "dialogue",
               "className": "Dialogue",
-              "name": "commandArg",
+              "name": "number",
               "params": [
                 {
                   "type": "literal",
-                  "value": 0
+                  "value": "gold",
+                  "valueKind": "string"
                 }
               ],
               "returnType": "Float"
-            }
-          ]
-        },
-        {
-          "scope": "Purse",
-          "className": "Label",
-          "name": "setText",
-          "params": [
-            {
-              "type": "op",
-              "op": "+",
-              "left": {
-                "type": "literal",
-                "value": "Gold: ",
-                "valueKind": "string"
-              },
-              "right": {
-                "type": "value",
-                "scope": "system",
-                "className": "VisualScriptComponent",
-                "name": "sheetVar",
-                "params": [
-                  {
-                    "type": "literal",
-                    "value": "Gold",
-                    "valueKind": "string"
-                  }
-                ],
-                "returnType": "Float"
-              }
             }
           ]
         }
