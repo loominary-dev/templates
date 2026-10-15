@@ -1,0 +1,789 @@
+{
+  "vars": [
+    {
+      "name": "Gold",
+      "type": "number",
+      "value": 0
+    }
+  ],
+  "rules": [
+    {
+      "conditions": [
+        {
+          "scope": "system",
+          "className": "VisualScriptComponent",
+          "name": "triggerOnce",
+          "params": []
+        }
+      ],
+      "actions": [
+        {
+          "scope": "dialogue",
+          "className": "Dialogue",
+          "name": "start",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Guard",
+              "valueKind": "string"
+            }
+          ]
+        },
+        {
+          "scope": "Choice1",
+          "className": "Node",
+          "name": "hide",
+          "params": []
+        },
+        {
+          "scope": "Choice2",
+          "className": "Node",
+          "name": "hide",
+          "params": []
+        },
+        {
+          "scope": "Choice3",
+          "className": "Node",
+          "name": "hide",
+          "params": []
+        },
+        {
+          "scope": "Choice4",
+          "className": "Node",
+          "name": "hide",
+          "params": []
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "dialogue",
+          "className": "Dialogue",
+          "name": "onLine",
+          "params": []
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Speaker",
+          "className": "Label",
+          "name": "setText",
+          "params": [
+            {
+              "type": "value",
+              "scope": "dialogue",
+              "className": "Dialogue",
+              "name": "lineSpeaker",
+              "params": [],
+              "returnType": "String"
+            }
+          ]
+        },
+        {
+          "scope": "Speech",
+          "className": "Label",
+          "name": "setText",
+          "params": [
+            {
+              "type": "value",
+              "scope": "dialogue",
+              "className": "Dialogue",
+              "name": "lineText",
+              "params": [],
+              "returnType": "String"
+            }
+          ]
+        },
+        {
+          "scope": "Choice1",
+          "className": "Node",
+          "name": "hide",
+          "params": []
+        },
+        {
+          "scope": "Choice2",
+          "className": "Node",
+          "name": "hide",
+          "params": []
+        },
+        {
+          "scope": "Choice3",
+          "className": "Node",
+          "name": "hide",
+          "params": []
+        },
+        {
+          "scope": "Choice4",
+          "className": "Node",
+          "name": "hide",
+          "params": []
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isActionPressed",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Continue",
+              "valueKind": "string"
+            }
+          ]
+        },
+        {
+          "scope": "dialogue",
+          "className": "Dialogue",
+          "name": "isRunning",
+          "params": []
+        },
+        {
+          "scope": "dialogue",
+          "className": "Dialogue",
+          "name": "isWaitingForChoice",
+          "params": [],
+          "not": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "dialogue",
+          "className": "Dialogue",
+          "name": "continueConversation",
+          "params": []
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "dialogue",
+          "className": "Dialogue",
+          "name": "onOptions",
+          "params": []
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Speech",
+          "className": "Label",
+          "name": "setText",
+          "params": [
+            {
+              "type": "literal",
+              "value": "",
+              "valueKind": "string"
+            }
+          ]
+        },
+        {
+          "scope": "Choice1",
+          "className": "Node",
+          "name": "hide",
+          "params": []
+        },
+        {
+          "scope": "Choice2",
+          "className": "Node",
+          "name": "hide",
+          "params": []
+        },
+        {
+          "scope": "Choice3",
+          "className": "Node",
+          "name": "hide",
+          "params": []
+        },
+        {
+          "scope": "Choice4",
+          "className": "Node",
+          "name": "hide",
+          "params": []
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "dialogue",
+          "className": "Dialogue",
+          "name": "onOptions",
+          "params": []
+        },
+        {
+          "scope": "maths",
+          "className": "Maths",
+          "name": "compare",
+          "params": [
+            {
+              "type": "value",
+              "scope": "dialogue",
+              "className": "Dialogue",
+              "name": "optionCount",
+              "params": [],
+              "returnType": "Float"
+            },
+            {
+              "type": "literal",
+              "value": 4
+            },
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Choice1",
+          "className": "Node",
+          "name": "show",
+          "params": []
+        },
+        {
+          "scope": "Choice1",
+          "className": "Label",
+          "name": "setText",
+          "params": [
+            {
+              "type": "value",
+              "scope": "dialogue",
+              "className": "Dialogue",
+              "name": "optionText",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": 0
+                }
+              ],
+              "returnType": "String"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "Choice1",
+          "className": "Button",
+          "name": "onPressed",
+          "params": []
+        }
+      ],
+      "actions": [
+        {
+          "scope": "dialogue",
+          "className": "Dialogue",
+          "name": "choose",
+          "params": [
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "dialogue",
+          "className": "Dialogue",
+          "name": "onOptions",
+          "params": []
+        },
+        {
+          "scope": "maths",
+          "className": "Maths",
+          "name": "compare",
+          "params": [
+            {
+              "type": "value",
+              "scope": "dialogue",
+              "className": "Dialogue",
+              "name": "optionCount",
+              "params": [],
+              "returnType": "Float"
+            },
+            {
+              "type": "literal",
+              "value": 4
+            },
+            {
+              "type": "literal",
+              "value": 1
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Choice2",
+          "className": "Node",
+          "name": "show",
+          "params": []
+        },
+        {
+          "scope": "Choice2",
+          "className": "Label",
+          "name": "setText",
+          "params": [
+            {
+              "type": "value",
+              "scope": "dialogue",
+              "className": "Dialogue",
+              "name": "optionText",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": 1
+                }
+              ],
+              "returnType": "String"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "Choice2",
+          "className": "Button",
+          "name": "onPressed",
+          "params": []
+        }
+      ],
+      "actions": [
+        {
+          "scope": "dialogue",
+          "className": "Dialogue",
+          "name": "choose",
+          "params": [
+            {
+              "type": "literal",
+              "value": 1
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "dialogue",
+          "className": "Dialogue",
+          "name": "onOptions",
+          "params": []
+        },
+        {
+          "scope": "maths",
+          "className": "Maths",
+          "name": "compare",
+          "params": [
+            {
+              "type": "value",
+              "scope": "dialogue",
+              "className": "Dialogue",
+              "name": "optionCount",
+              "params": [],
+              "returnType": "Float"
+            },
+            {
+              "type": "literal",
+              "value": 4
+            },
+            {
+              "type": "literal",
+              "value": 2
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Choice3",
+          "className": "Node",
+          "name": "show",
+          "params": []
+        },
+        {
+          "scope": "Choice3",
+          "className": "Label",
+          "name": "setText",
+          "params": [
+            {
+              "type": "value",
+              "scope": "dialogue",
+              "className": "Dialogue",
+              "name": "optionText",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": 2
+                }
+              ],
+              "returnType": "String"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "Choice3",
+          "className": "Button",
+          "name": "onPressed",
+          "params": []
+        }
+      ],
+      "actions": [
+        {
+          "scope": "dialogue",
+          "className": "Dialogue",
+          "name": "choose",
+          "params": [
+            {
+              "type": "literal",
+              "value": 2
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "dialogue",
+          "className": "Dialogue",
+          "name": "onOptions",
+          "params": []
+        },
+        {
+          "scope": "maths",
+          "className": "Maths",
+          "name": "compare",
+          "params": [
+            {
+              "type": "value",
+              "scope": "dialogue",
+              "className": "Dialogue",
+              "name": "optionCount",
+              "params": [],
+              "returnType": "Float"
+            },
+            {
+              "type": "literal",
+              "value": 4
+            },
+            {
+              "type": "literal",
+              "value": 3
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Choice4",
+          "className": "Node",
+          "name": "show",
+          "params": []
+        },
+        {
+          "scope": "Choice4",
+          "className": "Label",
+          "name": "setText",
+          "params": [
+            {
+              "type": "value",
+              "scope": "dialogue",
+              "className": "Dialogue",
+              "name": "optionText",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": 3
+                }
+              ],
+              "returnType": "String"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "Choice4",
+          "className": "Button",
+          "name": "onPressed",
+          "params": []
+        }
+      ],
+      "actions": [
+        {
+          "scope": "dialogue",
+          "className": "Dialogue",
+          "name": "choose",
+          "params": [
+            {
+              "type": "literal",
+              "value": 3
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "dialogue",
+          "className": "Dialogue",
+          "name": "onOptions",
+          "params": []
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Choice1",
+          "className": "Control",
+          "name": "takeFocus",
+          "params": []
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "dialogue",
+          "className": "Dialogue",
+          "name": "onCommand",
+          "params": [
+            {
+              "type": "literal",
+              "value": "portrait",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Portrait",
+          "className": "Sprite",
+          "name": "playAnimation",
+          "params": [
+            {
+              "type": "value",
+              "scope": "dialogue",
+              "className": "Dialogue",
+              "name": "commandArg",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": 0
+                }
+              ],
+              "returnType": "String"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "dialogue",
+          "className": "Dialogue",
+          "name": "onCommand",
+          "params": [
+            {
+              "type": "literal",
+              "value": "give",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "system",
+          "className": "VisualScriptComponent",
+          "name": "addSheetVar",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Gold",
+              "valueKind": "string"
+            },
+            {
+              "type": "value",
+              "scope": "dialogue",
+              "className": "Dialogue",
+              "name": "commandArg",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": 0
+                }
+              ],
+              "returnType": "Float"
+            }
+          ]
+        },
+        {
+          "scope": "Purse",
+          "className": "Label",
+          "name": "setText",
+          "params": [
+            {
+              "type": "op",
+              "op": "+",
+              "left": {
+                "type": "literal",
+                "value": "Gold: ",
+                "valueKind": "string"
+              },
+              "right": {
+                "type": "value",
+                "scope": "system",
+                "className": "VisualScriptComponent",
+                "name": "sheetVar",
+                "params": [
+                  {
+                    "type": "literal",
+                    "value": "Gold",
+                    "valueKind": "string"
+                  }
+                ],
+                "returnType": "Float"
+              }
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "dialogue",
+          "className": "Dialogue",
+          "name": "onEnded",
+          "params": []
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Speaker",
+          "className": "Label",
+          "name": "setText",
+          "params": [
+            {
+              "type": "literal",
+              "value": "",
+              "valueKind": "string"
+            }
+          ]
+        },
+        {
+          "scope": "Speech",
+          "className": "Label",
+          "name": "setText",
+          "params": [
+            {
+              "type": "literal",
+              "value": "(The guard turns away. Press Continue to talk again.)",
+              "valueKind": "string"
+            }
+          ]
+        },
+        {
+          "scope": "Choice1",
+          "className": "Node",
+          "name": "hide",
+          "params": []
+        },
+        {
+          "scope": "Choice2",
+          "className": "Node",
+          "name": "hide",
+          "params": []
+        },
+        {
+          "scope": "Choice3",
+          "className": "Node",
+          "name": "hide",
+          "params": []
+        },
+        {
+          "scope": "Choice4",
+          "className": "Node",
+          "name": "hide",
+          "params": []
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isActionPressed",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Continue",
+              "valueKind": "string"
+            }
+          ]
+        },
+        {
+          "scope": "dialogue",
+          "className": "Dialogue",
+          "name": "isRunning",
+          "params": [],
+          "not": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "dialogue",
+          "className": "Dialogue",
+          "name": "start",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Guard",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    }
+  ]
+}

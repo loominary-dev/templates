@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 2,
+  "baseClass": "Button",
+  "defaults": {
+    "text": "",
+    "fontSize": 14,
+    "boxWidth": 600,
+    "boxHeight": 30,
+    "visible": false
+  },
+  "components": []
+}

@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 2,
+  "name": "Dialogue demo",
+  "entryScene": "scenes/Talk.scene.json",
+  "dialogue": {
+    "files": [
+      "guard.yarn"
+    ]
+  },
+  "input": {
+    "Continue": {
+      "bindings": [
+        {
+          "kind": "key",
+          "code": 13
+        },
+        {
+          "kind": "key",
+          "code": 32
+        },
+        {
+          "kind": "pad",
+          "code": 0
+        }
+      ]
+    }
+  },
+  "display": {
+    "width": 960,
+    "height": 540,
+    "windowWidth": 960,
+    "windowHeight": 540,
+    "presentMode": "fit",
+    "displayMode": "windowed",
+    "autoResize": true
+  },
+  "physics": {
+    "engine": "none"
+  }
+}

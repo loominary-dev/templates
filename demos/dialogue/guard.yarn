@@ -1,0 +1,54 @@
+title: Guard
+tags: gate
+---
+<<declare $gold = 0>>
+<<declare $angered = false>>
+<<if visited("Guard")>>
+Guard: You again. The gate is still shut.
+<<else>>
+Guard: Halt! Who goes there?
+<<endif>>
+-> A friend.
+    Guard: I know no friend of yours. State your business.
+    <<jump Business>>
+-> A foe! <<if not $angered>>
+    <<portrait cross>>
+    Guard: Then you shall not pass.
+    <<set $angered to true>>
+    <<jump Shut>>
+-> Someone with gold. <<if $gold >= 5>>
+    Guard: Gold opens every gate. Pass, friend.
+    <<set $gold -= 5>>
+    <<give -5>>
+    <<jump Open>>
+-> Never mind.
+    Guard: Then be off with you.
+===
+
+title: Business
+---
+Guard: And what would that be?
+-> Delivering a letter.
+    Guard: A letter? Hand it over, then.
+    <<portrait calm>>
+    Guard: Hm. It says to give the bearer five gold. Here.
+    <<set $gold += 5>>
+    <<give 5>>
+    Guard: Now, about that gate…
+    <<jump Guard>>
+-> Sightseeing.
+    Guard: There is nothing to see. Go home.
+===
+
+title: Shut
+---
+The gate stays shut.
+<<portrait calm>>
+Guard: Come back when you have manners. Or gold.
+===
+
+title: Open
+---
+The gate swings open.
+Guard: Mind the step.
+===

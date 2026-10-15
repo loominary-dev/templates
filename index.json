@@ -65,6 +65,13 @@
       "description": "A title screen, an options screen with a volume slider and a rebind table, and a small game with a pause menu: every screen built from the engine's own UI objects under a screen-fixed layer, walked by Tab, the arrows or a pad, and driven by rules.",
       "path": "demos/menus",
       "minEditor": "1.0.49"
+    },
+    {
+      "id": "dialogue",
+      "name": "Dialogue demo",
+      "description": "A conversation with a gate guard written in a Yarn file and shown by rules in a box of the engine's own UI objects: a portrait, the speaker, the line and a button per choice; commands change the portrait and hand over gold, and the guard remembers whether you have talked before.",
+      "path": "demos/dialogue",
+      "minEditor": "1.0.53"
     }
   ]
 }

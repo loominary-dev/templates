@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 2,
+  "baseClass": "Label",
+  "defaults": {
+    "text": "",
+    "fontSize": 15,
+    "boxWidth": 600,
+    "boxHeight": 70,
+    "wrapMode": "Word"
+  },
+  "components": []
+}
