@@ -637,7 +637,7 @@
           "params": [
             {
               "type": "literal",
-              "value": "Car",
+              "value": "Buggy",
               "valueKind": "string"
             },
             {
@@ -663,7 +663,7 @@
           "params": [
             {
               "type": "literal",
-              "value": "Car1",
+              "value": "Buggy1",
               "valueKind": "string"
             }
           ],

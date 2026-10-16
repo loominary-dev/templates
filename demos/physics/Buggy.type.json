@@ -6,7 +6,7 @@
       "layer": 2,
       "mask": 3
     },
-    "spriteKey": "Car.sprite.json"
+    "spriteKey": "Buggy.sprite.json"
   },
   "components": [
     {

@@ -48,7 +48,7 @@ d.sprite("WreckingBall", 44, 44, [("still", [disc(44, (70, 70, 80, 255), (30, 30
 d.sprite("Chain", 4, 320, [("still", [panel(4, 320, (90, 90, 100, 255), (60, 60, 66, 255), 1)], 400, "loop")], [])
 car = panel(100, 28, (60, 120, 220, 255), (24, 52, 110, 255), 6)
 ImageDraw.Draw(car).rectangle([58, 4, 86, 14], fill=(190, 225, 255, 255))
-d.sprite("Car", 100, 28, [("still", [car], 400, "loop")], [box("body", 50, 14, 100, 28)])
+d.sprite("Buggy", 100, 28, [("still", [car], 400, "loop")], [box("body", 50, 14, 100, 28)])
 d.sprite("Wheel", 28, 28, [("still", [disc(28, (40, 40, 44, 255), (12, 12, 14, 255), 5, (180, 180, 190, 255))], 400, "loop")],
          [circle("tyre", 14, 14, 14, friction=0.95)])
 d.sprite("Board", 220, 12, [("still", [panel(220, 12, WOOD, WOOD_LINE, 3)], 400, "loop")], [box("body", 110, 6, 220, 12)])
@@ -84,7 +84,7 @@ d.type_json("Plank", "Sprite", dict(moving(), spriteKey="Plank.sprite.json"), [b
 d.type_json("Board", "Sprite", dict(moving(), spriteKey="Board.sprite.json"), [body(), {"componentClass": "BoardRules"}])
 d.type_json("WreckingBall", "Sprite", dict(moving(), spriteKey="WreckingBall.sprite.json"), [body(), {"componentClass": "WreckingRules"}, {"componentClass": "DragRules"}])
 d.type_json("Chain", "Sprite", {"spriteKey": "Chain.sprite.json", "collisionEnabled": False})
-d.type_json("Car", "Sprite", dict(moving(), spriteKey="Car.sprite.json"), [body(), {"componentClass": "DragRules"}])
+d.type_json("Buggy", "Sprite", dict(moving(), spriteKey="Buggy.sprite.json"), [body(), {"componentClass": "DragRules"}])
 d.type_json("Wheel", "Sprite", dict(moving(), spriteKey="Wheel.sprite.json"), [body(friction=0.95), {"componentClass": "WheelRules"}])
 d.type_json("Pool", "Sprite", {"spriteKey": "Pool.sprite.json", "collision": {"layer": WATER, "mask": BODY}},
             [{"componentClass": "FluidZone", "density": 2, "drag": 2.5, "angularDrag": 2}])
@@ -109,7 +109,7 @@ place("PostL", "Post", -150, BRIDGE_Y); place("PostR", "Post", 150, BRIDGE_Y)
 for i in range(10): place("Plank%d" % (i + 1), "Plank", -140 + 14 + 28 * i, BRIDGE_Y)
 for i, x in enumerate([-60, 0, 60]): place("Crate%d" % (i + 1), "Crate", x, -160 - i * 40)
 # The car, on the ground at the left; its wheels make their own joints.
-place("Car1", "Car", -405, 196)
+place("Buggy1", "Buggy", -405, 196)
 place("Wheel1", "Wheel", -438, 214); place("Wheel2", "Wheel", -372, 214)
 for i, (x, y) in enumerate([(-305, 214), (-271, 214), (-288, 182)]): place("Crate%d" % (i + 4), "Crate", x, y)
 # The see-saw, a crate on one end.
@@ -144,7 +144,7 @@ d.write("vscript/DragRules.vscript.json", {"rules": drag_rules})
 
 # A joint is made once both bodies are there: "has no joint" asks again each step until it is.
 wheel_rules = [
-    rule([not_(has_joint("self", "axle"))], [body_("self", "wheelOf", s("Car1"), lit(-90), s(""), s("axle")),
+    rule([not_(has_joint("self", "axle"))], [body_("self", "wheelOf", s("Buggy1"), lit(-90), s(""), s("axle")),
                                              body_("self", "setJointSpring", s("axle"), lit(4), lit(0.7))]),
     rule([held("Right")], [body_("self", "setJointMotor", s("axle"), lit(1080), lit(9000))]),
     rule([held("Left")], [body_("self", "setJointMotor", s("axle"), lit(-1080), lit(9000))]),
@@ -171,8 +171,8 @@ level_rules = [
 ] + [
     rule([line("Plank", "Node", "nameIs", s("Plank10")), not_(has_joint("Plank", "end"))], [body_("Plank", "hingeTo", s("PostR"), s("right"), s("end"))]),
     # The car's crane: G attaches the crates near the car to it, H lets them go.
-    rule([pressed("Grab"), line("Crate", "Node", "isWithinDistanceOf", s("Car"), lit(70)), not_(body_("Crate", "isAttached"))],
-         [body_("Crate", "attachTo", s("Car1")), line("audio", "Audio", "playSound", s("grab"))]),
+    rule([pressed("Grab"), line("Crate", "Node", "isWithinDistanceOf", s("Buggy"), lit(70)), not_(body_("Crate", "isAttached"))],
+         [body_("Crate", "attachTo", s("Buggy1")), line("audio", "Audio", "playSound", s("grab"))]),
     rule([pressed("Drop"), body_("Crate", "isAttached")], [body_("Crate", "detach"), line("audio", "Audio", "playSound", s("drop"))]),
     # The fan: F starts and stops it.
     rule([pressed("Fan"), compare(var("fan"), EQ, lit(0))],
