@@ -79,8 +79,9 @@ g.ellipse([4, 8, BW - 5, BH - 3], fill=(110, 200, 240, 255), outline=(30, 80, 12
 g.ellipse([36, 36, 50, 50], fill=(20, 30, 40, 255))
 g.ellipse([70, 36, 84, 50], fill=(20, 30, 40, 255))
 g.arc([44, 52, 76, 72], 20, 160, fill=(20, 30, 40, 255), width=3)
-d.sprite("Blob", BW, BH, [("still", [blob], 400, "loop")], [])
-d.type_json("Blob", "MeshSprite", {"spriteKey": "Blob.sprite.json"})
+d.sprite("Jelly", BW, BH, [("still", [blob], 400, "loop")], [])
+# Not "Blob": a project class is a global of the web build, and Blob is the browser's.
+d.type_json("Jelly", "MeshSprite", {"spriteKey": "Jelly.sprite.json"})
 
 # A Type for each skeleton a rule talks to; captions.
 for t in ["Critter", "Arm", "Snake", "Banner", "Breather"]:
@@ -201,9 +202,9 @@ def shape(fx, fy):
         vs += [round(x * fx, 2), round((y - BH / 2) * fy, 2)]
     return vs
 breather = place("Breather1", "Breather", x=-330, y=-120, animation="breathe", animations={"breathe": {"duration": 1.6, "mode": "loop", "markers": [], "tracks": [
-    {"target": "Blob1", "property": "deform", "keys": [{"t": 0, "vs": shape(0, 0), "ease": "easeInOut"}, {"t": 0.8, "vs": shape(-0.1, 0.18), "ease": "easeInOut"}, {"t": 1.6, "vs": shape(0, 0)}]},
+    {"target": "Jelly1", "property": "deform", "keys": [{"t": 0, "vs": shape(0, 0), "ease": "easeInOut"}, {"t": 0.8, "vs": shape(-0.1, 0.18), "ease": "easeInOut"}, {"t": 1.6, "vs": shape(0, 0)}]},
 ]}})
-place("Blob1", "Blob", breather, mesh=blob_mesh)
+place("Jelly1", "Jelly", breather, mesh=blob_mesh)
 place("BlobCaption", "Caption", x=-410, y=-50, text="Deform keys: no bones, its points eased between shapes.", boxWidth=380)
 d.scene("scenes/Skeletons.scene.json", objects)
 

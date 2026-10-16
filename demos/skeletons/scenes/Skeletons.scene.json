@@ -1516,7 +1516,7 @@
           "markers": [],
           "tracks": [
             {
-              "target": "Blob1",
+              "target": "Jelly1",
               "property": "deform",
               "keys": [
                 {
@@ -1923,8 +1923,8 @@
     {
       "id": "a3000000-0000-4000-8000-000000003061",
       "parent": "a3000000-0000-4000-8000-000000003060",
-      "name": "Blob1",
-      "type": "Blob",
+      "name": "Jelly1",
+      "type": "Jelly",
       "mesh": {
         "vertices": [
           -60.0,

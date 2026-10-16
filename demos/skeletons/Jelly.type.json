@@ -2,7 +2,7 @@
   "schemaVersion": 2,
   "baseClass": "MeshSprite",
   "defaults": {
-    "spriteKey": "Blob.sprite.json"
+    "spriteKey": "Jelly.sprite.json"
   },
   "components": []
 }
