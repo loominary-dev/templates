@@ -72,6 +72,13 @@
       "description": "A conversation with a gate guard written in a Yarn file and shown by rules in a box of the engine's own UI objects: a portrait, the speaker, the line and a button per choice; commands change the portrait and hand over gold, and the guard remembers whether you have talked before.",
       "path": "demos/dialogue",
       "minEditor": "1.0.53"
+    },
+    {
+      "id": "skeletons",
+      "name": "Skeletons demo",
+      "description": "Bones and what moves them: a critter with an idle animation, a waving tail and jiggling ears (click for a fast wag), an arm reaching for the mouse with IK, a snake following it, a flag bent by three bones, and a blob breathing by deform keys.",
+      "path": "demos/skeletons",
+      "minEditor": "1.0.54"
     }
   ]
 }

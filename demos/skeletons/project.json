@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 2,
+  "name": "Skeletons demo",
+  "entryScene": "scenes/Skeletons.scene.json",
+  "display": {
+    "width": 960,
+    "height": 540,
+    "windowWidth": 960,
+    "windowHeight": 540,
+    "presentMode": "fit",
+    "displayMode": "windowed",
+    "autoResize": true
+  },
+  "physics": {
+    "engine": "none"
+  }
+}

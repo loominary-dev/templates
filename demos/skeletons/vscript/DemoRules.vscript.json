@@ -1,0 +1,278 @@
+{
+  "rules": [
+    {
+      "conditions": [
+        {
+          "scope": "system",
+          "className": "VisualScriptComponent",
+          "name": "triggerOnce",
+          "params": []
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Critter",
+          "className": "Skeleton",
+          "name": "playAnimation",
+          "params": [
+            {
+              "type": "literal",
+              "value": "idle",
+              "valueKind": "string"
+            }
+          ]
+        },
+        {
+          "scope": "Breather",
+          "className": "Skeleton",
+          "name": "playAnimation",
+          "params": [
+            {
+              "type": "literal",
+              "value": "breathe",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [],
+      "actions": [
+        {
+          "scope": "Arm",
+          "className": "Skeleton",
+          "name": "aimBone",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Fore",
+              "valueKind": "string"
+            },
+            {
+              "type": "op",
+              "op": "-",
+              "left": {
+                "type": "value",
+                "scope": "input",
+                "className": "Input",
+                "name": "getPointerX",
+                "params": [],
+                "returnType": "Float"
+              },
+              "right": {
+                "type": "literal",
+                "value": 480.0
+              }
+            },
+            {
+              "type": "op",
+              "op": "-",
+              "left": {
+                "type": "value",
+                "scope": "input",
+                "className": "Input",
+                "name": "getPointerY",
+                "params": [],
+                "returnType": "Float"
+              },
+              "right": {
+                "type": "literal",
+                "value": 270.0
+              }
+            },
+            {
+              "type": "literal",
+              "value": 2
+            }
+          ]
+        },
+        {
+          "scope": "Snake",
+          "className": "Skeleton",
+          "name": "followWith",
+          "params": [
+            {
+              "type": "literal",
+              "value": "S10",
+              "valueKind": "string"
+            },
+            {
+              "type": "op",
+              "op": "-",
+              "left": {
+                "type": "value",
+                "scope": "input",
+                "className": "Input",
+                "name": "getPointerX",
+                "params": [],
+                "returnType": "Float"
+              },
+              "right": {
+                "type": "literal",
+                "value": 480.0
+              }
+            },
+            {
+              "type": "op",
+              "op": "-",
+              "left": {
+                "type": "value",
+                "scope": "input",
+                "className": "Input",
+                "name": "getPointerY",
+                "params": [],
+                "returnType": "Float"
+              },
+              "right": {
+                "type": "literal",
+                "value": 270.0
+              }
+            },
+            {
+              "type": "literal",
+              "value": 10
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isMousePressed",
+          "params": [
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Critter",
+          "className": "Skeleton",
+          "name": "setMotorSpeed",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Tail1",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 3
+            }
+          ]
+        },
+        {
+          "scope": "Critter",
+          "className": "Skeleton",
+          "name": "setMotorDuration",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Tail1",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 2
+            }
+          ]
+        },
+        {
+          "scope": "Critter",
+          "className": "Skeleton",
+          "name": "setMotor",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Tail1",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "wave",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "Critter",
+          "className": "Skeleton",
+          "name": "onMotorFinished",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Tail1",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Critter",
+          "className": "Skeleton",
+          "name": "setMotorSpeed",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Tail1",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 0.8
+            }
+          ]
+        },
+        {
+          "scope": "Critter",
+          "className": "Skeleton",
+          "name": "setMotorDuration",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Tail1",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "scope": "Critter",
+          "className": "Skeleton",
+          "name": "setMotor",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Tail1",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "wave",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    }
+  ]
+}
