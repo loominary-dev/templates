@@ -183,8 +183,9 @@ def place(name, type_name, x, y, **extra):
     return o
 # The backdrop: a Layer following four tenths of the camera's sideways movement, holding the sky's tile map.
 objects.append({"id": uid(800), "parent": uid(1), "name": "Backdrop", "type": "Layer", "parallaxX": 0.4})
+# Tinted a deeper blue: the player's pale helmet is lost against the art's own pale sky.
 objects.append({"id": uid(2), "parent": uid(800), "name": "Sky", "type": "Tilemap", "tilesetKey": "assets/tiles/Sky.tileset.json",
-                "cellWidth": BACK, "cellHeight": BACK, "cells": back_cells})
+                "cellWidth": BACK, "cellHeight": BACK, "cells": back_cells, "tint": 0x9AB8D8})
 objects.append({"id": uid(3), "parent": uid(1), "name": "Ground", "type": "Tilemap", "tilesetKey": "assets/tiles/Ground.tileset.json",
                 "cellWidth": CELL, "cellHeight": CELL, "cells": cells})
 n[0] = 3
