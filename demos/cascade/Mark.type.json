@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 2,
+  "baseClass": "Sprite",
+  "defaults": {
+    "spriteKey": "Mark.sprite.json",
+    "collisionEnabled": false,
+    "opacity": 0.85
+  },
+  "components": []
+}

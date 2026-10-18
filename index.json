@@ -32,6 +32,13 @@
       "minEditor": "1.0.46"
     },
     {
+      "id": "cascade",
+      "name": "Cascade demo",
+      "description": "Water and shapes down a flight of ramps and conveyor belts on the Box2D solver and the Fluid behaviour: discs, squares, triangles and pentagons drop in with a random gravity scale, the belts carry them by their surface speed, a drain takes the water, and every contact point is drawn. Hold the left button with Space to make water, with D to take it away.",
+      "path": "demos/cascade",
+      "minEditor": "1.0.57"
+    },
+    {
       "id": "particles",
       "name": "Particles demo",
       "description": "Water, sand and sparks on the Fluid behaviour, and a scene for each of its kinds: a deep pool in passes, a pool that sleeps, elastic jelly, a spring net, walls made of particles, oil and water that repel, colour mixing, colour by speed, and objects turned into particles. Keys 1 to 0 change scene.",

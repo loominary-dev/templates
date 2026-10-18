@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 2,
+  "name": "Cascade demo",
+  "entryScene": "scenes/Cascade.scene.json",
+  "collisionLayers": {
+    "1": "Solid",
+    "2": "Body",
+    "3": "Drain"
+  },
+  "input": {
+    "Make": {
+      "bindings": [
+        {
+          "kind": "key",
+          "code": 32
+        }
+      ]
+    },
+    "Delete": {
+      "bindings": [
+        {
+          "kind": "key",
+          "code": 68
+        }
+      ]
+    },
+    "Contacts": {
+      "bindings": [
+        {
+          "kind": "key",
+          "code": 67
+        }
+      ]
+    }
+  },
+  "display": {
+    "width": 960,
+    "height": 540,
+    "windowWidth": 960,
+    "windowHeight": 540,
+    "presentMode": "fit",
+    "displayMode": "windowed",
+    "autoResize": true
+  },
+  "physics": {
+    "engine": "box2d",
+    "gravity": 980,
+    "interpolate": true
+  }
+}

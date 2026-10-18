@@ -1,0 +1,363 @@
+{
+  "vars": [
+    {
+      "name": "pick",
+      "type": "number",
+      "value": 0
+    }
+  ],
+  "rules": [
+    {
+      "conditions": [
+        {
+          "scope": "system",
+          "className": "VisualScriptComponent",
+          "name": "every",
+          "params": [
+            {
+              "type": "literal",
+              "value": 0.45
+            }
+          ]
+        },
+        {
+          "scope": "maths",
+          "className": "Maths",
+          "name": "compare",
+          "params": [
+            {
+              "type": "op",
+              "op": "+",
+              "left": {
+                "type": "op",
+                "op": "+",
+                "left": {
+                  "type": "op",
+                  "op": "+",
+                  "left": {
+                    "type": "value",
+                    "scope": "Disc",
+                    "className": "Node",
+                    "name": "count",
+                    "params": [],
+                    "returnType": "Float"
+                  },
+                  "right": {
+                    "type": "value",
+                    "scope": "Square",
+                    "className": "Node",
+                    "name": "count",
+                    "params": [],
+                    "returnType": "Float"
+                  }
+                },
+                "right": {
+                  "type": "value",
+                  "scope": "Triangle",
+                  "className": "Node",
+                  "name": "count",
+                  "params": [],
+                  "returnType": "Float"
+                }
+              },
+              "right": {
+                "type": "value",
+                "scope": "Pentagon",
+                "className": "Node",
+                "name": "count",
+                "params": [],
+                "returnType": "Float"
+              }
+            },
+            {
+              "type": "literal",
+              "value": 2
+            },
+            {
+              "type": "literal",
+              "value": 90
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "self",
+          "className": "Node",
+          "name": "setPosition",
+          "params": [
+            {
+              "type": "value",
+              "scope": "maths",
+              "className": "Maths",
+              "name": "random",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": -430
+                },
+                {
+                  "type": "literal",
+                  "value": -120
+                }
+              ],
+              "returnType": "Float"
+            },
+            {
+              "type": "literal",
+              "value": -250
+            }
+          ]
+        },
+        {
+          "scope": "system",
+          "className": "VisualScriptComponent",
+          "name": "setSheetVar",
+          "params": [
+            {
+              "type": "literal",
+              "value": "pick",
+              "valueKind": "string"
+            },
+            {
+              "type": "value",
+              "scope": "maths",
+              "className": "Maths",
+              "name": "floor",
+              "params": [
+                {
+                  "type": "value",
+                  "scope": "maths",
+                  "className": "Maths",
+                  "name": "random",
+                  "params": [
+                    {
+                      "type": "literal",
+                      "value": 0
+                    },
+                    {
+                      "type": "literal",
+                      "value": 4
+                    }
+                  ],
+                  "returnType": "Float"
+                }
+              ],
+              "returnType": "Float"
+            }
+          ]
+        }
+      ],
+      "subRules": [
+        {
+          "conditions": [
+            {
+              "scope": "maths",
+              "className": "Maths",
+              "name": "compare",
+              "params": [
+                {
+                  "type": "value",
+                  "scope": "system",
+                  "className": "VisualScriptComponent",
+                  "name": "sheetVar",
+                  "params": [
+                    {
+                      "type": "literal",
+                      "value": "pick",
+                      "valueKind": "string"
+                    }
+                  ],
+                  "returnType": "Float"
+                },
+                {
+                  "type": "literal",
+                  "value": 0
+                },
+                {
+                  "type": "literal",
+                  "value": 0
+                }
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "scope": "objects",
+              "className": "VisualScriptComponent",
+              "name": "createObject",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "Disc",
+                  "valueKind": "string"
+                },
+                {
+                  "type": "literal",
+                  "value": 1
+                }
+              ]
+            }
+          ],
+          "subRules": []
+        },
+        {
+          "conditions": [
+            {
+              "scope": "maths",
+              "className": "Maths",
+              "name": "compare",
+              "params": [
+                {
+                  "type": "value",
+                  "scope": "system",
+                  "className": "VisualScriptComponent",
+                  "name": "sheetVar",
+                  "params": [
+                    {
+                      "type": "literal",
+                      "value": "pick",
+                      "valueKind": "string"
+                    }
+                  ],
+                  "returnType": "Float"
+                },
+                {
+                  "type": "literal",
+                  "value": 0
+                },
+                {
+                  "type": "literal",
+                  "value": 1
+                }
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "scope": "objects",
+              "className": "VisualScriptComponent",
+              "name": "createObject",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "Square",
+                  "valueKind": "string"
+                },
+                {
+                  "type": "literal",
+                  "value": 1
+                }
+              ]
+            }
+          ],
+          "subRules": []
+        },
+        {
+          "conditions": [
+            {
+              "scope": "maths",
+              "className": "Maths",
+              "name": "compare",
+              "params": [
+                {
+                  "type": "value",
+                  "scope": "system",
+                  "className": "VisualScriptComponent",
+                  "name": "sheetVar",
+                  "params": [
+                    {
+                      "type": "literal",
+                      "value": "pick",
+                      "valueKind": "string"
+                    }
+                  ],
+                  "returnType": "Float"
+                },
+                {
+                  "type": "literal",
+                  "value": 0
+                },
+                {
+                  "type": "literal",
+                  "value": 2
+                }
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "scope": "objects",
+              "className": "VisualScriptComponent",
+              "name": "createObject",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "Triangle",
+                  "valueKind": "string"
+                },
+                {
+                  "type": "literal",
+                  "value": 1
+                }
+              ]
+            }
+          ],
+          "subRules": []
+        },
+        {
+          "conditions": [
+            {
+              "scope": "maths",
+              "className": "Maths",
+              "name": "compare",
+              "params": [
+                {
+                  "type": "value",
+                  "scope": "system",
+                  "className": "VisualScriptComponent",
+                  "name": "sheetVar",
+                  "params": [
+                    {
+                      "type": "literal",
+                      "value": "pick",
+                      "valueKind": "string"
+                    }
+                  ],
+                  "returnType": "Float"
+                },
+                {
+                  "type": "literal",
+                  "value": 0
+                },
+                {
+                  "type": "literal",
+                  "value": 3
+                }
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "scope": "objects",
+              "className": "VisualScriptComponent",
+              "name": "createObject",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "Pentagon",
+                  "valueKind": "string"
+                },
+                {
+                  "type": "literal",
+                  "value": 1
+                }
+              ]
+            }
+          ],
+          "subRules": []
+        }
+      ]
+    }
+  ]
+}

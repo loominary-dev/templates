@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 2,
+  "baseClass": "Node",
+  "defaults": {},
+  "components": [
+    {
+      "componentClass": "LevelRules"
+    }
+  ]
+}
