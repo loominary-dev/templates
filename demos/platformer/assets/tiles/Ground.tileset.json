@@ -322,7 +322,21 @@
       "id": 47,
       "x": 126,
       "y": 36,
-      "collision": []
+      "collision": [
+        {
+          "kind": "box",
+          "cx": 9,
+          "cy": 3,
+          "w": 18,
+          "h": 6,
+          "oneWay": [
+            "jumpThrough",
+            "passLeft",
+            "passRight",
+            "dropThrough"
+          ]
+        }
+      ]
     },
     {
       "id": 48,
@@ -368,7 +382,21 @@
       "id": 50,
       "x": 180,
       "y": 36,
-      "collision": []
+      "collision": [
+        {
+          "kind": "box",
+          "cx": 9,
+          "cy": 3,
+          "w": 18,
+          "h": 6,
+          "oneWay": [
+            "jumpThrough",
+            "passLeft",
+            "passRight",
+            "dropThrough"
+          ]
+        }
+      ]
     },
     {
       "id": 51,

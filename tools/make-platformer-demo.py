@@ -147,9 +147,10 @@ for r in range(H):
                 t = [121, 122, 141, 142][(c * 7 + r * 13) % 4]
             cells.append([c, r, t])
         elif ch == "=":
-            # A plank: its left half, and its right half at the end of a run.
+            # A plank: its left end (48), middle (49) and right end (50) across a run, a lone one a block (47).
+            left = c == 0 or LEVEL[r][c - 1] != "="
             right = c + 1 >= W or LEVEL[r][c + 1] != "="
-            cells.append([c, r, 49 if right else 48])
+            cells.append([c, r, 47 if left and right else 48 if left else 50 if right else 49])
 
 # The tile set: every tile of the sheet, the ground ones solid, the plank one-way.
 tiles = []
@@ -158,7 +159,7 @@ for i in range(180):
     # A tile's collision is a flat list of shapes, as the tile set editor writes it.
     if i in (20, 21, 22, 23, 121, 122, 141, 142):
         t["collision"] = [{"kind": "box", "cx": 9, "cy": 9, "w": CELL, "h": CELL}]
-    if i in (48, 49):
+    if i in (47, 48, 49, 50):
         t["collision"] = [{"kind": "box", "cx": 9, "cy": 3, "w": CELL, "h": 6, "oneWay": ["jumpThrough", "passLeft", "passRight", "dropThrough"]}]
     tiles.append(t)
 write("assets/tiles/Ground.tileset.json", {"schemaVersion": 1, "image": "assets/art/" + TILES, "tileWidth": CELL, "tileHeight": CELL,
