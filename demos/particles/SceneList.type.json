@@ -3,7 +3,8 @@
   "baseClass": "Label",
   "defaults": {
     "text": "",
-    "fontSize": 13
+    "fontSize": 13,
+    "shadow": true
   },
   "components": []
 }

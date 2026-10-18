@@ -89,7 +89,7 @@ d.type_json("Breeze", "Sprite", {"spriteKey": "Breeze.sprite.json", "collision":
             [{"componentClass": "Field", "kind": "Wind", "strength": 0, "affects": "Particles"}])
 d.type_json("Level", "Node", {}, [{"componentClass": "LevelRules"}])
 for name, size in [("Help", 13), ("Caption", 13), ("Readout", 13)]:
-    d.type_json(name, "Label", {"text": "", "fontSize": size})
+    d.type_json(name, "Label", {"text": "", "fontSize": size, "shadow": True})
 for name in ["WaterCount", "SandCount", "StepTime"]:
     d.type_json(name, "Label", {"text": "0", "fontSize": 13})
 
@@ -236,9 +236,10 @@ splash = lambda t: rule([mouse_pressed(LEFT_BUTTON)], [fl(t, "pushInCircle", px,
 pour = lambda t, g: rule([mouse_pressed(RIGHT_BUTTON)], [fl(t, "makeInCircle", px, py, lit(22), s(g))])
 
 def deep(place):
-    tank(place, -200, 240, 180, 440, "A"); tank(place, 200, 240, 180, 440, "B")
+    # Their tops below the lines of help.
+    tank(place, -200, 240, 180, 400, "A"); tank(place, 200, 240, 180, 400, "B")
     place("PoolOnePass1", "PoolOnePass", -460, 250); place("PoolPasses1", "PoolPasses", -460, 250)
-    mould(place, "PoolA", -200, 10, 170, 420); mould(place, "PoolB", 200, 10, 170, 420)
+    mould(place, "PoolA", -200, 30, 170, 380); mould(place, "PoolB", 200, 30, 170, 380)
     place("LeftCaption", "Caption", -290, -150, text="One pass a step, ms:"); place("OneMs1", "OneMs", -150, -150)
     place("RightCaption", "Caption", 110, -150, text="Passes worked out, ms:"); place("PassesMs1", "PassesMs", 265, -150)
 fill_deep = [fl("PoolOnePass", "destroyAll"), fl("PoolPasses", "destroyAll"),
@@ -310,7 +311,7 @@ def walls(place):
     place("CupBase", "Mould", 0, 120, scaleX=11, scaleY=0.8)
     place("CupLeft", "Mould", -118, 50, rotation=-0.35, scaleX=0.8, scaleY=7.5)
     place("CupRight", "Mould", 118, 50, rotation=0.35, scaleX=0.8, scaleY=7.5)
-    place("CupTap1", "CupTap", -10, -200, rotation=math.pi / 2)
+    place("CupTap1", "CupTap", -10, -160, rotation=math.pi / 2)
 feature("WallsOfParticles", "Walls made of particles",
         ["The cup is particles laid in three hidden shapes and made a wall group: they stand where they are,", "and the water poured in rests on them."],
         "Space makes the cup plain water, and it gives way.   R builds it again.   Click to splash.",
@@ -357,7 +358,7 @@ def foam(place):
     tank(place, 0, 240, 640, 180, "")
     place("Foam1", "Foam", -460, 250)
     mould(place, "FoamPool", 0, 190, 630, 80)
-    place("FoamTap1", "FoamTap", -200, -200, rotation=math.pi / 2)
+    place("FoamTap1", "FoamTap", -200, -160, rotation=math.pi / 2)
     place("FoamPlug1", "FoamPlug", 220, 232)
 feature("ColourBySpeed", "Colour by speed",
         ["Deep blue water drawn toward white the faster each particle goes (Colour by speed):", "the falling stream and every splash foam, and the pool settles dark."],
@@ -410,7 +411,7 @@ feature("PictureIntoWater", "A picture into water",
 SCENES = [("Basin", "Basin")] + FEATURES
 d.type_json("Scenes", "SceneManager", {"transition": "Fade", "fadeTime": 0.15})
 d.type_json("Switcher", "Node", {}, [{"componentClass": "SwitchRules"}])
-d.type_json("SceneList", "Label", {"text": "", "fontSize": 13})
+d.type_json("SceneList", "Label", {"text": "", "fontSize": 13, "shadow": True})
 # 1 to 9 and 0, then P for the picture.
 keys_for = [str((i + 1) % 10) for i in range(min(10, len(SCENES)))] + ["P"] * (len(SCENES) > 10)
 named = ["%s %s" % (k, title) for k, (_, title) in zip(keys_for, SCENES)]
