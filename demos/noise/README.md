@@ -2,7 +2,7 @@
 
 A native library in a game. `plugins/libraries/perlin` holds
 [stb_perlin](https://github.com/nothings/stb), Sean Barrett's single-file C
-noise library, exactly as it comes: Weave's header importer reads its
+noise library, exactly as it comes: Loominary's header importer reads its
 functions, writes the glue and the Haxe class `Perlin`, and builds it on the
 first Run with your C++ compiler (Editor Settings ▸ Build toolchain).
 

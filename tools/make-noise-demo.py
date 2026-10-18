@@ -1,13 +1,13 @@
 """The Noise world demo: a native library in a game. stb_perlin, Sean Barrett's
 single-file C noise library (public domain or MIT), sits in
-plugins/libraries/perlin as Weave's header importer reads it; a Noise
+plugins/libraries/perlin as Loominary's header importer reads it; a Noise
 behaviour calls it and offers its numbers to rules; an island is grown from
 it on a tile map, clouds drift over it, and a boat wanders by it. N grows a
 new island, W turns the weather on and off.
 
-    python3 tools/make-noise-demo.py <stb_perlin.h> <Weave's CodegenCli> [demos/noise]
+    python3 tools/make-noise-demo.py <stb_perlin.h> <Loominary's CodegenCli> [demos/noise]
 
-The CodegenCli (engine/bin-codegen in Weave's repository) writes the glue and
+The CodegenCli (engine/bin-codegen in Loominary's repository) writes the glue and
 the Haxe class from the header, as Build does before it compiles, so the
 project opens with them in place; the library itself is built on the first
 Run, with the editor's C++ compiler (Editor Settings ▸ Build toolchain).
@@ -280,7 +280,7 @@ d.write("README.md", """# Noise world
 
 A native library in a game. `plugins/libraries/perlin` holds
 [stb_perlin](https://github.com/nothings/stb), Sean Barrett's single-file C
-noise library, exactly as it comes: Weave's header importer reads its
+noise library, exactly as it comes: Loominary's header importer reads its
 functions, writes the glue and the Haxe class `Perlin`, and builds it on the
 first Run with your C++ compiler (Editor Settings ▸ Build toolchain).
 
