@@ -631,6 +631,63 @@
     {
       "conditions": [
         {
+          "scope": "maths",
+          "className": "Maths",
+          "name": "compare",
+          "params": [
+            {
+              "type": "value",
+              "scope": "Player",
+              "className": "Node",
+              "name": "getPositionY",
+              "params": [],
+              "returnType": "Float"
+            },
+            {
+              "type": "literal",
+              "value": 4
+            },
+            {
+              "type": "literal",
+              "value": 220
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Player",
+          "className": "Node",
+          "name": "setPosition",
+          "params": [
+            {
+              "type": "literal",
+              "value": 81
+            },
+            {
+              "type": "literal",
+              "value": 96
+            }
+          ]
+        },
+        {
+          "scope": "audio",
+          "className": "Audio",
+          "name": "playSound",
+          "params": [
+            {
+              "type": "literal",
+              "value": "hurt",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
           "scope": "Player",
           "className": "Node",
           "name": "onCollisionStarted",

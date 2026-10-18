@@ -372,6 +372,51 @@
         }
       ],
       "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "maths",
+          "className": "Maths",
+          "name": "compare",
+          "params": [
+            {
+              "type": "value",
+              "scope": "Player",
+              "className": "Node",
+              "name": "getPositionY",
+              "params": [],
+              "returnType": "Float"
+            },
+            {
+              "type": "literal",
+              "value": 4
+            },
+            {
+              "type": "literal",
+              "value": 220
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Player",
+          "className": "Node",
+          "name": "setPosition",
+          "params": [
+            {
+              "type": "literal",
+              "value": 63
+            },
+            {
+              "type": "literal",
+              "value": 132
+            }
+          ]
+        }
+      ],
+      "subRules": []
     }
   ],
   "vars": []
