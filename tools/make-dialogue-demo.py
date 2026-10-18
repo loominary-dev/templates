@@ -135,15 +135,22 @@ def focus(t): return line(t, "Control", "takeFocus")
 hide_all = [hide(choice(k)) for k in range(4)]
 rules = [
     rule([once()], [dlg("start", s("Guard"))] + hide_all),
+    # Over: Continue starts it again, remembering. Before the rule that goes on,
+    # and marked fresh, so one press neither ends it and starts it again nor
+    # starts it and skips its first line.
+    rule([pressed("Continue"), not_(dlg("isRunning"))], [dlg("start", s("Guard")), set_sheet_var("Fresh", lit(1))]),
     # A line: who says it, and what. The choices go until options come.
     rule([dlg("onLine")], [line("Speaker", "Label", "setText", dval("lineSpeaker", returnType="String")), line("Speech", "Label", "setText", dval("lineText", returnType="String"))] + hide_all),
-    rule([pressed("Continue"), dlg("isRunning"), not_(dlg("isWaitingForChoice"))], [dlg("continueConversation")]),
+    rule([pressed("Continue"), dlg("isRunning"), not_(dlg("isWaitingForChoice")), compare(sheet_var("Fresh"), EQ, lit(0))], [dlg("continueConversation")]),
     # Options: a button per choice, the first focused.
     rule([dlg("onOptions")], [line("Speech", "Label", "setText", s(""))] + hide_all),
 ]
 for k in range(4):
     rules.append(rule([dlg("onOptions"), compare(dval("optionCount"), GT, lit(k))],
-        [show(choice(k)), line(choice(k), "Label", "setText", dval("optionText", lit(k), returnType="String"))]))
+        [show(choice(k)), line(choice(k), "Label", "setText", dval("optionText", lit(k), returnType="String"))],
+        # One the file's <<if>> shuts is shown greyed.
+        [rule([dlg("isOptionAvailable", lit(k))], [line(choice(k), "Button", "setDisabled", lit(False))]),
+         rule([not_(dlg("isOptionAvailable", lit(k)))], [line(choice(k), "Button", "setDisabled", lit(True))])]))
     rules.append(rule([line(choice(k), "Button", "onPressed")], [dlg("choose", lit(k))]))
 rules += [
     rule([dlg("onOptions")], [focus("Choice1")]),
@@ -153,9 +160,9 @@ rules += [
     rule([dlg("onCommand", s("give"))], [line("PurseValue", "Label", "setNumber", dval("number", s("gold")))]),
     # Over: the box says so, and Continue starts it again, remembering.
     rule([dlg("onEnded")], [line("Speaker", "Label", "setText", s("")), line("Speech", "Label", "setText", s("(The guard turns away. Press Continue to talk again.)"))] + hide_all),
-    rule([pressed("Continue"), not_(dlg("isRunning"))], [dlg("start", s("Guard"))]),
+    rule([], [set_sheet_var("Fresh", lit(0))]),
 ]
-d.write("vscript/TalkRules.vscript.json", {"rules": rules})
+d.write("vscript/TalkRules.vscript.json", {"vars": [{"name": "Fresh", "type": "number", "value": 0}], "rules": rules})
 
 def pad(code): return {"kind": "pad", "code": code}
 d.write("project.json", {"schemaVersion": 2, "name": "Dialogue demo", "entryScene": "scenes/Talk.scene.json",

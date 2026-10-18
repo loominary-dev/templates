@@ -71,7 +71,7 @@ def go(scene_file): return line("Scenes", "SceneManager", "changeScene", s("scen
 # A rule that reads another Type's values needs that Type in scope: the source condition that picks all of it.
 def pick_all(type_name): return {"scope": type_name, "name": "pickAll", "params": []}
 # The comparison is the index of its option: <, ≤, =, ≠, ≥, >.
-def compare(left, o, right): return line("maths", "Maths", "compare", left, lit(["<", "≤", "=", "≠", "≥", ">"].index(o)), right)
+def compare(left, o, right): return line("maths", "Maths", "compare", left, lit(["=", "≠", "<", "≤", ">", "≥"].index(o)), right)
 def pressed_btn(type_name): return line(type_name, "Button", "onPressed")
 def focus(type_name): return line(type_name, "Control", "takeFocus")
 WALK = "Tab, the arrows or a pad's D-pad move between the buttons; Enter, Space or the pad's bottom button press one."

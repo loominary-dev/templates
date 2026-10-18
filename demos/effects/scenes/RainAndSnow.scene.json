@@ -29,7 +29,7 @@
       "type": "Help",
       "x": -470,
       "y": -244,
-      "text": "Rain: a wide line of drops with Even randomness, each swept as a circle through the world's shapes; they bounce once off the roof and the ground, then go."
+      "text": "Rain: a wide line of drops with Even randomness, each swept as a circle through the world's shapes; they bounce once off the"
     },
     {
       "id": "e1000000-0000-4000-8000-000000002104",
@@ -38,27 +38,45 @@
       "type": "Help",
       "x": -470,
       "y": -226,
-      "text": "Snow: flakes with Normal randomness, turning as they fall, on a wind that gusts over five seconds and that each flake feels differently; they stick where they land."
+      "text": "roof and the ground, then go."
     },
     {
       "id": "e1000000-0000-4000-8000-000000002105",
       "parent": "e1000000-0000-4000-8000-000000002100",
-      "name": "Controls",
+      "name": "About3",
       "type": "Help",
       "x": -470,
       "y": -208,
-      "text": "hold R to stop the rain   hold S for snow instead"
+      "text": "Snow: flakes with Normal randomness, turning as they fall, on a wind that gusts over five seconds and that each flake feels"
     },
     {
       "id": "e1000000-0000-4000-8000-000000002106",
       "parent": "e1000000-0000-4000-8000-000000002100",
-      "name": "Floor1",
-      "type": "Floor",
-      "x": 0,
-      "y": 250
+      "name": "About4",
+      "type": "Help",
+      "x": -470,
+      "y": -190,
+      "text": "differently; they stick where they land."
     },
     {
       "id": "e1000000-0000-4000-8000-000000002107",
+      "parent": "e1000000-0000-4000-8000-000000002100",
+      "name": "Controls",
+      "type": "Help",
+      "x": -470,
+      "y": -172,
+      "text": "hold R to stop the rain   hold S for snow instead"
+    },
+    {
+      "id": "e1000000-0000-4000-8000-000000002108",
+      "parent": "e1000000-0000-4000-8000-000000002100",
+      "name": "Floor1",
+      "type": "Floor",
+      "x": 0,
+      "y": 215
+    },
+    {
+      "id": "e1000000-0000-4000-8000-000000002109",
       "parent": "e1000000-0000-4000-8000-000000002100",
       "name": "Roof1",
       "type": "Roof",
@@ -67,7 +85,7 @@
       "rotation": -0.25
     },
     {
-      "id": "e1000000-0000-4000-8000-000000002108",
+      "id": "e1000000-0000-4000-8000-000000002110",
       "parent": "e1000000-0000-4000-8000-000000002100",
       "name": "Rain1",
       "type": "Rain",
@@ -75,7 +93,7 @@
       "y": -300
     },
     {
-      "id": "e1000000-0000-4000-8000-000000002109",
+      "id": "e1000000-0000-4000-8000-000000002111",
       "parent": "e1000000-0000-4000-8000-000000002100",
       "name": "Snow1",
       "type": "Snow",

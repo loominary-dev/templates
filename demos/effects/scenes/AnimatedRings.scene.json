@@ -29,7 +29,7 @@
       "type": "Help",
       "x": -470,
       "y": -244,
-      "text": "Each particle plays the sprite's 'grow' animation: on the left its four frames are spread across the particle's life, so every ring grows once however long it lives;"
+      "text": "Each particle plays the sprite's 'grow' animation: on the left its four frames are spread across the particle's life, so"
     },
     {
       "id": "e1000000-0000-4000-8000-000000002404",
@@ -38,19 +38,28 @@
       "type": "Help",
       "x": -470,
       "y": -226,
-      "text": "on the right they run at the animation's own pace, born only on the edge of a box."
+      "text": "every ring grows once however long it lives;"
     },
     {
       "id": "e1000000-0000-4000-8000-000000002405",
       "parent": "e1000000-0000-4000-8000-000000002400",
-      "name": "Controls",
+      "name": "About3",
       "type": "Help",
       "x": -470,
       "y": -208,
-      "text": ""
+      "text": "on the right they run at the animation's own pace, born only on the edge of a box."
     },
     {
       "id": "e1000000-0000-4000-8000-000000002406",
+      "parent": "e1000000-0000-4000-8000-000000002400",
+      "name": "Controls",
+      "type": "Help",
+      "x": -470,
+      "y": -190,
+      "text": ""
+    },
+    {
+      "id": "e1000000-0000-4000-8000-000000002407",
       "parent": "e1000000-0000-4000-8000-000000002400",
       "name": "RingsOverLife1",
       "type": "RingsOverLife",
@@ -58,7 +67,7 @@
       "y": 60
     },
     {
-      "id": "e1000000-0000-4000-8000-000000002407",
+      "id": "e1000000-0000-4000-8000-000000002408",
       "parent": "e1000000-0000-4000-8000-000000002400",
       "name": "RingsOwnPace1",
       "type": "RingsOwnPace",
@@ -66,7 +75,7 @@
       "y": 60
     },
     {
-      "id": "e1000000-0000-4000-8000-000000002408",
+      "id": "e1000000-0000-4000-8000-000000002409",
       "parent": "e1000000-0000-4000-8000-000000002400",
       "name": "LeftCaption",
       "type": "Caption",
@@ -75,7 +84,7 @@
       "text": "The frames spread over each ring's life"
     },
     {
-      "id": "e1000000-0000-4000-8000-000000002409",
+      "id": "e1000000-0000-4000-8000-000000002410",
       "parent": "e1000000-0000-4000-8000-000000002400",
       "name": "RightCaption",
       "type": "Caption",

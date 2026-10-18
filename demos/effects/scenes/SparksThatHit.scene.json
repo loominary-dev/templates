@@ -29,7 +29,7 @@
       "type": "Help",
       "x": -470,
       "y": -244,
-      "text": "Sparks fly off a grinder, bounce twice with spin and then go. The rule 'On particle hit Crate' picks the crates the sparks land on, and tints them; a second later they are plain again."
+      "text": "Sparks fly off a grinder, bounce twice with spin and then go. The rule 'On particle hit Crate' picks the crates the sparks"
     },
     {
       "id": "e1000000-0000-4000-8000-000000002204",
@@ -38,27 +38,36 @@
       "type": "Help",
       "x": -470,
       "y": -226,
-      "text": "hitCount says how many hit something this step."
+      "text": "land on, and tints them; a second later they are plain again."
     },
     {
       "id": "e1000000-0000-4000-8000-000000002205",
       "parent": "e1000000-0000-4000-8000-000000002200",
-      "name": "Controls",
+      "name": "About3",
       "type": "Help",
       "x": -470,
       "y": -208,
-      "text": "click: move the grinder to where you point"
+      "text": "hitCount says how many hit something this step."
     },
     {
       "id": "e1000000-0000-4000-8000-000000002206",
       "parent": "e1000000-0000-4000-8000-000000002200",
-      "name": "Floor1",
-      "type": "Floor",
-      "x": 0,
-      "y": 250
+      "name": "Controls",
+      "type": "Help",
+      "x": -470,
+      "y": -190,
+      "text": "click: move the grinder to where you point"
     },
     {
       "id": "e1000000-0000-4000-8000-000000002207",
+      "parent": "e1000000-0000-4000-8000-000000002200",
+      "name": "Floor1",
+      "type": "Floor",
+      "x": 0,
+      "y": 215
+    },
+    {
+      "id": "e1000000-0000-4000-8000-000000002208",
       "parent": "e1000000-0000-4000-8000-000000002200",
       "name": "Grinder1",
       "type": "Grinder",
@@ -67,7 +76,7 @@
       "rotation": 0.5
     },
     {
-      "id": "e1000000-0000-4000-8000-000000002208",
+      "id": "e1000000-0000-4000-8000-000000002209",
       "parent": "e1000000-0000-4000-8000-000000002200",
       "name": "Sparks1",
       "type": "Sparks",
@@ -76,93 +85,93 @@
       "rotation": 0.5
     },
     {
-      "id": "e1000000-0000-4000-8000-000000002209",
+      "id": "e1000000-0000-4000-8000-000000002210",
       "parent": "e1000000-0000-4000-8000-000000002200",
       "name": "Crate1",
       "type": "Crate",
       "x": -120,
-      "y": 225
-    },
-    {
-      "id": "e1000000-0000-4000-8000-000000002210",
-      "parent": "e1000000-0000-4000-8000-000000002200",
-      "name": "Crate2",
-      "type": "Crate",
-      "x": -60,
-      "y": 225
+      "y": 190
     },
     {
       "id": "e1000000-0000-4000-8000-000000002211",
       "parent": "e1000000-0000-4000-8000-000000002200",
-      "name": "Crate3",
+      "name": "Crate2",
       "type": "Crate",
-      "x": 0,
-      "y": 225
+      "x": -60,
+      "y": 190
     },
     {
       "id": "e1000000-0000-4000-8000-000000002212",
       "parent": "e1000000-0000-4000-8000-000000002200",
-      "name": "Crate4",
+      "name": "Crate3",
       "type": "Crate",
-      "x": 60,
-      "y": 225
+      "x": 0,
+      "y": 190
     },
     {
       "id": "e1000000-0000-4000-8000-000000002213",
       "parent": "e1000000-0000-4000-8000-000000002200",
-      "name": "Crate5",
+      "name": "Crate4",
       "type": "Crate",
-      "x": -90,
-      "y": 195
+      "x": 60,
+      "y": 190
     },
     {
       "id": "e1000000-0000-4000-8000-000000002214",
       "parent": "e1000000-0000-4000-8000-000000002200",
-      "name": "Crate6",
+      "name": "Crate5",
       "type": "Crate",
-      "x": -30,
-      "y": 195
+      "x": -90,
+      "y": 160
     },
     {
       "id": "e1000000-0000-4000-8000-000000002215",
       "parent": "e1000000-0000-4000-8000-000000002200",
-      "name": "Crate7",
+      "name": "Crate6",
       "type": "Crate",
-      "x": 30,
-      "y": 195
+      "x": -30,
+      "y": 160
     },
     {
       "id": "e1000000-0000-4000-8000-000000002216",
       "parent": "e1000000-0000-4000-8000-000000002200",
-      "name": "Crate8",
+      "name": "Crate7",
       "type": "Crate",
-      "x": -60,
-      "y": 165
+      "x": 30,
+      "y": 160
     },
     {
       "id": "e1000000-0000-4000-8000-000000002217",
       "parent": "e1000000-0000-4000-8000-000000002200",
-      "name": "Crate9",
+      "name": "Crate8",
       "type": "Crate",
-      "x": 0,
-      "y": 165
+      "x": -60,
+      "y": 130
     },
     {
       "id": "e1000000-0000-4000-8000-000000002218",
       "parent": "e1000000-0000-4000-8000-000000002200",
-      "name": "HitsCaption",
-      "type": "Caption",
-      "x": 300,
-      "y": -200,
-      "text": "Sparks hitting a crate this step:"
+      "name": "Crate9",
+      "type": "Crate",
+      "x": 0,
+      "y": 130
     },
     {
       "id": "e1000000-0000-4000-8000-000000002219",
       "parent": "e1000000-0000-4000-8000-000000002200",
+      "name": "HitsCaption",
+      "type": "Caption",
+      "x": 160,
+      "y": -120,
+      "text": "Sparks hitting a crate this step:"
+    },
+    {
+      "id": "e1000000-0000-4000-8000-000000002220",
+      "parent": "e1000000-0000-4000-8000-000000002200",
       "name": "Hits1",
       "type": "Hits",
-      "x": 520,
-      "y": -200,
+      "x": 400,
+      "y": -120,
       "text": "0"
     }
   ]

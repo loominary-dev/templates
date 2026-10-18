@@ -29,7 +29,7 @@
       "type": "Help",
       "x": -470,
       "y": -244,
-      "text": "Fire: a line of flames with a four-stop colour gradient over the life, size falling and opacity easing out, turbulence, drag, and a second of warm up."
+      "text": "Fire: a line of flames with a four-stop colour gradient over the life, size falling and opacity easing out, turbulence, drag,"
     },
     {
       "id": "e1000000-0000-4000-8000-000000002004",
@@ -38,19 +38,37 @@
       "type": "Help",
       "x": -470,
       "y": -226,
-      "text": "Smoke: slow puffs that swell three times over, drifting on a wind that rises and falls over a six-second cycle, each puff feeling it its own way."
+      "text": "and a second of warm up."
     },
     {
       "id": "e1000000-0000-4000-8000-000000002005",
       "parent": "e1000000-0000-4000-8000-000000002000",
-      "name": "Controls",
+      "name": "About3",
       "type": "Help",
       "x": -470,
       "y": -208,
-      "text": "click: a burst of embers where you point (a Burst effect, with Even randomness on its speed)"
+      "text": "Smoke: slow puffs that swell three times over, drifting on a wind that rises and falls over a six-second cycle, each puff"
     },
     {
       "id": "e1000000-0000-4000-8000-000000002006",
+      "parent": "e1000000-0000-4000-8000-000000002000",
+      "name": "About4",
+      "type": "Help",
+      "x": -470,
+      "y": -190,
+      "text": "feeling it its own way."
+    },
+    {
+      "id": "e1000000-0000-4000-8000-000000002007",
+      "parent": "e1000000-0000-4000-8000-000000002000",
+      "name": "Controls",
+      "type": "Help",
+      "x": -470,
+      "y": -172,
+      "text": "click: a burst of embers where you point (a Burst effect, with Even randomness on its speed)"
+    },
+    {
+      "id": "e1000000-0000-4000-8000-000000002008",
       "parent": "e1000000-0000-4000-8000-000000002000",
       "name": "Log1",
       "type": "Log",
@@ -58,7 +76,7 @@
       "y": 180
     },
     {
-      "id": "e1000000-0000-4000-8000-000000002007",
+      "id": "e1000000-0000-4000-8000-000000002009",
       "parent": "e1000000-0000-4000-8000-000000002000",
       "name": "Fire1",
       "type": "Fire",
@@ -66,7 +84,7 @@
       "y": 172
     },
     {
-      "id": "e1000000-0000-4000-8000-000000002008",
+      "id": "e1000000-0000-4000-8000-000000002010",
       "parent": "e1000000-0000-4000-8000-000000002000",
       "name": "Smoke1",
       "type": "Smoke",
@@ -74,7 +92,7 @@
       "y": 150
     },
     {
-      "id": "e1000000-0000-4000-8000-000000002009",
+      "id": "e1000000-0000-4000-8000-000000002011",
       "parent": "e1000000-0000-4000-8000-000000002000",
       "name": "Embers1",
       "type": "Embers",
