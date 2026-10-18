@@ -285,14 +285,21 @@ slime_rules = [
 ]
 write("vscript/SlimeRules.vscript.json", {"rules": slime_rules, "vars": []})
 
+# The engine's own controls, with Jump on Up, W and the pad's bottom button as well as Space.
+def keys(*codes): return [{"kind": "key", "code": c} for c in codes]
+INPUT = {"Move Left": {"bindings": keys(37, 65)}, "Move Right": {"bindings": keys(39, 68)}, "Move Up": {"bindings": keys(38, 87)},
+         "Move Down": {"bindings": keys(40, 83)}, "Jump": {"bindings": keys(32, 38, 87) + [{"kind": "pad", "code": 0}]},
+         "Fire": {"bindings": [{"kind": "mouse", "code": 0}]}, "Accept": {"bindings": keys(13, 32)}, "Cancel": {"bindings": keys(27)},
+         "Pause": {"bindings": keys(27)}}
 write("project.json", {"schemaVersion": 2, "name": "Platformer demo", "entryScene": "scenes/Level.scene.json",
+    "input": INPUT,
     "collisionLayers": {"1": "Player", "2": "Pickup", "3": "Ground", "4": "Enemy", "5": "Hazard"},
     "display": {"width": 320, "height": 180, "windowWidth": 1280, "windowHeight": 720, "presentMode": "fit", "displayMode": "windowed", "autoResize": True, "wholeWindowScale": True},
     "physics": {"engine": "arcade", "gravity": 700}})
 write("README.md", """# Platformer demo
 
-A small complete platform game: run and jump with the arrow keys or WASD and
-Space, collect the coins, squash the slimes by landing on them, mind the
+A small complete platform game: run and jump with the arrow keys or WASD (Space jumps
+too), collect the coins, squash the slimes by landing on them, mind the
 spikes, and reach the flag. Your best coin count is saved.
 
 Built on the **Platformer** behaviour and a tilemap level. A **Camera** follows

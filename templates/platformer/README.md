@@ -1,7 +1,7 @@
 # Platformer
 
 The smallest working platform game, to start your own from. Run with the
-arrow keys or A and D, jump with Space, and press Down or S on a plank ledge
+arrow keys or A and D, jump with Space, Up or W, and press Down or S on a plank ledge
 to drop through it. Climb the planks to the top of the stone wall, then slide
 down its far side; jump while sliding to jump off it.
 
