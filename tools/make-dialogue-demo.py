@@ -149,8 +149,8 @@ for k in range(4):
     rules.append(rule([dlg("onOptions"), compare(dval("optionCount"), GT, lit(k))],
         [show(choice(k)), line(choice(k), "Label", "setText", dval("optionText", lit(k), returnType="String"))],
         # One the file's <<if>> shuts is shown greyed.
-        [rule([dlg("isOptionAvailable", lit(k))], [line(choice(k), "Button", "setDisabled", lit(False))]),
-         rule([not_(dlg("isOptionAvailable", lit(k)))], [line(choice(k), "Button", "setDisabled", lit(True))])]))
+        [rule([dlg("isOptionAvailable", lit(k))], [line(choice(k), "Button", "setDisabled", b(False))]),
+         rule([not_(dlg("isOptionAvailable", lit(k)))], [line(choice(k), "Button", "setDisabled", b(True))])]))
     rules.append(rule([line(choice(k), "Button", "onPressed")], [dlg("choose", lit(k))]))
 rules += [
     rule([dlg("onOptions")], [focus("Choice1")]),
