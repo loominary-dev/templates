@@ -272,6 +272,9 @@ player_rules = [
          [line("Player", "Node", "setPosition", lit(start[0]), lit(start[1])), line("audio", "Audio", "playSound", s("hurt"))]),
     rule([line("Player", "Node", "onCollisionStarted", s("Spikes"))],
          [line("Player", "Node", "setPosition", lit(start[0]), lit(start[1])), line("audio", "Audio", "playSound", s("hurt"))]),
+    # Fallen out of the level, past either edge or down the gap: back to the start as well.
+    rule([line("maths", "Maths", "compare", value("Player", "Node", "getPositionY"), lit(GT), lit(H * CELL + 40))],
+         [line("Player", "Node", "setPosition", lit(start[0]), lit(start[1])), line("audio", "Audio", "playSound", s("hurt"))]),
     # The flag: the sign shows, the player stops, and a better coin count than the saved best is kept.
     rule([line("Player", "Node", "onCollisionStarted", s("Flag"))],
          [line("WinSign", "Node", "show"), comp("Player", "Platformer", "setEnabled", b(False)), line("audio", "Audio", "playSound", s("win"))],

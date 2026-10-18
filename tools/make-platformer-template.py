@@ -203,7 +203,7 @@ def comp(scope, cls, name, *params, **k):
 def inp(command): return line("input", "Input", "isActionOn", s(command))
 def rule(conditions, actions, sub=()):
     return {"conditions": conditions, "actions": actions, "subRules": list(sub)}
-EQ = 0
+EQ, GT = 0, 4  # System's Compare orders its operators =, ≠, <, ≤, >, ≥
 facing = value("self", "Platformer", "getFacing", onComponent=True)
 
 player_rules = [
@@ -224,6 +224,9 @@ player_rules = [
     # Facing left draws the picture mirrored.
     rule([line("maths", "Maths", "compare", facing, lit(EQ), lit(-1))], [line("self", "Node", "setMirrored", b(True))]),
     rule([line("maths", "Maths", "compare", facing, lit(EQ), lit(1))], [line("self", "Node", "setMirrored", b(False))]),
+    # Fallen out of the level, past either edge: back to the start.
+    rule([line("maths", "Maths", "compare", value("Player", "Node", "getPositionY"), lit(GT), lit(H * CELL + 40))],
+         [line("Player", "Node", "setPosition", lit(start[0]), lit(start[1]))]),
 ]
 write("vscript/PlayerRules.vscript.json", {"rules": player_rules, "vars": []})
 
