@@ -9,6 +9,16 @@
       "name": "elapsed",
       "type": "number",
       "value": 0
+    },
+    {
+      "name": "lastX",
+      "type": "number",
+      "value": 0
+    },
+    {
+      "name": "lastY",
+      "type": "number",
+      "value": 0
     }
   ],
   "rules": [
@@ -140,6 +150,284 @@
             }
           ],
           "onComponent": true
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isMousePressed",
+          "params": [
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isActionOn",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Make",
+              "valueKind": "string"
+            }
+          ],
+          "not": true
+        },
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isActionOn",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Delete",
+              "valueKind": "string"
+            }
+          ],
+          "not": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "self",
+          "className": "Fluid",
+          "name": "pushInCircle",
+          "params": [
+            {
+              "type": "value",
+              "scope": "input",
+              "className": "Input",
+              "name": "worldPositionX",
+              "params": [],
+              "returnType": "Float"
+            },
+            {
+              "type": "value",
+              "scope": "input",
+              "className": "Input",
+              "name": "worldPositionY",
+              "params": [],
+              "returnType": "Float"
+            },
+            {
+              "type": "literal",
+              "value": 70
+            },
+            {
+              "type": "literal",
+              "value": 0
+            },
+            {
+              "type": "literal",
+              "value": -420
+            }
+          ],
+          "onComponent": true
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isMouseDown",
+          "params": [
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isMousePressed",
+          "params": [
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ],
+          "not": true
+        },
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isActionOn",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Make",
+              "valueKind": "string"
+            }
+          ],
+          "not": true
+        },
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isActionOn",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Delete",
+              "valueKind": "string"
+            }
+          ],
+          "not": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "self",
+          "className": "Fluid",
+          "name": "pushInCircle",
+          "params": [
+            {
+              "type": "value",
+              "scope": "input",
+              "className": "Input",
+              "name": "worldPositionX",
+              "params": [],
+              "returnType": "Float"
+            },
+            {
+              "type": "value",
+              "scope": "input",
+              "className": "Input",
+              "name": "worldPositionY",
+              "params": [],
+              "returnType": "Float"
+            },
+            {
+              "type": "literal",
+              "value": 45
+            },
+            {
+              "type": "op",
+              "op": "*",
+              "left": {
+                "type": "op",
+                "op": "-",
+                "left": {
+                  "type": "value",
+                  "scope": "input",
+                  "className": "Input",
+                  "name": "worldPositionX",
+                  "params": [],
+                  "returnType": "Float"
+                },
+                "right": {
+                  "type": "value",
+                  "scope": "system",
+                  "className": "VisualScriptComponent",
+                  "name": "sheetVar",
+                  "params": [
+                    {
+                      "type": "literal",
+                      "value": "lastX",
+                      "valueKind": "string"
+                    }
+                  ],
+                  "returnType": "Float"
+                }
+              },
+              "right": {
+                "type": "literal",
+                "value": 40
+              }
+            },
+            {
+              "type": "op",
+              "op": "*",
+              "left": {
+                "type": "op",
+                "op": "-",
+                "left": {
+                  "type": "value",
+                  "scope": "input",
+                  "className": "Input",
+                  "name": "worldPositionY",
+                  "params": [],
+                  "returnType": "Float"
+                },
+                "right": {
+                  "type": "value",
+                  "scope": "system",
+                  "className": "VisualScriptComponent",
+                  "name": "sheetVar",
+                  "params": [
+                    {
+                      "type": "literal",
+                      "value": "lastY",
+                      "valueKind": "string"
+                    }
+                  ],
+                  "returnType": "Float"
+                }
+              },
+              "right": {
+                "type": "literal",
+                "value": 40
+              }
+            }
+          ],
+          "onComponent": true
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [],
+      "actions": [
+        {
+          "scope": "system",
+          "className": "VisualScriptComponent",
+          "name": "setSheetVar",
+          "params": [
+            {
+              "type": "literal",
+              "value": "lastX",
+              "valueKind": "string"
+            },
+            {
+              "type": "value",
+              "scope": "input",
+              "className": "Input",
+              "name": "worldPositionX",
+              "params": [],
+              "returnType": "Float"
+            }
+          ]
+        },
+        {
+          "scope": "system",
+          "className": "VisualScriptComponent",
+          "name": "setSheetVar",
+          "params": [
+            {
+              "type": "literal",
+              "value": "lastY",
+              "valueKind": "string"
+            },
+            {
+              "type": "value",
+              "scope": "input",
+              "className": "Input",
+              "name": "worldPositionY",
+              "params": [],
+              "returnType": "Float"
+            }
+          ]
         }
       ],
       "subRules": []
