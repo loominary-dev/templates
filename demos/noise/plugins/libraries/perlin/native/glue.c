@@ -39,3 +39,18 @@ WEAVE_EXPORT void stb_perlin_noise3_wrap_nonpow2_w(void **a, void *r) {
 	*(float *)r = stb_perlin_noise3_wrap_nonpow2(*(float *)a[0], *(float *)a[1], *(float *)a[2], *(int *)a[3], *(int *)a[4], *(int *)a[5], *(int *)a[6]);
 }
 
+#ifdef WEAVE_LINKED
+#ifdef __cplusplus
+extern "C"
+#endif
+void weave_linked_register(const char *lib, const char *name, void (*fn)(void **, void *));
+static void weave_linked_perlin(void) __attribute__((constructor));
+static void weave_linked_perlin(void) {
+	weave_linked_register("perlin", "stb_perlin_noise3_w", stb_perlin_noise3_w);
+	weave_linked_register("perlin", "stb_perlin_noise3_seed_w", stb_perlin_noise3_seed_w);
+	weave_linked_register("perlin", "stb_perlin_ridge_noise3_w", stb_perlin_ridge_noise3_w);
+	weave_linked_register("perlin", "stb_perlin_fbm_noise3_w", stb_perlin_fbm_noise3_w);
+	weave_linked_register("perlin", "stb_perlin_turbulence_noise3_w", stb_perlin_turbulence_noise3_w);
+	weave_linked_register("perlin", "stb_perlin_noise3_wrap_nonpow2_w", stb_perlin_noise3_wrap_nonpow2_w);
+}
+#endif

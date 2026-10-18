@@ -7,7 +7,7 @@
 @:host(Tilemap)
 class IslandMaker extends Component {
 	public var columns:Int = 40;
-	public var rows:Int = 22;
+	public var rows:Int = 23;
 
 	override public function onReady():Void grow();
 
