@@ -148,6 +148,9 @@ game_rules = [
     rule([pick_all("Hero"), pressed("Jump"), running, compare(hy, "≥", lit(FLOOR))], [set_sheet_var("Vy", lit(-460))]),
     rule([pick_all("Hero"), running], [line("Hero", "Node", "setPositionY", op("+", hy, op("*", sheet_var("Vy"), dt()))), add_sheet_var("Vy", op("*", lit(980), dt()))]),
     rule([pick_all("Hero"), compare(hy, ">", lit(FLOOR))], [line("Hero", "Node", "setPositionY", lit(FLOOR)), set_sheet_var("Vy", lit(0))]),
+    # The floor's ends: it is 640 across, the block 24.
+    rule([pick_all("Hero"), compare(hx, "<", lit(-308))], [line("Hero", "Node", "setPositionX", lit(-308))]),
+    rule([pick_all("Hero"), compare(hx, ">", lit(308))], [line("Hero", "Node", "setPositionX", lit(308))]),
     # 2 is paused this step, so the rule that unpauses on the same press below lets it be; it becomes 1 at the end.
     rule([pressed("Pause"), running], [set_sheet_var("Paused", lit(2)), line("PauseMenu", "Node", "show"), focus("ResumeButton")]),
     rule([pressed_btn("ResumeButton")], [set_sheet_var("Paused", lit(0)), line("PauseMenu", "Node", "hide")]),

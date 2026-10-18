@@ -459,6 +459,98 @@
     {
       "conditions": [
         {
+          "scope": "Hero",
+          "name": "pickAll",
+          "params": []
+        },
+        {
+          "scope": "maths",
+          "className": "Maths",
+          "name": "compare",
+          "params": [
+            {
+              "type": "value",
+              "scope": "Hero",
+              "className": "Node",
+              "name": "getPositionX",
+              "params": [],
+              "returnType": "Float"
+            },
+            {
+              "type": "literal",
+              "value": 2
+            },
+            {
+              "type": "literal",
+              "value": -308
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Hero",
+          "className": "Node",
+          "name": "setPositionX",
+          "params": [
+            {
+              "type": "literal",
+              "value": -308
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "Hero",
+          "name": "pickAll",
+          "params": []
+        },
+        {
+          "scope": "maths",
+          "className": "Maths",
+          "name": "compare",
+          "params": [
+            {
+              "type": "value",
+              "scope": "Hero",
+              "className": "Node",
+              "name": "getPositionX",
+              "params": [],
+              "returnType": "Float"
+            },
+            {
+              "type": "literal",
+              "value": 4
+            },
+            {
+              "type": "literal",
+              "value": 308
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Hero",
+          "className": "Node",
+          "name": "setPositionX",
+          "params": [
+            {
+              "type": "literal",
+              "value": 308
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
           "scope": "input",
           "className": "Input",
           "name": "isActionPressed",
