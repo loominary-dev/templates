@@ -148,11 +148,13 @@ game_rules = [
     rule([pick_all("Hero"), pressed("Jump"), running, compare(hy, "≥", lit(FLOOR))], [set_sheet_var("Vy", lit(-460))]),
     rule([pick_all("Hero"), running], [line("Hero", "Node", "setPositionY", op("+", hy, op("*", sheet_var("Vy"), dt()))), add_sheet_var("Vy", op("*", lit(980), dt()))]),
     rule([pick_all("Hero"), compare(hy, ">", lit(FLOOR))], [line("Hero", "Node", "setPositionY", lit(FLOOR)), set_sheet_var("Vy", lit(0))]),
-    rule([pressed("Pause"), running], [set_sheet_var("Paused", lit(1)), line("PauseMenu", "Node", "show"), focus("ResumeButton")]),
+    # 2 is paused this step, so the rule that unpauses on the same press below lets it be; it becomes 1 at the end.
+    rule([pressed("Pause"), running], [set_sheet_var("Paused", lit(2)), line("PauseMenu", "Node", "show"), focus("ResumeButton")]),
     rule([pressed_btn("ResumeButton")], [set_sheet_var("Paused", lit(0)), line("PauseMenu", "Node", "hide")]),
     rule([pressed("Pause"), compare(sheet_var("Paused"), "=", lit(1))], [set_sheet_var("Paused", lit(0)), line("PauseMenu", "Node", "hide")]),
     rule([pressed_btn("PauseOptionsButton")], [go("Options")]),
     rule([pressed_btn("TitleButton")], [go("Title")]),
+    rule([compare(sheet_var("Paused"), "=", lit(2))], [set_sheet_var("Paused", lit(1))]),
 ]
 scene("Game", game, game_rules)
 d.write("vscript/GameRules.vscript.json", {"vars": [{"name": "Vy", "type": "number", "value": 0}, {"name": "Paused", "type": "number", "value": 0}], "rules": game_rules})
