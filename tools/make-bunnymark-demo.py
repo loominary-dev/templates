@@ -18,47 +18,54 @@ d = Demo(out, ["scenes/singletons", "vscript"], "b1000000")
 W, H = 800, 600
 L, T = -W // 2, -H // 2
 
-# ── the bunny, 26 × 37, white with pink ears, as pixi's ──
-C = {"o": (60, 50, 60, 255), "w": (250, 250, 250, 255), "s": (215, 215, 225, 255), "p": (240, 160, 180, 255), "e": (30, 30, 40, 255)}
-bunny = drawn([
-    "....oo..........oo........",
-    "...owwo........owwo.......",
-    "...owpwo......owpwo.......",
-    "...owpwo......owpwo.......",
-    "...owpwo......owpwo.......",
-    "...owpwo......owpwo.......",
-    "...owpwo......owpwo.......",
-    "....owpwo....owpwo........",
-    "....owpwo....owpwo........",
-    "....owwwo....owwwo........",
-    ".....owwwooooowwwo........",
-    "....owwwwwwwwwwwwwo.......",
-    "...owwwwwwwwwwwwwwwo......",
-    "..owwwwwwwwwwwwwwwwwo.....",
-    "..owwweewwwwwweewwwwo.....",
-    "..owwweewwwwwweewwwwo.....",
-    "..owwwwwwwwwwwwwwwwwo.....",
-    "..owwwwwwwppwwwwwwwwo.....",
-    "...owwwwwwwwwwwwwwwo......",
-    "....owwwwwwwwwwwwwo.......",
-    "...owwwwwwwwwwwwwwwo......",
-    "..owwwwwwwwwwwwwwwwwo.....",
-    ".owwwwwwwwwwwwwwwwwwwo....",
-    ".owwwwwwwwwwwwwwwwwwwo....",
-    "owwwwwwwwwwwwwwwwwwwwwo...",
-    "owwwwwwwwwwwwwwwwwwwwwo...",
-    "owwwwwwwwwwwwwwwwwwwwwwo..",
-    "owwwwwwwwwwwwwwwwwwwwwwo..",
-    "owwwwwwwwwwwwwwwwwwwwwwwo.",
-    "owwwwwwwwwwwwwwwwwwwwwwwwo",
-    "owwwwwwwwwwwwwwwwwwwwwwwwo",
-    ".owwwwwwwwwwwwwwwwwwwwwwo.",
-    ".owwwwwwwwwwwwwwwwwwwwwso.",
-    "..owwwwwwwwwwwwwwwwwwwso..",
-    "..owwsswwwwwwwwwwwsswwo...",
-    "...owwssoooooooooosswo....",
-    "....ooo.........oooo......"], C)
-d.sprite("Bunny", 26, 37, [("still", [bunny], 400, "loop")], [])
+# ── the bunny, 16 × 24, pixel art, white with pink ears as pixi's but smaller; four frames of a hop: ears out, a bob down, ears in ──
+C = {"o": (60, 50, 60, 255), "w": (250, 250, 250, 255), "s": (205, 205, 220, 255), "p": (240, 160, 180, 255), "e": (30, 30, 40, 255)}
+EARS = [
+    "...oo......oo...",
+    "..owwo....owwo..",
+    "..owpwo..owpwo..",
+    "..owpwo..owpwo..",
+    "..owpwo..owpwo..",
+    "..owpwo..owpwo..",
+    "...owwoooowwo..."]
+EARS_OUT = [
+    "..oo........oo..",
+    ".owwo......owwo.",
+    ".owpwo....owpwo.",
+    "..owpwo..owpwo..",
+    "..owpwo..owpwo..",
+    "..owpwo..owpwo..",
+    "...owwoooowwo..."]
+EARS_IN = [
+    "....oo....oo....",
+    "...owwo..owwo...",
+    "...owpwoowpwo...",
+    "..owpwo..owpwo..",
+    "..owpwo..owpwo..",
+    "..owpwo..owpwo..",
+    "...owwoooowwo..."]
+BODY = [
+    "..owwwwwwwwwwo..",
+    ".owwwwwwwwwwwwo.",
+    ".oweewwwwwweewo.",
+    ".oweewwwwwweewo.",
+    ".owwwwwwwwwwwwo.",
+    ".owwwwwppwwwwwo.",
+    "..owwwwwwwwwwo..",
+    "..owwwwwwwwwwo..",
+    ".owwwwwwwwwwwwo.",
+    "owwwwwwwwwwwwwwo",
+    "owwwwwwwwwwwwwwo",
+    "owwwwwwwwwwwwwwo",
+    "owwwwwwwwwwwwwwo",
+    "owwwwwwwwwwwwswo",
+    ".owwwwwwwwwwsso.",
+    ".owssswwwwwsssso",
+    "..oooo....oooo.."]
+# The bob: a row shorter in the middle, the gap left at the top so the feet stay put.
+BODY_DOWN = BODY[:10] + BODY[11:]
+frames = [drawn(EARS + BODY, C), drawn(EARS_OUT + BODY, C), drawn(["." * 16] + EARS + BODY_DOWN, C), drawn(EARS_IN + BODY, C)]
+d.sprite("Bunny", 16, 24, [("hop", frames, 130, "loop")], [])
 backing = canvas(150, 52)
 ImageDraw.Draw(backing).rounded_rectangle([0, 0, 149, 51], radius=6, fill=(20, 20, 30, 210))
 d.sprite("Backing", 150, 52, [("still", [backing], 400, "loop")], [])
