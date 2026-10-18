@@ -5,7 +5,8 @@ solver (Project Settings ▸ Physics) and the **Fluid** behaviour:
 
 - **The shapes**: discs, squares, triangles and pentagons, each a Sprite with
   a **Physics Body**. `vscript/SpawnRules` drops one of a random kind every
-  half second over the first ramp (**Every 0.45 seconds**, **Create**), and
+  0.6 seconds over the first ramp while there are fewer than thirty (**Every
+  0.6 seconds**, **Create**), and
   each gives itself a random **gravity scale** between 0.3 and 1.5 when it
   starts, so some fall like feathers and some like stones. A shape that has
   fallen out of the bottom destroys itself.
@@ -13,11 +14,12 @@ solver (Project Settings ▸ Physics) and the **Fluid** behaviour:
   rules: the first carries to the right, the second to the left, and the
   floor to the right, toward the gap. Their chevrons are an animation running
   the same way.
-- **The water** is a Fluid of up to three thousand particles poured by an
-  **Emitter** at the top left and taken away by the **Drain** in the gap.
-  Hold the left button with **Space** to make more where the pointer is
-  (**Make particles in a circle**), with **D** to take it away (**Destroy
-  particles in a circle**).
+- **The water** is a Fluid of up to 1,500 particles poured by an **Emitter**
+  at the top left and taken away by the **Drain** in the gap. **Click** to
+  splash it and **drag** to stir it (**Push particles in a circle**, with the
+  pointer's movement as the push). Hold the left button with **Space** to
+  make more where the pointer is (**Make particles in a circle**), with **D**
+  to take it away (**Destroy particles in a circle**).
 - **The contact points**: **Show contact points** draws a yellow cross
   wherever two bodies touch; **C** hides and shows them.
 - **Drag** any shape with the mouse (`vscript/DragRules`).

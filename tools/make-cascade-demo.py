@@ -115,10 +115,10 @@ for name in SHAPES:
     d.type_json(name, "Sprite", dict(moving(), spriteKey=name + ".sprite.json"),
                 [body(bounceX=0.2, bounceY=0.2), {"componentClass": "ShapeRules"}, {"componentClass": "DragRules"}])
 d.type_json("Water", "Sprite", {"spriteKey": "Drop.sprite.json", "collisionEnabled": False},
-            [{"componentClass": "Fluid", "kind": "Water", "radius": 5, "maxCount": 3000, "pictureScale": 2.0, "color": 0x4AA8FF,
+            [{"componentClass": "Fluid", "kind": "Water", "radius": 5, "maxCount": 1500, "pictureScale": 2.0, "color": 0x4AA8FF,
               "viscosity": 0.2, "layers": SOLID | BODY}, {"componentClass": "WaterRules"}])
 d.type_json("Tap", "Sprite", {"spriteKey": "Tap.sprite.json", "collisionEnabled": False},
-            [{"componentClass": "Emitter", "system": "Water1", "group": "tap", "on": True, "rate": 75, "speed": 120,
+            [{"componentClass": "Emitter", "system": "Water1", "group": "tap", "on": True, "rate": 50, "speed": 120,
               "speedVariation": 0.1, "spread": 5, "shape": "Line", "width": 16}])
 d.type_json("Sink", "Sprite", {"spriteKey": "Sink.sprite.json", "collision": {"layer": DRAIN, "mask": 0}},
             [{"componentClass": "Drain", "system": "Water1"}])
@@ -152,7 +152,7 @@ place("Tap1", "Tap", -400, -245, rotation=math.pi / 2)
 place("Water1", "Water", -455, -245)
 place("Mark1", "Mark", 435, -160)
 place("Help1", "Help", -470, -265,
-      text="Shapes fall onto the ramps and ride the belts.   Hold the left button with Space to make water, with D to take it away.   Drag the shapes.   C: contact points")
+      text="Click to splash, drag to stir.   With Space held the left button makes water, with D it takes water away.   Drag the shapes.   C: contact points")
 for i, (caption, name) in enumerate(READOUTS):
     place(name + "Caption", "Caption", 330, -248 + 18 * i, text=caption)
     place(name + "1", name, 400, -248 + 18 * i)
@@ -181,20 +181,26 @@ d.write("vscript/ShapeRules.vscript.json", {"rules": [
     rule([compare(value("self", "Node", "getPositionY"), GT, lit(330))], [line("self", "Node", "queueDestroy")]),
 ]})
 
-# A shape of a random kind every so often, at a random place over the first ramp, while there are fewer than ninety.
+# A shape of a random kind every so often, at a random place over the first ramp, while there are fewer than thirty.
 shape_count = value(list(SHAPES)[0], "Node", "count")
 for name in list(SHAPES)[1:]: shape_count = op("+", shape_count, value(name, "Node", "count"))
 pick = sheet_var("pick")
 d.write("vscript/SpawnRules.vscript.json", {"vars": [number_var("pick")], "rules": [
-    rule([every(0.45), compare(shape_count, LT, lit(90))],
+    rule([every(0.6), compare(shape_count, LT, lit(30))],
          [line("self", "Node", "setPosition", random(-430, -120), lit(-250)), set_sheet_var("pick", value("maths", "Maths", "floor", random(0, 4)))],
          [rule([compare(pick, EQ, lit(i))], [sheet("createObject", s(name), lit(1))]) for i, name in enumerate(SHAPES)]),
 ]})
 
 frames, elapsed = sheet_var("frames"), sheet_var("elapsed")
-d.write("vscript/WaterRules.vscript.json", {"vars": [number_var("frames"), number_var("elapsed")], "rules": [
+# A press splashes, a drag stirs: the water within reach is pushed the way the pointer moved since the last step.
+last_x, last_y = sheet_var("lastX"), sheet_var("lastY")
+stir_x, stir_y = op("*", op("-", px, last_x), lit(40)), op("*", op("-", py, last_y), lit(40))
+d.write("vscript/WaterRules.vscript.json", {"vars": [number_var(n) for n in ["frames", "elapsed", "lastX", "lastY"]], "rules": [
     rule([mouse_down(LEFT_BUTTON), held("Make"), every(0.05)], [fl("makeInCircle", px, py, lit(14), s("made"))]),
     rule([mouse_down(LEFT_BUTTON), held("Delete")], [fl("destroyInCircle", px, py, lit(45))]),
+    rule([mouse_pressed(LEFT_BUTTON), not_(held("Make")), not_(held("Delete"))], [fl("pushInCircle", px, py, lit(70), lit(0), lit(-420))]),
+    rule([mouse_down(LEFT_BUTTON), not_(mouse_pressed(LEFT_BUTTON)), not_(held("Make")), not_(held("Delete"))], [fl("pushInCircle", px, py, lit(45), stir_x, stir_y)]),
+    rule([], [set_sheet_var("lastX", px), set_sheet_var("lastY", py)]),
     # The readout: frames over the last half second, the fluid's step time to a tenth of a millisecond, the counts.
     rule([], [add_sheet_var("frames", lit(1)), add_sheet_var("elapsed", dt()),
               label("FluidMs", op("/", value("maths", "Maths", "round", op("*", fl("stepTime"), lit(10))), lit(10))),
@@ -223,7 +229,8 @@ solver (Project Settings ▸ Physics) and the **Fluid** behaviour:
 
 - **The shapes**: discs, squares, triangles and pentagons, each a Sprite with
   a **Physics Body**. `vscript/SpawnRules` drops one of a random kind every
-  half second over the first ramp (**Every 0.45 seconds**, **Create**), and
+  0.6 seconds over the first ramp while there are fewer than thirty (**Every
+  0.6 seconds**, **Create**), and
   each gives itself a random **gravity scale** between 0.3 and 1.5 when it
   starts, so some fall like feathers and some like stones. A shape that has
   fallen out of the bottom destroys itself.
@@ -231,11 +238,12 @@ solver (Project Settings ▸ Physics) and the **Fluid** behaviour:
   rules: the first carries to the right, the second to the left, and the
   floor to the right, toward the gap. Their chevrons are an animation running
   the same way.
-- **The water** is a Fluid of up to three thousand particles poured by an
-  **Emitter** at the top left and taken away by the **Drain** in the gap.
-  Hold the left button with **Space** to make more where the pointer is
-  (**Make particles in a circle**), with **D** to take it away (**Destroy
-  particles in a circle**).
+- **The water** is a Fluid of up to 1,500 particles poured by an **Emitter**
+  at the top left and taken away by the **Drain** in the gap. **Click** to
+  splash it and **drag** to stir it (**Push particles in a circle**, with the
+  pointer's movement as the push). Hold the left button with **Space** to
+  make more where the pointer is (**Make particles in a circle**), with **D**
+  to take it away (**Destroy particles in a circle**).
 - **The contact points**: **Show contact points** draws a yellow cross
   wherever two bodies touch; **C** hides and shows them.
 - **Drag** any shape with the mouse (`vscript/DragRules`).

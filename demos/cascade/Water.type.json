@@ -10,7 +10,7 @@
       "componentClass": "Fluid",
       "kind": "Water",
       "radius": 5,
-      "maxCount": 3000,
+      "maxCount": 1500,
       "pictureScale": 2.0,
       "color": 4892927,
       "viscosity": 0.2,
