@@ -1,7 +1,7 @@
 # Platformer demo
 
-A small complete platform game: run and jump with the arrow keys or WASD and
-Space, collect the coins, squash the slimes by landing on them, mind the
+A small complete platform game: run and jump with the arrow keys or WASD (Space jumps
+too), collect the coins, squash the slimes by landing on them, mind the
 spikes, and reach the flag. Your best coin count is saved.
 
 Built on the **Platformer** behaviour and a tilemap level. A **Camera** follows

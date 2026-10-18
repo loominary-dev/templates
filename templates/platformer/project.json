@@ -2,6 +2,112 @@
   "schemaVersion": 2,
   "name": "Platformer",
   "entryScene": "scenes/Level.scene.json",
+  "input": {
+    "Move Left": {
+      "bindings": [
+        {
+          "kind": "key",
+          "code": 37
+        },
+        {
+          "kind": "key",
+          "code": 65
+        }
+      ]
+    },
+    "Move Right": {
+      "bindings": [
+        {
+          "kind": "key",
+          "code": 39
+        },
+        {
+          "kind": "key",
+          "code": 68
+        }
+      ]
+    },
+    "Move Up": {
+      "bindings": [
+        {
+          "kind": "key",
+          "code": 38
+        },
+        {
+          "kind": "key",
+          "code": 87
+        }
+      ]
+    },
+    "Move Down": {
+      "bindings": [
+        {
+          "kind": "key",
+          "code": 40
+        },
+        {
+          "kind": "key",
+          "code": 83
+        }
+      ]
+    },
+    "Jump": {
+      "bindings": [
+        {
+          "kind": "key",
+          "code": 32
+        },
+        {
+          "kind": "key",
+          "code": 38
+        },
+        {
+          "kind": "key",
+          "code": 87
+        },
+        {
+          "kind": "pad",
+          "code": 0
+        }
+      ]
+    },
+    "Fire": {
+      "bindings": [
+        {
+          "kind": "mouse",
+          "code": 0
+        }
+      ]
+    },
+    "Accept": {
+      "bindings": [
+        {
+          "kind": "key",
+          "code": 13
+        },
+        {
+          "kind": "key",
+          "code": 32
+        }
+      ]
+    },
+    "Cancel": {
+      "bindings": [
+        {
+          "kind": "key",
+          "code": 27
+        }
+      ]
+    },
+    "Pause": {
+      "bindings": [
+        {
+          "kind": "key",
+          "code": 27
+        }
+      ]
+    }
+  },
   "collisionLayers": {
     "1": "Player",
     "3": "Ground"

@@ -227,14 +227,21 @@ player_rules = [
 ]
 write("vscript/PlayerRules.vscript.json", {"rules": player_rules, "vars": []})
 
+# The engine's own controls, with Jump on Up, W and the pad's bottom button as well as Space.
+def keys(*codes): return [{"kind": "key", "code": c} for c in codes]
+INPUT = {"Move Left": {"bindings": keys(37, 65)}, "Move Right": {"bindings": keys(39, 68)}, "Move Up": {"bindings": keys(38, 87)},
+         "Move Down": {"bindings": keys(40, 83)}, "Jump": {"bindings": keys(32, 38, 87) + [{"kind": "pad", "code": 0}]},
+         "Fire": {"bindings": [{"kind": "mouse", "code": 0}]}, "Accept": {"bindings": keys(13, 32)}, "Cancel": {"bindings": keys(27)},
+         "Pause": {"bindings": keys(27)}}
 write("project.json", {"schemaVersion": 2, "name": "Platformer", "entryScene": "scenes/Level.scene.json",
+    "input": INPUT,
     "collisionLayers": {"1": "Player", "3": "Ground"},
     "display": {"width": 320, "height": 180, "windowWidth": 1280, "windowHeight": 720, "presentMode": "fit", "displayMode": "windowed", "autoResize": True, "wholeWindowScale": True},
     "physics": {"engine": "arcade", "gravity": 700}})
 write("README.md", """# Platformer
 
 The smallest working platform game, to start your own from. Run with the
-arrow keys or A and D, jump with Space, and press Down or S on a plank ledge
+arrow keys or A and D, jump with Space, Up or W, and press Down or S on a plank ledge
 to drop through it. Climb the planks to the top of the stone wall, then slide
 down its far side; jump while sliding to jump off it.
 
