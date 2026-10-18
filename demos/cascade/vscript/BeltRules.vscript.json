@@ -1,0 +1,29 @@
+{
+  "rules": [
+    {
+      "conditions": [
+        {
+          "scope": "system",
+          "className": "VisualScriptComponent",
+          "name": "triggerOnce",
+          "params": []
+        }
+      ],
+      "actions": [
+        {
+          "scope": "self",
+          "className": "PhysicsBody",
+          "name": "setSurfaceSpeed",
+          "params": [
+            {
+              "type": "literal",
+              "value": 140
+            }
+          ],
+          "onComponent": true
+        }
+      ],
+      "subRules": []
+    }
+  ]
+}

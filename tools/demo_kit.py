@@ -72,6 +72,7 @@ class Demo:
 # ── shapes and points ──
 def box(name, cx, cy, w, h, **extra): return dict({"name": name, "kind": "box", "cx": cx, "cy": cy, "w": w, "h": h}, **extra)
 def circle(name, cx, cy, r, **extra): return dict({"name": name, "kind": "circle", "cx": cx, "cy": cy, "r": r}, **extra)
+def poly(name, points, **extra): return dict({"name": name, "kind": "poly", "points": [{"x": x, "y": y} for x, y in points]}, **extra)
 def point(name, x, y): return {"name": name, "x": x, "y": y}
 
 
@@ -111,7 +112,7 @@ def op(o, left, right): return {"type": "op", "op": o, "left": left, "right": ri
 def line(scope, cls, name, *params, **k): return dict({"scope": scope, "className": cls, "name": name, "params": list(params)}, **k)
 def comp(scope, cls, name, *params, **k): return line(scope, cls, name, *params, onComponent=True, **k)
 # The sheet's own words run on the sheet; the picker lists the ray words under Physics and the making, pooling and family words under Objects.
-PHYSICS_WORDS = ['lineIsClear', 'pickByRay', 'pickInBox', 'queryCount', 'rayHitDistance', 'rayHitX', 'rayHitY', 'rayNormalX', 'rayNormalY']
+PHYSICS_WORDS = ['lineIsClear', 'showContactPoints', 'pickByRay', 'pickInBox', 'queryCount', 'rayHitDistance', 'rayHitX', 'rayHitY', 'rayNormalX', 'rayNormalY']
 OBJECT_WORDS = ['createObject', 'createScene', 'destroyNewest', 'forgetAllPools', 'forgetPool', 'isSetAside', 'keepReady', 'keepSceneReady', 'letGo', 'letGoAll', 'objectTypeIsPreloaded', 'pickChild', 'pickClosestAbove', 'pickDescendant', 'pickParent', 'preloadObjectType', 'preloadScene', 'sceneIsPreloaded', 'scenePreloadLoaded', 'scenePreloadProgress', 'scenePreloadTotal', 'stepPreloadScene', 'unparkObject']
 def sheet(name, *params, **k): return line("physics" if name in PHYSICS_WORDS else "objects" if name in OBJECT_WORDS else "system", "VisualScriptComponent", name, *params, **k)
 def system(name, *params, **k): return line("system", "System", name, *params, **k)

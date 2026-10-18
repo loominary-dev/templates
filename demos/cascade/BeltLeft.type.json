@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 2,
+  "baseClass": "Sprite",
+  "defaults": {
+    "collision": {
+      "layer": 1,
+      "mask": -1
+    },
+    "spriteKey": "BeltLeft.sprite.json"
+  },
+  "components": [
+    {
+      "componentClass": "PhysicsBody",
+      "bodyType": "Static"
+    },
+    {
+      "componentClass": "BeltLeftRules"
+    }
+  ]
+}

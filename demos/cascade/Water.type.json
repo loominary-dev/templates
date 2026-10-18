@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 2,
+  "baseClass": "Sprite",
+  "defaults": {
+    "spriteKey": "Drop.sprite.json",
+    "collisionEnabled": false
+  },
+  "components": [
+    {
+      "componentClass": "Fluid",
+      "kind": "Water",
+      "radius": 5,
+      "maxCount": 3000,
+      "pictureScale": 2.0,
+      "color": 4892927,
+      "viscosity": 0.2,
+      "layers": 3
+    },
+    {
+      "componentClass": "WaterRules"
+    }
+  ]
+}
