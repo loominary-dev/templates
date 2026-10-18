@@ -122,7 +122,7 @@ EFFECTS = {
         "forces.gravityY": 300, "collision.on": True, "collision.radius": 3, "collision.onHit": "bounce", "collision.bounce": 0.2, "collision.friction": 0.3, "collision.bounces": 1}),
     # Snow: flakes drifting down, each feeling the wind its own way, turning slowly.
     "Snow": effect("Flake.sprite.json", **{"blend": "mix", "emission.rate": 60, "emission.shape": "line", "emission.width": 1000, "emission.direction": "angle", "emission.angle": 90, "emission.spread": 10,
-        "emission.lifetime": spread(12, 1.5), "emission.warmUp": 10, "emission.maxParticles": 1100, "start.speed": spread(60, 12), "start.spin": spread(20, 40), "start.size": spread(0.7, 0.3), "start.opacity": spread(0.9, 0.1),
+        "emission.lifetime": spread(12, 1.5), "emission.warmUp": 10, "emission.maxParticles": 1100, "start.speed": spread(95, 15), "start.spin": spread(20, 40), "start.size": spread(0.7, 0.3), "start.opacity": spread(0.9, 0.1),
         "life.opacity": custom(0, 1, 0.8, 1, 1, 0), "life.color": hold(),
         "forces.windX": 40, "forces.windOverTime": peak(1, 0), "forces.windCycle": 5, "forces.windSpread": 0.8, "forces.turbulence": 0.6, "forces.turbulenceStrength": 0.8,
         "collision.on": True, "collision.radius": 4, "collision.onHit": "stick", "collision.mask": 1}),

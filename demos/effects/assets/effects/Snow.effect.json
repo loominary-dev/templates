@@ -32,8 +32,8 @@
   },
   "start": {
     "speed": {
-      "value": 60,
-      "spread": 12
+      "value": 95,
+      "spread": 15
     },
     "spin": {
       "value": 20,
