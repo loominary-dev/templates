@@ -6,7 +6,7 @@
       "name": "Platformer",
       "description": "The smallest working platform game, on Kenney's Pixel Platformer art: a player that runs and jumps, ground to stand on, a ledge to drop through, a wall to slide down and jump off, and a camera that follows.",
       "path": "templates/platformer",
-      "minEditor": "1.0.46"
+      "minEditor": "1.0.56"
     }
   ],
   "demos": [
@@ -15,7 +15,7 @@
       "name": "Platformer demo",
       "description": "A small complete platform game on Kenney's Pixel Platformer art: coins, slimes to squash, spikes, a flag and a saved best.",
       "path": "demos/platformer",
-      "minEditor": "1.0.46"
+      "minEditor": "1.0.56"
     },
     {
       "id": "dungeon",
@@ -36,7 +36,7 @@
       "name": "Particles demo",
       "description": "Water, sand and sparks on the Fluid behaviour, and a scene for each of its kinds: a deep pool in passes, a pool that sleeps, elastic jelly, a spring net, walls made of particles, oil and water that repel, colour mixing, colour by speed, and objects turned into particles. Keys 1 to 0 change scene.",
       "path": "demos/particles",
-      "minEditor": "1.0.46"
+      "minEditor": "1.0.56"
     },
     {
       "id": "bunnymark",
@@ -57,21 +57,21 @@
       "name": "Particle effects demo",
       "description": "A scene for each thing a Particles object does: a campfire on colour gradients and curves, rain and snow that collide, sparks whose hits pick the crates they land on, magic carried with a wand or left behind, animated rings, a geyser on a rate curve and fireworks on a click. Keys 1 to 6 change scene.",
       "path": "demos/effects",
-      "minEditor": "1.0.48"
+      "minEditor": "1.0.56"
     },
     {
       "id": "menus",
       "name": "Menus demo",
       "description": "A title screen, an options screen with a volume slider and a rebind table, and a small game with a pause menu: every screen built from the engine's own UI objects under a screen-fixed layer, walked by Tab, the arrows or a pad, and driven by rules.",
       "path": "demos/menus",
-      "minEditor": "1.0.49"
+      "minEditor": "1.0.56"
     },
     {
       "id": "dialogue",
       "name": "Dialogue demo",
       "description": "A conversation with a gate guard written in a Yarn file and shown by rules in a box of the engine's own UI objects: a portrait, the speaker, the line and a button per choice; commands change the portrait and hand over gold, and the guard remembers whether you have talked before.",
       "path": "demos/dialogue",
-      "minEditor": "1.0.53"
+      "minEditor": "1.0.56"
     },
     {
       "id": "skeletons",
