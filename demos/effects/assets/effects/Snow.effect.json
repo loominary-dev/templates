@@ -20,20 +20,20 @@
     "direction": "angle",
     "angle": 90,
     "spread": 10,
-    "warmUp": 6,
+    "warmUp": 10,
     "lifetime": {
-      "value": 7,
+      "value": 12,
       "spread": 1.5
     },
-    "maxParticles": 800,
+    "maxParticles": 1100,
     "local": false,
     "offScreen": true,
     "under": false
   },
   "start": {
     "speed": {
-      "value": 55,
-      "spread": 15
+      "value": 60,
+      "spread": 12
     },
     "spin": {
       "value": 20,

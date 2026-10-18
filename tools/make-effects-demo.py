@@ -8,7 +8,7 @@ scene.
 
 Needs Pillow.
 """
-import math, os, sys
+import math, os, sys, textwrap
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from demo_kit import *
 
@@ -122,7 +122,7 @@ EFFECTS = {
         "forces.gravityY": 300, "collision.on": True, "collision.radius": 3, "collision.onHit": "bounce", "collision.bounce": 0.2, "collision.friction": 0.3, "collision.bounces": 1}),
     # Snow: flakes drifting down, each feeling the wind its own way, turning slowly.
     "Snow": effect("Flake.sprite.json", **{"blend": "mix", "emission.rate": 60, "emission.shape": "line", "emission.width": 1000, "emission.direction": "angle", "emission.angle": 90, "emission.spread": 10,
-        "emission.lifetime": spread(7, 1.5), "emission.warmUp": 6, "emission.maxParticles": 800, "start.speed": spread(55, 15), "start.spin": spread(20, 40), "start.size": spread(0.7, 0.3), "start.opacity": spread(0.9, 0.1),
+        "emission.lifetime": spread(12, 1.5), "emission.warmUp": 10, "emission.maxParticles": 1100, "start.speed": spread(60, 12), "start.spin": spread(20, 40), "start.size": spread(0.7, 0.3), "start.opacity": spread(0.9, 0.1),
         "life.opacity": custom(0, 1, 0.8, 1, 1, 0), "life.color": hold(),
         "forces.windX": 40, "forces.windOverTime": peak(1, 0), "forces.windCycle": 5, "forces.windSpread": 0.8, "forces.turbulence": 0.6, "forces.turbulenceStrength": 0.8,
         "collision.on": True, "collision.radius": 4, "collision.onHit": "stick", "collision.mask": 1}),
@@ -176,6 +176,8 @@ for name, size in [("Help", 13), ("Caption", 13), ("Hits", 13)]:
 px, py = value("input", "Input", "worldPositionX"), value("input", "Input", "worldPositionY")
 def pt(t, name, *params): return line(t, "Particles", name, *params)
 
+# The ground, clear of the scene list along the bottom.
+FLOOR_Y = 215
 SCENES = []
 def feature(file, title, about, controls, build, rules):
     """A scene: its own objects under one root, a Level whose sheet holds its rules, and lines saying what it shows."""
@@ -190,7 +192,8 @@ def feature(file, title, about, controls, build, rules):
     d.type_json(level, "Node", {}, [{"componentClass": sheet_name}])
     place(level + "1", level, 0, 0)
     place("Title", "Caption", -470, -262, text=title)
-    lines = about if isinstance(about, list) else [about]
+    # A line the screen cannot hold goes on to the next.
+    lines = [w for t in (about if isinstance(about, list) else [about]) for w in textwrap.wrap(t, 125)]
     for k, text in enumerate(lines): place("About%d" % (k + 1), "Help", -470, -244 + 18 * k, text=text)
     place("Controls", "Help", -470, -244 + 18 * len(lines), text=controls)
     build(place)
@@ -213,7 +216,7 @@ feature("Campfire", "A campfire", [
 
 # 2. Rain and snow: collision with the roof and the ground; Even against Normal randomness.
 def weather(place):
-    place("Floor1", "Floor", 0, 250)
+    place("Floor1", "Floor", 0, FLOOR_Y)
     place("Roof1", "Roof", 180, 60, rotation=-0.25)
     place("Rain1", "Rain", 0, -300)
     place("Snow1", "Snow", 0, -300, emitting=False)
@@ -229,13 +232,13 @@ feature("RainAndSnow", "Rain and snow", [
 
 # 3. Sparks that hit: On particle hit picks the crates the sparks land on.
 def sparks(place):
-    place("Floor1", "Floor", 0, 250)
+    place("Floor1", "Floor", 0, FLOOR_Y)
     place("Grinder1", "Grinder", -300, 40, rotation=0.5)
     place("Sparks1", "Sparks", -300, 40, rotation=0.5)
     for i, (x, y) in enumerate([(-120, 225), (-60, 225), (0, 225), (60, 225), (-90, 195), (-30, 195), (30, 195), (-60, 165), (0, 165)]):
-        place("Crate%d" % (i + 1), "Crate", x, y)
-    place("HitsCaption", "Caption", 300, -200, text="Sparks hitting a crate this step:")
-    place("Hits1", "Hits", 520, -200, text="0")
+        place("Crate%d" % (i + 1), "Crate", x, y - (250 - FLOOR_Y))
+    place("HitsCaption", "Caption", 160, -120, text="Sparks hitting a crate this step:")
+    place("Hits1", "Hits", 400, -120, text="0")
 feature("SparksThatHit", "Sparks that hit", [
     "Sparks fly off a grinder, bounce twice with spin and then go. The rule 'On particle hit Crate' picks the crates the sparks land on, and tints them; a second later they are plain again.",
     "hitCount says how many hit something this step.",
@@ -279,8 +282,8 @@ feature("AnimatedRings", "Animated particles", [
 
 # 6. A geyser on a rate curve, and fireworks on a click.
 def bursts(place):
-    place("Floor1", "Floor", 0, 250)
-    place("Geyser1", "Geyser", -250, 238)
+    place("Floor1", "Floor", 0, FLOOR_Y)
+    place("Geyser1", "Geyser", -250, FLOOR_Y - 12)
     place("Firework1", "Firework", 0, 0, emitting=False)
 feature("GeyserAndFireworks", "A geyser and fireworks", [
     "The geyser's rate follows a hand-drawn curve over a three-second cycle, round and round: a spurt, a sigh, nothing, again.",

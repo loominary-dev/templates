@@ -206,8 +206,8 @@ type_json("Light", {"_name": "FireLight", "spriteKey": "Glow.sprite.json", "tint
 type_json("Sprite", {"_name": "HeartIcon", "spriteKey": "Heart.sprite.json"})
 type_json("Sprite", {"_name": "KeyIcon", "spriteKey": "Key.sprite.json"})
 for counter in ["HealthCount", "KeyCount", "TimeLabel"]:
-    type_json("Label", {"_name": counter, "text": "0", "fontSize": 10})
-type_json("Label", {"_name": "WinSign", "text": "You found the treasure!", "fontSize": 14, "visible": False})
+    type_json("Label", {"_name": counter, "text": "0", "fontSize": 10, "shadow": True})
+type_json("Label", {"_name": "WinSign", "text": "You found the treasure!", "fontSize": 14, "shadow": True, "visible": False})
 # The Scene Manager: changes what Scenery holds, with a short fade.
 type_json("SceneManager", {"_name": "Rooms", "transition": "Fade", "fadeTime": 0.2})
 
@@ -245,11 +245,11 @@ ROOMS = {
                 "#...b.......b......#",
                 "#..................#",
                 "#........b.........#",
-                "D.........e........D",
+                "D..................D",
                 "#..................#",
                 "#..##..........##..#",
                 "#..##..........##..#",
-                "#..................#",
+                "#...........e......#",
                 "#########D##########"],
     "DarkRoom": ["####################",
                  "#..................#",
@@ -391,7 +391,9 @@ def line(scope, cls, name, *params, **k):
     return dict({"scope": scope, "className": cls, "name": name, "params": list(params)}, **k)
 def comp(scope, cls, name, *params, **k):
     return line(scope, cls, name, *params, onComponent=True, **k)
-def sheet(name, *params, **k): return line("system", "VisualScriptComponent", name, *params, **k)
+def sheet(name, *params, **k):
+    from demo_kit import OBJECT_WORDS, PHYSICS_WORDS
+    return line("physics" if name in PHYSICS_WORDS else "objects" if name in OBJECT_WORDS else "system", "VisualScriptComponent", name, *params, **k)
 def once(): return sheet("triggerOnce")
 def inp(command): return line("input", "Input", "isActionOn", s(command))
 def pressed(command): return line("input", "Input", "isActionPressed", s(command))

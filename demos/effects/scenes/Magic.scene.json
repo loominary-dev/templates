@@ -29,7 +29,7 @@
       "type": "Help",
       "x": -470,
       "y": -244,
-      "text": "Motes born on a ring, sent outward, pushed from the centre and swirled round it, their size peaking mid-life on a purple-to-cyan gradient."
+      "text": "Motes born on a ring, sent outward, pushed from the centre and swirled round it, their size peaking mid-life on a purple-to-"
     },
     {
       "id": "e1000000-0000-4000-8000-000000002304",
@@ -38,19 +38,28 @@
       "type": "Help",
       "x": -470,
       "y": -226,
-      "text": "Both wands orbit; the left one's motes move with it, the right one's stay where they were made."
+      "text": "cyan gradient."
     },
     {
       "id": "e1000000-0000-4000-8000-000000002305",
       "parent": "e1000000-0000-4000-8000-000000002300",
-      "name": "Controls",
+      "name": "About3",
       "type": "Help",
       "x": -470,
       "y": -208,
-      "text": ""
+      "text": "Both wands orbit; the left one's motes move with it, the right one's stay where they were made."
     },
     {
       "id": "e1000000-0000-4000-8000-000000002306",
+      "parent": "e1000000-0000-4000-8000-000000002300",
+      "name": "Controls",
+      "type": "Help",
+      "x": -470,
+      "y": -190,
+      "text": ""
+    },
+    {
+      "id": "e1000000-0000-4000-8000-000000002307",
       "parent": "e1000000-0000-4000-8000-000000002300",
       "name": "WandL1",
       "type": "WandL",
@@ -58,7 +67,7 @@
       "y": 0
     },
     {
-      "id": "e1000000-0000-4000-8000-000000002307",
+      "id": "e1000000-0000-4000-8000-000000002308",
       "parent": "e1000000-0000-4000-8000-000000002300",
       "name": "MagicLocal1",
       "type": "MagicLocal",
@@ -66,7 +75,7 @@
       "y": 0
     },
     {
-      "id": "e1000000-0000-4000-8000-000000002308",
+      "id": "e1000000-0000-4000-8000-000000002309",
       "parent": "e1000000-0000-4000-8000-000000002300",
       "name": "WandR1",
       "type": "WandR",
@@ -74,7 +83,7 @@
       "y": 0
     },
     {
-      "id": "e1000000-0000-4000-8000-000000002309",
+      "id": "e1000000-0000-4000-8000-000000002310",
       "parent": "e1000000-0000-4000-8000-000000002300",
       "name": "MagicWorld1",
       "type": "MagicWorld",
@@ -82,7 +91,7 @@
       "y": 0
     },
     {
-      "id": "e1000000-0000-4000-8000-000000002310",
+      "id": "e1000000-0000-4000-8000-000000002311",
       "parent": "e1000000-0000-4000-8000-000000002300",
       "name": "LeftCaption",
       "type": "Caption",
@@ -91,7 +100,7 @@
       "text": "Carried with the wand (Move with the emitter: yes)"
     },
     {
-      "id": "e1000000-0000-4000-8000-000000002311",
+      "id": "e1000000-0000-4000-8000-000000002312",
       "parent": "e1000000-0000-4000-8000-000000002300",
       "name": "RightCaption",
       "type": "Caption",
