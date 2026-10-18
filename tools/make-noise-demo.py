@@ -22,7 +22,8 @@ out = sys.argv[3] if len(sys.argv) > 3 else os.path.join(os.path.dirname(__file_
 d = Demo(out, ["scenes", "vscript", "assets/art", "assets/tiles", "plugins/behaviors", "plugins/objects", "plugins/libraries/perlin/native", "scripts"], "n1000000")
 W, H = 640, 360
 T = 16
-COLS, ROWS = W // T, H // T
+# Rounded up: a part row is still drawn, so the foot of the view is not left bare.
+COLS, ROWS = -(-W // T), -(-H // T)
 
 # ── the library: the header as it comes, its manifest, and the glue and class the importer writes ──
 shutil.copy(header, os.path.join(d.out, "plugins/libraries/perlin/native/stb_perlin.h"))
