@@ -50,7 +50,7 @@
       "name": "Noise world",
       "description": "A native C library in a game: stb_perlin's noise grows an island on a tile map, drifts clouds over it and steers a boat, through a behaviour that offers its numbers to rules. Built on the first Run with your C++ compiler.",
       "path": "demos/noise",
-      "minEditor": "1.0.46"
+      "minEditor": "1.0.57"
     },
     {
       "id": "effects",
