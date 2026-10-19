@@ -3,13 +3,13 @@
   "objects": [
     {
       "id": "f1000000-0000-4000-8000-000000002600",
-      "name": "ColourMixing"
+      "name": "ColorMixing"
     },
     {
       "id": "f1000000-0000-4000-8000-000000002601",
       "parent": "f1000000-0000-4000-8000-000000002600",
-      "name": "ColourMixingLevel1",
-      "type": "ColourMixingLevel",
+      "name": "ColorMixingLevel1",
+      "type": "ColorMixingLevel",
       "x": 0,
       "y": 0
     },
@@ -20,7 +20,7 @@
       "type": "Caption",
       "x": -470,
       "y": -262,
-      "text": "Colour mixing"
+      "text": "Color mixing"
     },
     {
       "id": "f1000000-0000-4000-8000-000000002603",
@@ -29,7 +29,7 @@
       "type": "Help",
       "x": -470,
       "y": -244,
-      "text": "Red and blue water with Colour mixing on: touching particles' colours drift toward each other's,"
+      "text": "Red and blue water with Color mixing on: touching particles' colors drift toward each other's,"
     },
     {
       "id": "f1000000-0000-4000-8000-000000002604",
@@ -88,7 +88,7 @@
       "id": "f1000000-0000-4000-8000-000000002610",
       "parent": "f1000000-0000-4000-8000-000000002600",
       "name": "RedSpot",
-      "type": "Mould",
+      "type": "Mold",
       "x": -120,
       "y": 150,
       "scaleX": 11.5,
@@ -98,7 +98,7 @@
       "id": "f1000000-0000-4000-8000-000000002611",
       "parent": "f1000000-0000-4000-8000-000000002600",
       "name": "BlueSpot",
-      "type": "Mould",
+      "type": "Mold",
       "x": 120,
       "y": 150,
       "scaleX": 11.5,

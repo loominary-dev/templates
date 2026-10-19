@@ -15,7 +15,7 @@ came through. Run any room on its own
 and the singleton comes with it.
 
 Built on the **Top-down Movement**, **Bullet**, **Follow**, **Patrol** and
-**Health** behaviours. Every rule is in `vscript/`.
+**Health** behaviors. Every rule is in `vscript/`.
 
 Art and sounds by [Kenney](https://kenney.nl) (Tiny Dungeon, Digital Audio,
 Impact Sounds), CC0; the key, heart, brazier and glow are drawn by the

@@ -50,7 +50,7 @@ car = panel(100, 28, (60, 120, 220, 255), (24, 52, 110, 255), 6)
 ImageDraw.Draw(car).rectangle([58, 4, 86, 14], fill=(190, 225, 255, 255))
 d.sprite("Buggy", 100, 28, [("still", [car], 400, "loop")], [box("body", 50, 14, 100, 28)])
 d.sprite("Wheel", 28, 28, [("still", [disc(28, (40, 40, 44, 255), (12, 12, 14, 255), 5, (180, 180, 190, 255))], 400, "loop")],
-         [circle("tyre", 14, 14, 14, friction=0.95)])
+         [circle("tire", 14, 14, 14, friction=0.95)])
 d.sprite("Board", 220, 12, [("still", [panel(220, 12, WOOD, WOOD_LINE, 3)], 400, "loop")], [box("body", 110, 6, 220, 12)])
 fulcrum = canvas(40, 30)
 ImageDraw.Draw(fulcrum).polygon([(20, 0), (39, 29), (0, 29)], fill=(120, 120, 132, 255), outline=(70, 70, 80, 255))
@@ -191,7 +191,7 @@ d.write("project.json", {"schemaVersion": 2, "name": "Physics demo", "entryScene
 d.write("README.md", """# Physics demo
 
 A playground for the **Box2D** solver (Project Settings ▸ Physics), every
-part of it a word of the **Physics Body** or a behaviour:
+part of it a word of the **Physics Body** or a behavior:
 
 - **The bridge**: ten planks, each hinged at its `left` point to the one
   before (**Hinge to**), the first to the left post and the last to the right

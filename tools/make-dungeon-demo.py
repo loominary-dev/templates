@@ -74,7 +74,7 @@ def box(name, cx, cy, w, h, **extra):
     return dict({"name": name, "kind": "box", "cx": cx, "cy": cy, "w": w, "h": h}, **extra)
 
 def drawn(rows, colours):
-    """A small picture from rows of characters, one colour per character, '.' clear."""
+    """A small picture from rows of characters, one color per character, '.' clear."""
     img = Image.new("RGBA", (len(rows[0]), len(rows)), (0, 0, 0, 0))
     for y, row in enumerate(rows):
         for x, ch in enumerate(row):
@@ -498,7 +498,7 @@ came through. Run any room on its own
 and the singleton comes with it.
 
 Built on the **Top-down Movement**, **Bullet**, **Follow**, **Patrol** and
-**Health** behaviours. Every rule is in `vscript/`.
+**Health** behaviors. Every rule is in `vscript/`.
 
 Art and sounds by [Kenney](https://kenney.nl) (Tiny Dungeon, Digital Audio,
 Impact Sounds), CC0; the key, heart, brazier and glow are drawn by the

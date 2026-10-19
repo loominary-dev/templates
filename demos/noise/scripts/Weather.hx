@@ -1,6 +1,6 @@
 /**
 	Clouds over the island: a grid of soft white dots, each as opaque as the
-	Noise behaviour says at its place and the moment, so the clouds drift and
+	Noise behavior says at its place and the moment, so the clouds drift and
 	change shape. Weather on and off fades them in and out.
 **/
 class Weather extends Component {

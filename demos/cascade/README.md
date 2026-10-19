@@ -1,7 +1,7 @@
 # Cascade demo
 
 Water and shapes down a flight of ramps and conveyor belts, on the **Box2D**
-solver (Project Settings ▸ Physics) and the **Fluid** behaviour:
+solver (Project Settings ▸ Physics) and the **Fluid** behavior:
 
 - **The shapes**: discs, squares, triangles and pentagons, each a Sprite with
   a **Physics Body**. `vscript/SpawnRules` drops one of a random kind every

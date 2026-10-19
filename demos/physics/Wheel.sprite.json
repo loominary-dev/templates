@@ -27,7 +27,7 @@
       "repeatCount": 0,
       "collision": [
         {
-          "name": "tyre",
+          "name": "tire",
           "kind": "circle",
           "cx": 14,
           "cy": 14,

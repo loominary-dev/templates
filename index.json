@@ -34,14 +34,14 @@
     {
       "id": "cascade",
       "name": "Cascade demo",
-      "description": "Water and shapes down a flight of ramps and conveyor belts on the Box2D solver and the Fluid behaviour: discs, squares, triangles and pentagons drop in with a random gravity scale, the belts carry them by their surface speed, a drain takes the water, and every contact point is drawn. Click to splash, drag to stir; with Space held the left button makes water, with D it takes water away.",
+      "description": "Water and shapes down a flight of ramps and conveyor belts on the Box2D solver and the Fluid behavior: discs, squares, triangles and pentagons drop in with a random gravity scale, the belts carry them by their surface speed, a drain takes the water, and every contact point is drawn. Click to splash, drag to stir; with Space held the left button makes water, with D it takes water away.",
       "path": "demos/cascade",
       "minEditor": "1.0.57"
     },
     {
       "id": "particles",
       "name": "Particles demo",
-      "description": "Water, sand and sparks on the Fluid behaviour, and a scene for each of its kinds: a deep pool in passes, a pool that sleeps, elastic jelly, a spring net, walls made of particles, oil and water that repel, colour mixing, colour by speed, and objects turned into particles. Keys 1 to 0 change scene.",
+      "description": "Water, sand and sparks on the Fluid behavior, and a scene for each of its kinds: a deep pool in passes, a pool that sleeps, elastic jelly, a spring net, walls made of particles, oil and water that repel, color mixing, color by speed, and objects turned into particles. Keys 1 to 0 change scene.",
       "path": "demos/particles",
       "minEditor": "1.0.56"
     },
@@ -55,14 +55,14 @@
     {
       "id": "noise",
       "name": "Noise world",
-      "description": "A native C library in a game: stb_perlin's noise grows an island on a tile map, drifts clouds over it and steers a boat, through a behaviour that offers its numbers to rules. Built on the first Run with your C++ compiler.",
+      "description": "A native C library in a game: stb_perlin's noise grows an island on a tile map, drifts clouds over it and steers a boat, through a behavior that offers its numbers to rules. Built on the first Run with your C++ compiler.",
       "path": "demos/noise",
       "minEditor": "1.0.57"
     },
     {
       "id": "effects",
       "name": "Particle effects demo",
-      "description": "A scene for each thing a Particles object does: a campfire on colour gradients and curves, rain and snow that collide, sparks whose hits pick the crates they land on, magic carried with a wand or left behind, animated rings, a geyser on a rate curve and fireworks on a click. Keys 1 to 6 change scene.",
+      "description": "A scene for each thing a Particles object does: a campfire on color gradients and curves, rain and snow that collide, sparks whose hits pick the crates they land on, magic carried with a wand or left behind, animated rings, a geyser on a rate curve and fireworks on a click. Keys 1 to 6 change scene.",
       "path": "demos/effects",
       "minEditor": "1.0.56"
     },

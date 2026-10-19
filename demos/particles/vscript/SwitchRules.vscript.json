@@ -240,7 +240,7 @@
           "params": [
             {
               "type": "literal",
-              "value": "scenes/ColourMixing.scene.json",
+              "value": "scenes/ColorMixing.scene.json",
               "valueKind": "string"
             }
           ]
@@ -271,7 +271,7 @@
           "params": [
             {
               "type": "literal",
-              "value": "scenes/ColourBySpeed.scene.json",
+              "value": "scenes/ColorBySpeed.scene.json",
               "valueKind": "string"
             }
           ]

@@ -4,7 +4,7 @@ A small complete platform game: run and jump with the arrow keys or WASD (Space 
 too), collect the coins, squash the slimes by landing on them, mind the
 spikes, and reach the flag. Your best coin count is saved.
 
-Built on the **Platformer** behaviour and a tilemap level. A **Camera** follows
+Built on the **Platformer** behavior and a tilemap level. A **Camera** follows
 the player and keeps inside the level; the sky sits on a **Layer** that follows
 four tenths of the camera's movement, and the coin count on a Layer fixed to
 the screen. Every rule is in `vscript/PlayerRules` and `vscript/SlimeRules`; the

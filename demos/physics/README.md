@@ -1,7 +1,7 @@
 # Physics demo
 
 A playground for the **Box2D** solver (Project Settings ▸ Physics), every
-part of it a word of the **Physics Body** or a behaviour:
+part of it a word of the **Physics Body** or a behavior:
 
 - **The bridge**: ten planks, each hinged at its `left` point to the one
   before (**Hinge to**), the first to the left post and the last to the right

@@ -7,7 +7,7 @@
     "2": "Body",
     "3": "Drain",
     "4": "Air",
-    "5": "Mould"
+    "5": "Mold"
   },
   "singletons": [
     "scenes/singletons/Demo.scene.json"

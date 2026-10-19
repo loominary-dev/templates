@@ -30,7 +30,7 @@ The Loominary repository's integration tests fetch this repository and compile
 every entry against the engine, so a template that no longer builds is caught
 there.
 
-## Licence
+## License
 
 Everything in this repository is dedicated to the public domain under
 [CC0 1.0](LICENSE): a game started from a template owes nothing to anyone.
