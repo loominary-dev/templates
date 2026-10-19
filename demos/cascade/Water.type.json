@@ -13,6 +13,9 @@
       "maxCount": 1500,
       "pictureScale": 2.0,
       "color": 4892927,
+      "colorBySpeed": true,
+      "speedColor": 15136767,
+      "fullSpeed": 450,
       "viscosity": 0.2,
       "layers": 3
     },
