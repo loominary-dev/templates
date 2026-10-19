@@ -91,7 +91,7 @@ d.type_json("Demo", "Node", {}, [{"componentClass": "DemoRules"}])
 
 # ── meshes, worked out here as the editor's Make mesh would ──
 def grid_mesh(w, h, nx, ny, bones, weigh):
-    """A grid over a w x h picture centred on its origin; `bones` are (name, bind matrix as six numbers); `weigh(x, y)` gives a weight per bone."""
+    """A grid over a w x h picture centered on its origin; `bones` are (name, bind matrix as six numbers); `weigh(x, y)` gives a weight per bone."""
     verts, uvs, idx = [], [], []
     for j in range(ny + 1):
         for i in range(nx + 1):

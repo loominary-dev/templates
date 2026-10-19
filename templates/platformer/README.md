@@ -5,7 +5,7 @@ arrow keys or A and D, jump with Space, Up or W, and press Down or S on a plank 
 to drop through it. Climb the planks to the top of the stone wall, then slide
 down its far side; jump while sliding to jump off it.
 
-- **Player** carries the **Platformer** behaviour beside a **Physics Body**.
+- **Player** carries the **Platformer** behavior beside a **Physics Body**.
   Its rules in `vscript/PlayerRules` turn the keys into Platformer commands and
   choose its picture: standing, running or jumping, mirrored when it faces
   left.

@@ -102,7 +102,7 @@ def hud(first_id, what):
         {"id": u(first_id + 3), "parent": u(first_id), "name": "CountCaption", "type": "Caption", "x": 8, "y": 30, "text": what},
         {"id": u(first_id + 4), "parent": u(first_id), "name": "CountText1", "type": "CountText", "x": 60, "y": 28},
         {"id": u(first_id + 5), "parent": u(first_id), "name": "Help", "type": "Caption", "x": 8, "y": H - 24,
-         "text": "Hold left to add ten a frame, each press a new colour; right takes ten away. 1 and 2 change scene."},
+         "text": "Hold left to add ten a frame, each press a new color; right takes ten away. 1 and 2 change scene."},
     ]
 d.scene("scenes/Bunnies.scene.json", [{"id": d.uid(1), "name": "Bunnies"},
     {"id": d.uid(2), "parent": d.uid(1), "name": "BunnyBench1", "type": "BunnyBench", "x": 0, "y": 0}] + hud(10, "Bunnies"))
@@ -191,7 +191,7 @@ HUD shows the frames a second and the count.
   script, `vscript/BunnyRules`: a sideways and an upward speed of its own,
   gravity every step, a bounce off the bottom and the sides, as pixi.js's
   bunnymark does it.
-- **Trees** (press 2): each one a bunny with a **Rotate** behaviour, with a
+- **Trees** (press 2): each one a bunny with a **Rotate** behavior, with a
   bunny 0.6 its size on it turning too, and a smaller one again on that, each
   turning at its own speed between 0.1 and 2 degrees a second. A tree is the
   scene `scenes/BunnyTree`, made whole by **Create scene**.
@@ -199,7 +199,7 @@ HUD shows the frames a second and the count.
 Hold the left mouse button to add ten a frame, the right to take ten away
 (**Destroy the newest**), and watch for stutter, dropped frames and the
 frame rate. Each press of the left button starts a batch in a new random
-colour, as pixi's does: `vscript/BatchTint` sets the tint from the red, green
+color, as pixi's does: `vscript/BatchTint` sets the tint from the red, green
 and blue the press picked when a bunny (or a tree's root, whose twigs take it
 from there) is made. The frame rate shown is the
 average over each half second, rounded, so it can be read.

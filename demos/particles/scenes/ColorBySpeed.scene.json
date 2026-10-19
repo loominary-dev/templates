@@ -3,13 +3,13 @@
   "objects": [
     {
       "id": "f1000000-0000-4000-8000-000000002700",
-      "name": "ColourBySpeed"
+      "name": "ColorBySpeed"
     },
     {
       "id": "f1000000-0000-4000-8000-000000002701",
       "parent": "f1000000-0000-4000-8000-000000002700",
-      "name": "ColourBySpeedLevel1",
-      "type": "ColourBySpeedLevel",
+      "name": "ColorBySpeedLevel1",
+      "type": "ColorBySpeedLevel",
       "x": 0,
       "y": 0
     },
@@ -20,7 +20,7 @@
       "type": "Caption",
       "x": -470,
       "y": -262,
-      "text": "Colour by speed"
+      "text": "Color by speed"
     },
     {
       "id": "f1000000-0000-4000-8000-000000002703",
@@ -29,7 +29,7 @@
       "type": "Help",
       "x": -470,
       "y": -244,
-      "text": "Deep blue water drawn toward white the faster each particle goes (Colour by speed):"
+      "text": "Deep blue water drawn toward white the faster each particle goes (Color by speed):"
     },
     {
       "id": "f1000000-0000-4000-8000-000000002704",
@@ -88,7 +88,7 @@
       "id": "f1000000-0000-4000-8000-000000002710",
       "parent": "f1000000-0000-4000-8000-000000002700",
       "name": "FoamPool",
-      "type": "Mould",
+      "type": "Mold",
       "x": 0,
       "y": 190,
       "scaleX": 31.5,

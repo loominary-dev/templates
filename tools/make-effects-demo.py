@@ -208,7 +208,7 @@ def campfire(place):
     place("Smoke1", "Smoke", -60, 150)
     place("Embers1", "Embers", 0, 0)
 feature("Campfire", "A campfire", [
-    "Fire: a line of flames with a four-stop colour gradient over the life, size falling and opacity easing out, turbulence, drag, and a second of warm up.",
+    "Fire: a line of flames with a four-stop color gradient over the life, size falling and opacity easing out, turbulence, drag, and a second of warm up.",
     "Smoke: slow puffs that swell three times over, drifting on a wind that rises and falls over a six-second cycle, each puff feeling it its own way.",
 ], "click: a burst of embers where you point (a Burst effect, with Even randomness on its speed)", campfire, [
     rule([mouse_pressed(LEFT_BUTTON)], [line("Embers", "Node", "setPosition", px, py), pt("Embers", "burst", lit(50))]),
@@ -261,7 +261,7 @@ def magic(place):
     place("LeftCaption", "Caption", -260, -130, text="Carried with the wand (Move with the emitter: yes)")
     place("RightCaption", "Caption", 100, -130, text="Left in the world (no)")
 feature("Magic", "Magic", [
-    "Motes born on a ring, sent outward, pushed from the centre and swirled round it, their size peaking mid-life on a purple-to-cyan gradient.",
+    "Motes born on a ring, sent outward, pushed from the center and swirled round it, their size peaking mid-life on a purple-to-cyan gradient.",
     "Both wands orbit; the left one's motes move with it, the right one's stay where they were made.",
 ], "", magic, [
     # Each wand and its emitter are put at the same place by the same sums: no rule reads another type's position.
@@ -287,7 +287,7 @@ def bursts(place):
     place("Firework1", "Firework", 0, 0, emitting=False)
 feature("GeyserAndFireworks", "A geyser and fireworks", [
     "The geyser's rate follows a hand-drawn curve over a three-second cycle, round and round: a spurt, a sigh, nothing, again.",
-    "A firework is a burst whose motes ease to a stop as they spread, fade late, and change colour four times.",
+    "A firework is a burst whose motes ease to a stop as they spread, fade late, and change color four times.",
 ], "click: a firework where you point", bursts, [
     rule([mouse_pressed(LEFT_BUTTON)], [line("Firework", "Node", "setPosition", px, py), pt("Firework", "burst", lit(90))]),
 ])
@@ -326,7 +326,7 @@ Keys **1** to **6** change scene (a Scene Manager in the singleton scene
 
 | Key | Scene | What it shows |
 |---|---|---|
-| 1 | A campfire | a four-stop colour gradient, size and opacity curves, turbulence, warm up; smoke on a wind that rises and falls over a cycle; a **Burst** of embers where you click |
+| 1 | A campfire | a four-stop color gradient, size and opacity curves, turbulence, warm up; smoke on a wind that rises and falls over a cycle; a **Burst** of embers where you click |
 | 2 | Rain and snow | **collision**: rain bouncing once off a roof and the ground, snow sticking where it lands; **Even** against **Normal** randomness; wind each flake feels its own way |
 | 3 | Sparks that hit | **On particle hit** picking the crates the sparks land on; bounce spin and a bounce count; **hitCount** |
 | 4 | Magic | a ring shape, outward direction, push and swirl, a Peak size curve; particles carried with the emitter against left in the world |

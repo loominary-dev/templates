@@ -29,7 +29,7 @@
       "type": "Help",
       "x": -470,
       "y": -244,
-      "text": "A strip made a spring group: every neighbour pair keeps its length and nothing more,"
+      "text": "A strip made a spring group: every neighbor pair keeps its length and nothing more,"
     },
     {
       "id": "f1000000-0000-4000-8000-000000002304",
@@ -88,7 +88,7 @@
       "id": "f1000000-0000-4000-8000-000000002310",
       "parent": "f1000000-0000-4000-8000-000000002300",
       "name": "Strip",
-      "type": "Mould",
+      "type": "Mold",
       "x": 0,
       "y": -170,
       "scaleX": 19.0,

@@ -4,7 +4,7 @@
   "defaults": {},
   "components": [
     {
-      "componentClass": "ColourMixingRules"
+      "componentClass": "ColorBySpeedRules"
     }
   ]
 }

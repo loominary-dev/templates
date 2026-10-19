@@ -1,5 +1,5 @@
 /**
-	Grows an island on the tile map it is on: the Noise behaviour beside it
+	Grows an island on the tile map it is on: the Noise behavior beside it
 	gives a height for each cell, lower towards the edges so the sea goes
 	round, and the height picks the tile: deep water, shallows, sand, grass,
 	forest, rock, snow. Grow island makes a new one with a new seed.
@@ -14,7 +14,7 @@ class IslandMaker extends Component {
 	/**
 		@group Island
 		@linktext Grow island
-		@description Makes the island again from the Noise behaviour's seed.
+		@description Makes the island again from the Noise behavior's seed.
 		@ruletext Grow the island
 	**/
 	@:action

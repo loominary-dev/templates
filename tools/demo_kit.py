@@ -80,7 +80,7 @@ def point(name, x, y): return {"name": name, "x": x, "y": y}
 def canvas(w, h): return Image.new("RGBA", (w, h), (0, 0, 0, 0))
 
 def drawn(rows, colours):
-    """A small picture from rows of characters, one colour per character, '.' clear."""
+    """A small picture from rows of characters, one color per character, '.' clear."""
     img = canvas(len(rows[0]), len(rows))
     for y, row in enumerate(rows):
         for x, ch in enumerate(row):

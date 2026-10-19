@@ -11,7 +11,7 @@ Keys **1** to **6** change scene (a Scene Manager in the singleton scene
 
 | Key | Scene | What it shows |
 |---|---|---|
-| 1 | A campfire | a four-stop colour gradient, size and opacity curves, turbulence, warm up; smoke on a wind that rises and falls over a cycle; a **Burst** of embers where you click |
+| 1 | A campfire | a four-stop color gradient, size and opacity curves, turbulence, warm up; smoke on a wind that rises and falls over a cycle; a **Burst** of embers where you click |
 | 2 | Rain and snow | **collision**: rain bouncing once off a roof and the ground, snow sticking where it lands; **Even** against **Normal** randomness; wind each flake feels its own way |
 | 3 | Sparks that hit | **On particle hit** picking the crates the sparks land on; bounce spin and a bounce count; **hitCount** |
 | 4 | Magic | a ring shape, outward direction, push and swirl, a Peak size curve; particles carried with the emitter against left in the world |
