@@ -115,7 +115,7 @@ for name in SHAPES:
     d.type_json(name, "Sprite", dict(moving(), spriteKey=name + ".sprite.json"),
                 [body(bounceX=0.2, bounceY=0.2), {"componentClass": "ShapeRules"}, {"componentClass": "DragRules"}])
 d.type_json("Water", "Sprite", {"spriteKey": "Drop.sprite.json", "collisionEnabled": False},
-            [{"componentClass": "Fluid", "kind": "Water", "radius": 5, "maxCount": 1500, "pictureScale": 2.0, "color": 0x4AA8FF,
+            [{"componentClass": "Fluid", "kind": "Water", "radius": 5, "maxCount": 1500, "pictureScale": 2.0, "color": 0x4AA8FF, "colorBySpeed": True, "speedColor": 0xE6F7FF, "fullSpeed": 450,
               "viscosity": 0.2, "layers": SOLID | BODY}, {"componentClass": "WaterRules"}])
 d.type_json("Tap", "Sprite", {"spriteKey": "Tap.sprite.json", "collisionEnabled": False},
             [{"componentClass": "Emitter", "system": "Water1", "group": "tap", "on": True, "rate": 50, "speed": 120,
