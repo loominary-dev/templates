@@ -1,0 +1,674 @@
+{
+  "vars": [
+    {
+      "name": "frames",
+      "type": "number",
+      "value": 0
+    },
+    {
+      "name": "elapsed",
+      "type": "number",
+      "value": 0
+    },
+    {
+      "name": "lastX",
+      "type": "number",
+      "value": 0
+    },
+    {
+      "name": "lastY",
+      "type": "number",
+      "value": 0
+    }
+  ],
+  "rules": [
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isMouseDown",
+          "params": [
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isActionOn",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Make",
+              "valueKind": "string"
+            }
+          ]
+        },
+        {
+          "scope": "system",
+          "className": "VisualScriptComponent",
+          "name": "every",
+          "params": [
+            {
+              "type": "literal",
+              "value": 0.05
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "self",
+          "className": "Fluid",
+          "name": "makeInCircle",
+          "params": [
+            {
+              "type": "value",
+              "scope": "input",
+              "className": "Input",
+              "name": "worldPositionX",
+              "params": [],
+              "returnType": "Float"
+            },
+            {
+              "type": "value",
+              "scope": "input",
+              "className": "Input",
+              "name": "worldPositionY",
+              "params": [],
+              "returnType": "Float"
+            },
+            {
+              "type": "literal",
+              "value": 14
+            },
+            {
+              "type": "literal",
+              "value": "made",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isMouseDown",
+          "params": [
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isActionOn",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Delete",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "self",
+          "className": "Fluid",
+          "name": "destroyInCircle",
+          "params": [
+            {
+              "type": "value",
+              "scope": "input",
+              "className": "Input",
+              "name": "worldPositionX",
+              "params": [],
+              "returnType": "Float"
+            },
+            {
+              "type": "value",
+              "scope": "input",
+              "className": "Input",
+              "name": "worldPositionY",
+              "params": [],
+              "returnType": "Float"
+            },
+            {
+              "type": "literal",
+              "value": 45
+            }
+          ],
+          "onComponent": true
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isMousePressed",
+          "params": [
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isActionOn",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Make",
+              "valueKind": "string"
+            }
+          ],
+          "not": true
+        },
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isActionOn",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Delete",
+              "valueKind": "string"
+            }
+          ],
+          "not": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "self",
+          "className": "Fluid",
+          "name": "pushInCircle",
+          "params": [
+            {
+              "type": "value",
+              "scope": "input",
+              "className": "Input",
+              "name": "worldPositionX",
+              "params": [],
+              "returnType": "Float"
+            },
+            {
+              "type": "value",
+              "scope": "input",
+              "className": "Input",
+              "name": "worldPositionY",
+              "params": [],
+              "returnType": "Float"
+            },
+            {
+              "type": "literal",
+              "value": 70
+            },
+            {
+              "type": "literal",
+              "value": 0
+            },
+            {
+              "type": "literal",
+              "value": -420
+            }
+          ],
+          "onComponent": true
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isMouseDown",
+          "params": [
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isMousePressed",
+          "params": [
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ],
+          "not": true
+        },
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isActionOn",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Make",
+              "valueKind": "string"
+            }
+          ],
+          "not": true
+        },
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isActionOn",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Delete",
+              "valueKind": "string"
+            }
+          ],
+          "not": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "self",
+          "className": "Fluid",
+          "name": "pushInCircle",
+          "params": [
+            {
+              "type": "value",
+              "scope": "input",
+              "className": "Input",
+              "name": "worldPositionX",
+              "params": [],
+              "returnType": "Float"
+            },
+            {
+              "type": "value",
+              "scope": "input",
+              "className": "Input",
+              "name": "worldPositionY",
+              "params": [],
+              "returnType": "Float"
+            },
+            {
+              "type": "literal",
+              "value": 45
+            },
+            {
+              "type": "op",
+              "op": "*",
+              "left": {
+                "type": "op",
+                "op": "-",
+                "left": {
+                  "type": "value",
+                  "scope": "input",
+                  "className": "Input",
+                  "name": "worldPositionX",
+                  "params": [],
+                  "returnType": "Float"
+                },
+                "right": {
+                  "type": "value",
+                  "scope": "system",
+                  "className": "VisualScriptComponent",
+                  "name": "sheetVar",
+                  "params": [
+                    {
+                      "type": "literal",
+                      "value": "lastX",
+                      "valueKind": "string"
+                    }
+                  ],
+                  "returnType": "Float"
+                }
+              },
+              "right": {
+                "type": "literal",
+                "value": 40
+              }
+            },
+            {
+              "type": "op",
+              "op": "*",
+              "left": {
+                "type": "op",
+                "op": "-",
+                "left": {
+                  "type": "value",
+                  "scope": "input",
+                  "className": "Input",
+                  "name": "worldPositionY",
+                  "params": [],
+                  "returnType": "Float"
+                },
+                "right": {
+                  "type": "value",
+                  "scope": "system",
+                  "className": "VisualScriptComponent",
+                  "name": "sheetVar",
+                  "params": [
+                    {
+                      "type": "literal",
+                      "value": "lastY",
+                      "valueKind": "string"
+                    }
+                  ],
+                  "returnType": "Float"
+                }
+              },
+              "right": {
+                "type": "literal",
+                "value": 40
+              }
+            }
+          ],
+          "onComponent": true
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [],
+      "actions": [
+        {
+          "scope": "system",
+          "className": "VisualScriptComponent",
+          "name": "setSheetVar",
+          "params": [
+            {
+              "type": "literal",
+              "value": "lastX",
+              "valueKind": "string"
+            },
+            {
+              "type": "value",
+              "scope": "input",
+              "className": "Input",
+              "name": "worldPositionX",
+              "params": [],
+              "returnType": "Float"
+            }
+          ]
+        },
+        {
+          "scope": "system",
+          "className": "VisualScriptComponent",
+          "name": "setSheetVar",
+          "params": [
+            {
+              "type": "literal",
+              "value": "lastY",
+              "valueKind": "string"
+            },
+            {
+              "type": "value",
+              "scope": "input",
+              "className": "Input",
+              "name": "worldPositionY",
+              "params": [],
+              "returnType": "Float"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [],
+      "actions": [
+        {
+          "scope": "system",
+          "className": "VisualScriptComponent",
+          "name": "addSheetVar",
+          "params": [
+            {
+              "type": "literal",
+              "value": "frames",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "scope": "system",
+          "className": "VisualScriptComponent",
+          "name": "addSheetVar",
+          "params": [
+            {
+              "type": "literal",
+              "value": "elapsed",
+              "valueKind": "string"
+            },
+            {
+              "type": "value",
+              "scope": "system",
+              "className": "System",
+              "name": "getDeltaTime",
+              "params": [],
+              "returnType": "Float"
+            }
+          ]
+        },
+        {
+          "scope": "FluidMs",
+          "className": "Label",
+          "name": "setNumber",
+          "params": [
+            {
+              "type": "op",
+              "op": "/",
+              "left": {
+                "type": "value",
+                "scope": "maths",
+                "className": "Maths",
+                "name": "round",
+                "params": [
+                  {
+                    "type": "op",
+                    "op": "*",
+                    "left": {
+                      "scope": "self",
+                      "className": "Fluid",
+                      "name": "stepTime",
+                      "params": [],
+                      "onComponent": true
+                    },
+                    "right": {
+                      "type": "literal",
+                      "value": 10
+                    }
+                  }
+                ],
+                "returnType": "Float"
+              },
+              "right": {
+                "type": "literal",
+                "value": 10
+              }
+            }
+          ]
+        },
+        {
+          "scope": "ParticleCount",
+          "className": "Label",
+          "name": "setNumber",
+          "params": [
+            {
+              "scope": "self",
+              "className": "Fluid",
+              "name": "particleCount",
+              "params": [],
+              "onComponent": true
+            }
+          ]
+        },
+        {
+          "scope": "ShapeCount",
+          "className": "Label",
+          "name": "setNumber",
+          "params": [
+            {
+              "type": "op",
+              "op": "+",
+              "left": {
+                "type": "value",
+                "scope": "Crate",
+                "className": "Node",
+                "name": "count",
+                "params": [],
+                "returnType": "Float"
+              },
+              "right": {
+                "type": "value",
+                "scope": "Ball",
+                "className": "Node",
+                "name": "count",
+                "params": [],
+                "returnType": "Float"
+              }
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "maths",
+          "className": "Maths",
+          "name": "compare",
+          "params": [
+            {
+              "type": "value",
+              "scope": "system",
+              "className": "VisualScriptComponent",
+              "name": "sheetVar",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "elapsed",
+                  "valueKind": "string"
+                }
+              ],
+              "returnType": "Float"
+            },
+            {
+              "type": "literal",
+              "value": 5
+            },
+            {
+              "type": "literal",
+              "value": 0.5
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Fps",
+          "className": "Label",
+          "name": "setNumber",
+          "params": [
+            {
+              "type": "value",
+              "scope": "maths",
+              "className": "Maths",
+              "name": "round",
+              "params": [
+                {
+                  "type": "op",
+                  "op": "/",
+                  "left": {
+                    "type": "value",
+                    "scope": "system",
+                    "className": "VisualScriptComponent",
+                    "name": "sheetVar",
+                    "params": [
+                      {
+                        "type": "literal",
+                        "value": "frames",
+                        "valueKind": "string"
+                      }
+                    ],
+                    "returnType": "Float"
+                  },
+                  "right": {
+                    "type": "value",
+                    "scope": "system",
+                    "className": "VisualScriptComponent",
+                    "name": "sheetVar",
+                    "params": [
+                      {
+                        "type": "literal",
+                        "value": "elapsed",
+                        "valueKind": "string"
+                      }
+                    ],
+                    "returnType": "Float"
+                  }
+                }
+              ],
+              "returnType": "Float"
+            }
+          ]
+        },
+        {
+          "scope": "system",
+          "className": "VisualScriptComponent",
+          "name": "setSheetVar",
+          "params": [
+            {
+              "type": "literal",
+              "value": "frames",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "scope": "system",
+          "className": "VisualScriptComponent",
+          "name": "setSheetVar",
+          "params": [
+            {
+              "type": "literal",
+              "value": "elapsed",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    }
+  ]
+}
