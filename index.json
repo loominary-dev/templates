@@ -39,6 +39,13 @@
       "minEditor": "1.0.57"
     },
     {
+      "id": "tank",
+      "name": "Tank demo",
+      "description": "Water and crates on the arcade solver: the Fluid poured along flat shelves over a weir into a sink, carrying and floating arcade Physics Bodies. The cascade demo's idea on the other solver.",
+      "path": "demos/tank",
+      "minEditor": "1.0.58"
+    },
+    {
       "id": "particles",
       "name": "Particles demo",
       "description": "Water, sand and sparks on the Fluid behavior, and a scene for each of its kinds: a deep pool in passes, a pool that sleeps, elastic jelly, a spring net, walls made of particles, oil and water that repel, color mixing, color by speed, and objects turned into particles. Keys 1 to 0 change scene.",

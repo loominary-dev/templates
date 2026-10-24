@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 2,
+  "name": "Tank demo",
+  "entryScene": "scenes/Tank.scene.json",
+  "collisionLayers": {
+    "1": "Solid",
+    "2": "Body",
+    "3": "Drain"
+  },
+  "input": {
+    "Make": {
+      "bindings": [
+        {
+          "kind": "key",
+          "code": 32
+        }
+      ]
+    },
+    "Delete": {
+      "bindings": [
+        {
+          "kind": "key",
+          "code": 68
+        }
+      ]
+    }
+  },
+  "display": {
+    "width": 960,
+    "height": 540,
+    "windowWidth": 960,
+    "windowHeight": 540,
+    "presentMode": "fit",
+    "displayMode": "windowed",
+    "autoResize": true
+  },
+  "physics": {
+    "engine": "arcade",
+    "gravity": 980
+  }
+}
