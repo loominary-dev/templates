@@ -1,4 +1,31 @@
 {
+  "vars": [
+    {
+      "name": "running",
+      "type": "number",
+      "value": 0
+    },
+    {
+      "name": "dancing",
+      "type": "number",
+      "value": 0
+    },
+    {
+      "name": "swimming",
+      "type": "number",
+      "value": 0
+    },
+    {
+      "name": "wind",
+      "type": "number",
+      "value": 0
+    },
+    {
+      "name": "gust",
+      "type": "number",
+      "value": 0
+    }
+  ],
   "rules": [
     {
       "conditions": [
@@ -11,7 +38,19 @@
       ],
       "actions": [
         {
-          "scope": "Critter",
+          "scope": "Dinosaur",
+          "className": "Skeleton",
+          "name": "playAnimation",
+          "params": [
+            {
+              "type": "literal",
+              "value": "walk",
+              "valueKind": "string"
+            }
+          ]
+        },
+        {
+          "scope": "Dancer",
           "className": "Skeleton",
           "name": "playAnimation",
           "params": [
@@ -23,116 +62,14 @@
           ]
         },
         {
-          "scope": "Breather",
+          "scope": "Jellyfish",
           "className": "Skeleton",
           "name": "playAnimation",
           "params": [
             {
               "type": "literal",
-              "value": "breathe",
+              "value": "drift",
               "valueKind": "string"
-            }
-          ]
-        }
-      ],
-      "subRules": []
-    },
-    {
-      "conditions": [],
-      "actions": [
-        {
-          "scope": "Arm",
-          "className": "Skeleton",
-          "name": "aimBone",
-          "params": [
-            {
-              "type": "literal",
-              "value": "Fore",
-              "valueKind": "string"
-            },
-            {
-              "type": "op",
-              "op": "-",
-              "left": {
-                "type": "value",
-                "scope": "input",
-                "className": "Input",
-                "name": "getPointerX",
-                "params": [],
-                "returnType": "Float"
-              },
-              "right": {
-                "type": "literal",
-                "value": 480.0
-              }
-            },
-            {
-              "type": "op",
-              "op": "-",
-              "left": {
-                "type": "value",
-                "scope": "input",
-                "className": "Input",
-                "name": "getPointerY",
-                "params": [],
-                "returnType": "Float"
-              },
-              "right": {
-                "type": "literal",
-                "value": 270.0
-              }
-            },
-            {
-              "type": "literal",
-              "value": 2
-            }
-          ]
-        },
-        {
-          "scope": "Snake",
-          "className": "Skeleton",
-          "name": "followWith",
-          "params": [
-            {
-              "type": "literal",
-              "value": "S10",
-              "valueKind": "string"
-            },
-            {
-              "type": "op",
-              "op": "-",
-              "left": {
-                "type": "value",
-                "scope": "input",
-                "className": "Input",
-                "name": "getPointerX",
-                "params": [],
-                "returnType": "Float"
-              },
-              "right": {
-                "type": "literal",
-                "value": 480.0
-              }
-            },
-            {
-              "type": "op",
-              "op": "-",
-              "left": {
-                "type": "value",
-                "scope": "input",
-                "className": "Input",
-                "name": "getPointerY",
-                "params": [],
-                "returnType": "Float"
-              },
-              "right": {
-                "type": "literal",
-                "value": 270.0
-              }
-            },
-            {
-              "type": "literal",
-              "value": 10
             }
           ]
         }
@@ -144,8 +81,60 @@
         {
           "scope": "input",
           "className": "Input",
-          "name": "isMousePressed",
+          "name": "isMouseDown",
           "params": [
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "scope": "DinosaurArea",
+          "className": "Node",
+          "name": "containsPoint",
+          "params": [
+            {
+              "type": "value",
+              "scope": "input",
+              "className": "Input",
+              "name": "worldPositionX",
+              "params": [],
+              "returnType": "Float"
+            },
+            {
+              "type": "value",
+              "scope": "input",
+              "className": "Input",
+              "name": "worldPositionY",
+              "params": [],
+              "returnType": "Float"
+            }
+          ]
+        },
+        {
+          "scope": "maths",
+          "className": "Maths",
+          "name": "compare",
+          "params": [
+            {
+              "type": "value",
+              "scope": "system",
+              "className": "VisualScriptComponent",
+              "name": "sheetVar",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "running",
+                  "valueKind": "string"
+                }
+              ],
+              "returnType": "Float"
+            },
+            {
+              "type": "literal",
+              "value": 0
+            },
             {
               "type": "literal",
               "value": 0
@@ -155,51 +144,34 @@
       ],
       "actions": [
         {
-          "scope": "Critter",
+          "scope": "Dinosaur",
           "className": "Skeleton",
-          "name": "setMotorSpeed",
+          "name": "blendToAnimation",
           "params": [
             {
               "type": "literal",
-              "value": "Tail1",
+              "value": "run",
               "valueKind": "string"
             },
             {
               "type": "literal",
-              "value": 3
+              "value": 0.35
             }
           ]
         },
         {
-          "scope": "Critter",
-          "className": "Skeleton",
-          "name": "setMotorDuration",
+          "scope": "system",
+          "className": "VisualScriptComponent",
+          "name": "setSheetVar",
           "params": [
             {
               "type": "literal",
-              "value": "Tail1",
+              "value": "running",
               "valueKind": "string"
             },
             {
               "type": "literal",
-              "value": 2
-            }
-          ]
-        },
-        {
-          "scope": "Critter",
-          "className": "Skeleton",
-          "name": "setMotor",
-          "params": [
-            {
-              "type": "literal",
-              "value": "Tail1",
-              "valueKind": "string"
-            },
-            {
-              "type": "literal",
-              "value": "wave",
-              "valueKind": "string"
+              "value": 1
             }
           ]
         }
@@ -209,27 +181,604 @@
     {
       "conditions": [
         {
-          "scope": "Critter",
-          "className": "Skeleton",
-          "name": "onMotorFinished",
+          "scope": "maths",
+          "className": "Maths",
+          "name": "compare",
+          "params": [
+            {
+              "type": "value",
+              "scope": "system",
+              "className": "VisualScriptComponent",
+              "name": "sheetVar",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "running",
+                  "valueKind": "string"
+                }
+              ],
+              "returnType": "Float"
+            },
+            {
+              "type": "literal",
+              "value": 0
+            },
+            {
+              "type": "literal",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isMouseDown",
           "params": [
             {
               "type": "literal",
-              "value": "Tail1",
+              "value": 0
+            }
+          ],
+          "not": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Dinosaur",
+          "className": "Skeleton",
+          "name": "blendToAnimation",
+          "params": [
+            {
+              "type": "literal",
+              "value": "walk",
               "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 0.5
+            }
+          ]
+        },
+        {
+          "scope": "system",
+          "className": "VisualScriptComponent",
+          "name": "setSheetVar",
+          "params": [
+            {
+              "type": "literal",
+              "value": "running",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "maths",
+          "className": "Maths",
+          "name": "compare",
+          "params": [
+            {
+              "type": "value",
+              "scope": "system",
+              "className": "VisualScriptComponent",
+              "name": "sheetVar",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "running",
+                  "valueKind": "string"
+                }
+              ],
+              "returnType": "Float"
+            },
+            {
+              "type": "literal",
+              "value": 0
+            },
+            {
+              "type": "literal",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "scope": "DinosaurArea",
+          "className": "Node",
+          "name": "containsPoint",
+          "params": [
+            {
+              "type": "value",
+              "scope": "input",
+              "className": "Input",
+              "name": "worldPositionX",
+              "params": [],
+              "returnType": "Float"
+            },
+            {
+              "type": "value",
+              "scope": "input",
+              "className": "Input",
+              "name": "worldPositionY",
+              "params": [],
+              "returnType": "Float"
+            }
+          ],
+          "not": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Dinosaur",
+          "className": "Skeleton",
+          "name": "blendToAnimation",
+          "params": [
+            {
+              "type": "literal",
+              "value": "walk",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 0.5
+            }
+          ]
+        },
+        {
+          "scope": "system",
+          "className": "VisualScriptComponent",
+          "name": "setSheetVar",
+          "params": [
+            {
+              "type": "literal",
+              "value": "running",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isMouseDown",
+          "params": [
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "scope": "DancerArea",
+          "className": "Node",
+          "name": "containsPoint",
+          "params": [
+            {
+              "type": "value",
+              "scope": "input",
+              "className": "Input",
+              "name": "worldPositionX",
+              "params": [],
+              "returnType": "Float"
+            },
+            {
+              "type": "value",
+              "scope": "input",
+              "className": "Input",
+              "name": "worldPositionY",
+              "params": [],
+              "returnType": "Float"
+            }
+          ]
+        },
+        {
+          "scope": "maths",
+          "className": "Maths",
+          "name": "compare",
+          "params": [
+            {
+              "type": "value",
+              "scope": "system",
+              "className": "VisualScriptComponent",
+              "name": "sheetVar",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "dancing",
+                  "valueKind": "string"
+                }
+              ],
+              "returnType": "Float"
+            },
+            {
+              "type": "literal",
+              "value": 0
+            },
+            {
+              "type": "literal",
+              "value": 0
             }
           ]
         }
       ],
       "actions": [
         {
-          "scope": "Critter",
+          "scope": "Dancer",
           "className": "Skeleton",
-          "name": "setMotorSpeed",
+          "name": "blendToAnimation",
           "params": [
             {
               "type": "literal",
-              "value": "Tail1",
+              "value": "charleston",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 0.5
+            }
+          ]
+        },
+        {
+          "scope": "system",
+          "className": "VisualScriptComponent",
+          "name": "setSheetVar",
+          "params": [
+            {
+              "type": "literal",
+              "value": "dancing",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 1
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "maths",
+          "className": "Maths",
+          "name": "compare",
+          "params": [
+            {
+              "type": "value",
+              "scope": "system",
+              "className": "VisualScriptComponent",
+              "name": "sheetVar",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "dancing",
+                  "valueKind": "string"
+                }
+              ],
+              "returnType": "Float"
+            },
+            {
+              "type": "literal",
+              "value": 0
+            },
+            {
+              "type": "literal",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isMouseDown",
+          "params": [
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ],
+          "not": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Dancer",
+          "className": "Skeleton",
+          "name": "blendToAnimation",
+          "params": [
+            {
+              "type": "literal",
+              "value": "idle",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 0.5
+            }
+          ]
+        },
+        {
+          "scope": "system",
+          "className": "VisualScriptComponent",
+          "name": "setSheetVar",
+          "params": [
+            {
+              "type": "literal",
+              "value": "dancing",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "maths",
+          "className": "Maths",
+          "name": "compare",
+          "params": [
+            {
+              "type": "value",
+              "scope": "system",
+              "className": "VisualScriptComponent",
+              "name": "sheetVar",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "dancing",
+                  "valueKind": "string"
+                }
+              ],
+              "returnType": "Float"
+            },
+            {
+              "type": "literal",
+              "value": 0
+            },
+            {
+              "type": "literal",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "scope": "DancerArea",
+          "className": "Node",
+          "name": "containsPoint",
+          "params": [
+            {
+              "type": "value",
+              "scope": "input",
+              "className": "Input",
+              "name": "worldPositionX",
+              "params": [],
+              "returnType": "Float"
+            },
+            {
+              "type": "value",
+              "scope": "input",
+              "className": "Input",
+              "name": "worldPositionY",
+              "params": [],
+              "returnType": "Float"
+            }
+          ],
+          "not": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Dancer",
+          "className": "Skeleton",
+          "name": "blendToAnimation",
+          "params": [
+            {
+              "type": "literal",
+              "value": "idle",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 0.5
+            }
+          ]
+        },
+        {
+          "scope": "system",
+          "className": "VisualScriptComponent",
+          "name": "setSheetVar",
+          "params": [
+            {
+              "type": "literal",
+              "value": "dancing",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isMouseDown",
+          "params": [
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "scope": "JellyfishArea",
+          "className": "Node",
+          "name": "containsPoint",
+          "params": [
+            {
+              "type": "value",
+              "scope": "input",
+              "className": "Input",
+              "name": "worldPositionX",
+              "params": [],
+              "returnType": "Float"
+            },
+            {
+              "type": "value",
+              "scope": "input",
+              "className": "Input",
+              "name": "worldPositionY",
+              "params": [],
+              "returnType": "Float"
+            }
+          ]
+        },
+        {
+          "scope": "maths",
+          "className": "Maths",
+          "name": "compare",
+          "params": [
+            {
+              "type": "value",
+              "scope": "system",
+              "className": "VisualScriptComponent",
+              "name": "sheetVar",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "swimming",
+                  "valueKind": "string"
+                }
+              ],
+              "returnType": "Float"
+            },
+            {
+              "type": "literal",
+              "value": 0
+            },
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Jellyfish",
+          "className": "Skeleton",
+          "name": "blendToAnimation",
+          "params": [
+            {
+              "type": "literal",
+              "value": "swim",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 0.4
+            }
+          ]
+        },
+        {
+          "scope": "system",
+          "className": "VisualScriptComponent",
+          "name": "setSheetVar",
+          "params": [
+            {
+              "type": "literal",
+              "value": "swimming",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 1
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "maths",
+          "className": "Maths",
+          "name": "compare",
+          "params": [
+            {
+              "type": "value",
+              "scope": "system",
+              "className": "VisualScriptComponent",
+              "name": "sheetVar",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "swimming",
+                  "valueKind": "string"
+                }
+              ],
+              "returnType": "Float"
+            },
+            {
+              "type": "literal",
+              "value": 0
+            },
+            {
+              "type": "literal",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isMouseDown",
+          "params": [
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ],
+          "not": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Jellyfish",
+          "className": "Skeleton",
+          "name": "blendToAnimation",
+          "params": [
+            {
+              "type": "literal",
+              "value": "drift",
               "valueKind": "string"
             },
             {
@@ -239,13 +788,13 @@
           ]
         },
         {
-          "scope": "Critter",
-          "className": "Skeleton",
-          "name": "setMotorDuration",
+          "scope": "system",
+          "className": "VisualScriptComponent",
+          "name": "setSheetVar",
           "params": [
             {
               "type": "literal",
-              "value": "Tail1",
+              "value": "swimming",
               "valueKind": "string"
             },
             {
@@ -253,21 +802,287 @@
               "value": 0
             }
           ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "maths",
+          "className": "Maths",
+          "name": "compare",
+          "params": [
+            {
+              "type": "value",
+              "scope": "system",
+              "className": "VisualScriptComponent",
+              "name": "sheetVar",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "swimming",
+                  "valueKind": "string"
+                }
+              ],
+              "returnType": "Float"
+            },
+            {
+              "type": "literal",
+              "value": 0
+            },
+            {
+              "type": "literal",
+              "value": 1
+            }
+          ]
         },
         {
-          "scope": "Critter",
+          "scope": "JellyfishArea",
+          "className": "Node",
+          "name": "containsPoint",
+          "params": [
+            {
+              "type": "value",
+              "scope": "input",
+              "className": "Input",
+              "name": "worldPositionX",
+              "params": [],
+              "returnType": "Float"
+            },
+            {
+              "type": "value",
+              "scope": "input",
+              "className": "Input",
+              "name": "worldPositionY",
+              "params": [],
+              "returnType": "Float"
+            }
+          ],
+          "not": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Jellyfish",
           "className": "Skeleton",
-          "name": "setMotor",
+          "name": "blendToAnimation",
           "params": [
             {
               "type": "literal",
-              "value": "Tail1",
+              "value": "drift",
               "valueKind": "string"
             },
             {
               "type": "literal",
-              "value": "wave",
+              "value": 0.8
+            }
+          ]
+        },
+        {
+          "scope": "system",
+          "className": "VisualScriptComponent",
+          "name": "setSheetVar",
+          "params": [
+            {
+              "type": "literal",
+              "value": "swimming",
               "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [],
+      "actions": [
+        {
+          "scope": "system",
+          "className": "VisualScriptComponent",
+          "name": "setSheetVar",
+          "params": [
+            {
+              "type": "literal",
+              "value": "wind",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isMouseDown",
+          "params": [
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "scope": "TreeArea",
+          "className": "Node",
+          "name": "containsPoint",
+          "params": [
+            {
+              "type": "value",
+              "scope": "input",
+              "className": "Input",
+              "name": "worldPositionX",
+              "params": [],
+              "returnType": "Float"
+            },
+            {
+              "type": "value",
+              "scope": "input",
+              "className": "Input",
+              "name": "worldPositionY",
+              "params": [],
+              "returnType": "Float"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "system",
+          "className": "VisualScriptComponent",
+          "name": "setSheetVar",
+          "params": [
+            {
+              "type": "literal",
+              "value": "wind",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 1
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [],
+      "actions": [
+        {
+          "scope": "system",
+          "className": "VisualScriptComponent",
+          "name": "addSheetVar",
+          "params": [
+            {
+              "type": "literal",
+              "value": "gust",
+              "valueKind": "string"
+            },
+            {
+              "type": "op",
+              "op": "*",
+              "left": {
+                "type": "op",
+                "op": "-",
+                "left": {
+                  "type": "value",
+                  "scope": "system",
+                  "className": "VisualScriptComponent",
+                  "name": "sheetVar",
+                  "params": [
+                    {
+                      "type": "literal",
+                      "value": "wind",
+                      "valueKind": "string"
+                    }
+                  ],
+                  "returnType": "Float"
+                },
+                "right": {
+                  "type": "value",
+                  "scope": "system",
+                  "className": "VisualScriptComponent",
+                  "name": "sheetVar",
+                  "params": [
+                    {
+                      "type": "literal",
+                      "value": "gust",
+                      "valueKind": "string"
+                    }
+                  ],
+                  "returnType": "Float"
+                }
+              },
+              "right": {
+                "type": "op",
+                "op": "*",
+                "left": {
+                  "type": "value",
+                  "scope": "system",
+                  "className": "System",
+                  "name": "getDeltaTime",
+                  "params": [],
+                  "returnType": "Float"
+                },
+                "right": {
+                  "type": "literal",
+                  "value": 2
+                }
+              }
+            }
+          ]
+        },
+        {
+          "scope": "Oak",
+          "className": "Skeleton",
+          "name": "setMotorAmount",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Trunk1",
+              "valueKind": "string"
+            },
+            {
+              "type": "op",
+              "op": "+",
+              "left": {
+                "type": "literal",
+                "value": 2.5
+              },
+              "right": {
+                "type": "op",
+                "op": "*",
+                "left": {
+                  "type": "value",
+                  "scope": "system",
+                  "className": "VisualScriptComponent",
+                  "name": "sheetVar",
+                  "params": [
+                    {
+                      "type": "literal",
+                      "value": "gust",
+                      "valueKind": "string"
+                    }
+                  ],
+                  "returnType": "Float"
+                },
+                "right": {
+                  "type": "literal",
+                  "value": 7
+                }
+              }
             }
           ]
         }

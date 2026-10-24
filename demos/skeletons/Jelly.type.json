@@ -1,8 +1,0 @@
-{
-  "schemaVersion": 2,
-  "baseClass": "MeshSprite",
-  "defaults": {
-    "spriteKey": "Jelly.sprite.json"
-  },
-  "components": []
-}

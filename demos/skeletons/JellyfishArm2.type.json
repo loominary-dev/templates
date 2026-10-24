@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 2,
+  "baseClass": "MeshSprite",
+  "defaults": {
+    "spriteKey": "JellyfishArm2.sprite.json"
+  },
+  "components": []
+}

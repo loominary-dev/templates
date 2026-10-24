@@ -83,9 +83,9 @@
     {
       "id": "skeletons",
       "name": "Skeletons demo",
-      "description": "Bones and what moves them: a critter with an idle animation, a waving tail and jiggling ears (click for a fast wag), an arm reaching for the mouse with IK, a snake following it, a flag bent by three bones, and a blob breathing by deform keys.",
+      "description": "Four characters, each showing off what bones do: a dinosaur that walks and runs (rigid legs, a body and tail that bend as meshes), a tree swaying on a motor with jiggling leaf clumps, a jellyfish pulsing by deform keys with waving tentacles, and a dapper skeleton that tips its hat and dances the Charleston. Hold the mouse on one to change what it does; hold B to see the bones.",
       "path": "demos/skeletons",
-      "minEditor": "1.0.54"
+      "minEditor": "1.0.59"
     }
   ]
 }

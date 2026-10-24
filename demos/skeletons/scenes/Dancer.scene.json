@@ -1,0 +1,1847 @@
+{
+  "schemaVersion": 3,
+  "objects": [
+    {
+      "id": "a3000000-0000-4000-8000-000000040001",
+      "name": "Dancer1",
+      "type": "Dancer",
+      "animations": {
+        "idle": {
+          "duration": 5.0,
+          "mode": "loop",
+          "markers": [],
+          "tracks": [
+            {
+              "target": "Pelvis",
+              "property": "x",
+              "keys": [
+                {
+                  "t": 0,
+                  "v": 0.0,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 1.0,
+                  "v": 0.0,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 2.0,
+                  "v": 0.0,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 2.4,
+                  "v": 0.0,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 2.6,
+                  "v": 0.0,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 2.8,
+                  "v": 0.0,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 3.2,
+                  "v": 0.0,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 3.6,
+                  "v": 0.0,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 3.8,
+                  "v": 0.0,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 4.0,
+                  "v": 0.0,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 4.4,
+                  "v": 0.0,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 5.0,
+                  "v": 0.0
+                }
+              ]
+            },
+            {
+              "target": "Pelvis",
+              "property": "y",
+              "keys": [
+                {
+                  "t": 0,
+                  "v": -156.0,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 1.0,
+                  "v": -152.8,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 2.0,
+                  "v": -156.0,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 2.4,
+                  "v": -154.4,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 2.6,
+                  "v": -154.0,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 2.8,
+                  "v": -153.6,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 3.2,
+                  "v": -154.0,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 3.6,
+                  "v": -154.8,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 3.8,
+                  "v": -155.2,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 4.0,
+                  "v": -155.6,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 4.4,
+                  "v": -152.8,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 5.0,
+                  "v": -156.0
+                }
+              ]
+            },
+            {
+              "target": "Spine",
+              "property": "rotation",
+              "keys": [
+                {
+                  "t": 0,
+                  "v": 0.0,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 1.0,
+                  "v": -0.0192,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 2.0,
+                  "v": 0.0,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 2.4,
+                  "v": -0.0096,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 2.6,
+                  "v": -0.012,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 2.8,
+                  "v": -0.0144,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 3.2,
+                  "v": -0.012,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 3.6,
+                  "v": -0.0072,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 3.8,
+                  "v": -0.0048,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 4.0,
+                  "v": -0.0024,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 4.4,
+                  "v": -0.0192,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 5.0,
+                  "v": 0.0
+                }
+              ]
+            },
+            {
+              "target": "Head",
+              "property": "rotation",
+              "keys": [
+                {
+                  "t": 0,
+                  "v": 0.0,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 1.0,
+                  "v": 0.05,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 2.0,
+                  "v": 0.0,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 2.4,
+                  "v": -0.03,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 2.6,
+                  "v": 0.03,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 2.8,
+                  "v": 0.36,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 3.2,
+                  "v": 0.46,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 3.6,
+                  "v": 0.32,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 3.8,
+                  "v": 0.02,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 4.0,
+                  "v": 0.0,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 4.4,
+                  "v": -0.04,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 5.0,
+                  "v": 0.0
+                }
+              ]
+            },
+            {
+              "target": "Hat",
+              "property": "x",
+              "keys": [
+                {
+                  "t": 0,
+                  "v": 100.0,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 1.0,
+                  "v": 100.0,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 2.0,
+                  "v": 100.0,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 2.4,
+                  "v": 100.0,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 2.6,
+                  "v": 100.0,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 2.8,
+                  "v": 106.0,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 3.2,
+                  "v": 128.0,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 3.6,
+                  "v": 106.0,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 3.8,
+                  "v": 100.0,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 4.0,
+                  "v": 100.0,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 4.4,
+                  "v": 100.0,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 5.0,
+                  "v": 100.0
+                }
+              ]
+            },
+            {
+              "target": "Hat",
+              "property": "rotation",
+              "keys": [
+                {
+                  "t": 0,
+                  "v": 0.0,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 1.0,
+                  "v": 0.0,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 2.0,
+                  "v": 0.0,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 2.4,
+                  "v": 0.0,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 2.6,
+                  "v": 0.0,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 2.8,
+                  "v": 0.08,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 3.2,
+                  "v": 0.5,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 3.6,
+                  "v": 0.08,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 3.8,
+                  "v": 0.0,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 4.0,
+                  "v": 0.0,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 4.4,
+                  "v": 0.0,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 5.0,
+                  "v": 0.0
+                }
+              ]
+            },
+            {
+              "target": "ThighL",
+              "property": "rotation",
+              "keys": [
+                {
+                  "t": 0,
+                  "v": 3.14323,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 1.0,
+                  "v": 2.95158,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 2.0,
+                  "v": 3.14323,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 2.4,
+                  "v": 3.01124,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 2.6,
+                  "v": 2.99425,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 2.8,
+                  "v": 2.97889,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 3.2,
+                  "v": 2.99425,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 3.6,
+                  "v": 3.0305,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 3.8,
+                  "v": 3.0533,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 4.0,
+                  "v": 3.08288,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 4.4,
+                  "v": 2.95158,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 5.0,
+                  "v": 3.14323
+                }
+              ]
+            },
+            {
+              "target": "ShinL",
+              "property": "rotation",
+              "keys": [
+                {
+                  "t": 0,
+                  "v": 0.02777,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 1.0,
+                  "v": 0.43631,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 2.0,
+                  "v": 0.02777,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 2.4,
+                  "v": 0.30884,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 2.6,
+                  "v": 0.3451,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 2.8,
+                  "v": 0.37792,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 3.2,
+                  "v": 0.3451,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 3.6,
+                  "v": 0.26775,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 3.8,
+                  "v": 0.21915,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 4.0,
+                  "v": 0.15617,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 4.4,
+                  "v": 0.43631,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 5.0,
+                  "v": 0.02777
+                }
+              ]
+            },
+            {
+              "target": "FootL",
+              "property": "rotation",
+              "keys": [
+                {
+                  "t": 0,
+                  "v": 1.03429,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 1.0,
+                  "v": 0.8174,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 2.0,
+                  "v": 1.03429,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 2.4,
+                  "v": 0.88521,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 2.6,
+                  "v": 0.86594,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 2.8,
+                  "v": 0.84848,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 3.2,
+                  "v": 0.86594,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 3.6,
+                  "v": 0.90704,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 3.8,
+                  "v": 0.93284,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 4.0,
+                  "v": 0.96625,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 4.4,
+                  "v": 0.8174,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 5.0,
+                  "v": 1.03429
+                }
+              ]
+            },
+            {
+              "target": "UpperArmL",
+              "property": "rotation",
+              "keys": [
+                {
+                  "t": 0,
+                  "v": 3.42965,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 1.0,
+                  "v": 3.45667,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 2.0,
+                  "v": 3.3898,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 2.4,
+                  "v": 3.40966,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 2.6,
+                  "v": 3.42792,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 2.8,
+                  "v": 3.44657,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 3.2,
+                  "v": 3.46904,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 3.6,
+                  "v": 3.45791,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 3.8,
+                  "v": 3.44165,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 4.0,
+                  "v": 3.42268,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 4.4,
+                  "v": 3.39338,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 5.0,
+                  "v": 3.40819
+                }
+              ]
+            },
+            {
+              "target": "ForearmL",
+              "property": "rotation",
+              "keys": [
+                {
+                  "t": 0,
+                  "v": -0.08492,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 1.0,
+                  "v": -0.15074,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 2.0,
+                  "v": -0.16328,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 2.4,
+                  "v": -0.10787,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 2.6,
+                  "v": -0.08636,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 2.8,
+                  "v": -0.07594,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 3.2,
+                  "v": -0.09474,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 3.6,
+                  "v": -0.14822,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 3.8,
+                  "v": -0.17384,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 4.0,
+                  "v": -0.19077,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 4.4,
+                  "v": -0.1861,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 5.0,
+                  "v": -0.1102
+                }
+              ]
+            },
+            {
+              "target": "ThighR",
+              "property": "rotation",
+              "keys": [
+                {
+                  "t": 0,
+                  "v": 3.13995,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 1.0,
+                  "v": 3.33161,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 2.0,
+                  "v": 3.13995,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 2.4,
+                  "v": 3.27194,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 2.6,
+                  "v": 3.28893,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 2.8,
+                  "v": 3.3043,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 3.2,
+                  "v": 3.28893,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 3.6,
+                  "v": 3.25269,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 3.8,
+                  "v": 3.22988,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 4.0,
+                  "v": 3.20031,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 4.4,
+                  "v": 3.33161,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 5.0,
+                  "v": 3.13995
+                }
+              ]
+            },
+            {
+              "target": "ShinR",
+              "property": "rotation",
+              "keys": [
+                {
+                  "t": 0,
+                  "v": -0.02777,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 1.0,
+                  "v": -0.43631,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 2.0,
+                  "v": -0.02777,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 2.4,
+                  "v": -0.30884,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 2.6,
+                  "v": -0.3451,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 2.8,
+                  "v": -0.37792,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 3.2,
+                  "v": -0.3451,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 3.6,
+                  "v": -0.26775,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 3.8,
+                  "v": -0.21915,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 4.0,
+                  "v": -0.15617,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 4.4,
+                  "v": -0.43631,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 5.0,
+                  "v": -0.02777
+                }
+              ]
+            },
+            {
+              "target": "FootR",
+              "property": "rotation",
+              "keys": [
+                {
+                  "t": 0,
+                  "v": -1.03429,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 1.0,
+                  "v": -0.8174,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 2.0,
+                  "v": -1.03429,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 2.4,
+                  "v": -0.88521,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 2.6,
+                  "v": -0.86594,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 2.8,
+                  "v": -0.84848,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 3.2,
+                  "v": -0.86594,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 3.6,
+                  "v": -0.90704,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 3.8,
+                  "v": -0.93284,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 4.0,
+                  "v": -0.96625,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 4.4,
+                  "v": -0.8174,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 5.0,
+                  "v": -1.03429
+                }
+              ]
+            },
+            {
+              "target": "UpperArmR",
+              "property": "rotation",
+              "keys": [
+                {
+                  "t": 0,
+                  "v": 2.85354,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 1.0,
+                  "v": 2.82652,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 2.0,
+                  "v": 2.89338,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 2.4,
+                  "v": 2.87352,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 2.6,
+                  "v": 1.50354,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 2.8,
+                  "v": 1.01338,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 3.2,
+                  "v": 1.12064,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 3.6,
+                  "v": 0.93465,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 3.8,
+                  "v": 1.50354,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 4.0,
+                  "v": 2.86051,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 4.4,
+                  "v": 2.8898,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 5.0,
+                  "v": 2.875
+                }
+              ]
+            },
+            {
+              "target": "ForearmR",
+              "property": "rotation",
+              "keys": [
+                {
+                  "t": 0,
+                  "v": 0.08492,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 1.0,
+                  "v": 0.15074,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 2.0,
+                  "v": 0.16328,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 2.4,
+                  "v": 0.10787,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 2.6,
+                  "v": -1.48353,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 2.8,
+                  "v": -1.31669,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 3.2,
+                  "v": -1.4499,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 3.6,
+                  "v": -1.24925,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 3.8,
+                  "v": -1.48353,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 4.0,
+                  "v": 0.19077,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 4.4,
+                  "v": 0.1861,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 5.0,
+                  "v": 0.1102
+                }
+              ]
+            }
+          ]
+        },
+        "charleston": {
+          "duration": 1.0,
+          "mode": "loop",
+          "markers": [],
+          "tracks": [
+            {
+              "target": "Pelvis",
+              "property": "x",
+              "keys": [
+                {
+                  "t": 0.0,
+                  "v": 0.0,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 0.25,
+                  "v": 5.0,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 0.5,
+                  "v": 0.0,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 0.75,
+                  "v": -5.0,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 1.0,
+                  "v": 0.0
+                }
+              ]
+            },
+            {
+              "target": "Pelvis",
+              "property": "y",
+              "keys": [
+                {
+                  "t": 0.0,
+                  "v": -156.0,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 0.25,
+                  "v": -149.6,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 0.5,
+                  "v": -156.0,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 0.75,
+                  "v": -149.6,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 1.0,
+                  "v": -156.0
+                }
+              ]
+            },
+            {
+              "target": "Spine",
+              "property": "rotation",
+              "keys": [
+                {
+                  "t": 0.0,
+                  "v": 0.0,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 0.25,
+                  "v": 0.07,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 0.5,
+                  "v": 0.0,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 0.75,
+                  "v": -0.07,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 1.0,
+                  "v": 0.0
+                }
+              ]
+            },
+            {
+              "target": "Head",
+              "property": "rotation",
+              "keys": [
+                {
+                  "t": 0.0,
+                  "v": 0.0,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 0.25,
+                  "v": -0.12,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 0.5,
+                  "v": 0.0,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 0.75,
+                  "v": 0.12,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 1.0,
+                  "v": 0.0
+                }
+              ]
+            },
+            {
+              "target": "Hat",
+              "property": "x",
+              "keys": [
+                {
+                  "t": 0.0,
+                  "v": 100.0,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 0.25,
+                  "v": 104.0,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 0.5,
+                  "v": 100.0,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 0.75,
+                  "v": 104.0,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 1.0,
+                  "v": 100.0
+                }
+              ]
+            },
+            {
+              "target": "Hat",
+              "property": "rotation",
+              "keys": [
+                {
+                  "t": 0.0,
+                  "v": 0.0,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 0.25,
+                  "v": 0.0,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 0.5,
+                  "v": 0.0,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 0.75,
+                  "v": 0.0,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 1.0,
+                  "v": 0.0
+                }
+              ]
+            },
+            {
+              "target": "ThighL",
+              "property": "rotation",
+              "keys": [
+                {
+                  "t": 0.0,
+                  "v": 3.10708,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 0.25,
+                  "v": 2.90952,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 0.5,
+                  "v": 3.19524,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 0.75,
+                  "v": 2.82889,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 1.0,
+                  "v": 3.10708
+                }
+              ]
+            },
+            {
+              "target": "ShinL",
+              "property": "rotation",
+              "keys": [
+                {
+                  "t": 0.0,
+                  "v": 0.01086,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 0.25,
+                  "v": 0.60917,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 0.5,
+                  "v": 0.01085,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 0.75,
+                  "v": 0.61671,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 1.0,
+                  "v": 0.01086
+                }
+              ]
+            },
+            {
+              "target": "FootL",
+              "property": "rotation",
+              "keys": [
+                {
+                  "t": 0.0,
+                  "v": 1.33735,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 0.25,
+                  "v": 0.2866,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 0.5,
+                  "v": 0.74921,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 0.75,
+                  "v": 1.15969,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 1.0,
+                  "v": 1.33735
+                }
+              ]
+            },
+            {
+              "target": "UpperArmL",
+              "property": "rotation",
+              "keys": [
+                {
+                  "t": 0.0,
+                  "v": 3.42965,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 0.25,
+                  "v": 2.27965,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 0.5,
+                  "v": 3.42965,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 0.75,
+                  "v": 4.07965,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 1.0,
+                  "v": 3.42965
+                }
+              ]
+            },
+            {
+              "target": "ForearmL",
+              "property": "rotation",
+              "keys": [
+                {
+                  "t": 0.0,
+                  "v": -0.13541,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 0.25,
+                  "v": -0.63541,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 0.5,
+                  "v": -0.13541,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 0.75,
+                  "v": 0.36459,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 1.0,
+                  "v": -0.13541
+                }
+              ]
+            },
+            {
+              "target": "ThighR",
+              "property": "rotation",
+              "keys": [
+                {
+                  "t": 0.0,
+                  "v": 3.17611,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 0.25,
+                  "v": 3.4543,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 0.5,
+                  "v": 3.08795,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 0.75,
+                  "v": 3.37367,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 1.0,
+                  "v": 3.17611
+                }
+              ]
+            },
+            {
+              "target": "ShinR",
+              "property": "rotation",
+              "keys": [
+                {
+                  "t": 0.0,
+                  "v": -0.01086,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 0.25,
+                  "v": -0.61671,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 0.5,
+                  "v": -0.01085,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 0.75,
+                  "v": -0.60917,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 1.0,
+                  "v": -0.01086
+                }
+              ]
+            },
+            {
+              "target": "FootR",
+              "property": "rotation",
+              "keys": [
+                {
+                  "t": 0.0,
+                  "v": -1.33735,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 0.25,
+                  "v": -1.15969,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 0.5,
+                  "v": -0.74921,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 0.75,
+                  "v": -0.2866,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 1.0,
+                  "v": -1.33735
+                }
+              ]
+            },
+            {
+              "target": "UpperArmR",
+              "property": "rotation",
+              "keys": [
+                {
+                  "t": 0.0,
+                  "v": 2.85354,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 0.25,
+                  "v": 2.20354,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 0.5,
+                  "v": 2.85354,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 0.75,
+                  "v": 4.00354,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 1.0,
+                  "v": 2.85354
+                }
+              ]
+            },
+            {
+              "target": "ForearmR",
+              "property": "rotation",
+              "keys": [
+                {
+                  "t": 0.0,
+                  "v": 0.13541,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 0.25,
+                  "v": -0.36459,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 0.5,
+                  "v": 0.13541,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 0.75,
+                  "v": 0.63541,
+                  "ease": "easeInOut"
+                },
+                {
+                  "t": 1.0,
+                  "v": 0.13541
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "animation": "idle"
+    },
+    {
+      "id": "a3000000-0000-4000-8000-000000040002",
+      "name": "Pelvis",
+      "type": "Bone",
+      "x": 0.0,
+      "y": -156.0,
+      "rotation": -1.570796,
+      "length": 12.0,
+      "parent": "a3000000-0000-4000-8000-000000040001"
+    },
+    {
+      "id": "a3000000-0000-4000-8000-000000040003",
+      "name": "Spine",
+      "type": "Bone",
+      "x": 12.0,
+      "y": -0.0,
+      "rotation": 0.0,
+      "length": 108.0,
+      "parent": "a3000000-0000-4000-8000-000000040002"
+    },
+    {
+      "id": "a3000000-0000-4000-8000-000000040004",
+      "name": "Head",
+      "type": "Bone",
+      "x": 112.0,
+      "y": -0.0,
+      "rotation": 0.0,
+      "length": 100.0,
+      "parent": "a3000000-0000-4000-8000-000000040003"
+    },
+    {
+      "id": "a3000000-0000-4000-8000-000000040005",
+      "name": "Hat",
+      "type": "Bone",
+      "x": 100.0,
+      "y": -0.0,
+      "rotation": 0.0,
+      "length": 64.0,
+      "parent": "a3000000-0000-4000-8000-000000040004"
+    },
+    {
+      "id": "a3000000-0000-4000-8000-000000040006",
+      "name": "ThighL",
+      "type": "Bone",
+      "x": -0.0,
+      "y": -24.0,
+      "rotation": 3.169363,
+      "length": 72.03,
+      "parent": "a3000000-0000-4000-8000-000000040002"
+    },
+    {
+      "id": "a3000000-0000-4000-8000-000000040007",
+      "name": "ShinL",
+      "type": "Bone",
+      "x": 72.028,
+      "y": -0.0,
+      "rotation": -0.027771,
+      "length": 64.0,
+      "parent": "a3000000-0000-4000-8000-000000040006"
+    },
+    {
+      "id": "a3000000-0000-4000-8000-000000040008",
+      "name": "FootL",
+      "type": "Bone",
+      "x": 64.0,
+      "y": 0.0,
+      "rotation": 1.063698,
+      "length": 41.18,
+      "parent": "a3000000-0000-4000-8000-000000040007"
+    },
+    {
+      "id": "a3000000-0000-4000-8000-000000040009",
+      "name": "UpperArmL",
+      "type": "Bone",
+      "x": 100.0,
+      "y": -68.0,
+      "rotation": 3.429648,
+      "length": 56.32,
+      "parent": "a3000000-0000-4000-8000-000000040003"
+    },
+    {
+      "id": "a3000000-0000-4000-8000-000000040010",
+      "name": "ForearmL",
+      "type": "Bone",
+      "x": 56.321,
+      "y": -0.0,
+      "rotation": -0.135406,
+      "length": 52.61,
+      "limitAngles": true,
+      "minAngle": -47.76,
+      "maxAngle": 77.24,
+      "parent": "a3000000-0000-4000-8000-000000040009"
+    },
+    {
+      "id": "a3000000-0000-4000-8000-000000040011",
+      "name": "ThighR",
+      "type": "Bone",
+      "x": 0.0,
+      "y": 24.0,
+      "rotation": 3.113822,
+      "length": 72.03,
+      "parent": "a3000000-0000-4000-8000-000000040002"
+    },
+    {
+      "id": "a3000000-0000-4000-8000-000000040012",
+      "name": "ShinR",
+      "type": "Bone",
+      "x": 72.028,
+      "y": -0.0,
+      "rotation": 0.027771,
+      "length": 64.0,
+      "parent": "a3000000-0000-4000-8000-000000040011"
+    },
+    {
+      "id": "a3000000-0000-4000-8000-000000040013",
+      "name": "FootR",
+      "type": "Bone",
+      "x": 64.0,
+      "y": 0.0,
+      "rotation": -1.063698,
+      "length": 41.18,
+      "parent": "a3000000-0000-4000-8000-000000040012"
+    },
+    {
+      "id": "a3000000-0000-4000-8000-000000040014",
+      "name": "UpperArmR",
+      "type": "Bone",
+      "x": 100.0,
+      "y": 68.0,
+      "rotation": 2.853537,
+      "length": 56.32,
+      "parent": "a3000000-0000-4000-8000-000000040003"
+    },
+    {
+      "id": "a3000000-0000-4000-8000-000000040015",
+      "name": "ForearmR",
+      "type": "Bone",
+      "x": 56.321,
+      "y": 0.0,
+      "rotation": 0.135406,
+      "length": 52.61,
+      "limitAngles": true,
+      "minAngle": -77.24,
+      "maxAngle": 47.76,
+      "parent": "a3000000-0000-4000-8000-000000040014"
+    },
+    {
+      "id": "a3000000-0000-4000-8000-000000040016",
+      "name": "DancerThighL",
+      "type": "DancerThighL",
+      "pivotNormalized": true,
+      "pivotX": 0.51923,
+      "pivotY": 0.14,
+      "rotation": -1.598567,
+      "zIndex": 0,
+      "parent": "a3000000-0000-4000-8000-000000040006"
+    },
+    {
+      "id": "a3000000-0000-4000-8000-000000040017",
+      "name": "DancerShinL",
+      "type": "DancerShinL",
+      "pivotNormalized": true,
+      "pivotX": 0.5,
+      "pivotY": 0.14444,
+      "rotation": -1.570796,
+      "zIndex": 1,
+      "parent": "a3000000-0000-4000-8000-000000040007"
+    },
+    {
+      "id": "a3000000-0000-4000-8000-000000040018",
+      "name": "DancerFootL",
+      "type": "DancerFootL",
+      "pivotNormalized": true,
+      "pivotX": 0.63235,
+      "pivotY": 0.19355,
+      "rotation": -2.634494,
+      "zIndex": 2,
+      "parent": "a3000000-0000-4000-8000-000000040008"
+    },
+    {
+      "id": "a3000000-0000-4000-8000-000000040019",
+      "name": "DancerThighR",
+      "type": "DancerThighR",
+      "pivotNormalized": true,
+      "pivotX": 0.48077,
+      "pivotY": 0.14,
+      "rotation": -1.543026,
+      "zIndex": 3,
+      "parent": "a3000000-0000-4000-8000-000000040011"
+    },
+    {
+      "id": "a3000000-0000-4000-8000-000000040020",
+      "name": "DancerShinR",
+      "type": "DancerShinR",
+      "pivotNormalized": true,
+      "pivotX": 0.5,
+      "pivotY": 0.14444,
+      "rotation": -1.570796,
+      "zIndex": 4,
+      "parent": "a3000000-0000-4000-8000-000000040012"
+    },
+    {
+      "id": "a3000000-0000-4000-8000-000000040021",
+      "name": "DancerFootR",
+      "type": "DancerFootR",
+      "pivotNormalized": true,
+      "pivotX": 0.36765,
+      "pivotY": 0.19355,
+      "rotation": -0.507099,
+      "zIndex": 5,
+      "parent": "a3000000-0000-4000-8000-000000040013"
+    },
+    {
+      "id": "a3000000-0000-4000-8000-000000040022",
+      "name": "DancerPelvis",
+      "type": "DancerPelvis",
+      "pivotNormalized": true,
+      "pivotX": 0.5,
+      "pivotY": 0.53659,
+      "rotation": 1.570796,
+      "zIndex": 6,
+      "parent": "a3000000-0000-4000-8000-000000040002"
+    },
+    {
+      "id": "a3000000-0000-4000-8000-000000040023",
+      "name": "DancerSpine",
+      "type": "DancerSpine",
+      "pivotNormalized": true,
+      "pivotX": 0.5,
+      "pivotY": 0.92308,
+      "rotation": 1.570796,
+      "zIndex": 7,
+      "parent": "a3000000-0000-4000-8000-000000040003"
+    },
+    {
+      "id": "a3000000-0000-4000-8000-000000040024",
+      "name": "DancerUpperArmL",
+      "type": "DancerUpperArmL",
+      "pivotNormalized": true,
+      "pivotX": 0.63793,
+      "pivotY": 0.17857,
+      "rotation": -1.858852,
+      "zIndex": 8,
+      "parent": "a3000000-0000-4000-8000-000000040009"
+    },
+    {
+      "id": "a3000000-0000-4000-8000-000000040025",
+      "name": "DancerForearmL",
+      "type": "DancerForearmL",
+      "pivotNormalized": true,
+      "pivotX": 0.58696,
+      "pivotY": 0.12,
+      "rotation": -1.723446,
+      "zIndex": 9,
+      "parent": "a3000000-0000-4000-8000-000000040010"
+    },
+    {
+      "id": "a3000000-0000-4000-8000-000000040026",
+      "name": "DancerUpperArmR",
+      "type": "DancerUpperArmR",
+      "pivotNormalized": true,
+      "pivotX": 0.36207,
+      "pivotY": 0.17857,
+      "rotation": -1.282741,
+      "zIndex": 10,
+      "parent": "a3000000-0000-4000-8000-000000040014"
+    },
+    {
+      "id": "a3000000-0000-4000-8000-000000040027",
+      "name": "DancerForearmR",
+      "type": "DancerForearmR",
+      "pivotNormalized": true,
+      "pivotX": 0.41304,
+      "pivotY": 0.12,
+      "rotation": -1.418147,
+      "zIndex": 11,
+      "parent": "a3000000-0000-4000-8000-000000040015"
+    },
+    {
+      "id": "a3000000-0000-4000-8000-000000040028",
+      "name": "DancerHead",
+      "type": "DancerHead",
+      "pivotNormalized": true,
+      "pivotX": 0.5,
+      "pivotY": 0.9187,
+      "rotation": 1.570796,
+      "zIndex": 12,
+      "parent": "a3000000-0000-4000-8000-000000040004"
+    },
+    {
+      "id": "a3000000-0000-4000-8000-000000040029",
+      "name": "DancerHat",
+      "type": "DancerHat",
+      "pivotNormalized": true,
+      "pivotX": 0.5,
+      "pivotY": 0.91026,
+      "rotation": 1.570796,
+      "zIndex": 13,
+      "parent": "a3000000-0000-4000-8000-000000040005"
+    }
+  ]
+}

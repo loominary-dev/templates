@@ -1,8 +1,0 @@
-{
-  "schemaVersion": 2,
-  "baseClass": "Sprite",
-  "defaults": {
-    "spriteKey": "Pole.sprite.json"
-  },
-  "components": []
-}

@@ -3,7 +3,9 @@
   "baseClass": "Label",
   "defaults": {
     "text": "",
-    "fontSize": 13
+    "fontSize": 24,
+    "textColor": 2372383,
+    "hAlign": "Center"
   },
   "components": []
 }
