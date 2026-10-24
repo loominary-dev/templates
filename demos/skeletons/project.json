@@ -3,13 +3,23 @@
   "name": "Skeletons demo",
   "entryScene": "scenes/Skeletons.scene.json",
   "display": {
-    "width": 960,
-    "height": 540,
+    "width": 1920,
+    "height": 1080,
     "windowWidth": 960,
     "windowHeight": 540,
     "presentMode": "fit",
     "displayMode": "windowed",
     "autoResize": true
+  },
+  "input": {
+    "Bones": {
+      "bindings": [
+        {
+          "kind": "key",
+          "code": 66
+        }
+      ]
+    }
   },
   "physics": {
     "engine": "none"

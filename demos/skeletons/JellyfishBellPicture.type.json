@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 2,
+  "baseClass": "MeshSprite",
+  "defaults": {
+    "spriteKey": "JellyfishBellPicture.sprite.json"
+  },
+  "components": []
+}
