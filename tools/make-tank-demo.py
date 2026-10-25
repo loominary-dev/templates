@@ -90,7 +90,7 @@ for name in SHAPES:
                 [{"componentClass": "PhysicsBody", "bodyType": "Dynamic", "bounceX": 0.3, "bounceY": 0.2, "frictionX": 0.05}, {"componentClass": "ShapeRules"}])
 # The water a little denser than the shapes (an arcade body counts as density 1), so they float low in it.
 d.type_json("Water", "Sprite", {"spriteKey": "Drop.sprite.json", "collisionEnabled": False},
-            [{"componentClass": "Fluid", "kind": "Water", "radius": 5, "maxCount": 2000, "pictureScale": 2.0, "color": 0x2F8FEF, "colorBySpeed": True, "speedColor": 0xF2FBFF, "fullSpeed": 300,
+            [{"componentClass": "Fluid", "kind": "Water", "radius": 5, "maxCount": 2000, "pictureScale": 2.0, "color": 0x2F8FEF, "colorBySpeed": True, "speedColor": 0xDDF3FF, "fullSpeed": 650,
               "viscosity": 0.2, "density": 1.4, "layers": SOLID | BODY}, {"componentClass": "WaterRules"}])
 d.type_json("Tap", "Sprite", {"spriteKey": "Tap.sprite.json", "collisionEnabled": False},
             [{"componentClass": "Emitter", "system": "Water1", "group": "tap", "on": True, "rate": 70, "speed": 160,
