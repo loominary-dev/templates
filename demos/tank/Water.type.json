@@ -12,10 +12,10 @@
       "radius": 5,
       "maxCount": 2000,
       "pictureScale": 2.0,
-      "color": 4892927,
+      "color": 3117039,
       "colorBySpeed": true,
-      "speedColor": 15136767,
-      "fullSpeed": 450,
+      "speedColor": 15924223,
+      "fullSpeed": 300,
       "viscosity": 0.2,
       "density": 1.4,
       "layers": 3
