@@ -1,0 +1,28 @@
+# Loominary: this machine's own files and build output
+.loominary/
+.loominary-undo/
+.vscode/
+typeTextures.json
+*.log
+
+# Loominary: generated sources, kept up to date by the editor; do not edit between these lines
+/Backing.hx
+/Benches.hx
+/Bunny.hx
+/BunnyBench.hx
+/Caption.hx
+/CountText.hx
+/FpsText.hx
+/Strip.hx
+/Switcher.hx
+/Title.hx
+/TreeBench.hx
+/TreeBunny.hx
+/Twig.hx
+/vscript/BatchTint.hx
+/vscript/BunnyBenchRules.hx
+/vscript/BunnyRules.hx
+/vscript/SwitchRules.hx
+/vscript/TreeBenchRules.hx
+/vscript/TreeRules.hx
+# Loominary: end of generated sources
