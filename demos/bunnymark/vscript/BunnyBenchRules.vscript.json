@@ -69,6 +69,35 @@
               "value": 255
             }
           ]
+        },
+        {
+          "scope": "variables",
+          "className": "Variables",
+          "name": "setVariable",
+          "params": [
+            {
+              "type": "literal",
+              "value": "spin",
+              "valueKind": "string"
+            },
+            {
+              "type": "value",
+              "scope": "maths",
+              "className": "Maths",
+              "name": "random",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": -30
+                },
+                {
+                  "type": "literal",
+                  "value": 30
+                }
+              ],
+              "returnType": "Float"
+            }
+          ]
         }
       ],
       "subRules": []
@@ -169,6 +198,35 @@
                 {
                   "type": "literal",
                   "value": 256
+                }
+              ],
+              "returnType": "Float"
+            }
+          ]
+        },
+        {
+          "scope": "variables",
+          "className": "Variables",
+          "name": "setVariable",
+          "params": [
+            {
+              "type": "literal",
+              "value": "spin",
+              "valueKind": "string"
+            },
+            {
+              "type": "value",
+              "scope": "maths",
+              "className": "Maths",
+              "name": "random",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": -30
+                },
+                {
+                  "type": "literal",
+                  "value": 30
                 }
               ],
               "returnType": "Float"

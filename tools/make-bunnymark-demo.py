@@ -120,18 +120,21 @@ d.scene("scenes/singletons/Bench.scene.json", [{"id": d.uid(1), "name": "Bench"}
 
 # ── rules ──
 x, y = value("self", "Node", "getPositionX"), value("self", "Node", "getPositionY")
-GRAVITY = 1800   # pixi's 0.5 a frame, at 60 frames a second
-# Each bunny: pixi's numbers, in pixels a second rather than a frame.
+# Each bunny: pixi's numbers, in pixels a second rather than a frame, played at
+# three quarters of pixi's pace so the smoothness of the motion can be seen.
+# Speeds scale by PACE and gravity by PACE squared, so the arcs are pixi's own.
+PACE = 0.75
+GRAVITY = 1800 * PACE * PACE   # pixi's 0.5 a frame at 60 frames a second, slowed
 bunny_rules = [
     rule([line("self", "Node", "onCreated")],
-         [set_sheet_var("vx", random(0, 600)), set_sheet_var("vy", random(-300, 300)), line("self", "Node", "setPosition", lit(L), lit(T))]),
+         [set_sheet_var("vx", random(0, 600 * PACE)), set_sheet_var("vy", random(-300 * PACE, 300 * PACE)), line("self", "Node", "setPosition", lit(L), lit(T))]),
     rule([], [line("self", "Node", "setPosition", op("+", x, op("*", sheet_var("vx"), dt())), op("+", y, op("*", sheet_var("vy"), dt()))),
               add_sheet_var("vy", op("*", lit(GRAVITY), dt()))]),
     rule([line("self", "Node", "comparePositionX", lit(OBJ_GT), lit(-L))], [set_sheet_var("vx", op("*", sheet_var("vx"), lit(-1))), line("self", "Node", "setPositionX", lit(-L))]),
     rule([line("self", "Node", "comparePositionX", lit(OBJ_LT), lit(L))], [set_sheet_var("vx", op("*", sheet_var("vx"), lit(-1))), line("self", "Node", "setPositionX", lit(L))]),
     rule([line("self", "Node", "comparePositionY", lit(OBJ_GT), lit(-T))],
          [set_sheet_var("vy", op("*", sheet_var("vy"), lit(-0.85))), line("self", "Node", "setPositionY", lit(-T))],
-         [rule([compare(random(0, 1), GT, lit(0.5))], [add_sheet_var("vy", op("*", random(0, 6), lit(-60)))])]),
+         [rule([compare(random(0, 1), GT, lit(0.5))], [add_sheet_var("vy", op("*", random(0, 6), lit(-60 * PACE)))])]),
     rule([line("self", "Node", "comparePositionY", lit(OBJ_LT), lit(T))], [set_sheet_var("vy", lit(0)), line("self", "Node", "setPositionY", lit(T))]),
 ]
 d.write("vscript/BunnyRules.vscript.json", {"vars": [{"name": "vx", "type": "number", "value": 0}, {"name": "vy", "type": "number", "value": 0}], "rules": bunny_rules})
@@ -141,7 +144,9 @@ PARTS = ["red", "green", "blue"]
 d.write("vscript/BatchTint.vscript.json", {"rules": [
     rule([line("self", "Node", "onCreated")], [line("self", "Node", "setTintRgb", *[var(c) for c in PARTS])])]})
 
-tree_rules = [rule([line("self", "Node", "onCreated")], [comp("self", "Rotate", "setSpeed", random(0.1, 2))])]
+# Every part of every tree in a batch turns at the batch's speed, picked with its colour.
+SPIN = 30   # degrees a second, either way
+tree_rules = [rule([line("self", "Node", "onCreated")], [comp("self", "Rotate", "setSpeed", var("spin"))])]
 d.write("vscript/TreeRules.vscript.json", {"rules": tree_rules})
 
 FPS_EVERY = 0.5   # seconds between readings of the frame rate, so the number can be read
@@ -152,8 +157,10 @@ def bench(kind, count_scope, make, ready):
     return [
         # Each scene starts white; then before the making below, so a press's first ten already take its colour.
         # A tint can only darken, so each part starts at 60: no batch is lost against the black.
-        rule([once()], [line("variables", "Variables", "setVariable", s(c), lit(255)) for c in PARTS]),
-        rule([mouse_pressed(LEFT_BUTTON)], [line("variables", "Variables", "setVariable", s(c), random(60, 256)) for c in PARTS]),
+        rule([once()], [line("variables", "Variables", "setVariable", s(c), lit(255)) for c in PARTS]
+             + [line("variables", "Variables", "setVariable", s("spin"), random(-SPIN, SPIN))]),
+        rule([mouse_pressed(LEFT_BUTTON)], [line("variables", "Variables", "setVariable", s(c), random(60, 256)) for c in PARTS]
+             + [line("variables", "Variables", "setVariable", s("spin"), random(-SPIN, SPIN))]),
         rule([ready, once(), system("repeat", lit(100))], [make]),
         rule([ready, mouse_down(LEFT_BUTTON), system("repeat", lit(10))], [make]),
         rule([mouse_down(RIGHT_BUTTON)], [sheet("destroyNewest", s(kind), lit(10))]),
@@ -190,10 +197,11 @@ HUD shows the frames a second and the count.
 - **Bunnies** (press 1): plain bouncing bunnies. Each one has its own visual
   script, `vscript/BunnyRules`: a sideways and an upward speed of its own,
   gravity every step, a bounce off the bottom and the sides, as pixi.js's
-  bunnymark does it.
+  bunnymark does it, at three quarters of its pace so the smooth motion shows.
 - **Trees** (press 2): each one a bunny with a **Rotate** behavior, with a
-  bunny 0.6 its size on it turning too, and a smaller one again on that, each
-  turning at its own speed between 0.1 and 2 degrees a second. A tree is the
+  bunny 0.6 its size on it turning too, and a smaller one again on that. Every
+  part of every tree in a batch turns at that batch's speed, picked at random
+  between 30 degrees a second either way with the batch's color. A tree is the
   scene `scenes/BunnyTree`, made whole by **Create scene**.
 
 Hold the left mouse button to add ten a frame, the right to take ten away
