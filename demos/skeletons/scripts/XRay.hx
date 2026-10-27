@@ -11,7 +11,7 @@ class XRay extends Component {
 	var showing = false;
 
 	override public function update(dt:Float):Void {
-		var want = Input.instance.isActionOn(action);
+		var want = Input.instance.isCommandOn(action);
 		if (want == showing) return;
 		showing = want;
 		var top:Node = node;

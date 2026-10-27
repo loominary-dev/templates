@@ -395,8 +395,8 @@ def sheet(name, *params, **k):
     from demo_kit import OBJECT_WORDS, PHYSICS_WORDS
     return line("physics" if name in PHYSICS_WORDS else "objects" if name in OBJECT_WORDS else "system", "VisualScriptComponent", name, *params, **k)
 def once(): return sheet("triggerOnce")
-def inp(command): return line("input", "Input", "isActionOn", s(command))
-def pressed(command): return line("input", "Input", "isActionPressed", s(command))
+def inp(command): return line("input", "Input", "isCommandOn", s(command))
+def pressed(command): return line("input", "Input", "isCommandPressed", s(command))
 def var(name): return value("variables", "Variables", "getVariable", s(name))
 def rule(conditions, actions, sub=()):
     return {"conditions": conditions, "actions": actions, "subRules": list(sub)}

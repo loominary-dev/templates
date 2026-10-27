@@ -74,7 +74,7 @@
         {
           "scope": "input",
           "className": "Input",
-          "name": "isActionOn",
+          "name": "isCommandOn",
           "params": [
             {
               "type": "literal",
@@ -114,7 +114,7 @@
         {
           "scope": "input",
           "className": "Input",
-          "name": "isActionOn",
+          "name": "isCommandOn",
           "params": [
             {
               "type": "literal",
@@ -154,7 +154,7 @@
         {
           "scope": "input",
           "className": "Input",
-          "name": "isActionOn",
+          "name": "isCommandOn",
           "params": [
             {
               "type": "literal",
@@ -167,7 +167,7 @@
         {
           "scope": "input",
           "className": "Input",
-          "name": "isActionOn",
+          "name": "isCommandOn",
           "params": [
             {
               "type": "literal",

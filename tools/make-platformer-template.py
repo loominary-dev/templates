@@ -200,7 +200,7 @@ def line(scope, cls, name, *params, **k):
     return dict({"scope": scope, "className": cls, "name": name, "params": list(params)}, **k)
 def comp(scope, cls, name, *params, **k):
     return line(scope, cls, name, *params, onComponent=True, **k)
-def inp(command): return line("input", "Input", "isActionOn", s(command))
+def inp(command): return line("input", "Input", "isCommandOn", s(command))
 def rule(conditions, actions, sub=()):
     return {"conditions": conditions, "actions": actions, "subRules": list(sub)}
 EQ, GT = 0, 4  # System's Compare orders its operators =, ≠, <, ≤, >, ≥
