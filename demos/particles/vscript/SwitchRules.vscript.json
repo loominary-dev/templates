@@ -5,7 +5,7 @@
         {
           "scope": "input",
           "className": "Input",
-          "name": "isActionPressed",
+          "name": "isCommandPressed",
           "params": [
             {
               "type": "literal",
@@ -36,7 +36,7 @@
         {
           "scope": "input",
           "className": "Input",
-          "name": "isActionPressed",
+          "name": "isCommandPressed",
           "params": [
             {
               "type": "literal",
@@ -67,7 +67,7 @@
         {
           "scope": "input",
           "className": "Input",
-          "name": "isActionPressed",
+          "name": "isCommandPressed",
           "params": [
             {
               "type": "literal",
@@ -98,7 +98,7 @@
         {
           "scope": "input",
           "className": "Input",
-          "name": "isActionPressed",
+          "name": "isCommandPressed",
           "params": [
             {
               "type": "literal",
@@ -129,7 +129,7 @@
         {
           "scope": "input",
           "className": "Input",
-          "name": "isActionPressed",
+          "name": "isCommandPressed",
           "params": [
             {
               "type": "literal",
@@ -160,7 +160,7 @@
         {
           "scope": "input",
           "className": "Input",
-          "name": "isActionPressed",
+          "name": "isCommandPressed",
           "params": [
             {
               "type": "literal",
@@ -191,7 +191,7 @@
         {
           "scope": "input",
           "className": "Input",
-          "name": "isActionPressed",
+          "name": "isCommandPressed",
           "params": [
             {
               "type": "literal",
@@ -222,7 +222,7 @@
         {
           "scope": "input",
           "className": "Input",
-          "name": "isActionPressed",
+          "name": "isCommandPressed",
           "params": [
             {
               "type": "literal",
@@ -253,7 +253,7 @@
         {
           "scope": "input",
           "className": "Input",
-          "name": "isActionPressed",
+          "name": "isCommandPressed",
           "params": [
             {
               "type": "literal",
@@ -284,7 +284,7 @@
         {
           "scope": "input",
           "className": "Input",
-          "name": "isActionPressed",
+          "name": "isCommandPressed",
           "params": [
             {
               "type": "literal",
@@ -315,7 +315,7 @@
         {
           "scope": "input",
           "className": "Input",
-          "name": "isActionPressed",
+          "name": "isCommandPressed",
           "params": [
             {
               "type": "literal",
