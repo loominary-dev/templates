@@ -68,7 +68,7 @@ COG_X = 0.0
 
 def gait(r, dur, stride, lift, stance, bob, lean, steps=32, run=False, drop=0.0):
     """A loop of keys: each foot planted (flat, sliding back along the ground) for `stance` of the cycle, then lifted and swung
-    forward. The middle of the sole (a little ahead of the ankle) passes under the centre of gravity at the middle of the stance,
+    forward. The middle of the sole (a little ahead of the ankle) passes under the center of gravity at the middle of the stance,
     so the stride reaches as far in front of it as behind."""
     keys = []
     for i in range(steps + 1):
@@ -86,7 +86,7 @@ def gait(r, dur, stride, lift, stance, bob, lean, steps=32, run=False, drop=0.0)
             p = (ph + shift) % 1
             rest_ankle = r.bones["Shin" + side].tip
             sole_mid = 20                            # the middle of the sole, ahead of the ankle
-            centre = COG_X - sole_mid + (rest_ankle[0] - r.bones["Shin" + "Near"].tip[0])
+            center = COG_X - sole_mid + (rest_ankle[0] - r.bones["Shin" + "Near"].tip[0])
             if p < stance:
                 u = p / stance
                 dx, dy, tilt = stride / 2 - stride * u, 0.0, 0.0
@@ -94,7 +94,7 @@ def gait(r, dur, stride, lift, stance, bob, lean, steps=32, run=False, drop=0.0)
                 u = (p - stance) / (1 - stance); s = u * u * (3 - 2 * u)
                 dx, dy = -stride / 2 + stride * s, -lift * math.sin(math.pi * u)
                 tilt = 0.45 * math.sin(math.pi * u)
-            target = (centre + dx, rest_ankle[1] + dy)
+            target = (center + dx, rest_ankle[1] + dy)
             t1, t2 = r.two_bone(turns, off, "Thigh" + side, "Shin" + side, target, prefer=lambda a, b: a[0] > b[0])
             turns["Thigh" + side], turns["Shin" + side] = t1, t2
             turns["Foot" + side] = r.keep_world_angle(turns, off, "Foot" + side, r.bones["Foot" + side].angle + tilt)

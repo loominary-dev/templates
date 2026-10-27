@@ -139,12 +139,12 @@ bunny_rules = [
 ]
 d.write("vscript/BunnyRules.vscript.json", {"vars": [{"name": "vx", "type": "number", "value": 0}, {"name": "vy", "type": "number", "value": 0}], "rules": bunny_rules})
 
-# Each press of the left button picks the colour of the batch; the first hundred are left white (255, 255, 255).
+# Each press of the left button picks the color of the batch; the first hundred are left white (255, 255, 255).
 PARTS = ["red", "green", "blue"]
 d.write("vscript/BatchTint.vscript.json", {"rules": [
     rule([line("self", "Node", "onCreated")], [line("self", "Node", "setTintRgb", *[var(c) for c in PARTS])])]})
 
-# Every part of every tree in a batch turns at the batch's speed, picked with its colour.
+# Every part of every tree in a batch turns at the batch's speed, picked with its color.
 SPIN = 30   # degrees a second, either way
 tree_rules = [rule([line("self", "Node", "onCreated")], [comp("self", "Rotate", "setSpeed", var("spin"))])]
 d.write("vscript/TreeRules.vscript.json", {"rules": tree_rules})
@@ -155,7 +155,7 @@ def bench(kind, count_scope, make, ready):
     # Create draws a Type's picture once Preload object type (or Preload scene) has loaded it: nothing is made before.
     frames, elapsed = sheet_var("frames"), sheet_var("elapsed")
     return [
-        # Each scene starts white; then before the making below, so a press's first ten already take its colour.
+        # Each scene starts white; then before the making below, so a press's first ten already take its color.
         # A tint can only darken, so each part starts at 60: no batch is lost against the black.
         rule([once()], [line("variables", "Variables", "setVariable", s(c), lit(255)) for c in PARTS]
              + [line("variables", "Variables", "setVariable", s("spin"), random(-SPIN, SPIN))]),

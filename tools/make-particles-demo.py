@@ -30,7 +30,7 @@ d.sprite("Shelf", 160, 14, [("still", [panel(160, 14, STONE, STONE_EDGE, 2)], 40
 crate = panel(30, 30, (196, 140, 82, 255), (100, 64, 34, 255), 2)
 ImageDraw.Draw(crate).line([4, 4, 25, 25], fill=(100, 64, 34, 255), width=2)
 d.sprite("Crate", 30, 30, [("still", [crate], 400, "loop")], [box("body", 15, 15, 30, 30, density=0.5)])
-# One particle each: a soft dot, tinted by the particle's own colour when drawn.
+# One particle each: a soft dot, tinted by the particle's own color when drawn.
 d.sprite("Drop", 16, 16, [("still", [soft_dot(16, (255, 255, 255), 0.8)], 400, "loop")], [])
 d.sprite("Grain", 12, 12, [("still", [soft_dot(12, (255, 255, 255), 0.4)], 400, "loop")], [])
 d.sprite("Spark", 10, 10, [("still", [soft_dot(10, (255, 255, 255), 1.6)], 400, "loop")], [])
@@ -304,7 +304,7 @@ feature("SpringNet", "Spring net",
          rule([mouse_pressed(LEFT_BUTTON)], [fl("Net", "pushInCircle", px, py, lit(90), lit(0), lit(-500))])])
 
 cup_build = [fl("Walled", "destroyAll"), fl("Walled", "fillObject", s("CupBase"), s("cup")), fl("Walled", "fillObject", s("CupLeft"), s("cup")),
-             fl("Walled", "fillObject", s("CupRight"), s("cup")), fl("Walled", "setGroupKind", s("cup"), lit(3)), fl("Walled", "colourGroup", s("cup"), lit(0xA0A4B0))]
+             fl("Walled", "fillObject", s("CupRight"), s("cup")), fl("Walled", "setGroupKind", s("cup"), lit(3)), fl("Walled", "colorGroup", s("cup"), lit(0xA0A4B0))]
 def walls(place):
     tank(place, 0, 240, 640, 200, "")
     place("Walled1", "Walled", -460, 250)
@@ -317,7 +317,7 @@ feature("WallsOfParticles", "Walls made of particles",
         "Space makes the cup plain water, and it gives way.   R builds it again.   Click to splash.",
         walls,
         [rule([once()], cup_build), rule([pressed("Reset")], cup_build),
-         rule([pressed("Act")], [fl("Walled", "setGroupKind", s("cup"), lit(0)), fl("Walled", "colourGroup", s("cup"), lit(0x4AA8FF)), click]),
+         rule([pressed("Act")], [fl("Walled", "setGroupKind", s("cup"), lit(0)), fl("Walled", "colorGroup", s("cup"), lit(0x4AA8FF)), click]),
          splash("Walled")])
 
 oil_start = [fl("OilWater", "destroyAll"),
@@ -384,7 +384,7 @@ feature("ObjectsIntoParticles", "Objects into particles",
          rule([mouse_pressed(LEFT_BUTTON)], [fl("Bits", "pushInCircle", px, py, lit(80), lit(0), lit(-500))]),
          rule([pressed("Reset")], [line("Scenes", "SceneManager", "changeScene", s("scenes/ObjectsIntoParticles.scene.json"))])])
 
-# A whole picture into water: Kenney's factory sample (CC0, tools/art), its licence line along the foot left off.
+# A whole picture into water: Kenney's factory sample (CC0, tools/art), its license line along the foot left off.
 factory = Image.open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "art", "kenney-factory.png")).convert("RGBA")
 factory = factory.crop((0, 0, factory.width, 452))
 d.sprite("Factory", factory.width, factory.height, [("still", [factory], 400, "loop")], [])
