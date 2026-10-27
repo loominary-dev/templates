@@ -91,7 +91,7 @@
         {
           "scope": "Walled",
           "className": "Fluid",
-          "name": "colourGroup",
+          "name": "colorGroup",
           "params": [
             {
               "type": "literal",
@@ -205,7 +205,7 @@
         {
           "scope": "Walled",
           "className": "Fluid",
-          "name": "colourGroup",
+          "name": "colorGroup",
           "params": [
             {
               "type": "literal",
@@ -258,7 +258,7 @@
         {
           "scope": "Walled",
           "className": "Fluid",
-          "name": "colourGroup",
+          "name": "colorGroup",
           "params": [
             {
               "type": "literal",

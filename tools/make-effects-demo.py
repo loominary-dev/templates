@@ -22,7 +22,7 @@ def panel(w, h, fill, edge, radius=3):
     ImageDraw.Draw(img).rounded_rectangle([0, 0, w - 1, h - 1], radius=radius, fill=fill, outline=edge, width=2)
     return img
 
-def ring(size, r0, r1, colour=(255, 255, 255)):
+def ring(size, r0, r1, color=(255, 255, 255)):
     """A soft ring between two radii: one frame of a puff that grows."""
     img = canvas(size, size)
     c = (size - 1) / 2
@@ -32,7 +32,7 @@ def ring(size, r0, r1, colour=(255, 255, 255)):
             if r0 <= dist <= r1:
                 t = (dist - r0) / max(1, r1 - r0)
                 a = math.sin(t * math.pi)
-                img.putpixel((x, y), colour + (int(255 * a),))
+                img.putpixel((x, y), color + (int(255 * a),))
     return img
 
 def flake(size=16):
@@ -104,7 +104,7 @@ EFFECTS = {
         "life.size": linear(0.2, 0.1), "life.opacity": ease(0, "Quad", "In"),
         "life.color": gradient(0, argb(255, 0xfff2b0), 0.3, argb(255, 0xff9a20), 0.7, argb(255, 0xc82a08), 1, argb(0, 0x400000)),
         "forces.gravityY": -170, "forces.drag": 0.8, "forces.turbulence": 1.5, "forces.turbulenceStrength": 0.6}),
-    # Smoke: slow grey puffs that swell and fade, the wind on them rising and falling over six seconds.
+    # Smoke: slow gray puffs that swell and fade, the wind on them rising and falling over six seconds.
     "Smoke": effect("Puff.sprite.json", **{"blend": "mix", "emission.rate": 22, "emission.shape": "circle", "emission.width": 36, "emission.height": 36, "emission.direction": "angle", "emission.angle": -90, "emission.spread": 30,
         "emission.lifetime": spread(3.2, 0.8), "emission.warmUp": 2.5, "emission.maxParticles": 300, "start.speed": spread(40, 15), "start.spin": spread(0, 30), "start.size": spread(1.1, 0.3), "start.opacity": spread(0.5, 0.1),
         "life.size": linear(3.2, 0.5), "life.opacity": ease(0, "Quad", "Out"), "life.color": gradient(0, argb(255, 0x9a9a9a), 1, argb(0, 0x404040)),
@@ -251,7 +251,7 @@ feature("SparksThatHit", "Sparks that hit", [
 ])
 
 # 4. Magic: a ring of motes pushed outward and swirled; local particles move with the wand, world ones are left behind.
-def orbit_x(centre): return op("+", op("*", value("maths", "Maths", "cosine", op("*", value("system", "System", "getElapsedTime"), lit(90))), lit(110)), lit(centre))
+def orbit_x(center): return op("+", op("*", value("maths", "Maths", "cosine", op("*", value("system", "System", "getElapsedTime"), lit(90))), lit(110)), lit(center))
 def orbit_y(): return op("*", value("maths", "Maths", "sine", op("*", value("system", "System", "getElapsedTime"), lit(90))), lit(70))
 def magic(place):
     place("WandL1", "WandL", -200, 0)

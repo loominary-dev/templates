@@ -79,22 +79,22 @@ def point(name, x, y): return {"name": name, "x": x, "y": y}
 # ── pictures ──
 def canvas(w, h): return Image.new("RGBA", (w, h), (0, 0, 0, 0))
 
-def drawn(rows, colours):
+def drawn(rows, colors):
     """A small picture from rows of characters, one color per character, '.' clear."""
     img = canvas(len(rows[0]), len(rows))
     for y, row in enumerate(rows):
         for x, ch in enumerate(row):
-            if ch != ".": img.putpixel((x, y), colours[ch])
+            if ch != ".": img.putpixel((x, y), colors[ch])
     return img
 
-def soft_dot(size, colour=(255, 255, 255), power=1.4):
+def soft_dot(size, color=(255, 255, 255), power=1.4):
     """A round dot whose alpha falls off from the middle: one particle's picture."""
     img = canvas(size, size)
     c = (size - 1) / 2
     for y in range(size):
         for x in range(size):
             d = math.hypot(x - c, y - c) / (c + 0.5)
-            if d < 1: img.putpixel((x, y), colour + (int(255 * (1 - d) ** power),))
+            if d < 1: img.putpixel((x, y), color + (int(255 * (1 - d) ** power),))
     return img
 
 

@@ -39,10 +39,10 @@ for keep in [".gitkeep"]:
         open(os.path.join(d.out, folder, keep), "w").close()
 
 # ── the terrain tiles: deep water, shallows, sand, grass, forest, rock, snow ──
-COLOURS = [(28, 64, 128), (52, 112, 186), (226, 206, 140), (104, 168, 80), (52, 116, 58), (130, 128, 124), (240, 240, 244)]
-sheet = canvas(T * len(COLOURS), T)
+COLORS = [(28, 64, 128), (52, 112, 186), (226, 206, 140), (104, 168, 80), (52, 116, 58), (130, 128, 124), (240, 240, 244)]
+sheet = canvas(T * len(COLORS), T)
 g = ImageDraw.Draw(sheet)
-for i, (r, gg, bb) in enumerate(COLOURS):
+for i, (r, gg, bb) in enumerate(COLORS):
     g.rectangle([i * T, 0, i * T + T - 1, T - 1], fill=(r, gg, bb, 255))
     # A little grain, so the ground reads as ground.
     for k in range(6):
@@ -54,7 +54,7 @@ for i, (r, gg, bb) in enumerate(COLOURS):
             g.ellipse([i * T + x - 2, y - 2, i * T + x + 2, y + 2], fill=(30, 80, 36, 255))
 sheet.save(os.path.join(d.out, "assets/art/terrain.png"))
 d.write("assets/tiles/Terrain.tileset.json", {"schemaVersion": 1, "image": "assets/art/terrain.png", "tileWidth": T, "tileHeight": T,
-    "tiles": [{"id": i, "x": i * T, "y": 0, "collision": []} for i in range(len(COLOURS))]})
+    "tiles": [{"id": i, "x": i * T, "y": 0, "collision": []} for i in range(len(COLORS))]})
 
 # ── pictures ──
 d.sprite("Cloud", 32, 32, [("still", [soft_dot(32, (255, 255, 255), 1.2)], 400, "loop")], [])
@@ -64,7 +64,7 @@ bg.polygon([(0, 2), (18, 2), (23, 6), (18, 10), (0, 10)], fill=(150, 90, 50, 255
 bg.rectangle([6, 4, 12, 8], fill=(240, 236, 220, 255))
 d.sprite("Boat", 24, 12, [("still", [boat], 400, "loop")], [])
 
-# ── the behaviour that calls the library, and the two scripts that use it ──
+# ── the behavior that calls the library, and the two scripts that use it ──
 d.write("plugins/behaviors/Noise.hx", '''/**
 	Smooth random numbers from the perlin library (plugins/libraries/perlin,
 	stb_perlin): the same place always gives the same number, and places near

@@ -73,12 +73,12 @@ def sprite(name, w, h, animations, collision):
 def box(name, cx, cy, w, h, **extra):
     return dict({"name": name, "kind": "box", "cx": cx, "cy": cy, "w": w, "h": h}, **extra)
 
-def drawn(rows, colours):
+def drawn(rows, colors):
     """A small picture from rows of characters, one color per character, '.' clear."""
     img = Image.new("RGBA", (len(rows[0]), len(rows)), (0, 0, 0, 0))
     for y, row in enumerate(rows):
         for x, ch in enumerate(row):
-            if ch != ".": img.putpixel((x, y), colours[ch])
+            if ch != ".": img.putpixel((x, y), colors[ch])
     return img
 
 GOLD = {"o": (35, 25, 25, 255), "g": (240, 196, 72, 255), "y": (255, 235, 140, 255)}
@@ -223,7 +223,7 @@ write("assets/tiles/Dungeon.tileset.json", {"schemaVersion": 1, "image": "assets
     "tiles": tiles})
 
 # ── the rooms ──
-# 20 × 11 cells of 16 px, centred on the world's origin, which is the screen's
+# 20 × 11 cells of 16 px, centered on the world's origin, which is the screen's
 # middle: one room is one screen. '#' wall, '.' floor, 'D' a doorway in the
 # wall, 'L' the locked door, 'e' where a player arrives after dying, and one
 # letter per thing: b bat, x spider, r rat, k key, h potion, C chest, S sign,
@@ -297,7 +297,7 @@ ROOMS = {
                  "####################"],
 }
 # Who is through each side's doorway.
-NEIGHBOURS = {
+NEIGHBORS = {
     "Entrance": {"east": "BatHall"},
     "BatHall": {"west": "Entrance", "east": "DarkRoom", "south": "Crossing"},
     "DarkRoom": {"west": "BatHall"},
@@ -307,7 +307,7 @@ NEIGHBOURS = {
 }
 ROWS, COLS = 11, 20
 LEFT, TOP = -COLS * T // 2, -ROWS * T // 2
-centre = lambda c, r: (LEFT + c * T + T // 2, TOP + r * T + T // 2)
+center = lambda c, r: (LEFT + c * T + T // 2, TOP + r * T + T // 2)
 THINGS = {"b": "Bat", "x": "Spider", "r": "Rat", "k": "Key", "h": "Potion", "C": "Chest", "S": "Sign", "L": "LockedDoor", "f": "Brazier"}
 
 def side(c, r):
@@ -339,9 +339,9 @@ for room, rows in ROOMS.items():
     for r in range(ROWS):
         for c in range(COLS):
             ch = rows[r][c]
-            x, y = centre(c, r)
+            x, y = center(c, r)
             if ch == "D":
-                to = NEIGHBOURS[room][side(c, r)]
+                to = NEIGHBORS[room][side(c, r)]
                 # Named after the room it leads to: the player's rule passes that name to Change scene.
                 place(to, "Doorway", x, y)
                 dx, dy = inward(c, r)
@@ -360,7 +360,7 @@ for room, rows in ROOMS.items():
     write("scenes/%s.scene.json" % room, {"schemaVersion": 3, "objects": objects})
 
 # ── the singleton: the Scene Manager, the player and the HUD, loaded once and kept ──
-ex, ey = centre(3, 5)
+ex, ey = center(3, 5)
 game = [
     {"id": uid(1), "name": "Game"},
     {"id": uid(2), "parent": uid(1), "name": "Rooms1", "type": "Rooms"},
