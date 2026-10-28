@@ -1,0 +1,17 @@
+# Loominary: pictures and sounds are not text; a sprite's pixels are the .sprite.png beside its .sprite.json
+*.png binary
+*.jpg binary
+*.ogg binary
+*.wav binary
+*.ttf binary
+*.json text eol=lf
+*.hx text eol=lf
+*.svg text eol=lf
+
+# Loominary: scenes and sheets merge by object through the editor; git falls back to its own merge where the editor is not registered
+*.scene.json merge=loominary
+*.vscript.json merge=loominary
+*.type.json merge=loominary
+*.tileset.json merge=loominary
+*.effect.json merge=loominary
+project.json merge=loominary

@@ -1,0 +1,845 @@
+{
+  "rules": [
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isPlayerCommandOn",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Move Left",
+              "valueKind": "string"
+            },
+            {
+              "type": "value",
+              "scope": "self",
+              "className": "Node",
+              "name": "getPlayer",
+              "params": [],
+              "returnType": "Int"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "self:Player",
+          "className": "Platformer",
+          "name": "moveLeft",
+          "params": [],
+          "onComponent": true
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isPlayerCommandOn",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Move Right",
+              "valueKind": "string"
+            },
+            {
+              "type": "value",
+              "scope": "self",
+              "className": "Node",
+              "name": "getPlayer",
+              "params": [],
+              "returnType": "Int"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "self:Player",
+          "className": "Platformer",
+          "name": "moveRight",
+          "params": [],
+          "onComponent": true
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isPlayerCommandOn",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Jump",
+              "valueKind": "string"
+            },
+            {
+              "type": "value",
+              "scope": "self",
+              "className": "Node",
+              "name": "getPlayer",
+              "params": [],
+              "returnType": "Int"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "self:Player",
+          "className": "Platformer",
+          "name": "jump",
+          "params": [],
+          "onComponent": true
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isPlayerCommandOn",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Move Down",
+              "valueKind": "string"
+            },
+            {
+              "type": "value",
+              "scope": "self",
+              "className": "Node",
+              "name": "getPlayer",
+              "params": [],
+              "returnType": "Int"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "self:Player",
+          "className": "Platformer",
+          "name": "holdDown",
+          "params": [],
+          "onComponent": true
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "self:Player",
+          "className": "Platformer",
+          "name": "onJumped",
+          "params": [],
+          "onComponent": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "self:Player",
+          "className": "Sprite",
+          "name": "setAnimation",
+          "params": [
+            {
+              "type": "literal",
+              "value": "jump",
+              "valueKind": "string"
+            }
+          ]
+        },
+        {
+          "scope": "audio",
+          "className": "Audio",
+          "name": "playSound",
+          "params": [
+            {
+              "type": "literal",
+              "value": "jump",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "self:Player",
+          "className": "Platformer",
+          "name": "onStartedFalling",
+          "params": [],
+          "onComponent": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "self:Player",
+          "className": "Sprite",
+          "name": "setAnimation",
+          "params": [
+            {
+              "type": "literal",
+              "value": "jump",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "self:Player",
+          "className": "Platformer",
+          "name": "onLanded",
+          "params": [],
+          "onComponent": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "self:Player",
+          "className": "Sprite",
+          "name": "setAnimation",
+          "params": [
+            {
+              "type": "literal",
+              "value": "idle",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "self:Player",
+          "className": "Platformer",
+          "name": "isOnFloor",
+          "params": [],
+          "onComponent": true
+        },
+        {
+          "scope": "self:Player",
+          "className": "Platformer",
+          "name": "isMoving",
+          "params": [],
+          "onComponent": true
+        },
+        {
+          "scope": "self:Player",
+          "className": "Sprite",
+          "name": "isAnimationPlaying",
+          "params": [
+            {
+              "type": "literal",
+              "value": "walk",
+              "valueKind": "string"
+            }
+          ],
+          "not": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "self:Player",
+          "className": "Sprite",
+          "name": "setAnimation",
+          "params": [
+            {
+              "type": "literal",
+              "value": "walk",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "self:Player",
+          "className": "Platformer",
+          "name": "isOnFloor",
+          "params": [],
+          "onComponent": true
+        },
+        {
+          "scope": "self:Player",
+          "className": "Platformer",
+          "name": "isMoving",
+          "params": [],
+          "onComponent": true,
+          "not": true
+        },
+        {
+          "scope": "self:Player",
+          "className": "Sprite",
+          "name": "isAnimationPlaying",
+          "params": [
+            {
+              "type": "literal",
+              "value": "idle",
+              "valueKind": "string"
+            }
+          ],
+          "not": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "self:Player",
+          "className": "Sprite",
+          "name": "setAnimation",
+          "params": [
+            {
+              "type": "literal",
+              "value": "idle",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "maths",
+          "className": "Maths",
+          "name": "compare",
+          "params": [
+            {
+              "type": "value",
+              "scope": "self",
+              "className": "Platformer",
+              "name": "getFacing",
+              "params": [],
+              "returnType": "Float",
+              "onComponent": true
+            },
+            {
+              "type": "literal",
+              "value": 0
+            },
+            {
+              "type": "literal",
+              "value": -1
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "self",
+          "className": "Node",
+          "name": "setMirrored",
+          "params": [
+            {
+              "type": "literal",
+              "value": true,
+              "valueKind": "bool"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "maths",
+          "className": "Maths",
+          "name": "compare",
+          "params": [
+            {
+              "type": "value",
+              "scope": "self",
+              "className": "Platformer",
+              "name": "getFacing",
+              "params": [],
+              "returnType": "Float",
+              "onComponent": true
+            },
+            {
+              "type": "literal",
+              "value": 0
+            },
+            {
+              "type": "literal",
+              "value": 1
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "self",
+          "className": "Node",
+          "name": "setMirrored",
+          "params": [
+            {
+              "type": "literal",
+              "value": false,
+              "valueKind": "bool"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "self:Player",
+          "className": "Node",
+          "name": "onCollisionStarted",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Coin",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Coin",
+          "className": "Node",
+          "name": "queueDestroy",
+          "params": []
+        },
+        {
+          "scope": "variables",
+          "className": "Variables",
+          "name": "addToVariable",
+          "params": [
+            {
+              "type": "literal",
+              "value": "coins",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "scope": "CoinCount",
+          "className": "Label",
+          "name": "setNumber",
+          "params": [
+            {
+              "type": "value",
+              "scope": "variables",
+              "className": "Variables",
+              "name": "getVariable",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "coins",
+                  "valueKind": "string"
+                }
+              ],
+              "returnType": "Float"
+            }
+          ]
+        },
+        {
+          "scope": "audio",
+          "className": "Audio",
+          "name": "playSound",
+          "params": [
+            {
+              "type": "literal",
+              "value": "coin",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "self:Player",
+          "className": "Node",
+          "name": "onCollisionStartedShapes",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Slime",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "body",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "head",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Slime",
+          "className": "Sprite",
+          "name": "setAnimation",
+          "params": [
+            {
+              "type": "literal",
+              "value": "squashed",
+              "valueKind": "string"
+            }
+          ]
+        },
+        {
+          "scope": "Slime",
+          "className": "Node",
+          "name": "setCollisionEnabled",
+          "params": [
+            {
+              "type": "literal",
+              "value": false,
+              "valueKind": "bool"
+            }
+          ]
+        },
+        {
+          "scope": "Slime",
+          "className": "Patrol",
+          "name": "stop",
+          "params": [],
+          "onComponent": true
+        },
+        {
+          "scope": "self:Player",
+          "className": "Platformer",
+          "name": "jump",
+          "params": [],
+          "onComponent": true
+        },
+        {
+          "scope": "audio",
+          "className": "Audio",
+          "name": "playSound",
+          "params": [
+            {
+              "type": "literal",
+              "value": "stomp",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "self:Player",
+          "className": "Node",
+          "name": "onCollisionStartedShapes",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Slime",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "body",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "body",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "self:Player",
+          "className": "Node",
+          "name": "setPosition",
+          "params": [
+            {
+              "type": "literal",
+              "value": 81
+            },
+            {
+              "type": "literal",
+              "value": 96
+            }
+          ]
+        },
+        {
+          "scope": "audio",
+          "className": "Audio",
+          "name": "playSound",
+          "params": [
+            {
+              "type": "literal",
+              "value": "hurt",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "self:Player",
+          "className": "Node",
+          "name": "onCollisionStarted",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Spikes",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "self:Player",
+          "className": "Node",
+          "name": "setPosition",
+          "params": [
+            {
+              "type": "literal",
+              "value": 81
+            },
+            {
+              "type": "literal",
+              "value": 96
+            }
+          ]
+        },
+        {
+          "scope": "audio",
+          "className": "Audio",
+          "name": "playSound",
+          "params": [
+            {
+              "type": "literal",
+              "value": "hurt",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "maths",
+          "className": "Maths",
+          "name": "compare",
+          "params": [
+            {
+              "type": "value",
+              "scope": "self:Player",
+              "className": "Node",
+              "name": "getPositionY",
+              "params": [],
+              "returnType": "Float"
+            },
+            {
+              "type": "literal",
+              "value": 4
+            },
+            {
+              "type": "literal",
+              "value": 220
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "self:Player",
+          "className": "Node",
+          "name": "setPosition",
+          "params": [
+            {
+              "type": "literal",
+              "value": 81
+            },
+            {
+              "type": "literal",
+              "value": 96
+            }
+          ]
+        },
+        {
+          "scope": "audio",
+          "className": "Audio",
+          "name": "playSound",
+          "params": [
+            {
+              "type": "literal",
+              "value": "hurt",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "self:Player",
+          "className": "Node",
+          "name": "onCollisionStarted",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Flag",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "WinSign",
+          "className": "Node",
+          "name": "show",
+          "params": []
+        },
+        {
+          "scope": "self:Player",
+          "className": "Platformer",
+          "name": "setEnabled",
+          "params": [
+            {
+              "type": "literal",
+              "value": false,
+              "valueKind": "bool"
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "audio",
+          "className": "Audio",
+          "name": "playSound",
+          "params": [
+            {
+              "type": "literal",
+              "value": "win",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": [
+        {
+          "conditions": [
+            {
+              "scope": "maths",
+              "className": "Maths",
+              "name": "compare",
+              "params": [
+                {
+                  "type": "value",
+                  "scope": "variables",
+                  "className": "Variables",
+                  "name": "getVariable",
+                  "params": [
+                    {
+                      "type": "literal",
+                      "value": "coins",
+                      "valueKind": "string"
+                    }
+                  ],
+                  "returnType": "Float"
+                },
+                {
+                  "type": "literal",
+                  "value": 4
+                },
+                {
+                  "type": "value",
+                  "scope": "save",
+                  "className": "Save",
+                  "name": "savedNumber",
+                  "params": [
+                    {
+                      "type": "literal",
+                      "value": "best",
+                      "valueKind": "string"
+                    }
+                  ],
+                  "returnType": "Float"
+                }
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "scope": "save",
+              "className": "Save",
+              "name": "saveNumber",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "best",
+                  "valueKind": "string"
+                },
+                {
+                  "type": "value",
+                  "scope": "variables",
+                  "className": "Variables",
+                  "name": "getVariable",
+                  "params": [
+                    {
+                      "type": "literal",
+                      "value": "coins",
+                      "valueKind": "string"
+                    }
+                  ],
+                  "returnType": "Float"
+                }
+              ]
+            }
+          ],
+          "subRules": []
+        }
+      ]
+    }
+  ],
+  "vars": []
+}

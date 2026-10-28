@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 2,
+  "baseClass": "Sprite",
+  "defaults": {
+    "spriteKey": "Slime.sprite.json",
+    "collision": {
+      "layer": 8,
+      "mask": 1
+    }
+  },
+  "components": [
+    {
+      "componentClass": "Patrol",
+      "axis": "Horizontal",
+      "distance": 54,
+      "speed": 28
+    },
+    {
+      "componentClass": "SlimeRules"
+    }
+  ]
+}

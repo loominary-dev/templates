@@ -18,6 +18,13 @@
       "minEditor": "1.0.56"
     },
     {
+      "id": "duo",
+      "name": "Two players demo",
+      "description": "The Platformer demo for two on one keyboard, or a keyboard and a pad: each player has their own control set and half of the screen, and one Player Type with one set of rules serves both.",
+      "path": "demos/duo",
+      "minEditor": "1.0.61"
+    },
+    {
       "id": "dungeon",
       "name": "Dungeon demo",
       "description": "Six rooms seen from above on Kenney's Tiny Dungeon art: bats that chase, spiders and rats on patrol, arrows, a dark room lit by a lantern, a key, a locked door and a chest. Each room is its own scene, changed by a Scene Manager in a singleton that keeps the player and the HUD.",
