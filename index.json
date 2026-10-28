@@ -18,6 +18,13 @@
       "minEditor": "1.0.56"
     },
     {
+      "id": "rocky",
+      "name": "Rocky demo",
+      "description": "A platform level in a cave on Szadi art's Rocky Level art: diamonds and hearts, slimes to stomp, bats, a snapping plant, crystals, three hearts and a saved best, with lights that glow on the crystals and drift past the ledges, their shadows moving.",
+      "path": "demos/rocky",
+      "minEditor": "1.0.60"
+    },
+    {
       "id": "duo",
       "name": "Two players demo",
       "description": "The Platformer demo for two on one keyboard, or a keyboard and a pad: each player has their own control set and half of the screen, and one Player Type with one set of rules serves both.",

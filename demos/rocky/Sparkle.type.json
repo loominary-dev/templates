@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 2,
+  "baseClass": "Sprite",
+  "defaults": {
+    "spriteKey": "Sparkle.sprite.json"
+  },
+  "components": [
+    {
+      "componentClass": "EffectRules"
+    }
+  ]
+}

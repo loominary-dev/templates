@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 2,
+  "baseClass": "Sprite",
+  "defaults": {
+    "spriteKey": "Tree2.sprite.json"
+  },
+  "components": []
+}

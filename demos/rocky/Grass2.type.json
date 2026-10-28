@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 2,
+  "baseClass": "Sprite",
+  "defaults": {
+    "spriteKey": "Grass2.sprite.json"
+  },
+  "components": []
+}

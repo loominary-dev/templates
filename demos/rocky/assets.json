@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "assets": [
+    {
+      "uuid": "e7000000-0000-4000-8000-000000000900",
+      "key": "jump",
+      "path": "assets/sounds/jump.ogg"
+    },
+    {
+      "uuid": "e7000000-0000-4000-8000-000000000901",
+      "key": "gem",
+      "path": "assets/sounds/gem.ogg"
+    },
+    {
+      "uuid": "e7000000-0000-4000-8000-000000000902",
+      "key": "heart",
+      "path": "assets/sounds/heart.ogg"
+    },
+    {
+      "uuid": "e7000000-0000-4000-8000-000000000903",
+      "key": "stomp",
+      "path": "assets/sounds/stomp.ogg"
+    },
+    {
+      "uuid": "e7000000-0000-4000-8000-000000000904",
+      "key": "hurt",
+      "path": "assets/sounds/hurt.ogg"
+    },
+    {
+      "uuid": "e7000000-0000-4000-8000-000000000905",
+      "key": "win",
+      "path": "assets/sounds/win.ogg"
+    }
+  ]
+}

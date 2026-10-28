@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "image": "assets/art/background3.png",
+  "tileWidth": 480,
+  "tileHeight": 270,
+  "tiles": [
+    {
+      "id": 0,
+      "x": 0,
+      "y": 0,
+      "collision": []
+    }
+  ],
+  "physicsLayers": []
+}

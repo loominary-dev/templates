@@ -1,0 +1,24 @@
+{
+  "rules": [
+    {
+      "conditions": [
+        {
+          "scope": "self:Sprite",
+          "className": "Sprite",
+          "name": "onAnimationFinished",
+          "params": []
+        }
+      ],
+      "actions": [
+        {
+          "scope": "self",
+          "className": "Node",
+          "name": "queueDestroy",
+          "params": []
+        }
+      ],
+      "subRules": []
+    }
+  ],
+  "vars": []
+}

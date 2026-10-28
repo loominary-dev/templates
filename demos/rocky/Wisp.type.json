@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 2,
+  "baseClass": "Light",
+  "defaults": {
+    "spriteKey": "Glow.sprite.json",
+    "tint": 16762730,
+    "opacity": 0.95,
+    "scaleX": 1.7,
+    "scaleY": 1.7,
+    "radius": 3,
+    "lightHeight": 14
+  },
+  "components": [
+    {
+      "componentClass": "Patrol",
+      "axis": "Horizontal",
+      "distance": 176,
+      "speed": 36
+    },
+    {
+      "componentClass": "Oscillate",
+      "property": "y",
+      "magnitude": 14,
+      "period": 2.4
+    }
+  ]
+}

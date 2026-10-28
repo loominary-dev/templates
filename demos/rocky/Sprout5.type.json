@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 2,
+  "baseClass": "Sprite",
+  "defaults": {
+    "spriteKey": "Sprout5.sprite.json"
+  },
+  "components": []
+}

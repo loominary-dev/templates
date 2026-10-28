@@ -1,0 +1,58 @@
+{
+  "rules": [
+    {
+      "conditions": [
+        {
+          "scope": "Bat",
+          "className": "Patrol",
+          "name": "isHeadingOut",
+          "params": [],
+          "onComponent": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Bat",
+          "className": "Node",
+          "name": "setMirrored",
+          "params": [
+            {
+              "type": "literal",
+              "value": false,
+              "valueKind": "bool"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "Bat",
+          "className": "Patrol",
+          "name": "isHeadingOut",
+          "params": [],
+          "onComponent": true,
+          "not": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Bat",
+          "className": "Node",
+          "name": "setMirrored",
+          "params": [
+            {
+              "type": "literal",
+              "value": true,
+              "valueKind": "bool"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    }
+  ],
+  "vars": []
+}
