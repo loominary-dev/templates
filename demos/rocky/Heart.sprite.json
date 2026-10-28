@@ -1,0 +1,126 @@
+{
+  "width": 13,
+  "height": 13,
+  "colorMode": "rgba",
+  "sheet": {
+    "columns": 3
+  },
+  "palette": [],
+  "layers": [
+    {
+      "id": "e7000000-0000-4000-8000-000000000183",
+      "name": "Layer 1",
+      "visible": true,
+      "opacity": 1,
+      "locked": false,
+      "blendMode": "normal",
+      "reference": false
+    }
+  ],
+  "animations": [
+    {
+      "id": "e7000000-0000-4000-8000-000000000190",
+      "name": "beat",
+      "loop": true,
+      "playMode": "loop",
+      "repeatTo": 0,
+      "repeatCount": 0,
+      "collision": [
+        {
+          "name": "heart",
+          "kind": "box",
+          "cx": 6,
+          "cy": 6,
+          "w": 11,
+          "h": 11,
+          "sensor": true
+        }
+      ],
+      "points": [],
+      "collisionShared": true,
+      "pointsShared": true,
+      "frames": [
+        {
+          "id": "e7000000-0000-4000-8000-000000000184",
+          "duration": 110,
+          "pivotX": 0.5,
+          "pivotY": 0.5,
+          "collision": [],
+          "points": []
+        },
+        {
+          "id": "e7000000-0000-4000-8000-000000000185",
+          "duration": 110,
+          "pivotX": 0.5,
+          "pivotY": 0.5,
+          "collision": [],
+          "points": []
+        },
+        {
+          "id": "e7000000-0000-4000-8000-000000000186",
+          "duration": 110,
+          "pivotX": 0.5,
+          "pivotY": 0.5,
+          "collision": [],
+          "points": []
+        },
+        {
+          "id": "e7000000-0000-4000-8000-000000000187",
+          "duration": 110,
+          "pivotX": 0.5,
+          "pivotY": 0.5,
+          "collision": [],
+          "points": []
+        },
+        {
+          "id": "e7000000-0000-4000-8000-000000000188",
+          "duration": 110,
+          "pivotX": 0.5,
+          "pivotY": 0.5,
+          "collision": [],
+          "points": []
+        },
+        {
+          "id": "e7000000-0000-4000-8000-000000000189",
+          "duration": 110,
+          "pivotX": 0.5,
+          "pivotY": 0.5,
+          "collision": [],
+          "points": []
+        }
+      ]
+    }
+  ],
+  "cels": [
+    {
+      "layerId": "e7000000-0000-4000-8000-000000000183",
+      "frameId": "e7000000-0000-4000-8000-000000000184",
+      "at": 0
+    },
+    {
+      "layerId": "e7000000-0000-4000-8000-000000000183",
+      "frameId": "e7000000-0000-4000-8000-000000000185",
+      "at": 1
+    },
+    {
+      "layerId": "e7000000-0000-4000-8000-000000000183",
+      "frameId": "e7000000-0000-4000-8000-000000000186",
+      "at": 2
+    },
+    {
+      "layerId": "e7000000-0000-4000-8000-000000000183",
+      "frameId": "e7000000-0000-4000-8000-000000000187",
+      "at": 3
+    },
+    {
+      "layerId": "e7000000-0000-4000-8000-000000000183",
+      "frameId": "e7000000-0000-4000-8000-000000000188",
+      "at": 4
+    },
+    {
+      "layerId": "e7000000-0000-4000-8000-000000000183",
+      "frameId": "e7000000-0000-4000-8000-000000000189",
+      "at": 5
+    }
+  ]
+}

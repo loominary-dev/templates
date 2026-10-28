@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 2,
+  "baseClass": "Sprite",
+  "defaults": {
+    "spriteKey": "Rocks1.sprite.json"
+  },
+  "components": []
+}

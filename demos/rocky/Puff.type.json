@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 2,
+  "baseClass": "Sprite",
+  "defaults": {
+    "spriteKey": "Puff.sprite.json"
+  },
+  "components": [
+    {
+      "componentClass": "EffectRules"
+    }
+  ]
+}

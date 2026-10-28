@@ -1,0 +1,269 @@
+{
+  "rules": [
+    {
+      "conditions": [
+        {
+          "scope": "Gino",
+          "name": "pickAll",
+          "params": []
+        },
+        {
+          "scope": "maths",
+          "className": "Maths",
+          "name": "compare",
+          "params": [
+            {
+              "type": "value",
+              "scope": "maths",
+              "className": "Maths",
+              "name": "absolute",
+              "params": [
+                {
+                  "type": "op",
+                  "op": "-",
+                  "left": {
+                    "type": "value",
+                    "scope": "Gino",
+                    "className": "Node",
+                    "name": "getPositionX",
+                    "params": [],
+                    "returnType": "Float"
+                  },
+                  "right": {
+                    "type": "value",
+                    "scope": "self",
+                    "className": "Node",
+                    "name": "getPositionX",
+                    "params": [],
+                    "returnType": "Float"
+                  }
+                }
+              ],
+              "returnType": "Float"
+            },
+            {
+              "type": "literal",
+              "value": 2
+            },
+            {
+              "type": "literal",
+              "value": 64
+            }
+          ]
+        },
+        {
+          "scope": "self:Plant",
+          "className": "Sprite",
+          "name": "isAnimationPlaying",
+          "params": [
+            {
+              "type": "literal",
+              "value": "snap",
+              "valueKind": "string"
+            }
+          ],
+          "not": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "self:Plant",
+          "className": "Sprite",
+          "name": "setAnimation",
+          "params": [
+            {
+              "type": "literal",
+              "value": "snap",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "Gino",
+          "name": "pickAll",
+          "params": []
+        },
+        {
+          "scope": "maths",
+          "className": "Maths",
+          "name": "compare",
+          "params": [
+            {
+              "type": "value",
+              "scope": "maths",
+              "className": "Maths",
+              "name": "absolute",
+              "params": [
+                {
+                  "type": "op",
+                  "op": "-",
+                  "left": {
+                    "type": "value",
+                    "scope": "Gino",
+                    "className": "Node",
+                    "name": "getPositionX",
+                    "params": [],
+                    "returnType": "Float"
+                  },
+                  "right": {
+                    "type": "value",
+                    "scope": "self",
+                    "className": "Node",
+                    "name": "getPositionX",
+                    "params": [],
+                    "returnType": "Float"
+                  }
+                }
+              ],
+              "returnType": "Float"
+            },
+            {
+              "type": "literal",
+              "value": 5
+            },
+            {
+              "type": "literal",
+              "value": 64
+            }
+          ]
+        },
+        {
+          "scope": "self:Plant",
+          "className": "Sprite",
+          "name": "isAnimationPlaying",
+          "params": [
+            {
+              "type": "literal",
+              "value": "idle",
+              "valueKind": "string"
+            }
+          ],
+          "not": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "self:Plant",
+          "className": "Sprite",
+          "name": "setAnimation",
+          "params": [
+            {
+              "type": "literal",
+              "value": "idle",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "Gino",
+          "name": "pickAll",
+          "params": []
+        },
+        {
+          "scope": "maths",
+          "className": "Maths",
+          "name": "compare",
+          "params": [
+            {
+              "type": "value",
+              "scope": "Gino",
+              "className": "Node",
+              "name": "getPositionX",
+              "params": [],
+              "returnType": "Float"
+            },
+            {
+              "type": "literal",
+              "value": 2
+            },
+            {
+              "type": "value",
+              "scope": "self",
+              "className": "Node",
+              "name": "getPositionX",
+              "params": [],
+              "returnType": "Float"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "self",
+          "className": "Node",
+          "name": "setMirrored",
+          "params": [
+            {
+              "type": "literal",
+              "value": true,
+              "valueKind": "bool"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "Gino",
+          "name": "pickAll",
+          "params": []
+        },
+        {
+          "scope": "maths",
+          "className": "Maths",
+          "name": "compare",
+          "params": [
+            {
+              "type": "value",
+              "scope": "Gino",
+              "className": "Node",
+              "name": "getPositionX",
+              "params": [],
+              "returnType": "Float"
+            },
+            {
+              "type": "literal",
+              "value": 5
+            },
+            {
+              "type": "value",
+              "scope": "self",
+              "className": "Node",
+              "name": "getPositionX",
+              "params": [],
+              "returnType": "Float"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "self",
+          "className": "Node",
+          "name": "setMirrored",
+          "params": [
+            {
+              "type": "literal",
+              "value": false,
+              "valueKind": "bool"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    }
+  ],
+  "vars": []
+}

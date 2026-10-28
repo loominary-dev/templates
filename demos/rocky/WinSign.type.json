@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 2,
+  "baseClass": "Label",
+  "defaults": {
+    "text": "You reached the great crystal!",
+    "fontSize": 14,
+    "textColor": 15922920,
+    "visible": false
+  },
+  "components": []
+}

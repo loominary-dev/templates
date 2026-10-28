@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 2,
+  "baseClass": "Sprite",
+  "defaults": {
+    "spriteKey": "Plant.sprite.json",
+    "collision": {
+      "layer": 16,
+      "mask": 1
+    }
+  },
+  "components": [
+    {
+      "componentClass": "PlantRules"
+    }
+  ]
+}
