@@ -1,0 +1,960 @@
+{
+  "rules": [
+    {
+      "conditions": [
+        {
+          "scope": "system",
+          "className": "VisualScriptComponent",
+          "name": "everyTick",
+          "params": []
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Heading",
+          "className": "Label",
+          "name": "setText",
+          "params": [
+            {
+              "type": "op",
+              "op": "+",
+              "left": {
+                "type": "literal",
+                "value": "Room ",
+                "valueKind": "string"
+              },
+              "right": {
+                "type": "value",
+                "scope": "online",
+                "className": "Online",
+                "name": "roomCode",
+                "params": [],
+                "returnType": "String"
+              }
+            }
+          ]
+        },
+        {
+          "scope": "Row1Name",
+          "className": "Label",
+          "name": "setText",
+          "params": [
+            {
+              "type": "value",
+              "scope": "online",
+              "className": "Online",
+              "name": "playerName",
+              "params": [
+                {
+                  "type": "value",
+                  "scope": "online",
+                  "className": "Online",
+                  "name": "roomPlayerAt",
+                  "params": [
+                    {
+                      "type": "literal",
+                      "value": 0
+                    }
+                  ],
+                  "returnType": "Int"
+                }
+              ],
+              "returnType": "String"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "online",
+          "className": "Online",
+          "name": "isPlayerReady",
+          "params": [
+            {
+              "type": "value",
+              "scope": "online",
+              "className": "Online",
+              "name": "roomPlayerAt",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": 0
+                }
+              ],
+              "returnType": "Int"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Row1Ready",
+          "className": "Label",
+          "name": "setText",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Ready",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "online",
+          "className": "Online",
+          "name": "isPlayerReady",
+          "params": [
+            {
+              "type": "value",
+              "scope": "online",
+              "className": "Online",
+              "name": "roomPlayerAt",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": 0
+                }
+              ],
+              "returnType": "Int"
+            }
+          ],
+          "not": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Row1Ready",
+          "className": "Label",
+          "name": "setText",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Not ready",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "online",
+          "className": "Online",
+          "name": "isPlayerInRoom",
+          "params": [
+            {
+              "type": "value",
+              "scope": "online",
+              "className": "Online",
+              "name": "roomPlayerAt",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": 1
+                }
+              ],
+              "returnType": "Int"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Row2Name",
+          "className": "Label",
+          "name": "setText",
+          "params": [
+            {
+              "type": "value",
+              "scope": "online",
+              "className": "Online",
+              "name": "playerName",
+              "params": [
+                {
+                  "type": "value",
+                  "scope": "online",
+                  "className": "Online",
+                  "name": "roomPlayerAt",
+                  "params": [
+                    {
+                      "type": "literal",
+                      "value": 1
+                    }
+                  ],
+                  "returnType": "Int"
+                }
+              ],
+              "returnType": "String"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "online",
+          "className": "Online",
+          "name": "isPlayerInRoom",
+          "params": [
+            {
+              "type": "value",
+              "scope": "online",
+              "className": "Online",
+              "name": "roomPlayerAt",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": 1
+                }
+              ],
+              "returnType": "Int"
+            }
+          ]
+        },
+        {
+          "scope": "online",
+          "className": "Online",
+          "name": "isPlayerReady",
+          "params": [
+            {
+              "type": "value",
+              "scope": "online",
+              "className": "Online",
+              "name": "roomPlayerAt",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": 1
+                }
+              ],
+              "returnType": "Int"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Row2Ready",
+          "className": "Label",
+          "name": "setText",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Ready",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "online",
+          "className": "Online",
+          "name": "isPlayerInRoom",
+          "params": [
+            {
+              "type": "value",
+              "scope": "online",
+              "className": "Online",
+              "name": "roomPlayerAt",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": 1
+                }
+              ],
+              "returnType": "Int"
+            }
+          ]
+        },
+        {
+          "scope": "online",
+          "className": "Online",
+          "name": "isPlayerReady",
+          "params": [
+            {
+              "type": "value",
+              "scope": "online",
+              "className": "Online",
+              "name": "roomPlayerAt",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": 1
+                }
+              ],
+              "returnType": "Int"
+            }
+          ],
+          "not": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Row2Ready",
+          "className": "Label",
+          "name": "setText",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Not ready",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "online",
+          "className": "Online",
+          "name": "isPlayerInRoom",
+          "params": [
+            {
+              "type": "value",
+              "scope": "online",
+              "className": "Online",
+              "name": "roomPlayerAt",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": 1
+                }
+              ],
+              "returnType": "Int"
+            }
+          ],
+          "not": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Row2Name",
+          "className": "Label",
+          "name": "setText",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Waiting for a player...",
+              "valueKind": "string"
+            }
+          ]
+        },
+        {
+          "scope": "Row2Ready",
+          "className": "Label",
+          "name": "setText",
+          "params": [
+            {
+              "type": "literal",
+              "value": "",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "online",
+          "className": "Online",
+          "name": "isPlayerReady",
+          "params": [
+            {
+              "type": "value",
+              "scope": "online",
+              "className": "Online",
+              "name": "myPlayer",
+              "params": [],
+              "returnType": "Int"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "ReadyButton",
+          "className": "Label",
+          "name": "setText",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Not ready",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "online",
+          "className": "Online",
+          "name": "isPlayerReady",
+          "params": [
+            {
+              "type": "value",
+              "scope": "online",
+              "className": "Online",
+              "name": "myPlayer",
+              "params": [],
+              "returnType": "Int"
+            }
+          ],
+          "not": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "ReadyButton",
+          "className": "Label",
+          "name": "setText",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Ready",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "ReadyButton",
+          "className": "Button",
+          "name": "onPressed",
+          "params": []
+        }
+      ],
+      "actions": [
+        {
+          "scope": "system",
+          "className": "VisualScriptComponent",
+          "name": "setSheetVar",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Toggle",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 1
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "maths",
+          "className": "Maths",
+          "name": "compare",
+          "params": [
+            {
+              "type": "value",
+              "scope": "system",
+              "className": "VisualScriptComponent",
+              "name": "sheetVar",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "Toggle",
+                  "valueKind": "string"
+                }
+              ],
+              "returnType": "Float"
+            },
+            {
+              "type": "literal",
+              "value": 0
+            },
+            {
+              "type": "literal",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "scope": "online",
+          "className": "Online",
+          "name": "isPlayerReady",
+          "params": [
+            {
+              "type": "value",
+              "scope": "online",
+              "className": "Online",
+              "name": "myPlayer",
+              "params": [],
+              "returnType": "Int"
+            }
+          ],
+          "not": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "online",
+          "className": "Online",
+          "name": "setReady",
+          "params": [
+            {
+              "type": "literal",
+              "value": true,
+              "valueKind": "bool"
+            }
+          ]
+        },
+        {
+          "scope": "system",
+          "className": "VisualScriptComponent",
+          "name": "setSheetVar",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Toggle",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "maths",
+          "className": "Maths",
+          "name": "compare",
+          "params": [
+            {
+              "type": "value",
+              "scope": "system",
+              "className": "VisualScriptComponent",
+              "name": "sheetVar",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "Toggle",
+                  "valueKind": "string"
+                }
+              ],
+              "returnType": "Float"
+            },
+            {
+              "type": "literal",
+              "value": 0
+            },
+            {
+              "type": "literal",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "scope": "online",
+          "className": "Online",
+          "name": "isPlayerReady",
+          "params": [
+            {
+              "type": "value",
+              "scope": "online",
+              "className": "Online",
+              "name": "myPlayer",
+              "params": [],
+              "returnType": "Int"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "online",
+          "className": "Online",
+          "name": "setReady",
+          "params": [
+            {
+              "type": "literal",
+              "value": false,
+              "valueKind": "bool"
+            }
+          ]
+        },
+        {
+          "scope": "system",
+          "className": "VisualScriptComponent",
+          "name": "setSheetVar",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Toggle",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "online",
+          "className": "Online",
+          "name": "isHost",
+          "params": []
+        }
+      ],
+      "actions": [
+        {
+          "scope": "StartButton",
+          "className": "Node",
+          "name": "show",
+          "params": []
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "online",
+          "className": "Online",
+          "name": "isHost",
+          "params": [],
+          "not": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "StartButton",
+          "className": "Node",
+          "name": "hide",
+          "params": []
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "online",
+          "className": "Online",
+          "name": "allPlayersReady",
+          "params": [],
+          "not": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "StartButton",
+          "className": "Button",
+          "name": "setDisabled",
+          "params": [
+            {
+              "type": "literal",
+              "value": true,
+              "valueKind": "bool"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "maths",
+          "className": "Maths",
+          "name": "compare",
+          "params": [
+            {
+              "type": "value",
+              "scope": "online",
+              "className": "Online",
+              "name": "playersInRoom",
+              "params": [],
+              "returnType": "Int"
+            },
+            {
+              "type": "literal",
+              "value": 2
+            },
+            {
+              "type": "literal",
+              "value": 2
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "StartButton",
+          "className": "Button",
+          "name": "setDisabled",
+          "params": [
+            {
+              "type": "literal",
+              "value": true,
+              "valueKind": "bool"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "online",
+          "className": "Online",
+          "name": "allPlayersReady",
+          "params": []
+        },
+        {
+          "scope": "maths",
+          "className": "Maths",
+          "name": "compare",
+          "params": [
+            {
+              "type": "value",
+              "scope": "online",
+              "className": "Online",
+              "name": "playersInRoom",
+              "params": [],
+              "returnType": "Int"
+            },
+            {
+              "type": "literal",
+              "value": 5
+            },
+            {
+              "type": "literal",
+              "value": 2
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "StartButton",
+          "className": "Button",
+          "name": "setDisabled",
+          "params": [
+            {
+              "type": "literal",
+              "value": false,
+              "valueKind": "bool"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "StartButton",
+          "className": "Button",
+          "name": "onPressed",
+          "params": []
+        }
+      ],
+      "actions": [
+        {
+          "scope": "online",
+          "className": "Online",
+          "name": "startGame",
+          "params": []
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "online",
+          "className": "Online",
+          "name": "onGameStarted",
+          "params": []
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Scenes",
+          "className": "SceneManager",
+          "name": "changeScene",
+          "params": [
+            {
+              "type": "literal",
+              "value": "scenes/Level.scene.json",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "InviteButton",
+          "className": "Button",
+          "name": "onPressed",
+          "params": []
+        }
+      ],
+      "actions": [
+        {
+          "scope": "system",
+          "className": "System",
+          "name": "copyToClipboard",
+          "params": [
+            {
+              "type": "value",
+              "scope": "online",
+              "className": "Online",
+              "name": "inviteLink",
+              "params": [],
+              "returnType": "String"
+            }
+          ]
+        },
+        {
+          "scope": "Status",
+          "className": "Label",
+          "name": "setText",
+          "params": [
+            {
+              "type": "op",
+              "op": "+",
+              "left": {
+                "type": "literal",
+                "value": "Copied: ",
+                "valueKind": "string"
+              },
+              "right": {
+                "type": "value",
+                "scope": "online",
+                "className": "Online",
+                "name": "inviteLink",
+                "params": [],
+                "returnType": "String"
+              }
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "online",
+          "className": "Online",
+          "name": "onBecameHost",
+          "params": []
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Status",
+          "className": "Label",
+          "name": "setText",
+          "params": [
+            {
+              "type": "literal",
+              "value": "The host left: this game is the host now.",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "LeaveButton",
+          "className": "Button",
+          "name": "onPressed",
+          "params": []
+        }
+      ],
+      "actions": [
+        {
+          "scope": "online",
+          "className": "Online",
+          "name": "leaveRoom",
+          "params": []
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "online",
+          "className": "Online",
+          "name": "onLeftRoom",
+          "params": []
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Scenes",
+          "className": "SceneManager",
+          "name": "changeScene",
+          "params": [
+            {
+              "type": "literal",
+              "value": "scenes/Title.scene.json",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    }
+  ],
+  "vars": [
+    {
+      "name": "Toggle",
+      "type": "number",
+      "value": 0
+    }
+  ]
+}

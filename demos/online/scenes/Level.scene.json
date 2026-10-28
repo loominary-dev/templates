@@ -4609,24 +4609,7 @@
       "boundsRight": 1404,
       "boundsBottom": 180,
       "currentAtStart": true,
-      "viewport": "Left half"
-    },
-    {
-      "id": "e0000000-0000-4000-8000-000000000902",
-      "parent": "e0000000-0000-4000-8000-000000000001",
-      "name": "Camera2",
-      "type": "Camera",
-      "x": 81,
-      "y": 90,
-      "target": "Player2",
-      "smoothing": 0.12,
-      "keepInBounds": true,
-      "boundsLeft": 0,
-      "boundsTop": 0,
-      "boundsRight": 1404,
-      "boundsBottom": 180,
-      "currentAtStart": false,
-      "viewport": "Right half"
+      "viewport": "Whole screen"
     },
     {
       "id": "e0000000-0000-4000-8000-000000000801",
@@ -4664,8 +4647,8 @@
     {
       "id": "e0000000-0000-4000-8000-000000000903",
       "parent": "e0000000-0000-4000-8000-000000000801",
-      "name": "Status1",
-      "type": "Status",
+      "name": "LevelStatus1",
+      "type": "LevelStatus",
       "x": 60,
       "y": 8
     }

@@ -1,0 +1,572 @@
+{
+  "rules": [
+    {
+      "conditions": [
+        {
+          "scope": "system",
+          "className": "VisualScriptComponent",
+          "name": "triggerOnce",
+          "params": []
+        },
+        {
+          "scope": "online",
+          "className": "Online",
+          "name": "isConnected",
+          "params": [],
+          "not": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "online",
+          "className": "Online",
+          "name": "connect",
+          "params": [
+            {
+              "type": "value",
+              "scope": "online",
+              "className": "Online",
+              "name": "relayAddress",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "ws://127.0.0.1:8765",
+                  "valueKind": "string"
+                }
+              ],
+              "returnType": "String"
+            }
+          ]
+        },
+        {
+          "scope": "Status",
+          "className": "Label",
+          "name": "setText",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Connecting to the relay...",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "system",
+          "className": "VisualScriptComponent",
+          "name": "triggerOnce",
+          "params": []
+        },
+        {
+          "scope": "online",
+          "className": "Online",
+          "name": "isConnected",
+          "params": []
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Status",
+          "className": "Label",
+          "name": "setText",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Host a game, play online, or join by code.",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "online",
+          "className": "Online",
+          "name": "onConnected",
+          "params": []
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Status",
+          "className": "Label",
+          "name": "setText",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Host a game, play online, or join by code.",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "online",
+          "className": "Online",
+          "name": "onConnected",
+          "params": []
+        },
+        {
+          "scope": "maths",
+          "className": "Maths",
+          "name": "compareText",
+          "params": [
+            {
+              "type": "value",
+              "scope": "online",
+              "className": "Online",
+              "name": "roomFromLink",
+              "params": [],
+              "returnType": "String"
+            },
+            {
+              "type": "literal",
+              "value": 1
+            },
+            {
+              "type": "literal",
+              "value": "",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "online",
+          "className": "Online",
+          "name": "joinRoom",
+          "params": [
+            {
+              "type": "value",
+              "scope": "online",
+              "className": "Online",
+              "name": "roomFromLink",
+              "params": [],
+              "returnType": "String"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "HostButton",
+          "className": "Button",
+          "name": "onPressed",
+          "params": []
+        },
+        {
+          "scope": "NameField",
+          "name": "pickAll",
+          "params": []
+        }
+      ],
+      "actions": [
+        {
+          "scope": "online",
+          "className": "Online",
+          "name": "setMyName",
+          "params": [
+            {
+              "type": "value",
+              "scope": "NameField",
+              "className": "TextField",
+              "name": "fieldText",
+              "params": [],
+              "returnType": "String"
+            }
+          ]
+        },
+        {
+          "scope": "system",
+          "className": "VisualScriptComponent",
+          "name": "setSheetVar",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Quick",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "scope": "online",
+          "className": "Online",
+          "name": "createRoom",
+          "params": [
+            {
+              "type": "literal",
+              "value": 2
+            },
+            {
+              "type": "literal",
+              "value": false,
+              "valueKind": "bool"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "QuickButton",
+          "className": "Button",
+          "name": "onPressed",
+          "params": []
+        },
+        {
+          "scope": "NameField",
+          "name": "pickAll",
+          "params": []
+        }
+      ],
+      "actions": [
+        {
+          "scope": "online",
+          "className": "Online",
+          "name": "setMyName",
+          "params": [
+            {
+              "type": "value",
+              "scope": "NameField",
+              "className": "TextField",
+              "name": "fieldText",
+              "params": [],
+              "returnType": "String"
+            }
+          ]
+        },
+        {
+          "scope": "system",
+          "className": "VisualScriptComponent",
+          "name": "setSheetVar",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Quick",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "scope": "online",
+          "className": "Online",
+          "name": "joinAnyRoom",
+          "params": []
+        },
+        {
+          "scope": "Status",
+          "className": "Label",
+          "name": "setText",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Looking for a room...",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "JoinButton",
+          "className": "Button",
+          "name": "onPressed",
+          "params": []
+        },
+        {
+          "scope": "NameField",
+          "name": "pickAll",
+          "params": []
+        },
+        {
+          "scope": "CodeField",
+          "name": "pickAll",
+          "params": []
+        }
+      ],
+      "actions": [
+        {
+          "scope": "online",
+          "className": "Online",
+          "name": "setMyName",
+          "params": [
+            {
+              "type": "value",
+              "scope": "NameField",
+              "className": "TextField",
+              "name": "fieldText",
+              "params": [],
+              "returnType": "String"
+            }
+          ]
+        },
+        {
+          "scope": "system",
+          "className": "VisualScriptComponent",
+          "name": "setSheetVar",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Quick",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "scope": "online",
+          "className": "Online",
+          "name": "joinRoom",
+          "params": [
+            {
+              "type": "value",
+              "scope": "CodeField",
+              "className": "TextField",
+              "name": "fieldText",
+              "params": [],
+              "returnType": "String"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "online",
+          "className": "Online",
+          "name": "onJoinFailed",
+          "params": []
+        },
+        {
+          "scope": "online",
+          "className": "Online",
+          "name": "isConnected",
+          "params": []
+        },
+        {
+          "scope": "maths",
+          "className": "Maths",
+          "name": "compare",
+          "params": [
+            {
+              "type": "value",
+              "scope": "system",
+              "className": "VisualScriptComponent",
+              "name": "sheetVar",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "Quick",
+                  "valueKind": "string"
+                }
+              ],
+              "returnType": "Float"
+            },
+            {
+              "type": "literal",
+              "value": 0
+            },
+            {
+              "type": "literal",
+              "value": 1
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "system",
+          "className": "VisualScriptComponent",
+          "name": "setSheetVar",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Quick",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "scope": "online",
+          "className": "Online",
+          "name": "createRoom",
+          "params": [
+            {
+              "type": "literal",
+              "value": 2
+            },
+            {
+              "type": "literal",
+              "value": true,
+              "valueKind": "bool"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "online",
+          "className": "Online",
+          "name": "onJoinFailed",
+          "params": []
+        },
+        {
+          "scope": "maths",
+          "className": "Maths",
+          "name": "compare",
+          "params": [
+            {
+              "type": "value",
+              "scope": "system",
+              "className": "VisualScriptComponent",
+              "name": "sheetVar",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "Quick",
+                  "valueKind": "string"
+                }
+              ],
+              "returnType": "Float"
+            },
+            {
+              "type": "literal",
+              "value": 0
+            },
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Status",
+          "className": "Label",
+          "name": "setText",
+          "params": [
+            {
+              "type": "value",
+              "scope": "online",
+              "className": "Online",
+              "name": "joinFailure",
+              "params": [],
+              "returnType": "String"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "online",
+          "className": "Online",
+          "name": "onDisconnected",
+          "params": []
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Status",
+          "className": "Label",
+          "name": "setText",
+          "params": [
+            {
+              "type": "op",
+              "op": "+",
+              "left": {
+                "type": "literal",
+                "value": "Not connected: ",
+                "valueKind": "string"
+              },
+              "right": {
+                "type": "value",
+                "scope": "online",
+                "className": "Online",
+                "name": "connectionError",
+                "params": [],
+                "returnType": "String"
+              }
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "online",
+          "className": "Online",
+          "name": "onJoinedRoom",
+          "params": []
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Scenes",
+          "className": "SceneManager",
+          "name": "changeScene",
+          "params": [
+            {
+              "type": "literal",
+              "value": "scenes/Lobby.scene.json",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    }
+  ],
+  "vars": [
+    {
+      "name": "Quick",
+      "type": "number",
+      "value": 0
+    }
+  ]
+}
