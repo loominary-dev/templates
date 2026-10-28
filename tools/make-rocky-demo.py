@@ -141,7 +141,7 @@ def ground(c0, c1, top):
 def ledge(c0, c1, r):
     for c in range(c0, c1 + 1): grid[r][c] = grid[r + 1][c] = "o"
 def put(ch, c, r): grid[r][c] = ch
-ground(0, 14, 12); ground(18, 30, 12); ground(31, 38, 10); ground(39, 44, 12); ground(48, 66, 12)
+ground(0, 30, 12); ground(31, 38, 10); ground(39, 44, 12); ground(48, 66, 12)
 ground(71, 82, 9); ground(83, 90, 13); ground(91, 104, 11); ground(109, 124, 12); ground(125, 139, 10)
 ledge(22, 25, 8); ledge(45, 47, 9); ledge(56, 59, 7); ledge(67, 70, 10); ledge(93, 96, 6); ledge(99, 102, 8); ledge(105, 108, 9)
 for c, r, ch in [(3, 11, "P"), (8, 11, "g"), (11, 11, "s"), (12, 9, "d"), (16, 9, "d"), (20, 11, "t"), (24, 7, "d"), (27, 11, "B"),
