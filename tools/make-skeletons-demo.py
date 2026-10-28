@@ -29,7 +29,9 @@ W, H = 960 * U, 540 * U
 GROUND = 200 * U   # the ground line, in the scene (its 0, 0 is the middle of the view)
 
 # ── the characters, their pictures rendered from SVG ──
-rigs = [(C.tree(0.52 * U), (-350 * U, GROUND)), (C.dinosaur(0.78 * U), (-75 * U, GROUND)), (C.dancer(1.0 * U), (170 * U, GROUND)), (C.jellyfish(1.1 * U), (380 * U, -5 * U))]
+# The T-rex (skeleton_art/trex.py); OLD_DINO=1 brings back the first dinosaur, for comparing the two.
+dino = C.dinosaur(0.78 * U) if os.environ.get("OLD_DINO") == "1" else C.trex(0.64 * U)
+rigs = [(C.tree(0.52 * U), (-350 * U, GROUND)), (dino, (-60 * U, GROUND)), (C.dancer(1.0 * U), (170 * U, GROUND)), (C.jellyfish(1.1 * U), (380 * U, -5 * U))]
 work = tempfile.mkdtemp()
 for rig, _ in rigs:
     rig.render(work)
