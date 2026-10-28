@@ -1,0 +1,129 @@
+{
+  "width": 24,
+  "height": 24,
+  "colorMode": "rgba",
+  "sheet": {
+    "columns": 2
+  },
+  "palette": [],
+  "layers": [
+    {
+      "id": "e0000000-0000-4000-8000-000000000109",
+      "name": "Layer 1",
+      "visible": true,
+      "opacity": 1,
+      "locked": false,
+      "blendMode": "normal",
+      "reference": false
+    }
+  ],
+  "animations": [
+    {
+      "id": "e0000000-0000-4000-8000-000000000112",
+      "name": "walk",
+      "loop": true,
+      "playMode": "loop",
+      "repeatTo": 0,
+      "repeatCount": 0,
+      "collision": [
+        {
+          "name": "head",
+          "kind": "box",
+          "cx": 12,
+          "cy": 11,
+          "w": 14,
+          "h": 4,
+          "sensor": true
+        },
+        {
+          "name": "body",
+          "kind": "box",
+          "cx": 12,
+          "cy": 17,
+          "w": 14,
+          "h": 8,
+          "sensor": true
+        }
+      ],
+      "points": [],
+      "collisionShared": true,
+      "pointsShared": false,
+      "frames": [
+        {
+          "id": "e0000000-0000-4000-8000-000000000110",
+          "duration": 220,
+          "pivotX": 0.5,
+          "pivotY": 0.5,
+          "collision": [],
+          "points": []
+        },
+        {
+          "id": "e0000000-0000-4000-8000-000000000111",
+          "duration": 220,
+          "pivotX": 0.5,
+          "pivotY": 0.5,
+          "collision": [],
+          "points": []
+        }
+      ]
+    },
+    {
+      "id": "e0000000-0000-4000-8000-000000000114",
+      "name": "squashed",
+      "loop": false,
+      "playMode": "once",
+      "repeatTo": 0,
+      "repeatCount": 0,
+      "collision": [
+        {
+          "name": "head",
+          "kind": "box",
+          "cx": 12,
+          "cy": 11,
+          "w": 14,
+          "h": 4,
+          "sensor": true
+        },
+        {
+          "name": "body",
+          "kind": "box",
+          "cx": 12,
+          "cy": 17,
+          "w": 14,
+          "h": 8,
+          "sensor": true
+        }
+      ],
+      "points": [],
+      "collisionShared": true,
+      "pointsShared": false,
+      "frames": [
+        {
+          "id": "e0000000-0000-4000-8000-000000000113",
+          "duration": 350,
+          "pivotX": 0.5,
+          "pivotY": 0.5,
+          "collision": [],
+          "points": []
+        }
+      ]
+    }
+  ],
+  "cels": [
+    {
+      "layerId": "e0000000-0000-4000-8000-000000000109",
+      "frameId": "e0000000-0000-4000-8000-000000000110",
+      "at": 0
+    },
+    {
+      "layerId": "e0000000-0000-4000-8000-000000000109",
+      "frameId": "e0000000-0000-4000-8000-000000000111",
+      "at": 1
+    },
+    {
+      "layerId": "e0000000-0000-4000-8000-000000000109",
+      "frameId": "e0000000-0000-4000-8000-000000000113",
+      "at": 2
+    }
+  ]
+}

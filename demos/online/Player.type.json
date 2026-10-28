@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 2,
+  "baseClass": "Sprite",
+  "defaults": {
+    "spriteKey": "Player.sprite.json",
+    "collision": {
+      "layer": 1,
+      "mask": -1
+    }
+  },
+  "components": [
+    {
+      "componentClass": "Synced",
+      "rate": 20
+    },
+    {
+      "componentClass": "PhysicsBody",
+      "bodyType": "Dynamic"
+    },
+    {
+      "componentClass": "Platformer",
+      "maxSpeed": 110,
+      "acceleration": 900,
+      "deceleration": 1200,
+      "jumpStrength": 330,
+      "jumpCut": 0.6,
+      "coyoteTime": 0.1,
+      "jumpBuffer": 0.1,
+      "floorSnap": 3
+    },
+    {
+      "componentClass": "PlayerRules"
+    }
+  ]
+}

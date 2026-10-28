@@ -1,0 +1,74 @@
+{
+  "width": 18,
+  "height": 18,
+  "colorMode": "rgba",
+  "sheet": {
+    "columns": 2
+  },
+  "palette": [],
+  "layers": [
+    {
+      "id": "e0000000-0000-4000-8000-000000000115",
+      "name": "Layer 1",
+      "visible": true,
+      "opacity": 1,
+      "locked": false,
+      "blendMode": "normal",
+      "reference": false
+    }
+  ],
+  "animations": [
+    {
+      "id": "e0000000-0000-4000-8000-000000000118",
+      "name": "spin",
+      "loop": true,
+      "playMode": "loop",
+      "repeatTo": 0,
+      "repeatCount": 0,
+      "collision": [
+        {
+          "name": "coin",
+          "kind": "box",
+          "cx": 9,
+          "cy": 9,
+          "w": 12,
+          "h": 12,
+          "sensor": true
+        }
+      ],
+      "points": [],
+      "collisionShared": true,
+      "pointsShared": false,
+      "frames": [
+        {
+          "id": "e0000000-0000-4000-8000-000000000116",
+          "duration": 300,
+          "pivotX": 0.5,
+          "pivotY": 0.5,
+          "collision": [],
+          "points": []
+        },
+        {
+          "id": "e0000000-0000-4000-8000-000000000117",
+          "duration": 300,
+          "pivotX": 0.5,
+          "pivotY": 0.5,
+          "collision": [],
+          "points": []
+        }
+      ]
+    }
+  ],
+  "cels": [
+    {
+      "layerId": "e0000000-0000-4000-8000-000000000115",
+      "frameId": "e0000000-0000-4000-8000-000000000116",
+      "at": 0
+    },
+    {
+      "layerId": "e0000000-0000-4000-8000-000000000115",
+      "frameId": "e0000000-0000-4000-8000-000000000117",
+      "at": 1
+    }
+  ]
+}

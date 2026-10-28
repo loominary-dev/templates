@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "assets": [
+    {
+      "uuid": "e0000000-0000-4000-8000-000000000900",
+      "key": "jump",
+      "path": "assets/sounds/jump.ogg"
+    },
+    {
+      "uuid": "e0000000-0000-4000-8000-000000000901",
+      "key": "coin",
+      "path": "assets/sounds/coin.ogg"
+    },
+    {
+      "uuid": "e0000000-0000-4000-8000-000000000902",
+      "key": "stomp",
+      "path": "assets/sounds/stomp.ogg"
+    },
+    {
+      "uuid": "e0000000-0000-4000-8000-000000000903",
+      "key": "hurt",
+      "path": "assets/sounds/hurt.ogg"
+    },
+    {
+      "uuid": "e0000000-0000-4000-8000-000000000904",
+      "key": "win",
+      "path": "assets/sounds/win.ogg"
+    }
+  ]
+}

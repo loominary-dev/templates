@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 2,
+  "baseClass": "Label",
+  "defaults": {
+    "text": "",
+    "fontSize": 8
+  },
+  "components": [
+    {
+      "componentClass": "NetRules"
+    }
+  ]
+}
