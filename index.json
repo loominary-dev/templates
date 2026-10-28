@@ -27,7 +27,7 @@
     {
       "id": "online",
       "name": "Online demo",
-      "description": "The Two players demo played in two games through a relay: Run with players opens two windows, the first makes a room and the second joins it, and each moves its own player while the other's follows.",
+      "description": "The Two players demo played online, the way an online game usually goes: a title screen to host a game, play online or join by code; a waiting room with names, Ready, an invite link and the host's Start; then the level, each game moving its own player while the other's follows.",
       "path": "demos/online",
       "minEditor": "1.0.61"
     },

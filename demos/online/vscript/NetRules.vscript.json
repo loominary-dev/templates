@@ -7,168 +7,60 @@
           "className": "VisualScriptComponent",
           "name": "triggerOnce",
           "params": []
-        }
-      ],
-      "actions": [
-        {
-          "scope": "online",
-          "className": "Online",
-          "name": "connect",
-          "params": [
-            {
-              "type": "value",
-              "scope": "online",
-              "className": "Online",
-              "name": "relayAddress",
-              "params": [
-                {
-                  "type": "literal",
-                  "value": "ws://127.0.0.1:8765",
-                  "valueKind": "string"
-                }
-              ],
-              "returnType": "String"
-            }
-          ]
-        },
-        {
-          "scope": "self:Status",
-          "className": "Label",
-          "name": "setText",
-          "params": [
-            {
-              "type": "literal",
-              "value": "Connecting to the relay...",
-              "valueKind": "string"
-            }
-          ]
-        }
-      ],
-      "subRules": []
-    },
-    {
-      "conditions": [
-        {
-          "scope": "online",
-          "className": "Online",
-          "name": "onConnected",
-          "params": []
-        }
-      ],
-      "actions": [
-        {
-          "scope": "online",
-          "className": "Online",
-          "name": "joinAnyRoom",
-          "params": []
-        }
-      ],
-      "subRules": []
-    },
-    {
-      "conditions": [
-        {
-          "scope": "online",
-          "className": "Online",
-          "name": "onJoinFailed",
-          "params": []
         },
         {
           "scope": "online",
           "className": "Online",
-          "name": "isConnected",
+          "name": "isInRoom",
           "params": []
         }
       ],
       "actions": [
         {
-          "scope": "online",
-          "className": "Online",
-          "name": "createRoom",
+          "scope": "Camera",
+          "className": "Camera",
+          "name": "follow",
           "params": [
             {
-              "type": "literal",
-              "value": 2
-            },
-            {
-              "type": "literal",
-              "value": true,
-              "valueKind": "bool"
+              "type": "op",
+              "op": "+",
+              "left": {
+                "type": "literal",
+                "value": "Player",
+                "valueKind": "string"
+              },
+              "right": {
+                "type": "value",
+                "scope": "online",
+                "className": "Online",
+                "name": "myPlayer",
+                "params": [],
+                "returnType": "Int"
+              }
             }
           ]
         },
         {
-          "scope": "self:Status",
+          "scope": "LevelStatus",
           "className": "Label",
           "name": "setText",
           "params": [
             {
-              "type": "literal",
-              "value": "Waiting for a second player...",
-              "valueKind": "string"
-            }
-          ]
-        }
-      ],
-      "subRules": []
-    },
-    {
-      "conditions": [
-        {
-          "scope": "online",
-          "className": "Online",
-          "name": "onJoinFailed",
-          "params": []
-        },
-        {
-          "scope": "online",
-          "className": "Online",
-          "name": "isConnected",
-          "params": [],
-          "not": true
-        }
-      ],
-      "actions": [
-        {
-          "scope": "self:Status",
-          "className": "Label",
-          "name": "setText",
-          "params": [
-            {
-              "type": "value",
-              "scope": "online",
-              "className": "Online",
-              "name": "joinFailure",
-              "params": [],
-              "returnType": "String"
-            }
-          ]
-        }
-      ],
-      "subRules": []
-    },
-    {
-      "conditions": [
-        {
-          "scope": "online",
-          "className": "Online",
-          "name": "onJoinedRoom",
-          "params": []
-        }
-      ],
-      "actions": [
-        {
-          "scope": "self:Status",
-          "className": "Label",
-          "name": "setText",
-          "params": [
-            {
-              "type": "value",
-              "scope": "online",
-              "className": "Online",
-              "name": "roomCode",
-              "params": [],
-              "returnType": "String"
+              "type": "op",
+              "op": "+",
+              "left": {
+                "type": "literal",
+                "value": "Room ",
+                "valueKind": "string"
+              },
+              "right": {
+                "type": "value",
+                "scope": "online",
+                "className": "Online",
+                "name": "roomCode",
+                "params": [],
+                "returnType": "String"
+              }
             }
           ]
         }
@@ -186,7 +78,7 @@
       ],
       "actions": [
         {
-          "scope": "self:Status",
+          "scope": "LevelStatus",
           "className": "Label",
           "name": "setText",
           "params": [
@@ -197,6 +89,18 @@
               "name": "leftReason",
               "params": [],
               "returnType": "String"
+            }
+          ]
+        },
+        {
+          "scope": "Scenes",
+          "className": "SceneManager",
+          "name": "changeScene",
+          "params": [
+            {
+              "type": "literal",
+              "value": "scenes/Title.scene.json",
+              "valueKind": "string"
             }
           ]
         }

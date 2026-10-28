@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 2,
+  "baseClass": "TextField",
+  "defaults": {
+    "text": "",
+    "placeholder": "Your name",
+    "fontSize": 8,
+    "boxWidth": 120,
+    "boxHeight": 16
+  },
+  "components": []
+}

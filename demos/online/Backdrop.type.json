@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 2,
+  "baseClass": "Panel",
+  "defaults": {
+    "backgroundColor": 2832981,
+    "boxWidth": 320,
+    "boxHeight": 180
+  },
+  "components": []
+}

@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 2,
+  "baseClass": "Button",
+  "defaults": {
+    "text": "Play online",
+    "fontSize": 8,
+    "boxWidth": 120,
+    "boxHeight": 16
+  },
+  "components": []
+}

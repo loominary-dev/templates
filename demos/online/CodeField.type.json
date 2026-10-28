@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 2,
+  "baseClass": "TextField",
+  "defaults": {
+    "text": "",
+    "placeholder": "Code",
+    "fontSize": 8,
+    "boxWidth": 64,
+    "boxHeight": 16
+  },
+  "components": []
+}

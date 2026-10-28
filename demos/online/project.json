@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
   "name": "Online demo",
-  "entryScene": "scenes/Level.scene.json",
+  "entryScene": "scenes/Title.scene.json",
   "input": {
     "Move Left": {
       "bindings": [
@@ -167,5 +167,12 @@
         "controls": "Right keys"
       }
     ]
+  },
+  "id": "0e11d3e40000400080000000000000a1",
+  "singletons": [
+    "scenes/singletons/Online.scene.json"
+  ],
+  "export": {
+    "version": "1.0"
   }
 }

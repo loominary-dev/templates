@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 2,
+  "baseClass": "Button",
+  "defaults": {
+    "text": "Join",
+    "fontSize": 8,
+    "boxWidth": 52,
+    "boxHeight": 16
+  },
+  "components": []
+}
