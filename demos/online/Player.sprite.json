@@ -1,0 +1,145 @@
+{
+  "width": 24,
+  "height": 24,
+  "colorMode": "rgba",
+  "sheet": {
+    "columns": 2
+  },
+  "palette": [],
+  "layers": [
+    {
+      "id": "e0000000-0000-4000-8000-000000000101",
+      "name": "Layer 1",
+      "visible": true,
+      "opacity": 1,
+      "locked": false,
+      "blendMode": "normal",
+      "reference": false
+    }
+  ],
+  "animations": [
+    {
+      "id": "e0000000-0000-4000-8000-000000000103",
+      "name": "idle",
+      "loop": true,
+      "playMode": "loop",
+      "repeatTo": 0,
+      "repeatCount": 0,
+      "collision": [
+        {
+          "name": "body",
+          "kind": "box",
+          "cx": 12,
+          "cy": 13,
+          "w": 14,
+          "h": 20
+        }
+      ],
+      "points": [],
+      "collisionShared": true,
+      "pointsShared": false,
+      "frames": [
+        {
+          "id": "e0000000-0000-4000-8000-000000000102",
+          "duration": 400,
+          "pivotX": 0.5,
+          "pivotY": 0.5,
+          "collision": [],
+          "points": []
+        }
+      ]
+    },
+    {
+      "id": "e0000000-0000-4000-8000-000000000106",
+      "name": "walk",
+      "loop": true,
+      "playMode": "loop",
+      "repeatTo": 0,
+      "repeatCount": 0,
+      "collision": [
+        {
+          "name": "body",
+          "kind": "box",
+          "cx": 12,
+          "cy": 13,
+          "w": 14,
+          "h": 20
+        }
+      ],
+      "points": [],
+      "collisionShared": true,
+      "pointsShared": false,
+      "frames": [
+        {
+          "id": "e0000000-0000-4000-8000-000000000104",
+          "duration": 150,
+          "pivotX": 0.5,
+          "pivotY": 0.5,
+          "collision": [],
+          "points": []
+        },
+        {
+          "id": "e0000000-0000-4000-8000-000000000105",
+          "duration": 150,
+          "pivotX": 0.5,
+          "pivotY": 0.5,
+          "collision": [],
+          "points": []
+        }
+      ]
+    },
+    {
+      "id": "e0000000-0000-4000-8000-000000000108",
+      "name": "jump",
+      "loop": true,
+      "playMode": "loop",
+      "repeatTo": 0,
+      "repeatCount": 0,
+      "collision": [
+        {
+          "name": "body",
+          "kind": "box",
+          "cx": 12,
+          "cy": 13,
+          "w": 14,
+          "h": 20
+        }
+      ],
+      "points": [],
+      "collisionShared": true,
+      "pointsShared": false,
+      "frames": [
+        {
+          "id": "e0000000-0000-4000-8000-000000000107",
+          "duration": 400,
+          "pivotX": 0.5,
+          "pivotY": 0.5,
+          "collision": [],
+          "points": []
+        }
+      ]
+    }
+  ],
+  "cels": [
+    {
+      "layerId": "e0000000-0000-4000-8000-000000000101",
+      "frameId": "e0000000-0000-4000-8000-000000000102",
+      "at": 0
+    },
+    {
+      "layerId": "e0000000-0000-4000-8000-000000000101",
+      "frameId": "e0000000-0000-4000-8000-000000000104",
+      "at": 1
+    },
+    {
+      "layerId": "e0000000-0000-4000-8000-000000000101",
+      "frameId": "e0000000-0000-4000-8000-000000000105",
+      "at": 2
+    },
+    {
+      "layerId": "e0000000-0000-4000-8000-000000000101",
+      "frameId": "e0000000-0000-4000-8000-000000000107",
+      "at": 3
+    }
+  ]
+}

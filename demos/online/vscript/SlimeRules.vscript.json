@@ -1,0 +1,77 @@
+{
+  "rules": [
+    {
+      "conditions": [
+        {
+          "scope": "Slime",
+          "className": "Sprite",
+          "name": "onAnimationFinished",
+          "params": []
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Slime",
+          "className": "Node",
+          "name": "queueDestroy",
+          "params": []
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "Slime",
+          "className": "Patrol",
+          "name": "isHeadingOut",
+          "params": [],
+          "onComponent": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Slime",
+          "className": "Node",
+          "name": "setMirrored",
+          "params": [
+            {
+              "type": "literal",
+              "value": false,
+              "valueKind": "bool"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "Slime",
+          "className": "Patrol",
+          "name": "isHeadingOut",
+          "params": [],
+          "onComponent": true,
+          "not": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Slime",
+          "className": "Node",
+          "name": "setMirrored",
+          "params": [
+            {
+              "type": "literal",
+              "value": true,
+              "valueKind": "bool"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    }
+  ],
+  "vars": []
+}

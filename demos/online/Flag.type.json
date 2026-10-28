@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 2,
+  "baseClass": "Sprite",
+  "defaults": {
+    "spriteKey": "Flag.sprite.json",
+    "collision": {
+      "layer": 2,
+      "mask": 1
+    }
+  },
+  "components": []
+}
