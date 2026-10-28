@@ -10,6 +10,7 @@ import math, os, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from rigkit import Rig, chain_weigh, nearest_along, norm
 import dino as DI
+import trex as TX
 import tree as TR
 import tree2 as T2
 import jelly as JE
@@ -50,6 +51,51 @@ def dinosaur(k):
     r.part("Body", sv("body"), "Body", mesh=(10, 8, chain_weigh(spine, ["Tail1", "Hips", "Body", "Neck1", "Neck2"])), z=0)
     tail = [(-10, -120), (-40, -124), (-82, -127), (-120, -122), (-152, -114)]
     r.part("Tail", sv("tail"), "Tail1", mesh=(14, 4, chain_weigh(tail, ["Hips", "Tail1", "Tail2", "Tail3"])), z=-1)
+    r.part("Head", sv("head"), "Head", z=2)
+    r.part("Jaw", sv("jaw"), "Jaw", z=1)
+    for side, z in (("Far", -3), ("Near", 3)):
+        lo = side.lower()
+        r.part("Thigh" + side, sv("thigh_" + lo), "Thigh" + side, z=z)
+        r.part("Shin" + side, sv("shin_" + lo), "Shin" + side, z=z)
+        foot, toe = r.bones["Foot" + side], r.bones["Toe" + side]
+        r.part("Foot" + side, sv("foot_" + lo), "Foot" + side, z=z,
+               mesh=(8, 4, chain_weigh([foot.base, toe.base, toe.tip], ["Foot" + side, "Toe" + side])))
+        r.part("UpperArm" + side, sv("upperarm_" + lo), "UpperArm" + side, z=z + 1)
+        r.part("Forearm" + side, sv("forearm_" + lo), "Forearm" + side, z=z + 1)
+    return r
+
+def trex(k):
+    """The T-rex (trex.py): the dinosaur's bones on a T-rex's joints, so the same walk and run fit it. Rigid legs, arms,
+    head and jaw; the body with its neck, and the tail, are meshes bent by their bones."""
+    r = Rig("Dinosaur", k, order_by_z=True)
+    H, K, A = TX.HIP, TX.KNEE, TX.ANKLE
+    r.bone("Hips", None, H, (H[0] + 10, H[1]))
+    r.bone("Body", "Hips", H, (60, -152))
+    r.bone("Neck1", "Body", (60, -152), (78, -170))
+    r.bone("Neck2", "Neck1", (78, -170), (96, -188))
+    r.bone("Head", "Neck2", (96, -188), (178, -204))
+    r.bone("Jaw", "Head", TX.JAWPIN, (166, -184))
+    r.bone("Tail1", "Hips", (-30, -134), (-80, -136))
+    r.bone("Tail2", "Tail1", (-80, -136), (-130, -134))
+    r.bone("Tail3", "Tail2", (-130, -134), (-185, -128))
+    for side, o in (("Far", TX.FAR), ("Near", (0, 0))):
+        h, kn, a = (TX.off(q, o) for q in (H, K, A))
+        r.bone("Thigh" + side, "Hips", h, kn)
+        r.bone("Shin" + side, "Thigh" + side, kn, a)
+        r.bone("Foot" + side, "Shin" + side, a, (a[0] + 46, o[1] - 4))
+        fb = r.bones["Foot" + side]
+        tb = (a[0] + TOE_AT * math.cos(fb.angle), a[1] + TOE_AT * math.sin(fb.angle))
+        ta = fb.angle + TOE_TURN
+        r.bone("Toe" + side, "Foot" + side, tb, (tb[0] + TOE_LENGTH * math.cos(ta), tb[1] + TOE_LENGTH * math.sin(ta)))
+        sh, el, ha = (TX.off(q, o) for q in (TX.SHOULDER, TX.ELBOW, TX.HAND))
+        r.bone("UpperArm" + side, "Body", sh, el)
+        r.bone("Forearm" + side, "UpperArm" + side, el, ha)
+    sv = lambda n: TX.part_svg("T", n)
+    spine = [(-60, -134), (-30, -134), (0, -130), (60, -152), (78, -170), (96, -192)]
+    r.part("Body", sv("body"), "Body", mesh=(12, 8, chain_weigh(spine, ["Tail1", "Hips", "Body", "Neck1", "Neck2"])), z=0)
+    # The tail, one picture bent along its three bones.
+    tail = [(-10, -134), (-30, -134), (-80, -136), (-130, -134), (-185, -128)]
+    r.part("Tail", sv("tail"), "Tail1", mesh=(18, 4, chain_weigh(tail, ["Hips", "Tail1", "Tail2", "Tail3"])), z=-1)
     r.part("Head", sv("head"), "Head", z=2)
     r.part("Jaw", sv("jaw"), "Jaw", z=1)
     for side, z in (("Far", -3), ("Near", 3)):
