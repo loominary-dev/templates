@@ -1,0 +1,153 @@
+{
+  "schemaVersion": 1,
+  "image": "assets/art/tilemap-backgrounds_packed.png",
+  "tileWidth": 24,
+  "tileHeight": 24,
+  "tiles": [
+    {
+      "id": 0,
+      "x": 0,
+      "y": 0,
+      "collision": []
+    },
+    {
+      "id": 1,
+      "x": 24,
+      "y": 0,
+      "collision": []
+    },
+    {
+      "id": 2,
+      "x": 48,
+      "y": 0,
+      "collision": []
+    },
+    {
+      "id": 3,
+      "x": 72,
+      "y": 0,
+      "collision": []
+    },
+    {
+      "id": 4,
+      "x": 96,
+      "y": 0,
+      "collision": []
+    },
+    {
+      "id": 5,
+      "x": 120,
+      "y": 0,
+      "collision": []
+    },
+    {
+      "id": 6,
+      "x": 144,
+      "y": 0,
+      "collision": []
+    },
+    {
+      "id": 7,
+      "x": 168,
+      "y": 0,
+      "collision": []
+    },
+    {
+      "id": 8,
+      "x": 0,
+      "y": 24,
+      "collision": []
+    },
+    {
+      "id": 9,
+      "x": 24,
+      "y": 24,
+      "collision": []
+    },
+    {
+      "id": 10,
+      "x": 48,
+      "y": 24,
+      "collision": []
+    },
+    {
+      "id": 11,
+      "x": 72,
+      "y": 24,
+      "collision": []
+    },
+    {
+      "id": 12,
+      "x": 96,
+      "y": 24,
+      "collision": []
+    },
+    {
+      "id": 13,
+      "x": 120,
+      "y": 24,
+      "collision": []
+    },
+    {
+      "id": 14,
+      "x": 144,
+      "y": 24,
+      "collision": []
+    },
+    {
+      "id": 15,
+      "x": 168,
+      "y": 24,
+      "collision": []
+    },
+    {
+      "id": 16,
+      "x": 0,
+      "y": 48,
+      "collision": []
+    },
+    {
+      "id": 17,
+      "x": 24,
+      "y": 48,
+      "collision": []
+    },
+    {
+      "id": 18,
+      "x": 48,
+      "y": 48,
+      "collision": []
+    },
+    {
+      "id": 19,
+      "x": 72,
+      "y": 48,
+      "collision": []
+    },
+    {
+      "id": 20,
+      "x": 96,
+      "y": 48,
+      "collision": []
+    },
+    {
+      "id": 21,
+      "x": 120,
+      "y": 48,
+      "collision": []
+    },
+    {
+      "id": 22,
+      "x": 144,
+      "y": 48,
+      "collision": []
+    },
+    {
+      "id": 23,
+      "x": 168,
+      "y": 48,
+      "collision": []
+    }
+  ],
+  "physicsLayers": []
+}

@@ -1,0 +1,171 @@
+{
+  "schemaVersion": 2,
+  "name": "Two players demo",
+  "entryScene": "scenes/Level.scene.json",
+  "input": {
+    "Move Left": {
+      "bindings": [
+        {
+          "kind": "key",
+          "code": 65
+        },
+        {
+          "kind": "key",
+          "code": 37,
+          "set": "Right keys"
+        },
+        {
+          "kind": "axis",
+          "code": 0,
+          "sign": -1,
+          "set": "Pad"
+        },
+        {
+          "kind": "pad",
+          "code": 14,
+          "set": "Pad"
+        }
+      ]
+    },
+    "Move Right": {
+      "bindings": [
+        {
+          "kind": "key",
+          "code": 68
+        },
+        {
+          "kind": "key",
+          "code": 39,
+          "set": "Right keys"
+        },
+        {
+          "kind": "axis",
+          "code": 0,
+          "sign": 1,
+          "set": "Pad"
+        },
+        {
+          "kind": "pad",
+          "code": 15,
+          "set": "Pad"
+        }
+      ]
+    },
+    "Move Down": {
+      "bindings": [
+        {
+          "kind": "key",
+          "code": 83
+        },
+        {
+          "kind": "key",
+          "code": 40,
+          "set": "Right keys"
+        },
+        {
+          "kind": "axis",
+          "code": 1,
+          "sign": 1,
+          "set": "Pad"
+        },
+        {
+          "kind": "pad",
+          "code": 13,
+          "set": "Pad"
+        }
+      ]
+    },
+    "Jump": {
+      "bindings": [
+        {
+          "kind": "key",
+          "code": 87
+        },
+        {
+          "kind": "key",
+          "code": 32
+        },
+        {
+          "kind": "key",
+          "code": 38,
+          "set": "Right keys"
+        },
+        {
+          "kind": "pad",
+          "code": 0,
+          "set": "Pad"
+        }
+      ]
+    },
+    "Accept": {
+      "bindings": [
+        {
+          "kind": "key",
+          "code": 13
+        },
+        {
+          "kind": "key",
+          "code": 32
+        }
+      ]
+    },
+    "Cancel": {
+      "bindings": [
+        {
+          "kind": "key",
+          "code": 27
+        }
+      ]
+    },
+    "Pause": {
+      "bindings": [
+        {
+          "kind": "key",
+          "code": 27
+        },
+        {
+          "kind": "pad",
+          "code": 9,
+          "set": "Pad"
+        }
+      ]
+    }
+  },
+  "collisionLayers": {
+    "1": "Player",
+    "2": "Pickup",
+    "3": "Ground",
+    "4": "Enemy",
+    "5": "Hazard"
+  },
+  "display": {
+    "width": 320,
+    "height": 180,
+    "windowWidth": 1280,
+    "windowHeight": 720,
+    "presentMode": "fit",
+    "displayMode": "windowed",
+    "autoResize": true,
+    "wholeWindowScale": true
+  },
+  "physics": {
+    "engine": "arcade",
+    "gravity": 700
+  },
+  "players": {
+    "count": 2,
+    "sets": [
+      "Left keys",
+      "Right keys",
+      "Pad"
+    ],
+    "seats": [
+      {
+        "controls": "Left keys"
+      },
+      {
+        "controls": "Right keys"
+      }
+    ]
+  }
+}
