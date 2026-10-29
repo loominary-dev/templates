@@ -156,7 +156,7 @@ for c, r, ch in [(3, 11, "P"), (8, 11, "g"), (11, 11, "s"), (12, 9, "d"), (16, 9
 LEVEL = ["".join(row) for row in grid]
 
 rock = lambda c, r: 0 <= r < H and 0 <= c < W and LEVEL[r][c] in "#o"
-used, cells, solid_tiles, ledge_tiles = set(), [], set(), set()
+used, cells, solid_tiles = set(), [], set()
 def tile_at(col, row):
     used.add((col, row))
     return row * 64 + col
@@ -172,7 +172,7 @@ for r in range(H):
             col = 8 if lft else 16 if rgt else 9 + (c % 7)
             under = rock(c, r - 1) and LEVEL[r - 1][c] == "o"
             cells.append([c, r, tile_at(col, 13 if under else 12)])
-            if not under: solid_tiles.add(12 * 64 + col); ledge_tiles.add(12 * 64 + col)
+            if not under: solid_tiles.add(12 * 64 + col)
             continue
         if not rock(c, r - 1):                    # the top: its lit rim
             t = tile_at(5 if left else 25 if right else v, 2)
@@ -181,11 +181,9 @@ for r in range(H):
             t = tile_at(5 if left else 25 if right else v, depth)
         cells.append([c, r, t])
         solid_tiles.add(t)
-# Only the floating ledges cast shadows: ground that shadowed itself would stay dark where a light faces it.
 d.write("assets/tiles/Rock.tileset.json", {"schemaVersion": 1, "image": "assets/art/rock_tiles.png", "tileWidth": CELL, "tileHeight": CELL,
     "tiles": [{"id": row * 64 + col, "x": col * CELL, "y": row * CELL,
-               "collision": [dict({"kind": "box", "cx": 8, "cy": 8, "w": CELL, "h": CELL}, **({"occluder": 1} if row * 64 + col in ledge_tiles else {}))]
-                            if row * 64 + col in solid_tiles else []}
+               "collision": [{"kind": "box", "cx": 8, "cy": 8, "w": CELL, "h": CELL, "occluder": 1}] if row * 64 + col in solid_tiles else []}
               for col, row in sorted(used)],
     "physicsLayers": [{"name": "Ground", "collisionLayer": SOLID, "collisionMask": -1}]})
 
