@@ -5,6 +5,25 @@ import base64, json, math, os, shutil, struct
 from PIL import Image, ImageDraw
 
 
+_RESERVED = None
+def check_name(name):
+    """A Type's name is a class of the game: one the engine, Haxe or the browser uses would hide theirs
+    (a Type named Blob breaks every picture on the web). Loominary's own list, when its checkout is beside this one."""
+    global _RESERVED
+    if _RESERVED is None:
+        loom = os.environ.get("LOOMINARY_REPO") or os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "Loom")
+        _RESERVED = set()
+        listed = os.path.join(loom, "engine", "reserved-names.json")
+        if os.path.exists(listed):
+            data = json.load(open(listed))
+            _RESERVED = {n.lower() for n in data["haxe"] + data["browser"]}
+            for d in ["engine/src", "engine/src/core", "engine/src/objects", "engine/src/behaviors", "editor/behaviors"]:
+                full = os.path.join(loom, d)
+                if os.path.isdir(full): _RESERVED |= {f[:-3].lower() for f in os.listdir(full) if f.endswith(".hx")}
+    if name.lower() in _RESERVED:
+        raise SystemExit('"%s" is a name the engine, Haxe or the browser uses itself: give the Type another' % name)
+
+
 class Demo:
     def __init__(self, out, folders, prefix):
         self.out = os.path.abspath(out)
@@ -52,6 +71,7 @@ class Demo:
         return name + ".sprite.json"
 
     def type_json(self, name, base, defaults, components=()):
+        check_name(name)
         self.write(name + ".type.json", {"schemaVersion": 2, "baseClass": base, "defaults": dict(defaults), "components": list(components)})
 
     def scene(self, rel, objects, components=()):

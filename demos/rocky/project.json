@@ -124,7 +124,7 @@
   },
   "lighting": {
     "lightMap": true,
-    "ambient": "#7d8a96",
+    "ambient": "#4c5560",
     "blend": "multiply"
   }
 }

@@ -3,12 +3,12 @@
   "baseClass": "Light",
   "defaults": {
     "spriteKey": "Glow.sprite.json",
-    "tint": 16762730,
-    "opacity": 0.95,
-    "scaleX": 1.7,
-    "scaleY": 1.7,
-    "radius": 3,
-    "lightHeight": 14
+    "tint": 16767370,
+    "opacity": 1.0,
+    "scaleX": 1.9,
+    "scaleY": 1.9,
+    "radius": 4,
+    "textureScale": 0.5
   },
   "components": [
     {

@@ -8,6 +8,7 @@ Sounds from Kenney's Digital Audio and Impact Sounds (CC0).
 Needs Pillow.
 """
 import math, os, sys
+from PIL import ImageEnhance
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from demo_kit import *
 
@@ -101,9 +102,9 @@ def glow(size):
     for y in range(size):
         for x in range(size):
             r = math.hypot(x - c, y - c) / c
-            if r < 1: g.putpixel((x, y), (255, 255, 255, int(255 * (1 - r) ** 1.8)))
+            if r < 1: g.putpixel((x, y), (255, 255, 255, int(255 * (1 - r) ** 1.2)))
     return g
-d.sprite("Glow", 96, 96, [("still", [glow(96)], 400, "loop")], [])
+d.sprite("Glow", 256, 256, [("still", [glow(256)], 400, "loop")], [])
 
 # Scenery, no collision: dry grass, green plants, rock piles, dead trees, stalagmites.
 DECOR = {
@@ -119,7 +120,8 @@ for name, parts in DECOR.items():
 
 # The backdrop: three pictures the size of the view, which repeat side to side; the far ones move least.
 for i in (1, 2, 3):
-    img("01. Rocky Level", "background%d.png" % i).save(os.path.join(d.out, "assets", "art", "background%d.png" % i))
+    # Darkened, so the lights stand out against it.
+    ImageEnhance.Brightness(img("01. Rocky Level", "background%d.png" % i)).enhance(0.6).save(os.path.join(d.out, "assets", "art", "background%d.png" % i))
     d.write("assets/tiles/Back%d.tileset.json" % i, {"schemaVersion": 1, "image": "assets/art/background%d.png" % i, "tileWidth": 480, "tileHeight": 270,
         "tiles": [{"id": 0, "x": 0, "y": 0, "collision": []}], "physicsLayers": []})
 
@@ -154,7 +156,7 @@ for c, r, ch in [(3, 11, "P"), (8, 11, "g"), (11, 11, "s"), (12, 9, "d"), (16, 9
 LEVEL = ["".join(row) for row in grid]
 
 rock = lambda c, r: 0 <= r < H and 0 <= c < W and LEVEL[r][c] in "#o"
-used, cells, solid_tiles = set(), [], set()
+used, cells, solid_tiles, ledge_tiles = set(), [], set(), set()
 def tile_at(col, row):
     used.add((col, row))
     return row * 64 + col
@@ -170,7 +172,7 @@ for r in range(H):
             col = 8 if lft else 16 if rgt else 9 + (c % 7)
             under = rock(c, r - 1) and LEVEL[r - 1][c] == "o"
             cells.append([c, r, tile_at(col, 13 if under else 12)])
-            if not under: solid_tiles.add(12 * 64 + col)
+            if not under: solid_tiles.add(12 * 64 + col); ledge_tiles.add(12 * 64 + col)
             continue
         if not rock(c, r - 1):                    # the top: its lit rim
             t = tile_at(5 if left else 25 if right else v, 2)
@@ -179,9 +181,11 @@ for r in range(H):
             t = tile_at(5 if left else 25 if right else v, depth)
         cells.append([c, r, t])
         solid_tiles.add(t)
+# Only the floating ledges cast shadows: ground that shadowed itself would stay dark where a light faces it.
 d.write("assets/tiles/Rock.tileset.json", {"schemaVersion": 1, "image": "assets/art/rock_tiles.png", "tileWidth": CELL, "tileHeight": CELL,
     "tiles": [{"id": row * 64 + col, "x": col * CELL, "y": row * CELL,
-               "collision": [{"kind": "box", "cx": 8, "cy": 8, "w": CELL, "h": CELL, "occluder": 1}] if row * 64 + col in solid_tiles else []}
+               "collision": [dict({"kind": "box", "cx": 8, "cy": 8, "w": CELL, "h": CELL}, **({"occluder": 1} if row * 64 + col in ledge_tiles else {}))]
+                            if row * 64 + col in solid_tiles else []}
               for col, row in sorted(used)],
     "physicsLayers": [{"name": "Ground", "collisionLayer": SOLID, "collisionMask": -1}]})
 
@@ -207,15 +211,15 @@ for i in (1, 2, 3): d.type_json("HeartIcon%d" % i, "Sprite", {"spriteKey": "Hear
 d.type_json("DiamondCount", "Label", {"text": "0", "fontSize": 10, "textColor": 0xF2F6E8})
 d.type_json("WinSign", "Label", {"text": "You reached the great crystal!", "fontSize": 14, "textColor": 0xF2F6E8, "visible": False})
 # The lights: teal over the crystals, white over the great crystal.
-d.type_json("CrystalLight", "Light", {"spriteKey": "Glow.sprite.json", "tint": 0x4FE3D0, "opacity": 0.85, "scaleX": 1.1, "scaleY": 1.1, "radius": 2, "lightHeight": 10})
+d.type_json("CrystalLight", "Light", {"spriteKey": "Glow.sprite.json", "tint": 0x4FE3D0, "opacity": 0.9, "scaleX": 1.3, "scaleY": 1.3, "radius": 3, "textureScale": 0.5})
 # Lights that move, so the shadows the ledges and rocks cast swing as they pass: two wisps drifting and
 # bobbing near the ledges, and the soft light Gino carries.
-d.type_json("Wisp", "Light", {"spriteKey": "Glow.sprite.json", "tint": 0xFFC76A, "opacity": 0.95, "scaleX": 1.7, "scaleY": 1.7, "radius": 3, "lightHeight": 14},
+d.type_json("Wisp", "Light", {"spriteKey": "Glow.sprite.json", "tint": 0xFFD98A, "opacity": 1.0, "scaleX": 1.9, "scaleY": 1.9, "radius": 4, "textureScale": 0.5},
             [{"componentClass": "Patrol", "axis": "Horizontal", "distance": 176, "speed": 36},
              {"componentClass": "Oscillate", "property": "y", "magnitude": 14, "period": 2.4}])
 # Pale and cool: the light map multiplies over a teal-green cave, where a warm light has little red to lift.
-d.type_json("Lantern", "Light", {"spriteKey": "Glow.sprite.json", "tint": 0xBFF6FF, "opacity": 1.0, "scaleX": 1.5, "scaleY": 1.5, "radius": 2, "lightHeight": 10})
-d.type_json("GoalLight", "Light", {"spriteKey": "Glow.sprite.json", "tint": 0xD8FFF8, "opacity": 0.7, "scaleX": 1.8, "scaleY": 1.8, "radius": 3, "lightHeight": 20})
+d.type_json("Lantern", "Light", {"spriteKey": "Glow.sprite.json", "tint": 0xBFF6FF, "opacity": 1.0, "scaleX": 1.2, "scaleY": 1.2, "radius": 3, "textureScale": 0.5})
+d.type_json("GoalLight", "Light", {"spriteKey": "Glow.sprite.json", "tint": 0xD8FFF8, "opacity": 0.9, "scaleX": 1.8, "scaleY": 1.8, "radius": 4, "textureScale": 0.5})
 for name, parts in DECOR.items():
     for i in range(len(parts)): d.type_json("%s%d" % (name, i + 1), "Sprite", {"spriteKey": "%s%d.sprite.json" % (name, i + 1)})
 
@@ -266,8 +270,9 @@ for r in range(H):
         elif ch == "G": goal = (cx, floor - 21)
         elif ch == "P": start = (cx, floor - 17)
 place("GreatCrystal1", "GreatCrystal", goal[0], goal[1])
-place("Gino1", "Gino", start[0], start[1])
-place("Lantern1", "Lantern", start[0], start[1] - 4, parent=LIGHTS)
+gino = place("Gino1", "Gino", start[0], start[1])
+# The light Gino carries: his child, so it goes where he goes.
+place("Lantern1", "Lantern", 0, -4, parent=gino["id"])
 place("Camera1", "Camera", start[0], 135, target="Gino1", smoothing=0.12, keepInBounds=True,
       boundsLeft=0, boundsTop=0, boundsRight=W * CELL, boundsBottom=H * CELL, currentAtStart=True)
 HUD = uid(830)
@@ -291,8 +296,6 @@ safe = not_(comp("Gino", "Blink", "isBlinking"))
 to_start = [line("Gino", "Node", "setPosition", lit(start[0]), lit(start[1])), setvar("lives", lit(3))]
 gino_rules = [
     rule([once()], [setvar("lives", lit(3)), setvar("diamonds", lit(0))]),
-    # The light Gino carries goes with him.
-    rule([], [line("Lantern", "Node", "setPosition", value("self", "Node", "getPositionX"), op("-", value("self", "Node", "getPositionY"), lit(4)))]),
     rule([held("Move Left")], [comp("Gino", "Platformer", "moveLeft")]),
     rule([held("Move Right")], [comp("Gino", "Platformer", "moveRight")]),
     rule([held("Jump")], [comp("Gino", "Platformer", "jump")]),
@@ -371,7 +374,7 @@ d.write("project.json", {"schemaVersion": 2, "name": "Rocky demo", "entryScene":
                 "autoResize": True, "wholeWindowScale": True, "drawnAt": "game"},
     "physics": {"engine": "arcade", "gravity": 760},
     # A dim cave: the light map multiplied over the world, so the lights show as light.
-    "lighting": {"lightMap": True, "ambient": "#7d8a96", "blend": "multiply"}})
+    "lighting": {"lightMap": True, "ambient": "#4c5560", "blend": "multiply"}})
 d.write("README.md", """# Rocky demo
 
 A platform level in a cave: run and jump with the arrow keys or WASD (Space
