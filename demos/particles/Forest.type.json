@@ -2,7 +2,7 @@
   "schemaVersion": 2,
   "baseClass": "Sprite",
   "defaults": {
-    "spriteKey": "Star.sprite.json",
+    "spriteKey": "Forest.sprite.json",
     "collisionEnabled": false
   },
   "components": []

@@ -7,7 +7,8 @@ back.
 
     python3 tools/make-particles-demo.py <kenney digital-audio dir> [demos/particles]
 
-Everything is drawn here but the factory picture (tools/art); it and the sounds are Kenney's (CC0). Needs Pillow.
+Everything is drawn here but the pictures in tools/art: the animals and the sounds are Kenney's (CC0),
+the forest is the project's own. Needs Pillow.
 """
 import os, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -52,13 +53,14 @@ d.sprite("Breeze", 260, 100, [("still", [panel(260, 100, (255, 255, 255, 16), (2
 peg = canvas(18, 18)
 ImageDraw.Draw(peg).ellipse([1, 1, 16, 16], fill=STONE, outline=STONE_EDGE, width=2)
 d.sprite("Peg", 18, 18, [("still", [peg], 400, "loop")], [circle("body", 9, 9, 9)])
-# Pictures to turn into particles: drawn small, shown four times over.
-HEART = ["..rr...rr..", ".rRRr.rRRr.", "rRWRRrRRRRr", "rRRRRRRRRRr", "rRRRRRRRRRr", ".rRRRRRRRr.", "..rRRRRRr..", "...rRRRr...", "....rRr....", ".....r....."]
-d.sprite("Heart", 11, 10, [("still", [drawn(HEART, {"r": (150, 20, 40, 255), "R": (230, 50, 70, 255), "W": (255, 210, 220, 255)})], 400, "loop")], [])
-STAR = [".....y.....", "....yYy....", "....yYy....", "yyyyYYYyyyy", ".yYYYYYYYy.", "..yYYYYYy..", "..yYYyYYy..", ".yYYy.yYYy.", ".yy.....yy."]
-d.sprite("Star", 11, 9, [("still", [drawn(STAR, {"y": (200, 140, 20, 255), "Y": (255, 214, 60, 255)})], 400, "loop")], [])
-GEM = ["...gggg...", "..gGGGGg..", ".gGWGGGGg.", "gGGGGGGGGg", ".gGGGGGGg.", "..gGGGGg..", "...gGGg...", "....gg...."]
-d.sprite("Gem", 10, 8, [("still", [drawn(GEM, {"g": (20, 110, 90, 255), "G": (40, 200, 160, 255), "W": (200, 255, 240, 255)})], 400, "loop")], [])
+# Pictures to turn into particles: Kenney's animal heads (Animal Pack Redux, CC0), at their own size.
+ART = os.path.join(os.path.dirname(os.path.abspath(__file__)), "art")
+for pic in ["Frog", "Pig", "Panda"]:
+    im = Image.open(os.path.join(ART, "kenney-%s.png" % pic.lower())).convert("RGBA")
+    d.sprite(pic, im.width, im.height, [("still", [im], 400, "loop")], [])
+# A particle drawn as a small square: a picture turned into particles then looks like the picture,
+# at the particles' size, rather than a blur of overlapping dots.
+d.sprite("Pixel", 8, 8, [("still", [Image.new("RGBA", (8, 8), (255, 255, 255, 255))], 400, "loop")], [])
 
 d.sounds({"splash": (da, "phaserDown2.ogg"), "click": (da, "pepSound1.ogg")})
 
@@ -164,7 +166,7 @@ d.type_json("Peg", "Sprite", {"spriteKey": "Peg.sprite.json", "collision": {"lay
 # running game is offset from the scene's by the camera; see the engine's TODO).
 d.type_json("Mold", "Node", {"collision": {"layer": MOULD, "mask": 0, "shapes": [box("shape", 0, 0, 20, 20)]}})
 d.type_json("Dropper", "Node", {"collision": {"layer": MOULD, "mask": 0, "shapes": [box("shape", 0, 0, 20, 20)]}})
-for pic in ["Heart", "Star", "Gem"]:
+for pic in ["Frog", "Pig", "Panda"]:
     d.type_json(pic, "Sprite", {"spriteKey": pic + ".sprite.json", "collisionEnabled": False})
 def water_type(name, picture="Drop", readout=None, **k):
     extra = []
@@ -187,7 +189,7 @@ water_type("Walled", maxCount=2500, color=0x4AA8FF)
 water_type("OilWater", maxCount=2500)
 water_type("Mixing", maxCount=2500, colorMixing=0.5)
 water_type("Foam", maxCount=2500, color=0x1E5AA8, colorBySpeed=True, speedColor=0xFFFFFF, fullSpeed=380)
-water_type("Bits", radius=3, maxCount=3000, pictureScale=2.0, stiffness=0.35)
+water_type("Bits", picture="Pixel", radius=2, maxCount=6000, pictureScale=1.15, stiffness=0.35)
 d.type_json("CupTap", "Sprite", {"spriteKey": "Tap.sprite.json", "collisionEnabled": False},
             [emitter(system="Walled1", group="water", on=True, rate=60, speed=250, spread=4, shape="Line", width=20)])
 d.type_json("FoamTap", "Sprite", {"spriteKey": "Tap.sprite.json", "collisionEnabled": False},
@@ -368,44 +370,57 @@ feature("ColorBySpeed", "Color by speed",
         + toggle("Act", "foamtap", [comp("FoamTap", "Emitter", "setOn", b(True)), click], [comp("FoamTap", "Emitter", "setOn", b(False)), click])
         + [splash("Foam")])
 
-PICTURES = [("Heart1", "heart"), ("Star1", "star"), ("Gem1", "gem")]
+PICTURES = [("Frog1", "frog"), ("Pig1", "pig"), ("Panda1", "panda")]
 def into(place):
     tank(place, 0, 240, 640, 200, "")
     place("Bits1", "Bits", -460, 250)
     for (name, _), x in zip(PICTURES, [-200, 0, 200]):
-        place(name, name[:-1], x, -60, scaleX=6, scaleY=6)
+        place(name, name[:-1], x, -40)
 feature("ObjectsIntoParticles", "Objects into particles",
         ["Turn into particles puts a particle wherever an object's picture is opaque, colored from its pixel.",
          "Made elastic, the pictures fall and bounce looking like themselves; left as water, they melt."],
         "E turns them into elastic particles.   M melts them into water.   R puts them back.   Click to knock the pieces about.",
         into,
         [rule([pressed("Elastic")], [a for name, g in PICTURES for a in (fl("Bits", "turnIntoParticles", s(name), s(g), lit(128), lit(1)), fl("Bits", "setGroupKind", s(g), lit(1)))] + [click]),
-         rule([pressed("Melt")], [fl("Bits", "turnIntoParticles", s(name), s(g), lit(128), lit(1)) for name, g in PICTURES] + [click]),
+         # Melting makes jelly plain water again, and turns a picture still whole straight into water.
+         rule([pressed("Melt")], [a for name, g in PICTURES for a in (fl("Bits", "setGroupKind", s(g), lit(0)), fl("Bits", "turnIntoParticles", s(name), s(g), lit(128), lit(1)))] + [click]),
          rule([mouse_pressed(LEFT_BUTTON)], [fl("Bits", "pushInCircle", px, py, lit(80), lit(0), lit(-500))]),
          rule([pressed("Reset")], [line("Scenes", "SceneManager", "changeScene", s("scenes/ObjectsIntoParticles.scene.json"))])])
 
-# A whole picture into water: Kenney's factory sample (CC0, tools/art), its license line along the foot left off.
-factory = Image.open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "art", "kenney-factory.png")).convert("RGBA")
-factory = factory.crop((0, 0, factory.width, 452))
-d.sprite("Factory", factory.width, factory.height, [("still", [factory], 400, "loop")], [])
-d.type_json("Factory", "Sprite", {"spriteKey": "Factory.sprite.json", "collisionEnabled": False})
-water_type("Flood", radius=3.5, maxCount=12000, pictureScale=2.0,
+# A whole picture into particles, then what they become, by key: water, jelly, colors that mix, a soft
+# net, honey; each turns the picture into particles first if it is still whole. (Sand was one: Powder
+# steps three times slower, too slow for a picture this size.)
+forest = Image.open(os.path.join(ART, "forest-deer.png")).convert("RGBA")
+d.sprite("Forest", forest.width, forest.height, [("still", [forest], 400, "loop")], [])
+d.type_json("Forest", "Sprite", {"spriteKey": "Forest.sprite.json", "collisionEnabled": False})
+water_type("Flood", picture="Pixel", radius=2, maxCount=20000, pictureScale=1.15,
            readout=[rule([], [line("WaterCount", "Label", "setNumber", cvalue("self", "Fluid", "particleCount")),
                               line("StepTime", "Label", "setNumber", cvalue("self", "Fluid", "stepTime"))])])
 def picture(place):
     # Walls start below the captions, just above the picture; its water fills less than that.
     tank(place, 0, 262, 912, 440, "")
     place("Flood1", "Flood", -500, 250)
-    place("Factory1", "Factory", 0, 22, scaleX=0.9, scaleY=0.9)
+    place("Forest1", "Forest", 0, 60, scaleX=0.8, scaleY=0.8)
+    place("Stirrer1", "Stirrer", 0, 170, visible=False)
     place("CountCaption", "Caption", 380, -262, text="Particles"); place("WaterCount1", "WaterCount", 440, -262)
     place("StepCaption", "Caption", 380, -244, text="ms"); place("StepTime1", "StepTime", 440, -244)
-feature("PictureIntoWater", "A picture into water",
-        ["Turn into particles on a whole picture: about eight thousand particles, each colored from its pixel. Art: Kenney (CC0)."],
-        "M melts it.   R puts it back.   Click to splash.",
+melt = fl("Flood", "turnIntoParticles", s("Forest1"), s("picture"), lit(128), lit(1))
+calm = [comp("Stirrer", "Field", "setStrength", lit(0)), comp("Stirrer", "Rotate", "setSpeed", lit(0)), line("Stirrer", "Node", "hide")]
+def mode(key, *actions):
+    return rule([pressed(key)], [melt] + list(actions) + [click])
+water = [fl("Flood", "setKind", s("Water")), fl("Flood", "setViscosity", lit(0.25)), fl("Flood", "setColorMixing", lit(0))]
+feature("PictureIntoWater", "A picture into particles",
+        ["Turn into particles on a whole picture, each particle colored from its pixel, then choose what they become."],
+        "Q water   W jelly   E colors that mix, stirred   R a soft net   T honey   P puts it back   Click to splash",
         picture,
-        [rule([pressed("Melt")], [fl("Flood", "turnIntoParticles", s("Factory1"), s("picture"), lit(128), lit(1)), click]),
-         rule([mouse_pressed(LEFT_BUTTON)], [fl("Flood", "pushInCircle", px, py, lit(80), lit(0), lit(-500)), line("audio", "Audio", "playSound", s("splash"))]),
-         rule([pressed("Reset")], [line("Scenes", "SceneManager", "changeScene", s("scenes/PictureIntoWater.scene.json"))])])
+        [mode("PictureWater", *water, fl("Flood", "setGroupKind", s("picture"), lit(0)), *calm),
+         mode("PictureJelly", *water, fl("Flood", "setGroupKind", s("picture"), lit(1)), *calm),
+         mode("PictureMix", fl("Flood", "setKind", s("Water")), fl("Flood", "setViscosity", lit(0.25)), fl("Flood", "setColorMixing", lit(0.5)),
+              fl("Flood", "setGroupKind", s("picture"), lit(0)), comp("Stirrer", "Field", "setStrength", lit(900)), comp("Stirrer", "Rotate", "setSpeed", lit(240)), line("Stirrer", "Node", "show")),
+         mode("PictureNet", *water, fl("Flood", "setGroupKind", s("picture"), lit(2)), *calm),
+         mode("PictureHoney", fl("Flood", "setKind", s("Water")), fl("Flood", "setViscosity", lit(4)), fl("Flood", "setColorMixing", lit(0)),
+              fl("Flood", "setGroupKind", s("picture"), lit(0)), *calm),
+         rule([mouse_pressed(LEFT_BUTTON)], [fl("Flood", "pushInCircle", px, py, lit(80), lit(0), lit(-500)), line("audio", "Audio", "playSound", s("splash"))])])
 
 # ── the singleton: the Scene Manager, the keys that change scene, and the list of scenes ──
 SCENES = [("Basin", "Basin")] + FEATURES
@@ -429,7 +444,8 @@ d.write("project.json", {"schemaVersion": 2, "name": "Particles demo", "entrySce
     "collisionLayers": {"1": "Solid", "2": "Body", "3": "Drain", "4": "Air", "5": "Mold"},
     "singletons": ["scenes/singletons/Demo.scene.json"],
     "input": dict({"Tap": keys(87), "Sand": keys(83), "Drain": keys(68), "Fan": keys(70), "Clear": keys(67),
-                   "Act": keys(32), "Elastic": keys(69), "Melt": keys(77), "Reset": keys(82)},
+                   "Act": keys(32), "Elastic": keys(69), "Melt": keys(77), "Reset": keys(82),
+                   "PictureWater": keys(81), "PictureJelly": keys(87), "PictureMix": keys(69), "PictureNet": keys(82), "PictureHoney": keys(84)},
                   **{"Scene" + k: keys(ord(k)) for k in keys_for}),
     "display": {"width": W, "height": H, "windowWidth": W, "windowHeight": H, "presentMode": "fit", "displayMode": "windowed", "autoResize": True},
     "physics": {"engine": "box2d", "gravity": 980}})
@@ -467,14 +483,14 @@ Keys **1** to **0**, and **P**, change scene (a Scene Manager in the singleton s
 | 7 | Oil and water repel | **Make group … repulsive**: two groups that part again however they are stirred |
 | 8 | Color mixing | **Color mixing**: red and blue water turning purple where they meet |
 | 9 | Color by speed | **Color by speed**: a stream and splashes that foam white |
-| 0 | Objects into particles | **Turn … into particles**: pictures made elastic, or melted |
-| P | A picture into water | a whole picture, Kenney's factory sample, melted into about eight thousand particles in its own colors |
+| 0 | Objects into particles | **Turn … into particles**: Kenney's animal heads made elastic, then melted |
+| P | A picture into particles | a whole picture in its own colors, about seventeen thousand particles; Q to T make it water, jelly, colors that mix, a soft net or honey |
 
 The pools and blocks are laid with **Fill … with particles** into hidden
 shapes placed in each scene (the Mold and Dropper objects), so they land
 where the scene shows them.
 
 Generated by `tools/make-particles-demo.py`; the pictures are drawn there and
-the sounds are Kenney's (Digital Audio), CC0, and so is the factory picture (tools/art/kenney-factory.png).
+the sounds are Kenney's (Digital Audio), CC0, and so are the animal heads (Animal Pack Redux, tools/art).
 """)
 print("wrote", d.out)

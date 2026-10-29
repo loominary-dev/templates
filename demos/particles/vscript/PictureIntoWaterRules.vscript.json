@@ -9,7 +9,7 @@
           "params": [
             {
               "type": "literal",
-              "value": "Melt",
+              "value": "PictureWater",
               "valueKind": "string"
             }
           ]
@@ -23,7 +23,7 @@
           "params": [
             {
               "type": "literal",
-              "value": "Factory1",
+              "value": "Forest1",
               "valueKind": "string"
             },
             {
@@ -41,6 +41,654 @@
             }
           ],
           "onComponent": true
+        },
+        {
+          "scope": "Flood",
+          "className": "Fluid",
+          "name": "setKind",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Water",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "Flood",
+          "className": "Fluid",
+          "name": "setViscosity",
+          "params": [
+            {
+              "type": "literal",
+              "value": 0.25
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "Flood",
+          "className": "Fluid",
+          "name": "setColorMixing",
+          "params": [
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "Flood",
+          "className": "Fluid",
+          "name": "setGroupKind",
+          "params": [
+            {
+              "type": "literal",
+              "value": "picture",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "Stirrer",
+          "className": "Field",
+          "name": "setStrength",
+          "params": [
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "Stirrer",
+          "className": "Rotate",
+          "name": "setSpeed",
+          "params": [
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "Stirrer",
+          "className": "Node",
+          "name": "hide",
+          "params": []
+        },
+        {
+          "scope": "audio",
+          "className": "Audio",
+          "name": "playSound",
+          "params": [
+            {
+              "type": "literal",
+              "value": "click",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isCommandPressed",
+          "params": [
+            {
+              "type": "literal",
+              "value": "PictureJelly",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Flood",
+          "className": "Fluid",
+          "name": "turnIntoParticles",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Forest1",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "picture",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 128
+            },
+            {
+              "type": "literal",
+              "value": 1
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "Flood",
+          "className": "Fluid",
+          "name": "setKind",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Water",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "Flood",
+          "className": "Fluid",
+          "name": "setViscosity",
+          "params": [
+            {
+              "type": "literal",
+              "value": 0.25
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "Flood",
+          "className": "Fluid",
+          "name": "setColorMixing",
+          "params": [
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "Flood",
+          "className": "Fluid",
+          "name": "setGroupKind",
+          "params": [
+            {
+              "type": "literal",
+              "value": "picture",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 1
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "Stirrer",
+          "className": "Field",
+          "name": "setStrength",
+          "params": [
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "Stirrer",
+          "className": "Rotate",
+          "name": "setSpeed",
+          "params": [
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "Stirrer",
+          "className": "Node",
+          "name": "hide",
+          "params": []
+        },
+        {
+          "scope": "audio",
+          "className": "Audio",
+          "name": "playSound",
+          "params": [
+            {
+              "type": "literal",
+              "value": "click",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isCommandPressed",
+          "params": [
+            {
+              "type": "literal",
+              "value": "PictureMix",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Flood",
+          "className": "Fluid",
+          "name": "turnIntoParticles",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Forest1",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "picture",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 128
+            },
+            {
+              "type": "literal",
+              "value": 1
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "Flood",
+          "className": "Fluid",
+          "name": "setKind",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Water",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "Flood",
+          "className": "Fluid",
+          "name": "setViscosity",
+          "params": [
+            {
+              "type": "literal",
+              "value": 0.25
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "Flood",
+          "className": "Fluid",
+          "name": "setColorMixing",
+          "params": [
+            {
+              "type": "literal",
+              "value": 0.5
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "Flood",
+          "className": "Fluid",
+          "name": "setGroupKind",
+          "params": [
+            {
+              "type": "literal",
+              "value": "picture",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "Stirrer",
+          "className": "Field",
+          "name": "setStrength",
+          "params": [
+            {
+              "type": "literal",
+              "value": 900
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "Stirrer",
+          "className": "Rotate",
+          "name": "setSpeed",
+          "params": [
+            {
+              "type": "literal",
+              "value": 240
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "Stirrer",
+          "className": "Node",
+          "name": "show",
+          "params": []
+        },
+        {
+          "scope": "audio",
+          "className": "Audio",
+          "name": "playSound",
+          "params": [
+            {
+              "type": "literal",
+              "value": "click",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isCommandPressed",
+          "params": [
+            {
+              "type": "literal",
+              "value": "PictureNet",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Flood",
+          "className": "Fluid",
+          "name": "turnIntoParticles",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Forest1",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "picture",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 128
+            },
+            {
+              "type": "literal",
+              "value": 1
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "Flood",
+          "className": "Fluid",
+          "name": "setKind",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Water",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "Flood",
+          "className": "Fluid",
+          "name": "setViscosity",
+          "params": [
+            {
+              "type": "literal",
+              "value": 0.25
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "Flood",
+          "className": "Fluid",
+          "name": "setColorMixing",
+          "params": [
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "Flood",
+          "className": "Fluid",
+          "name": "setGroupKind",
+          "params": [
+            {
+              "type": "literal",
+              "value": "picture",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 2
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "Stirrer",
+          "className": "Field",
+          "name": "setStrength",
+          "params": [
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "Stirrer",
+          "className": "Rotate",
+          "name": "setSpeed",
+          "params": [
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "Stirrer",
+          "className": "Node",
+          "name": "hide",
+          "params": []
+        },
+        {
+          "scope": "audio",
+          "className": "Audio",
+          "name": "playSound",
+          "params": [
+            {
+              "type": "literal",
+              "value": "click",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isCommandPressed",
+          "params": [
+            {
+              "type": "literal",
+              "value": "PictureHoney",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Flood",
+          "className": "Fluid",
+          "name": "turnIntoParticles",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Forest1",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "picture",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 128
+            },
+            {
+              "type": "literal",
+              "value": 1
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "Flood",
+          "className": "Fluid",
+          "name": "setKind",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Water",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "Flood",
+          "className": "Fluid",
+          "name": "setViscosity",
+          "params": [
+            {
+              "type": "literal",
+              "value": 4
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "Flood",
+          "className": "Fluid",
+          "name": "setColorMixing",
+          "params": [
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "Flood",
+          "className": "Fluid",
+          "name": "setGroupKind",
+          "params": [
+            {
+              "type": "literal",
+              "value": "picture",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "Stirrer",
+          "className": "Field",
+          "name": "setStrength",
+          "params": [
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "Stirrer",
+          "className": "Rotate",
+          "name": "setSpeed",
+          "params": [
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "Stirrer",
+          "className": "Node",
+          "name": "hide",
+          "params": []
         },
         {
           "scope": "audio",
@@ -116,37 +764,6 @@
             {
               "type": "literal",
               "value": "splash",
-              "valueKind": "string"
-            }
-          ]
-        }
-      ],
-      "subRules": []
-    },
-    {
-      "conditions": [
-        {
-          "scope": "input",
-          "className": "Input",
-          "name": "isCommandPressed",
-          "params": [
-            {
-              "type": "literal",
-              "value": "Reset",
-              "valueKind": "string"
-            }
-          ]
-        }
-      ],
-      "actions": [
-        {
-          "scope": "Scenes",
-          "className": "SceneManager",
-          "name": "changeScene",
-          "params": [
-            {
-              "type": "literal",
-              "value": "scenes/PictureIntoWater.scene.json",
               "valueKind": "string"
             }
           ]

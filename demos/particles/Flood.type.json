@@ -2,7 +2,7 @@
   "schemaVersion": 2,
   "baseClass": "Sprite",
   "defaults": {
-    "spriteKey": "Drop.sprite.json",
+    "spriteKey": "Pixel.sprite.json",
     "collisionEnabled": false
   },
   "components": [
@@ -10,9 +10,9 @@
       "componentClass": "Fluid",
       "layers": 3,
       "kind": "Water",
-      "radius": 3.5,
-      "pictureScale": 2.0,
-      "maxCount": 12000
+      "radius": 2,
+      "pictureScale": 1.15,
+      "maxCount": 20000
     },
     {
       "componentClass": "FloodReadout"

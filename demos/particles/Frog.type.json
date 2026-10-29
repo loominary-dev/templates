@@ -2,7 +2,7 @@
   "schemaVersion": 2,
   "baseClass": "Sprite",
   "defaults": {
-    "spriteKey": "Gem.sprite.json",
+    "spriteKey": "Frog.sprite.json",
     "collisionEnabled": false
   },
   "components": []
