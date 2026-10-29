@@ -1,7 +1,8 @@
 """What the demo generators share: writing files, sprites as their two files,
 shapes, Types, scenes, and the visual-script rule shapes. Each generator
 makes one demo folder from nothing, so a format change is a re-run."""
-import base64, json, math, os, shutil, struct
+import atexit, base64, json, math, os, shutil, struct
+import origin_rule
 from PIL import Image, ImageDraw
 
 
@@ -27,6 +28,10 @@ def check_name(name):
 class Demo:
     def __init__(self, out, folders, prefix):
         self.out = os.path.abspath(out)
+        # Everything here is written measured from a picture's top-left corner, as the generators were
+        # written; when the generator ends, the project is moved to the origin rule (origin_rule.py,
+        # Loominary's docs/origin-scope.md): shapes, points, meshes and children from the origin.
+        atexit.register(origin_rule.convert, self.out)
         # The folder's git settings are not the generator's to make: kept through the rebuild.
         kept = {}
         for name in (".gitattributes", ".gitignore"):

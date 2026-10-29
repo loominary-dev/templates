@@ -29,16 +29,16 @@
         {
           "name": "body",
           "kind": "circle",
-          "cx": 22,
-          "cy": 22,
+          "cx": 0,
+          "cy": 0,
           "r": 22
         }
       ],
       "points": [
         {
           "name": "pin",
-          "x": 22,
-          "y": -298
+          "x": 0,
+          "y": -320
         }
       ],
       "collisionShared": true,
@@ -47,10 +47,10 @@
         {
           "id": "p1000000-0000-4000-8000-000000000114",
           "duration": 400,
-          "pivotX": 0.5,
-          "pivotY": 0.5,
           "collision": [],
-          "points": []
+          "points": [],
+          "originX": 0.5,
+          "originY": 0.5
         }
       ]
     }

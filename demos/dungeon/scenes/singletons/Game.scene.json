@@ -24,8 +24,8 @@
       "parent": "d1000000-0000-4000-8000-000000000003",
       "name": "Lantern1",
       "type": "Lantern",
-      "x": 0,
-      "y": 0,
+      "x": -8,
+      "y": -8,
       "visible": false
     },
     {

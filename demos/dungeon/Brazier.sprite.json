@@ -29,8 +29,8 @@
         {
           "name": "base",
           "kind": "box",
-          "cx": 8,
-          "cy": 12,
+          "cx": 0,
+          "cy": 4,
           "w": 12,
           "h": 6
         }
@@ -42,18 +42,18 @@
         {
           "id": "d1000000-0000-4000-8000-000000000140",
           "duration": 160,
-          "pivotX": 0.5,
-          "pivotY": 0.5,
           "collision": [],
-          "points": []
+          "points": [],
+          "originX": 0.5,
+          "originY": 0.5
         },
         {
           "id": "d1000000-0000-4000-8000-000000000141",
           "duration": 160,
-          "pivotX": 0.5,
-          "pivotY": 0.5,
           "collision": [],
-          "points": []
+          "points": [],
+          "originX": 0.5,
+          "originY": 0.5
         }
       ]
     }

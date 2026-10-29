@@ -29,8 +29,8 @@
         {
           "name": "key",
           "kind": "box",
-          "cx": 8,
-          "cy": 7,
+          "cx": 0,
+          "cy": -1,
           "w": 14,
           "h": 8,
           "sensor": true
@@ -43,10 +43,10 @@
         {
           "id": "d1000000-0000-4000-8000-000000000117",
           "duration": 400,
-          "pivotX": 0.5,
-          "pivotY": 0.5,
           "collision": [],
-          "points": []
+          "points": [],
+          "originX": 0.5,
+          "originY": 0.5
         }
       ]
     }

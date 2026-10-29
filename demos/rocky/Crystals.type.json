@@ -6,7 +6,8 @@
     "collision": {
       "layer": 16,
       "mask": 1
-    }
+    },
+    "glows": true
   },
   "components": []
 }

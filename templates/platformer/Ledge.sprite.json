@@ -29,8 +29,8 @@
         {
           "name": "planks",
           "kind": "box",
-          "cx": 36,
-          "cy": 3,
+          "cx": 0,
+          "cy": -6,
           "w": 72,
           "h": 6
         }
@@ -42,10 +42,10 @@
         {
           "id": "a0000000-0000-4000-8000-000000000113",
           "duration": 400,
-          "pivotX": 0.5,
-          "pivotY": 0.5,
           "collision": [],
-          "points": []
+          "points": [],
+          "originX": 0.5,
+          "originY": 0.5
         }
       ]
     }

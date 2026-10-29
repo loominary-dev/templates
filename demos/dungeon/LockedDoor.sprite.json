@@ -29,16 +29,16 @@
         {
           "name": "door",
           "kind": "box",
-          "cx": 8,
-          "cy": 8,
+          "cx": 0,
+          "cy": 0,
           "w": 16,
           "h": 16
         },
         {
           "name": "lock",
           "kind": "box",
-          "cx": 8,
-          "cy": 8,
+          "cx": 0,
+          "cy": 0,
           "w": 22,
           "h": 22,
           "sensor": true
@@ -51,10 +51,10 @@
         {
           "id": "d1000000-0000-4000-8000-000000000134",
           "duration": 400,
-          "pivotX": 0.5,
-          "pivotY": 0.5,
           "collision": [],
-          "points": []
+          "points": [],
+          "originX": 0.5,
+          "originY": 0.5
         }
       ]
     }

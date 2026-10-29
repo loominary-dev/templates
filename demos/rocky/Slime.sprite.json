@@ -29,8 +29,8 @@
         {
           "name": "head",
           "kind": "box",
-          "cx": 11,
-          "cy": 5,
+          "cx": -1,
+          "cy": -5,
           "w": 16,
           "h": 5,
           "sensor": true
@@ -38,8 +38,8 @@
         {
           "name": "body",
           "kind": "box",
-          "cx": 11,
-          "cy": 13,
+          "cx": -1,
+          "cy": 3,
           "w": 18,
           "h": 12,
           "sensor": true
@@ -52,50 +52,50 @@
         {
           "id": "e7000000-0000-4000-8000-000000000136",
           "duration": 110,
-          "pivotX": 0.5,
-          "pivotY": 0.5,
           "collision": [],
-          "points": []
+          "points": [],
+          "originX": 0.5,
+          "originY": 0.5
         },
         {
           "id": "e7000000-0000-4000-8000-000000000137",
           "duration": 110,
-          "pivotX": 0.5,
-          "pivotY": 0.5,
           "collision": [],
-          "points": []
+          "points": [],
+          "originX": 0.5,
+          "originY": 0.5
         },
         {
           "id": "e7000000-0000-4000-8000-000000000138",
           "duration": 110,
-          "pivotX": 0.5,
-          "pivotY": 0.5,
           "collision": [],
-          "points": []
+          "points": [],
+          "originX": 0.5,
+          "originY": 0.5
         },
         {
           "id": "e7000000-0000-4000-8000-000000000139",
           "duration": 110,
-          "pivotX": 0.5,
-          "pivotY": 0.5,
           "collision": [],
-          "points": []
+          "points": [],
+          "originX": 0.5,
+          "originY": 0.5
         },
         {
           "id": "e7000000-0000-4000-8000-000000000140",
           "duration": 110,
-          "pivotX": 0.5,
-          "pivotY": 0.5,
           "collision": [],
-          "points": []
+          "points": [],
+          "originX": 0.5,
+          "originY": 0.5
         },
         {
           "id": "e7000000-0000-4000-8000-000000000141",
           "duration": 110,
-          "pivotX": 0.5,
-          "pivotY": 0.5,
           "collision": [],
-          "points": []
+          "points": [],
+          "originX": 0.5,
+          "originY": 0.5
         }
       ]
     },
@@ -110,8 +110,8 @@
         {
           "name": "head",
           "kind": "box",
-          "cx": 11,
-          "cy": 5,
+          "cx": -1,
+          "cy": -5,
           "w": 16,
           "h": 5,
           "sensor": true
@@ -119,8 +119,8 @@
         {
           "name": "body",
           "kind": "box",
-          "cx": 11,
-          "cy": 13,
+          "cx": -1,
+          "cy": 3,
           "w": 18,
           "h": 12,
           "sensor": true
@@ -133,26 +133,26 @@
         {
           "id": "e7000000-0000-4000-8000-000000000143",
           "duration": 90,
-          "pivotX": 0.5,
-          "pivotY": 0.5,
           "collision": [],
-          "points": []
+          "points": [],
+          "originX": 0.5,
+          "originY": 0.5
         },
         {
           "id": "e7000000-0000-4000-8000-000000000144",
           "duration": 90,
-          "pivotX": 0.5,
-          "pivotY": 0.5,
           "collision": [],
-          "points": []
+          "points": [],
+          "originX": 0.5,
+          "originY": 0.5
         },
         {
           "id": "e7000000-0000-4000-8000-000000000145",
           "duration": 90,
-          "pivotX": 0.5,
-          "pivotY": 0.5,
           "collision": [],
-          "points": []
+          "points": [],
+          "originX": 0.5,
+          "originY": 0.5
         }
       ]
     }

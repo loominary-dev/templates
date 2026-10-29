@@ -33,34 +33,34 @@
         {
           "id": "e1000000-0000-4000-8000-000000000114",
           "duration": 120,
-          "pivotX": 0.5,
-          "pivotY": 0.5,
           "collision": [],
-          "points": []
+          "points": [],
+          "originX": 0.5,
+          "originY": 0.5
         },
         {
           "id": "e1000000-0000-4000-8000-000000000115",
           "duration": 120,
-          "pivotX": 0.5,
-          "pivotY": 0.5,
           "collision": [],
-          "points": []
+          "points": [],
+          "originX": 0.5,
+          "originY": 0.5
         },
         {
           "id": "e1000000-0000-4000-8000-000000000116",
           "duration": 120,
-          "pivotX": 0.5,
-          "pivotY": 0.5,
           "collision": [],
-          "points": []
+          "points": [],
+          "originX": 0.5,
+          "originY": 0.5
         },
         {
           "id": "e1000000-0000-4000-8000-000000000117",
           "duration": 120,
-          "pivotX": 0.5,
-          "pivotY": 0.5,
           "collision": [],
-          "points": []
+          "points": [],
+          "originX": 0.5,
+          "originY": 0.5
         }
       ]
     }

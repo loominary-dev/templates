@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 2,
+  "baseClass": "Sprite",
+  "defaults": {
+    "spriteKey": "Core.sprite.json",
+    "tint": 15138047,
+    "scaleX": 0.5,
+    "scaleY": 0.5,
+    "opacity": 1.0,
+    "glows": true
+  },
+  "components": []
+}

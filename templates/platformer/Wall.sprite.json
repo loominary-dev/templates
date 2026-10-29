@@ -29,8 +29,8 @@
         {
           "name": "blocks",
           "kind": "box",
-          "cx": 9,
-          "cy": 54,
+          "cx": 0,
+          "cy": 0,
           "w": 18,
           "h": 108
         }
@@ -42,10 +42,10 @@
         {
           "id": "a0000000-0000-4000-8000-000000000110",
           "duration": 400,
-          "pivotX": 0.5,
-          "pivotY": 0.5,
           "collision": [],
-          "points": []
+          "points": [],
+          "originX": 0.5,
+          "originY": 0.5
         }
       ]
     }

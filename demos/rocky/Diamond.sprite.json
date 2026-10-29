@@ -29,8 +29,8 @@
         {
           "name": "gem",
           "kind": "box",
-          "cx": 8,
-          "cy": 7,
+          "cx": 0,
+          "cy": 0,
           "w": 12,
           "h": 10,
           "sensor": true
@@ -43,50 +43,50 @@
         {
           "id": "e7000000-0000-4000-8000-000000000176",
           "duration": 110,
-          "pivotX": 0.5,
-          "pivotY": 0.5,
           "collision": [],
-          "points": []
+          "points": [],
+          "originX": 0.5,
+          "originY": 0.5
         },
         {
           "id": "e7000000-0000-4000-8000-000000000177",
           "duration": 110,
-          "pivotX": 0.5,
-          "pivotY": 0.5,
           "collision": [],
-          "points": []
+          "points": [],
+          "originX": 0.5,
+          "originY": 0.5
         },
         {
           "id": "e7000000-0000-4000-8000-000000000178",
           "duration": 110,
-          "pivotX": 0.5,
-          "pivotY": 0.5,
           "collision": [],
-          "points": []
+          "points": [],
+          "originX": 0.5,
+          "originY": 0.5
         },
         {
           "id": "e7000000-0000-4000-8000-000000000179",
           "duration": 110,
-          "pivotX": 0.5,
-          "pivotY": 0.5,
           "collision": [],
-          "points": []
+          "points": [],
+          "originX": 0.5,
+          "originY": 0.5
         },
         {
           "id": "e7000000-0000-4000-8000-000000000180",
           "duration": 110,
-          "pivotX": 0.5,
-          "pivotY": 0.5,
           "collision": [],
-          "points": []
+          "points": [],
+          "originX": 0.5,
+          "originY": 0.5
         },
         {
           "id": "e7000000-0000-4000-8000-000000000181",
           "duration": 110,
-          "pivotX": 0.5,
-          "pivotY": 0.5,
           "collision": [],
-          "points": []
+          "points": [],
+          "originX": 0.5,
+          "originY": 0.5
         }
       ]
     }

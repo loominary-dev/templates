@@ -29,8 +29,8 @@
         {
           "name": "body",
           "kind": "box",
-          "cx": 14,
-          "cy": 5,
+          "cx": 0,
+          "cy": 0,
           "w": 28,
           "h": 10
         }
@@ -38,13 +38,13 @@
       "points": [
         {
           "name": "left",
-          "x": 0,
-          "y": 5
+          "x": -14,
+          "y": 0
         },
         {
           "name": "right",
-          "x": 28,
-          "y": 5
+          "x": 14,
+          "y": 0
         }
       ],
       "collisionShared": true,
@@ -53,10 +53,10 @@
         {
           "id": "p1000000-0000-4000-8000-000000000105",
           "duration": 400,
-          "pivotX": 0.5,
-          "pivotY": 0.5,
           "collision": [],
-          "points": []
+          "points": [],
+          "originX": 0.5,
+          "originY": 0.5
         }
       ]
     }

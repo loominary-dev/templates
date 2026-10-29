@@ -29,8 +29,8 @@
         {
           "name": "water",
           "kind": "box",
-          "cx": 150,
-          "cy": 50,
+          "cx": 0,
+          "cy": 0,
           "w": 300,
           "h": 100,
           "sensor": true
@@ -43,10 +43,10 @@
         {
           "id": "p1000000-0000-4000-8000-000000000138",
           "duration": 400,
-          "pivotX": 0.5,
-          "pivotY": 0.5,
           "collision": [],
-          "points": []
+          "points": [],
+          "originX": 0.5,
+          "originY": 0.5
         }
       ]
     }

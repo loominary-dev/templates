@@ -29,8 +29,8 @@
         {
           "name": "crystal",
           "kind": "box",
-          "cx": 24,
-          "cy": 21,
+          "cx": 0,
+          "cy": 0,
           "w": 30,
           "h": 30,
           "sensor": true
@@ -43,50 +43,50 @@
         {
           "id": "e7000000-0000-4000-8000-000000000198",
           "duration": 140,
-          "pivotX": 0.5,
-          "pivotY": 0.5,
           "collision": [],
-          "points": []
+          "points": [],
+          "originX": 0.5,
+          "originY": 0.5
         },
         {
           "id": "e7000000-0000-4000-8000-000000000199",
           "duration": 140,
-          "pivotX": 0.5,
-          "pivotY": 0.5,
           "collision": [],
-          "points": []
+          "points": [],
+          "originX": 0.5,
+          "originY": 0.5
         },
         {
           "id": "e7000000-0000-4000-8000-000000000200",
           "duration": 140,
-          "pivotX": 0.5,
-          "pivotY": 0.5,
           "collision": [],
-          "points": []
+          "points": [],
+          "originX": 0.5,
+          "originY": 0.5
         },
         {
           "id": "e7000000-0000-4000-8000-000000000201",
           "duration": 140,
-          "pivotX": 0.5,
-          "pivotY": 0.5,
           "collision": [],
-          "points": []
+          "points": [],
+          "originX": 0.5,
+          "originY": 0.5
         },
         {
           "id": "e7000000-0000-4000-8000-000000000202",
           "duration": 140,
-          "pivotX": 0.5,
-          "pivotY": 0.5,
           "collision": [],
-          "points": []
+          "points": [],
+          "originX": 0.5,
+          "originY": 0.5
         },
         {
           "id": "e7000000-0000-4000-8000-000000000203",
           "duration": 140,
-          "pivotX": 0.5,
-          "pivotY": 0.5,
           "collision": [],
-          "points": []
+          "points": [],
+          "originX": 0.5,
+          "originY": 0.5
         }
       ]
     }

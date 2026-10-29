@@ -1693,155 +1693,155 @@
       "id": "a3000000-0000-4000-8000-000000040016",
       "name": "DancerThighL",
       "type": "DancerThighL",
-      "pivotNormalized": true,
-      "pivotX": 0.51923,
-      "pivotY": 0.14,
       "rotation": -1.598567,
       "zIndex": 0,
-      "parent": "a3000000-0000-4000-8000-000000040006"
+      "parent": "a3000000-0000-4000-8000-000000040006",
+      "originX": 0.51923,
+      "originY": 0.14,
+      "originNormalized": true
     },
     {
       "id": "a3000000-0000-4000-8000-000000040017",
       "name": "DancerShinL",
       "type": "DancerShinL",
-      "pivotNormalized": true,
-      "pivotX": 0.5,
-      "pivotY": 0.14444,
       "rotation": -1.570796,
       "zIndex": 1,
-      "parent": "a3000000-0000-4000-8000-000000040007"
+      "parent": "a3000000-0000-4000-8000-000000040007",
+      "originX": 0.5,
+      "originY": 0.14444,
+      "originNormalized": true
     },
     {
       "id": "a3000000-0000-4000-8000-000000040018",
       "name": "DancerFootL",
       "type": "DancerFootL",
-      "pivotNormalized": true,
-      "pivotX": 0.63235,
-      "pivotY": 0.19355,
       "rotation": -2.634494,
       "zIndex": 2,
-      "parent": "a3000000-0000-4000-8000-000000040008"
+      "parent": "a3000000-0000-4000-8000-000000040008",
+      "originX": 0.63235,
+      "originY": 0.19355,
+      "originNormalized": true
     },
     {
       "id": "a3000000-0000-4000-8000-000000040019",
       "name": "DancerThighR",
       "type": "DancerThighR",
-      "pivotNormalized": true,
-      "pivotX": 0.48077,
-      "pivotY": 0.14,
       "rotation": -1.543026,
       "zIndex": 3,
-      "parent": "a3000000-0000-4000-8000-000000040011"
+      "parent": "a3000000-0000-4000-8000-000000040011",
+      "originX": 0.48077,
+      "originY": 0.14,
+      "originNormalized": true
     },
     {
       "id": "a3000000-0000-4000-8000-000000040020",
       "name": "DancerShinR",
       "type": "DancerShinR",
-      "pivotNormalized": true,
-      "pivotX": 0.5,
-      "pivotY": 0.14444,
       "rotation": -1.570796,
       "zIndex": 4,
-      "parent": "a3000000-0000-4000-8000-000000040012"
+      "parent": "a3000000-0000-4000-8000-000000040012",
+      "originX": 0.5,
+      "originY": 0.14444,
+      "originNormalized": true
     },
     {
       "id": "a3000000-0000-4000-8000-000000040021",
       "name": "DancerFootR",
       "type": "DancerFootR",
-      "pivotNormalized": true,
-      "pivotX": 0.36765,
-      "pivotY": 0.19355,
       "rotation": -0.507099,
       "zIndex": 5,
-      "parent": "a3000000-0000-4000-8000-000000040013"
+      "parent": "a3000000-0000-4000-8000-000000040013",
+      "originX": 0.36765,
+      "originY": 0.19355,
+      "originNormalized": true
     },
     {
       "id": "a3000000-0000-4000-8000-000000040022",
       "name": "DancerPelvis",
       "type": "DancerPelvis",
-      "pivotNormalized": true,
-      "pivotX": 0.5,
-      "pivotY": 0.53659,
       "rotation": 1.570796,
       "zIndex": 6,
-      "parent": "a3000000-0000-4000-8000-000000040002"
+      "parent": "a3000000-0000-4000-8000-000000040002",
+      "originX": 0.5,
+      "originY": 0.53659,
+      "originNormalized": true
     },
     {
       "id": "a3000000-0000-4000-8000-000000040023",
       "name": "DancerSpine",
       "type": "DancerSpine",
-      "pivotNormalized": true,
-      "pivotX": 0.5,
-      "pivotY": 0.92308,
       "rotation": 1.570796,
       "zIndex": 7,
-      "parent": "a3000000-0000-4000-8000-000000040003"
+      "parent": "a3000000-0000-4000-8000-000000040003",
+      "originX": 0.5,
+      "originY": 0.92308,
+      "originNormalized": true
     },
     {
       "id": "a3000000-0000-4000-8000-000000040024",
       "name": "DancerUpperArmL",
       "type": "DancerUpperArmL",
-      "pivotNormalized": true,
-      "pivotX": 0.63793,
-      "pivotY": 0.17857,
       "rotation": -1.858852,
       "zIndex": 8,
-      "parent": "a3000000-0000-4000-8000-000000040009"
+      "parent": "a3000000-0000-4000-8000-000000040009",
+      "originX": 0.63793,
+      "originY": 0.17857,
+      "originNormalized": true
     },
     {
       "id": "a3000000-0000-4000-8000-000000040025",
       "name": "DancerForearmL",
       "type": "DancerForearmL",
-      "pivotNormalized": true,
-      "pivotX": 0.58696,
-      "pivotY": 0.12,
       "rotation": -1.723446,
       "zIndex": 9,
-      "parent": "a3000000-0000-4000-8000-000000040010"
+      "parent": "a3000000-0000-4000-8000-000000040010",
+      "originX": 0.58696,
+      "originY": 0.12,
+      "originNormalized": true
     },
     {
       "id": "a3000000-0000-4000-8000-000000040026",
       "name": "DancerUpperArmR",
       "type": "DancerUpperArmR",
-      "pivotNormalized": true,
-      "pivotX": 0.36207,
-      "pivotY": 0.17857,
       "rotation": -1.282741,
       "zIndex": 10,
-      "parent": "a3000000-0000-4000-8000-000000040014"
+      "parent": "a3000000-0000-4000-8000-000000040014",
+      "originX": 0.36207,
+      "originY": 0.17857,
+      "originNormalized": true
     },
     {
       "id": "a3000000-0000-4000-8000-000000040027",
       "name": "DancerForearmR",
       "type": "DancerForearmR",
-      "pivotNormalized": true,
-      "pivotX": 0.41304,
-      "pivotY": 0.12,
       "rotation": -1.418147,
       "zIndex": 11,
-      "parent": "a3000000-0000-4000-8000-000000040015"
+      "parent": "a3000000-0000-4000-8000-000000040015",
+      "originX": 0.41304,
+      "originY": 0.12,
+      "originNormalized": true
     },
     {
       "id": "a3000000-0000-4000-8000-000000040028",
       "name": "DancerHead",
       "type": "DancerHead",
-      "pivotNormalized": true,
-      "pivotX": 0.5,
-      "pivotY": 0.9187,
       "rotation": 1.570796,
       "zIndex": 12,
-      "parent": "a3000000-0000-4000-8000-000000040004"
+      "parent": "a3000000-0000-4000-8000-000000040004",
+      "originX": 0.5,
+      "originY": 0.9187,
+      "originNormalized": true
     },
     {
       "id": "a3000000-0000-4000-8000-000000040029",
       "name": "DancerHat",
       "type": "DancerHat",
-      "pivotNormalized": true,
-      "pivotX": 0.5,
-      "pivotY": 0.91026,
       "rotation": 1.570796,
       "zIndex": 13,
-      "parent": "a3000000-0000-4000-8000-000000040005"
+      "parent": "a3000000-0000-4000-8000-000000040005",
+      "originX": 0.5,
+      "originY": 0.91026,
+      "originNormalized": true
     }
   ]
 }
