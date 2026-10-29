@@ -1,5 +1,5 @@
 """The Rocky demo: a platform level on Szadi art's Rocky Level pack (public domain): Gino runs and
-jumps through a cave, collecting diamonds and hearts, stomping blobs, ducking bats and a snapping
+jumps through a cave, collecting diamonds and hearts, stomping slimes, ducking bats and a snapping
 plant, keeping off the crystals, to reach the great crystal. A few lights glow on the crystals.
 Sounds from Kenney's Digital Audio and Impact Sounds (CC0).
 
@@ -69,7 +69,7 @@ d.sprite("Gino", 40, 40, [("idle", g_idle, 110, "loop"), ("run", g_run, 80, "loo
                           ("fall", g_fall, 120, "loop"), ("land", g_land, 90, "once"), ("hit", g_hit, 90, "once")],
          [box("body", 20, 22, 14, 28)])
 
-# The blob walks on the ground; its head is where a stomp lands.
+# The slime walks on the ground; its head is where a stomp lands.
 BBOX = (0, 12, 24, 32)
 d.sprite("Slime", 24, 20, [("walk", framed(seq(("Sprites", "Enemy02"), "walk", 6), BBOX), 110, "loop"),
                           ("squashed", framed(seq(("Sprites", "Enemy02"), "hit", 3), BBOX), 90, "once")],
@@ -104,7 +104,10 @@ def glow(size):
             r = math.hypot(x - c, y - c) / c
             if r < 1: g.putpixel((x, y), (255, 255, 255, int(255 * (1 - r) ** 1.2)))
     return g
-d.sprite("Glow", 256, 256, [("still", [glow(256)], 400, "loop")], [])
+# One glow per light, drawn at the size it lights: a light at scale 1 with a texture scale of 1 works its
+# shadows out at one texel to a pixel, so their edges stay sharp (the manual's "Shadow edges and texels").
+for name, size in (("CrystalGlow", 332), ("BatGlow", 486), ("LanternGlow", 410), ("GoalGlow", 460)):
+    d.sprite(name, size, size, [("still", [glow(size)], 400, "loop")], [])
 
 # Scenery, no collision: dry grass, green plants, rock piles, dead trees, stalagmites.
 DECOR = {
@@ -133,7 +136,7 @@ PLAYER, PICKUP, SOLID, ENEMY, HAZARD = 1, 2, 4, 8, 16
 
 # ── the level ──
 # 16 px cells, 17 rows (one view tall). '#' rock, 'o' a floating rock ledge (two rows), '^' crystals,
-# 'd' a diamond, 'h' a heart, 'B' a blob, 'V' a bat, 'X' a plant, 'P' the start, 'G' the great crystal,
+# 'd' a diamond, 'h' a heart, 'B' a slime, 'V' a bat, 'X' a plant, 'P' the start, 'G' the great crystal,
 # 'L' a light, scenery: 'g' grass, 's' a sprout, 'r' rocks, 't' a tree, 'm' a stalagmite.
 W, H, CELL = 140, 17, 16
 grid = [["."] * W for _ in range(H)]
@@ -151,12 +154,12 @@ for c, r, ch in [(3, 11, "P"), (8, 11, "g"), (11, 11, "s"), (12, 9, "d"), (16, 9
                  (57, 6, "d"), (58, 6, "h"), (61, 11, "B"), (64, 11, "s"), (68, 9, "d"), (74, 8, "m"), (77, 8, "d"), (80, 8, "g"),
                  (86, 12, "X"), (88, 10, "d"), (94, 5, "d"), (95, 5, "d"), (97, 3, "V"), (100, 7, "d"), (102, 10, "t"), (106, 8, "d"),
                  (111, 11, "g"), (113, 11, "^"), (115, 11, "^"), (114, 9, "L"), (118, 11, "B"), (121, 11, "s"), (127, 9, "X"),
-                 (130, 9, "r"), (132, 9, "h"), (136, 9, "G"), (136, 6, "L"), (5, 11, "r"), (50, 4, "W"), (88, 4, "W")]:
+                 (130, 9, "r"), (132, 9, "h"), (136, 9, "G"), (136, 6, "L"), (5, 11, "r")]:
     put(ch, c, r)
 LEVEL = ["".join(row) for row in grid]
 
 rock = lambda c, r: 0 <= r < H and 0 <= c < W and LEVEL[r][c] in "#o"
-used, cells, solid_tiles = set(), [], set()
+used, cells, solid_tiles, ledge_tiles = set(), [], set(), set()
 def tile_at(col, row):
     used.add((col, row))
     return row * 64 + col
@@ -172,6 +175,7 @@ for r in range(H):
             col = 8 if lft else 16 if rgt else 9 + (c % 7)
             under = rock(c, r - 1) and LEVEL[r - 1][c] == "o"
             cells.append([c, r, tile_at(col, 13 if under else 12)])
+            ledge_tiles.add((13 if under else 12) * 64 + col)
             if not under: solid_tiles.add(12 * 64 + col)
             continue
         if not rock(c, r - 1):                    # the top: its lit rim
@@ -181,9 +185,37 @@ for r in range(H):
             t = tile_at(5 if left else 25 if right else v, depth)
         cells.append([c, r, t])
         solid_tiles.add(t)
+def outline(col, row):
+    """The convex outline of a tile's drawn pixels, in its own pixels: what a ledge casts its shadow from."""
+    pts = []
+    for y in range(CELL):
+        for x in range(CELL):
+            if SHEET.getpixel((col * CELL + x, row * CELL + y))[3] > 64:
+                pts += [(x, y), (x + 1, y), (x, y + 1), (x + 1, y + 1)]
+    pts = sorted(set(pts))
+    if len(pts) < 3: return None
+    cross = lambda o, a, b: (a[0] - o[0]) * (b[1] - o[1]) - (a[1] - o[1]) * (b[0] - o[0])
+    lower, upper = [], []
+    for p in pts:
+        while len(lower) >= 2 and cross(lower[-2], lower[-1], p) <= 0: lower.pop()
+        lower.append(p)
+    for p in reversed(pts):
+        while len(upper) >= 2 and cross(upper[-2], upper[-1], p) <= 0: upper.pop()
+        upper.append(p)
+    return [{"x": x, "y": y} for x, y in lower[:-1] + upper[:-1]]
+
+def tile_shapes(col, row):
+    box = {"kind": "box", "cx": 8, "cy": 8, "w": CELL, "h": CELL}
+    if row * 64 + col in ledge_tiles:
+        # A ledge stands on its box and casts its shadow from the shape it is drawn.
+        hull = outline(col, row)
+        shapes = [box] if row * 64 + col in solid_tiles else []
+        return shapes + ([{"kind": "poly", "points": hull, "sensor": True, "occluder": 1}] if hull else [])
+    return [dict(box, occluder=1)] if row * 64 + col in solid_tiles else []
+
 d.write("assets/tiles/Rock.tileset.json", {"schemaVersion": 1, "image": "assets/art/rock_tiles.png", "tileWidth": CELL, "tileHeight": CELL,
     "tiles": [{"id": row * 64 + col, "x": col * CELL, "y": row * CELL,
-               "collision": [{"kind": "box", "cx": 8, "cy": 8, "w": CELL, "h": CELL, "occluder": 1}] if row * 64 + col in solid_tiles else []}
+               "collision": tile_shapes(col, row)}
               for col, row in sorted(used)],
     "physicsLayers": [{"name": "Ground", "collisionLayer": SOLID, "collisionMask": -1}]})
 
@@ -209,15 +241,13 @@ for i in (1, 2, 3): d.type_json("HeartIcon%d" % i, "Sprite", {"spriteKey": "Hear
 d.type_json("DiamondCount", "Label", {"text": "0", "fontSize": 10, "textColor": 0xF2F6E8})
 d.type_json("WinSign", "Label", {"text": "You reached the great crystal!", "fontSize": 14, "textColor": 0xF2F6E8, "visible": False})
 # The lights: teal over the crystals, white over the great crystal.
-d.type_json("CrystalLight", "Light", {"spriteKey": "Glow.sprite.json", "tint": 0x4FE3D0, "opacity": 0.9, "scaleX": 1.3, "scaleY": 1.3, "radius": 3, "textureScale": 0.5})
-# Lights that move, so the shadows the ledges and rocks cast swing as they pass: two wisps drifting and
-# bobbing near the ledges, and the soft light Gino carries.
-d.type_json("Wisp", "Light", {"spriteKey": "Glow.sprite.json", "tint": 0xFFD98A, "opacity": 1.0, "scaleX": 1.9, "scaleY": 1.9, "radius": 4, "textureScale": 0.5},
-            [{"componentClass": "Patrol", "axis": "Horizontal", "distance": 176, "speed": 36},
-             {"componentClass": "Oscillate", "property": "y", "magnitude": 14, "period": 2.4}])
+d.type_json("CrystalLight", "Light", {"spriteKey": "CrystalGlow.sprite.json", "tint": 0x4FE3D0, "opacity": 0.9, "radius": 3})
+# Lights that move, so the shadows the ledges and rocks cast swing as they pass: the glow each bat carries,
+# and the soft light Gino carries. Each is its carrier's child, so it goes where the carrier goes.
+d.type_json("BatLight", "Light", {"spriteKey": "BatGlow.sprite.json", "tint": 0xFFD98A, "opacity": 1.0, "radius": 4})
 # Pale and cool: the light map multiplies over a teal-green cave, where a warm light has little red to lift.
-d.type_json("Lantern", "Light", {"spriteKey": "Glow.sprite.json", "tint": 0xBFF6FF, "opacity": 1.0, "scaleX": 1.6, "scaleY": 1.6, "radius": 3, "textureScale": 0.5})
-d.type_json("GoalLight", "Light", {"spriteKey": "Glow.sprite.json", "tint": 0xD8FFF8, "opacity": 0.9, "scaleX": 1.8, "scaleY": 1.8, "radius": 4, "textureScale": 0.5})
+d.type_json("Lantern", "Light", {"spriteKey": "LanternGlow.sprite.json", "tint": 0xBFF6FF, "opacity": 1.0, "radius": 3})
+d.type_json("GoalLight", "Light", {"spriteKey": "GoalGlow.sprite.json", "tint": 0xD8FFF8, "opacity": 0.9, "radius": 4})
 for name, parts in DECOR.items():
     for i in range(len(parts)): d.type_json("%s%d" % (name, i + 1), "Sprite", {"spriteKey": "%s%d.sprite.json" % (name, i + 1)})
 
@@ -261,10 +291,11 @@ for r in range(H):
         elif ch == "h": place(numbered("Heart"), "Heart", cx, r * CELL + 8, parent=REWARDS)
         elif ch == "^": place(numbered("Crystals"), "Crystals", cx + 8, floor - 8, parent=DANGER)
         elif ch == "B": place(numbered("Slime"), "Slime", cx, floor - 10, parent=DANGER)
-        elif ch == "V": place(numbered("Bat"), "Bat", cx, r * CELL + 8, parent=DANGER)
+        elif ch == "V":
+            bat = place(numbered("Bat"), "Bat", cx, r * CELL + 8, parent=DANGER)
+            place(numbered("BatLight"), "BatLight", 16, 16, parent=bat["id"])
         elif ch == "X": place(numbered("Plant"), "Plant", cx, floor - 24, parent=DANGER)
         elif ch == "L": place(numbered("Light"), "GoalLight" if c > 130 else "CrystalLight", cx + (0 if c > 130 else 8), r * CELL + 8, parent=LIGHTS)
-        elif ch == "W": place(numbered("Wisp"), "Wisp", cx, r * CELL + 8, parent=LIGHTS)
         elif ch == "G": goal = (cx, floor - 21)
         elif ch == "P": start = (cx, floor - 17)
 place("GreatCrystal1", "GreatCrystal", goal[0], goal[1])
@@ -315,7 +346,7 @@ gino_rules = [
     # A heart gives back a life, up to three.
     rule([line("Gino", "Node", "onCollisionStarted", s("Heart")), compare(lives, LT, lit(3))],
          [line("Heart", "Node", "queueDestroy"), addvar("lives", 1), sound("heart")]),
-    # A blob landed on is squashed and Gino bounces; walked into, it hurts.
+    # A slime landed on is squashed and Gino bounces; walked into, it hurts.
     rule([line("Gino", "Node", "onCollisionStartedShapes", s("Slime"), s("body"), s("head"))],
          [anim("Slime", "squashed"), line("Slime", "Node", "setCollisionEnabled", b(False)), comp("Slime", "Patrol", "stop"),
           sheet("createObject", s("Puff"), lit(1)), line("Puff", "Node", "setPosition", value("Slime", "Node", "getPositionX"), value("Slime", "Node", "getPositionY")),
@@ -342,7 +373,7 @@ gino_rules = [
 d.write("vscript/GinoRules.vscript.json", {"rules": gino_rules, "vars": []})
 d.write("vscript/SlimeRules.vscript.json", {"rules": [
     rule([line("Slime", "Sprite", "onAnimationFinished")], [line("Slime", "Node", "queueDestroy")]),
-    # The blob looks left as drawn: turned round while heading out to the right.
+    # The slime looks left as drawn: turned round while heading out to the right.
     rule([comp("Slime", "Patrol", "isHeadingOut")], [line("Slime", "Node", "setMirrored", b(True))]),
     rule([not_(comp("Slime", "Patrol", "isHeadingOut"))], [line("Slime", "Node", "setMirrored", b(False))]),
 ], "vars": []})
@@ -376,15 +407,15 @@ d.write("project.json", {"schemaVersion": 2, "name": "Rocky demo", "entryScene":
 d.write("README.md", """# Rocky demo
 
 A platform level in a cave: run and jump with the arrow keys or WASD (Space
-jumps too), collect the diamonds, stomp the blobs by landing on them, keep
+jumps too), collect the diamonds, stomp the slimes by landing on them, keep
 clear of the bats, the snapping plant and the crystals, and reach the great
 crystal. Three hearts; a heart found gives one back; out of hearts, or down a
 gap, and Gino starts again. Your best diamond count is saved.
 
 Built on the **Platformer** behavior and a tilemap level. A **Camera** follows
 Gino; the cave behind is three **Layers**, the far ones moving least. The
-blobs and bats **Patrol** (the bats **Oscillate** too), Gino **Blinks** after a
-hit. **Lights** glow over the crystals; two wisps drift past the ledges and Gino
+slimes and bats **Patrol** (the bats **Oscillate** too), Gino **Blinks** after a
+hit. **Lights** glow over the crystals; each bat carries a glow and Gino
 carries one, so their shadows move; the project's light map dims the cave. Every rule is in `vscript/`.
 
 Art by Szadi art (Rocky Level pack, public domain). Sounds by

@@ -2,13 +2,10 @@
   "schemaVersion": 2,
   "baseClass": "Light",
   "defaults": {
-    "spriteKey": "Glow.sprite.json",
+    "spriteKey": "LanternGlow.sprite.json",
     "tint": 12580607,
     "opacity": 1.0,
-    "scaleX": 1.6,
-    "scaleY": 1.6,
-    "radius": 3,
-    "textureScale": 0.5
+    "radius": 3
   },
   "components": []
 }

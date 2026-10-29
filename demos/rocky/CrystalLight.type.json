@@ -2,13 +2,10 @@
   "schemaVersion": 2,
   "baseClass": "Light",
   "defaults": {
-    "spriteKey": "Glow.sprite.json",
+    "spriteKey": "CrystalGlow.sprite.json",
     "tint": 5235664,
     "opacity": 0.9,
-    "scaleX": 1.3,
-    "scaleY": 1.3,
-    "radius": 3,
-    "textureScale": 0.5
+    "radius": 3
   },
   "components": []
 }
