@@ -46,43 +46,6 @@
       "subRules": []
     },
     {
-      "conditions": [],
-      "actions": [
-        {
-          "scope": "Lantern",
-          "className": "Node",
-          "name": "setPosition",
-          "params": [
-            {
-              "type": "value",
-              "scope": "self",
-              "className": "Node",
-              "name": "getPositionX",
-              "params": [],
-              "returnType": "Float"
-            },
-            {
-              "type": "op",
-              "op": "-",
-              "left": {
-                "type": "value",
-                "scope": "self",
-                "className": "Node",
-                "name": "getPositionY",
-                "params": [],
-                "returnType": "Float"
-              },
-              "right": {
-                "type": "literal",
-                "value": 4
-              }
-            }
-          ]
-        }
-      ],
-      "subRules": []
-    },
-    {
       "conditions": [
         {
           "scope": "input",
