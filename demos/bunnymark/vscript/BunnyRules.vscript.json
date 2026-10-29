@@ -44,7 +44,7 @@
                 },
                 {
                   "type": "literal",
-                  "value": 450.0
+                  "value": 360.0
                 }
               ],
               "returnType": "Float"
@@ -69,11 +69,11 @@
               "params": [
                 {
                   "type": "literal",
-                  "value": -225.0
+                  "value": -180.0
                 },
                 {
                   "type": "literal",
-                  "value": 225.0
+                  "value": 180.0
                 }
               ],
               "returnType": "Float"
@@ -199,7 +199,7 @@
               "op": "*",
               "left": {
                 "type": "literal",
-                "value": 1012.5
+                "value": 648.0
               },
               "right": {
                 "type": "value",
@@ -483,7 +483,7 @@
                   },
                   "right": {
                     "type": "literal",
-                    "value": -45.0
+                    "value": -36.0
                   }
                 }
               ]

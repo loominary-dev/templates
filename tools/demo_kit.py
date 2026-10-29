@@ -27,8 +27,17 @@ def check_name(name):
 class Demo:
     def __init__(self, out, folders, prefix):
         self.out = os.path.abspath(out)
+        # The folder's git settings are not the generator's to make: kept through the rebuild.
+        kept = {}
+        for name in (".gitattributes", ".gitignore"):
+            path = os.path.join(self.out, name)
+            if os.path.isfile(path):
+                with open(path, "rb") as f: kept[name] = f.read()
         shutil.rmtree(self.out, ignore_errors=True)
         for d in folders: os.makedirs(os.path.join(self.out, d))
+        os.makedirs(self.out, exist_ok=True)
+        for name, data in kept.items():
+            with open(os.path.join(self.out, name), "wb") as f: f.write(data)
         self.prefix = prefix
         self.seq = 100
 
