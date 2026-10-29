@@ -3,8 +3,8 @@
 A platform level in a cave: run and jump with the arrow keys or WASD (Space
 jumps too), collect the diamonds, stomp the slimes by landing on them, keep
 clear of the bats, the snapping plant and the crystals, and reach the great
-crystal. Three hearts; a heart found gives one back; out of hearts, or down a
-gap, and Gino starts again. Your best diamond count is saved.
+crystal. Three hearts: a hit or a fall down a gap costs one, a heart found gives one
+back, and out of hearts the level starts again. Your best diamond count is saved.
 
 Built on the **Platformer** behavior and a tilemap level. A **Camera** follows
 Gino; the cave behind is three **Layers**, the far ones moving least. The
