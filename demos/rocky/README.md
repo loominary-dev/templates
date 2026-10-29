@@ -1,15 +1,15 @@
 # Rocky demo
 
 A platform level in a cave: run and jump with the arrow keys or WASD (Space
-jumps too), collect the diamonds, stomp the blobs by landing on them, keep
+jumps too), collect the diamonds, stomp the slimes by landing on them, keep
 clear of the bats, the snapping plant and the crystals, and reach the great
 crystal. Three hearts; a heart found gives one back; out of hearts, or down a
 gap, and Gino starts again. Your best diamond count is saved.
 
 Built on the **Platformer** behavior and a tilemap level. A **Camera** follows
 Gino; the cave behind is three **Layers**, the far ones moving least. The
-blobs and bats **Patrol** (the bats **Oscillate** too), Gino **Blinks** after a
-hit. **Lights** glow over the crystals; two wisps drift past the ledges and Gino
+slimes and bats **Patrol** (the bats **Oscillate** too), Gino **Blinks** after a
+hit. **Lights** glow over the crystals; each bat carries a glow and Gino
 carries one, so their shadows move; the project's light map dims the cave. Every rule is in `vscript/`.
 
 Art by Szadi art (Rocky Level pack, public domain). Sounds by
