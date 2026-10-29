@@ -29,8 +29,8 @@
         {
           "name": "body",
           "kind": "circle",
-          "cx": 9,
-          "cy": 9,
+          "cx": 0,
+          "cy": 0,
           "r": 9
         }
       ],
@@ -41,10 +41,10 @@
         {
           "id": "f1000000-0000-4000-8000-000000000138",
           "duration": 400,
-          "pivotX": 0.5,
-          "pivotY": 0.5,
           "collision": [],
-          "points": []
+          "points": [],
+          "originX": 0.5,
+          "originY": 0.5
         }
       ]
     }

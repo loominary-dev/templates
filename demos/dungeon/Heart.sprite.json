@@ -33,10 +33,10 @@
         {
           "id": "d1000000-0000-4000-8000-000000000123",
           "duration": 400,
-          "pivotX": 0.5,
-          "pivotY": 0.5,
           "collision": [],
-          "points": []
+          "points": [],
+          "originX": 0.5,
+          "originY": 0.5
         }
       ]
     }

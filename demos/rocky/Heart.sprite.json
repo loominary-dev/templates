@@ -29,8 +29,8 @@
         {
           "name": "heart",
           "kind": "box",
-          "cx": 6,
-          "cy": 6,
+          "cx": -0.5,
+          "cy": -0.5,
           "w": 11,
           "h": 11,
           "sensor": true
@@ -43,50 +43,50 @@
         {
           "id": "e7000000-0000-4000-8000-000000000184",
           "duration": 110,
-          "pivotX": 0.5,
-          "pivotY": 0.5,
           "collision": [],
-          "points": []
+          "points": [],
+          "originX": 0.5,
+          "originY": 0.5
         },
         {
           "id": "e7000000-0000-4000-8000-000000000185",
           "duration": 110,
-          "pivotX": 0.5,
-          "pivotY": 0.5,
           "collision": [],
-          "points": []
+          "points": [],
+          "originX": 0.5,
+          "originY": 0.5
         },
         {
           "id": "e7000000-0000-4000-8000-000000000186",
           "duration": 110,
-          "pivotX": 0.5,
-          "pivotY": 0.5,
           "collision": [],
-          "points": []
+          "points": [],
+          "originX": 0.5,
+          "originY": 0.5
         },
         {
           "id": "e7000000-0000-4000-8000-000000000187",
           "duration": 110,
-          "pivotX": 0.5,
-          "pivotY": 0.5,
           "collision": [],
-          "points": []
+          "points": [],
+          "originX": 0.5,
+          "originY": 0.5
         },
         {
           "id": "e7000000-0000-4000-8000-000000000188",
           "duration": 110,
-          "pivotX": 0.5,
-          "pivotY": 0.5,
           "collision": [],
-          "points": []
+          "points": [],
+          "originX": 0.5,
+          "originY": 0.5
         },
         {
           "id": "e7000000-0000-4000-8000-000000000189",
           "duration": 110,
-          "pivotX": 0.5,
-          "pivotY": 0.5,
           "collision": [],
-          "points": []
+          "points": [],
+          "originX": 0.5,
+          "originY": 0.5
         }
       ]
     }

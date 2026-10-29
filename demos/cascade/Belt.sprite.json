@@ -29,8 +29,8 @@
         {
           "name": "body",
           "kind": "box",
-          "cx": 150.0,
-          "cy": 9,
+          "cx": 0,
+          "cy": 0,
           "w": 300,
           "h": 18
         }
@@ -42,26 +42,26 @@
         {
           "id": "ca500000-0000-4000-8000-000000000105",
           "duration": 90,
-          "pivotX": 0.5,
-          "pivotY": 0.5,
           "collision": [],
-          "points": []
+          "points": [],
+          "originX": 0.5,
+          "originY": 0.5
         },
         {
           "id": "ca500000-0000-4000-8000-000000000106",
           "duration": 90,
-          "pivotX": 0.5,
-          "pivotY": 0.5,
           "collision": [],
-          "points": []
+          "points": [],
+          "originX": 0.5,
+          "originY": 0.5
         },
         {
           "id": "ca500000-0000-4000-8000-000000000107",
           "duration": 90,
-          "pivotX": 0.5,
-          "pivotY": 0.5,
           "collision": [],
-          "points": []
+          "points": [],
+          "originX": 0.5,
+          "originY": 0.5
         }
       ]
     }

@@ -29,8 +29,8 @@
         {
           "name": "body",
           "kind": "box",
-          "cx": 12,
-          "cy": 13,
+          "cx": 0,
+          "cy": 1,
           "w": 14,
           "h": 20
         }
@@ -42,10 +42,10 @@
         {
           "id": "a0000000-0000-4000-8000-000000000102",
           "duration": 400,
-          "pivotX": 0.5,
-          "pivotY": 0.5,
           "collision": [],
-          "points": []
+          "points": [],
+          "originX": 0.5,
+          "originY": 0.5
         }
       ]
     },
@@ -60,8 +60,8 @@
         {
           "name": "body",
           "kind": "box",
-          "cx": 12,
-          "cy": 13,
+          "cx": 0,
+          "cy": 1,
           "w": 14,
           "h": 20
         }
@@ -73,18 +73,18 @@
         {
           "id": "a0000000-0000-4000-8000-000000000104",
           "duration": 150,
-          "pivotX": 0.5,
-          "pivotY": 0.5,
           "collision": [],
-          "points": []
+          "points": [],
+          "originX": 0.5,
+          "originY": 0.5
         },
         {
           "id": "a0000000-0000-4000-8000-000000000105",
           "duration": 150,
-          "pivotX": 0.5,
-          "pivotY": 0.5,
           "collision": [],
-          "points": []
+          "points": [],
+          "originX": 0.5,
+          "originY": 0.5
         }
       ]
     },
@@ -99,8 +99,8 @@
         {
           "name": "body",
           "kind": "box",
-          "cx": 12,
-          "cy": 13,
+          "cx": 0,
+          "cy": 1,
           "w": 14,
           "h": 20
         }
@@ -112,10 +112,10 @@
         {
           "id": "a0000000-0000-4000-8000-000000000107",
           "duration": 400,
-          "pivotX": 0.5,
-          "pivotY": 0.5,
           "collision": [],
-          "points": []
+          "points": [],
+          "originX": 0.5,
+          "originY": 0.5
         }
       ]
     }

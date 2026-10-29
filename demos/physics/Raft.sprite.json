@@ -29,8 +29,8 @@
         {
           "name": "body",
           "kind": "box",
-          "cx": 45,
-          "cy": 6,
+          "cx": 0,
+          "cy": 0,
           "w": 90,
           "h": 12,
           "density": 0.4
@@ -43,10 +43,10 @@
         {
           "id": "p1000000-0000-4000-8000-000000000141",
           "duration": 400,
-          "pivotX": 0.5,
-          "pivotY": 0.5,
           "collision": [],
-          "points": []
+          "points": [],
+          "originX": 0.5,
+          "originY": 0.5
         }
       ]
     }

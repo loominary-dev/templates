@@ -29,8 +29,8 @@
         {
           "name": "grate",
           "kind": "box",
-          "cx": 90,
-          "cy": 15,
+          "cx": 0,
+          "cy": 0,
           "w": 180,
           "h": 30
         }
@@ -42,10 +42,10 @@
         {
           "id": "7a900000-0000-4000-8000-000000000117",
           "duration": 400,
-          "pivotX": 0.5,
-          "pivotY": 0.5,
           "collision": [],
-          "points": []
+          "points": [],
+          "originX": 0.5,
+          "originY": 0.5
         }
       ]
     }

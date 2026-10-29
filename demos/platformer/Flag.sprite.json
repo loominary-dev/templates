@@ -29,8 +29,8 @@
         {
           "name": "pole",
           "kind": "box",
-          "cx": 9,
-          "cy": 9,
+          "cx": 0,
+          "cy": 0,
           "w": 10,
           "h": 18,
           "sensor": true
@@ -43,18 +43,18 @@
         {
           "id": "e0000000-0000-4000-8000-000000000123",
           "duration": 400,
-          "pivotX": 0.5,
-          "pivotY": 0.5,
           "collision": [],
-          "points": []
+          "points": [],
+          "originX": 0.5,
+          "originY": 0.5
         },
         {
           "id": "e0000000-0000-4000-8000-000000000124",
           "duration": 400,
-          "pivotX": 0.5,
-          "pivotY": 0.5,
           "collision": [],
-          "points": []
+          "points": [],
+          "originX": 0.5,
+          "originY": 0.5
         }
       ]
     }

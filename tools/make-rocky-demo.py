@@ -131,6 +131,20 @@ for i in (1, 2, 3):
 d.sounds({"jump": (DA, "phaseJump1.ogg"), "gem": (DA, "powerUp7.ogg"), "heart": (DA, "powerUp2.ogg"), "stomp": (IM, "impactGeneric_light_001.ogg"),
           "hurt": (IM, "impactGeneric_light_004.ogg"), "win": (DA, "threeTone1.ogg")})
 
+# What each light comes from: a small soft core, tinted and scaled per light. A light lights the cave but
+# draws nothing itself, so under a light map that multiplies, the cave showed the light and no source.
+# Made last, so the sprites before it keep their ids. Solid at the middle and soft only at the edge: the
+# light's own soft falloff, added on, left a dim grey dot of a source that read as nothing.
+def core(size):
+    g = Image.new("RGBA", (size, size), (0, 0, 0, 0))
+    c = (size - 1) / 2
+    for y in range(size):
+        for x in range(size):
+            r = math.hypot(x - c, y - c) / c
+            if r < 1: g.putpixel((x, y), (255, 255, 255, int(255 * min(1, (1 - r) * 1.8) ** 0.7)))
+    return g
+d.sprite("Core", 32, 32, [("still", [core(32)], 400, "loop")], [])
+
 # ── collision layers, as bits ──
 PLAYER, PICKUP, SOLID, ENEMY, HAZARD = 1, 2, 4, 8, 16
 
@@ -232,8 +246,9 @@ d.type_json("Bat", "Sprite", {"spriteKey": "Bat.sprite.json", "collision": {"lay
             [{"componentClass": "Patrol", "axis": "Horizontal", "distance": 72, "speed": 34},
              {"componentClass": "Oscillate", "property": "y", "magnitude": 10, "period": 1.4}, {"componentClass": "BatRules"}])
 d.type_json("Plant", "Sprite", {"spriteKey": "Plant.sprite.json", "collision": {"layer": HAZARD, "mask": PLAYER}}, [{"componentClass": "PlantRules"}])
-for t, layer in [("Diamond", PICKUP), ("Heart", PICKUP), ("GreatCrystal", PICKUP), ("Crystals", HAZARD)]:
-    d.type_json(t, "Sprite", {"spriteKey": t + ".sprite.json", "collision": {"layer": layer, "mask": PLAYER}})
+# The gems glow: drawn at their own brightness over the dark (Glows), as the crystals that light the cave would.
+for t, layer, glows in [("Diamond", PICKUP, True), ("Heart", PICKUP, False), ("GreatCrystal", PICKUP, True), ("Crystals", HAZARD, True)]:
+    d.type_json(t, "Sprite", dict({"spriteKey": t + ".sprite.json", "collision": {"layer": layer, "mask": PLAYER}}, **({"glows": True} if glows else {})))
 for t in ("Sparkle", "Puff"):
     d.type_json(t, "Sprite", {"spriteKey": t + ".sprite.json"}, [{"componentClass": "EffectRules"}])
 d.type_json("DiamondIcon", "Sprite", {"spriteKey": "DiamondIcon.sprite.json"})
@@ -248,6 +263,13 @@ d.type_json("BatLight", "Light", {"spriteKey": "BatGlow.sprite.json", "tint": 0x
 # Pale and cool: the light map multiplies over a teal-green cave, where a warm light has little red to lift.
 d.type_json("Lantern", "Light", {"spriteKey": "LanternGlow.sprite.json", "tint": 0xBFF6FF, "opacity": 1.0, "radius": 3})
 d.type_json("GoalLight", "Light", {"spriteKey": "GoalGlow.sprite.json", "tint": 0xD8FFF8, "opacity": 0.9, "radius": 4})
+# Each light's core: its color, glowing, at the light's own place.
+# Paler than the light's own tint, as a light's source is whiter than the light it throws.
+CORES = {"CrystalLight": ("CrystalCore", 0xA8FFF4, 0.6, 0.9), "BatLight": ("BatCore", 0xFFEEC0, 0.45, 1.0),
+         "Lantern": ("LanternCore", 0xE6FCFF, 0.5, 1.0), "GoalLight": ("GoalCore", 0xF0FFFC, 1.2, 0.95)}
+for core, tint, scale, opacity in CORES.values():
+    d.type_json(core, "Sprite", {"spriteKey": "Core.sprite.json", "tint": tint, "scaleX": scale, "scaleY": scale, "opacity": opacity,
+                                 "glows": True})
 for name, parts in DECOR.items():
     for i in range(len(parts)): d.type_json("%s%d" % (name, i + 1), "Sprite", {"spriteKey": "%s%d.sprite.json" % (name, i + 1)})
 
@@ -276,6 +298,13 @@ counts = {}
 def numbered(t):
     counts[t] = counts.get(t, 0) + 1
     return "%s%d" % (t, counts[t])
+GLOW_SIZE = {"CrystalLight": 332, "BatLight": 486, "Lantern": 410, "GoalLight": 460}
+def light(name, type_name, x, y, parent):
+    o = place(name, type_name, x, y, parent=parent)
+    core = CORES[type_name][0]
+    # On the light: its glow's middle, measured (as every position here is) from the parent's picture's corner.
+    place(numbered(core), core, GLOW_SIZE[type_name] / 2, GLOW_SIZE[type_name] / 2, parent=o["id"])
+    return o
 pick = {"g": "Grass", "s": "Sprout", "r": "Rocks", "t": "Tree", "m": "Stalagmite"}
 start = goal = None
 for r in range(H):
@@ -293,15 +322,15 @@ for r in range(H):
         elif ch == "B": place(numbered("Slime"), "Slime", cx, floor - 10, parent=DANGER)
         elif ch == "V":
             bat = place(numbered("Bat"), "Bat", cx, r * CELL + 8, parent=DANGER)
-            place(numbered("BatLight"), "BatLight", 16, 16, parent=bat["id"])
+            light(numbered("BatLight"), "BatLight", 16, 16, bat["id"])
         elif ch == "X": place(numbered("Plant"), "Plant", cx, floor - 24, parent=DANGER)
-        elif ch == "L": place(numbered("Light"), "GoalLight" if c > 130 else "CrystalLight", cx + (0 if c > 130 else 8), r * CELL + 8, parent=LIGHTS)
+        elif ch == "L": light(numbered("Light"), "GoalLight" if c > 130 else "CrystalLight", cx + (0 if c > 130 else 8), r * CELL + 8, LIGHTS)
         elif ch == "G": goal = (cx, floor - 21)
         elif ch == "P": start = (cx, floor - 17)
 place("GreatCrystal1", "GreatCrystal", goal[0], goal[1])
 gino = place("Gino1", "Gino", start[0], start[1])
 # The light Gino carries: his child, so it goes where he goes.
-place("Lantern1", "Lantern", 20, 13, parent=gino["id"])
+light("Lantern1", "Lantern", 20, 13, gino["id"])
 # Starts the level again when Gino is out of hearts.
 d.type_json("Scenes", "SceneManager", {})
 place("Scenes1", "Scenes", 0, 0)
@@ -420,7 +449,9 @@ Built on the **Platformer** behavior and a tilemap level. A **Camera** follows
 Gino; the cave behind is three **Layers**, the far ones moving least. The
 slimes and bats **Patrol** (the bats **Oscillate** too), Gino **Blinks** after a
 hit. **Lights** glow over the crystals; each bat carries a glow and Gino
-carries one, so their shadows move; the project's light map dims the cave. Every rule is in `vscript/`.
+carries one, so their shadows move; the project's light map dims the cave. Each light has a small core
+that **Glows**, drawn at its own brightness over the dark, and so do the crystals and the diamonds: the
+cave shows where its light comes from, not only what it lights. Every rule is in `vscript/`.
 
 Art by Szadi art (Rocky Level pack, public domain). Sounds by
 [Kenney](https://kenney.nl) (Digital Audio, Impact Sounds), CC0. Generated by

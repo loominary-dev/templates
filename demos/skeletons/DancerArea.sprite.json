@@ -29,8 +29,8 @@
         {
           "name": "area",
           "kind": "box",
-          "cx": 120.0,
-          "cy": 240.0,
+          "cx": 0,
+          "cy": 0,
           "w": 240,
           "h": 480
         }
@@ -42,10 +42,10 @@
         {
           "id": "a3000000-0000-4000-8000-000000000288",
           "duration": 400,
-          "pivotX": 0.5,
-          "pivotY": 0.5,
           "collision": [],
-          "points": []
+          "points": [],
+          "originX": 0.5,
+          "originY": 0.5
         }
       ]
     }

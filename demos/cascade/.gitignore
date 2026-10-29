@@ -1,0 +1,37 @@
+# Loominary: this machine's own files and build output
+.loominary/
+.loominary-undo/
+.vscode/
+typeTextures.json
+*.log
+
+# Loominary: generated sources, kept up to date by the editor; do not edit between these lines
+/Belt.hx
+/BeltLeft.hx
+/Caption.hx
+/Disc.hx
+/FloorBelt.hx
+/FluidMs.hx
+/Fps.hx
+/Help.hx
+/Level.hx
+/Mark.hx
+/ParticleCount.hx
+/Pentagon.hx
+/Ramp.hx
+/ShapeCount.hx
+/Sink.hx
+/Spawner.hx
+/Square.hx
+/Tap.hx
+/Triangle.hx
+/Wall.hx
+/Water.hx
+/vscript/BeltLeftRules.hx
+/vscript/BeltRules.hx
+/vscript/DragRules.hx
+/vscript/LevelRules.hx
+/vscript/ShapeRules.hx
+/vscript/SpawnRules.hx
+/vscript/WaterRules.hx
+# Loominary: end of generated sources

@@ -12,10 +12,10 @@
       "type": "Backdrop",
       "x": -960.0,
       "y": -540.0,
-      "pivotNormalized": true,
-      "pivotX": 0,
-      "pivotY": 0,
-      "zIndex": -10
+      "zIndex": -10,
+      "originX": 0,
+      "originY": 0,
+      "originNormalized": true
     },
     {
       "id": "a3000000-0000-4000-8000-000000000012",
@@ -24,10 +24,10 @@
       "type": "Ground",
       "x": -960.0,
       "y": 400,
-      "pivotNormalized": true,
-      "pivotX": 0,
-      "pivotY": 0,
-      "zIndex": 1
+      "zIndex": 1,
+      "originX": 0,
+      "originY": 0,
+      "originNormalized": true
     },
     {
       "id": "a3000000-0000-4000-8000-000000000500",
@@ -68,10 +68,10 @@
       "type": "TreeArea",
       "x": -700,
       "y": 200,
-      "pivotNormalized": true,
-      "pivotX": 0.5,
-      "pivotY": 0.5,
-      "zIndex": -1
+      "zIndex": -1,
+      "originX": 0.5,
+      "originY": 0.5,
+      "originNormalized": true
     },
     {
       "id": "a3000000-0000-4000-8000-000000000014",
@@ -80,10 +80,10 @@
       "type": "DinosaurArea",
       "x": -150,
       "y": 210,
-      "pivotNormalized": true,
-      "pivotX": 0.5,
-      "pivotY": 0.5,
-      "zIndex": -1
+      "zIndex": -1,
+      "originX": 0.5,
+      "originY": 0.5,
+      "originNormalized": true
     },
     {
       "id": "a3000000-0000-4000-8000-000000000015",
@@ -92,10 +92,10 @@
       "type": "DancerArea",
       "x": 340,
       "y": 160,
-      "pivotNormalized": true,
-      "pivotX": 0.5,
-      "pivotY": 0.5,
-      "zIndex": -1
+      "zIndex": -1,
+      "originX": 0.5,
+      "originY": 0.5,
+      "originNormalized": true
     },
     {
       "id": "a3000000-0000-4000-8000-000000000016",
@@ -104,10 +104,10 @@
       "type": "JellyfishArea",
       "x": 760,
       "y": 60,
-      "pivotNormalized": true,
-      "pivotX": 0.5,
-      "pivotY": 0.5,
-      "zIndex": -1
+      "zIndex": -1,
+      "originX": 0.5,
+      "originY": 0.5,
+      "originNormalized": true
     },
     {
       "id": "a3000000-0000-4000-8000-000000000017",
