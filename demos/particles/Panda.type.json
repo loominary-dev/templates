@@ -2,7 +2,7 @@
   "schemaVersion": 2,
   "baseClass": "Sprite",
   "defaults": {
-    "spriteKey": "Heart.sprite.json",
+    "spriteKey": "Panda.sprite.json",
     "collisionEnabled": false
   },
   "components": []

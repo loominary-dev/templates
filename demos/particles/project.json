@@ -85,6 +85,46 @@
         }
       ]
     },
+    "PictureWater": {
+      "bindings": [
+        {
+          "kind": "key",
+          "code": 81
+        }
+      ]
+    },
+    "PictureJelly": {
+      "bindings": [
+        {
+          "kind": "key",
+          "code": 87
+        }
+      ]
+    },
+    "PictureMix": {
+      "bindings": [
+        {
+          "kind": "key",
+          "code": 69
+        }
+      ]
+    },
+    "PictureNet": {
+      "bindings": [
+        {
+          "kind": "key",
+          "code": 82
+        }
+      ]
+    },
+    "PictureHoney": {
+      "bindings": [
+        {
+          "kind": "key",
+          "code": 84
+        }
+      ]
+    },
     "Scene1": {
       "bindings": [
         {

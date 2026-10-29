@@ -20,7 +20,7 @@
       "type": "Caption",
       "x": -470,
       "y": -262,
-      "text": "A picture into water"
+      "text": "A picture into particles"
     },
     {
       "id": "f1000000-0000-4000-8000-000000002903",
@@ -29,7 +29,7 @@
       "type": "Help",
       "x": -470,
       "y": -244,
-      "text": "Turn into particles on a whole picture: about eight thousand particles, each colored from its pixel. Art: Kenney (CC0)."
+      "text": "Turn into particles on a whole picture, each particle colored from its pixel, then choose what they become."
     },
     {
       "id": "f1000000-0000-4000-8000-000000002904",
@@ -38,7 +38,7 @@
       "type": "Help",
       "x": -470,
       "y": -226,
-      "text": "M melts it.   R puts it back.   Click to splash."
+      "text": "Q water   W jelly   E colors that mix, stirred   R a soft net   T honey   P puts it back   Click to splash"
     },
     {
       "id": "f1000000-0000-4000-8000-000000002905",
@@ -78,15 +78,24 @@
     {
       "id": "f1000000-0000-4000-8000-000000002909",
       "parent": "f1000000-0000-4000-8000-000000002900",
-      "name": "Factory1",
-      "type": "Factory",
+      "name": "Forest1",
+      "type": "Forest",
       "x": 0,
-      "y": 22,
-      "scaleX": 0.9,
-      "scaleY": 0.9
+      "y": 60,
+      "scaleX": 0.8,
+      "scaleY": 0.8
     },
     {
       "id": "f1000000-0000-4000-8000-000000002910",
+      "parent": "f1000000-0000-4000-8000-000000002900",
+      "name": "Stirrer1",
+      "type": "Stirrer",
+      "x": 0,
+      "y": 170,
+      "visible": false
+    },
+    {
+      "id": "f1000000-0000-4000-8000-000000002911",
       "parent": "f1000000-0000-4000-8000-000000002900",
       "name": "CountCaption",
       "type": "Caption",
@@ -95,7 +104,7 @@
       "text": "Particles"
     },
     {
-      "id": "f1000000-0000-4000-8000-000000002911",
+      "id": "f1000000-0000-4000-8000-000000002912",
       "parent": "f1000000-0000-4000-8000-000000002900",
       "name": "WaterCount1",
       "type": "WaterCount",
@@ -103,7 +112,7 @@
       "y": -262
     },
     {
-      "id": "f1000000-0000-4000-8000-000000002912",
+      "id": "f1000000-0000-4000-8000-000000002913",
       "parent": "f1000000-0000-4000-8000-000000002900",
       "name": "StepCaption",
       "type": "Caption",
@@ -112,7 +121,7 @@
       "text": "ms"
     },
     {
-      "id": "f1000000-0000-4000-8000-000000002913",
+      "id": "f1000000-0000-4000-8000-000000002914",
       "parent": "f1000000-0000-4000-8000-000000002900",
       "name": "StepTime1",
       "type": "StepTime",

@@ -23,12 +23,12 @@
           "params": [
             {
               "type": "literal",
-              "value": "Heart1",
+              "value": "Frog1",
               "valueKind": "string"
             },
             {
               "type": "literal",
-              "value": "heart",
+              "value": "frog",
               "valueKind": "string"
             },
             {
@@ -49,7 +49,7 @@
           "params": [
             {
               "type": "literal",
-              "value": "heart",
+              "value": "frog",
               "valueKind": "string"
             },
             {
@@ -66,12 +66,12 @@
           "params": [
             {
               "type": "literal",
-              "value": "Star1",
+              "value": "Pig1",
               "valueKind": "string"
             },
             {
               "type": "literal",
-              "value": "star",
+              "value": "pig",
               "valueKind": "string"
             },
             {
@@ -92,7 +92,7 @@
           "params": [
             {
               "type": "literal",
-              "value": "star",
+              "value": "pig",
               "valueKind": "string"
             },
             {
@@ -109,12 +109,12 @@
           "params": [
             {
               "type": "literal",
-              "value": "Gem1",
+              "value": "Panda1",
               "valueKind": "string"
             },
             {
               "type": "literal",
-              "value": "gem",
+              "value": "panda",
               "valueKind": "string"
             },
             {
@@ -135,7 +135,7 @@
           "params": [
             {
               "type": "literal",
-              "value": "gem",
+              "value": "panda",
               "valueKind": "string"
             },
             {
@@ -179,16 +179,33 @@
         {
           "scope": "Bits",
           "className": "Fluid",
-          "name": "turnIntoParticles",
+          "name": "setGroupKind",
           "params": [
             {
               "type": "literal",
-              "value": "Heart1",
+              "value": "frog",
               "valueKind": "string"
             },
             {
               "type": "literal",
-              "value": "heart",
+              "value": 0
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "Bits",
+          "className": "Fluid",
+          "name": "turnIntoParticles",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Frog1",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "frog",
               "valueKind": "string"
             },
             {
@@ -205,16 +222,33 @@
         {
           "scope": "Bits",
           "className": "Fluid",
-          "name": "turnIntoParticles",
+          "name": "setGroupKind",
           "params": [
             {
               "type": "literal",
-              "value": "Star1",
+              "value": "pig",
               "valueKind": "string"
             },
             {
               "type": "literal",
-              "value": "star",
+              "value": 0
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "Bits",
+          "className": "Fluid",
+          "name": "turnIntoParticles",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Pig1",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "pig",
               "valueKind": "string"
             },
             {
@@ -231,16 +265,33 @@
         {
           "scope": "Bits",
           "className": "Fluid",
-          "name": "turnIntoParticles",
+          "name": "setGroupKind",
           "params": [
             {
               "type": "literal",
-              "value": "Gem1",
+              "value": "panda",
               "valueKind": "string"
             },
             {
               "type": "literal",
-              "value": "gem",
+              "value": 0
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "Bits",
+          "className": "Fluid",
+          "name": "turnIntoParticles",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Panda1",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "panda",
               "valueKind": "string"
             },
             {
