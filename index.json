@@ -20,7 +20,7 @@
     {
       "id": "rocky",
       "name": "Rocky demo",
-      "description": "A platform level in a cave on Szadi art's Rocky Level art: diamonds and hearts, slimes to stomp, bats, a snapping plant, crystals, three hearts and a saved best, with lights that glow on the crystals and drift past the ledges, their shadows moving.",
+      "description": "A platform level in a cave on Szadi art's Rocky Level art: diamonds and hearts, slimes to stomp, bats, a snapping plant, crystals, three hearts and a saved best, with lights that glow on the crystals, a lantern Gino carries and glows the bats carry, their shadows moving.",
       "path": "demos/rocky",
       "minEditor": "1.0.60"
     },
