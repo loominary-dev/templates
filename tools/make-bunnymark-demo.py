@@ -121,9 +121,9 @@ d.scene("scenes/singletons/Bench.scene.json", [{"id": d.uid(1), "name": "Bench"}
 # ── rules ──
 x, y = value("self", "Node", "getPositionX"), value("self", "Node", "getPositionY")
 # Each bunny: pixi's numbers, in pixels a second rather than a frame, played at
-# three quarters of pixi's pace so the smoothness of the motion can be seen.
+# three fifths of pixi's pace so the smoothness of the motion can be seen.
 # Speeds scale by PACE and gravity by PACE squared, so the arcs are pixi's own.
-PACE = 0.75
+PACE = 0.6
 GRAVITY = 1800 * PACE * PACE   # pixi's 0.5 a frame at 60 frames a second, slowed
 bunny_rules = [
     rule([line("self", "Node", "onCreated")],
@@ -197,7 +197,7 @@ HUD shows the frames a second and the count.
 - **Bunnies** (press 1): plain bouncing bunnies. Each one has its own visual
   script, `vscript/BunnyRules`: a sideways and an upward speed of its own,
   gravity every step, a bounce off the bottom and the sides, as pixi.js's
-  bunnymark does it, at three quarters of its pace so the smooth motion shows.
+  bunnymark does it, at three fifths of its pace so the smooth motion shows.
 - **Trees** (press 2): each one a bunny with a **Rotate** behavior, with a
   bunny 0.6 its size on it turning too, and a smaller one again on that. Every
   part of every tree in a batch turns at that batch's speed, picked at random

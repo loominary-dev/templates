@@ -6,7 +6,7 @@ HUD shows the frames a second and the count.
 - **Bunnies** (press 1): plain bouncing bunnies. Each one has its own visual
   script, `vscript/BunnyRules`: a sideways and an upward speed of its own,
   gravity every step, a bounce off the bottom and the sides, as pixi.js's
-  bunnymark does it, at three quarters of its pace so the smooth motion shows.
+  bunnymark does it, at three fifths of its pace so the smooth motion shows.
 - **Trees** (press 2): each one a bunny with a **Rotate** behavior, with a
   bunny 0.6 its size on it turning too, and a smaller one again on that. Every
   part of every tree in a batch turns at that batch's speed, picked at random
