@@ -216,7 +216,7 @@ d.type_json("Wisp", "Light", {"spriteKey": "Glow.sprite.json", "tint": 0xFFD98A,
             [{"componentClass": "Patrol", "axis": "Horizontal", "distance": 176, "speed": 36},
              {"componentClass": "Oscillate", "property": "y", "magnitude": 14, "period": 2.4}])
 # Pale and cool: the light map multiplies over a teal-green cave, where a warm light has little red to lift.
-d.type_json("Lantern", "Light", {"spriteKey": "Glow.sprite.json", "tint": 0xBFF6FF, "opacity": 1.0, "scaleX": 1.2, "scaleY": 1.2, "radius": 3, "textureScale": 0.5})
+d.type_json("Lantern", "Light", {"spriteKey": "Glow.sprite.json", "tint": 0xBFF6FF, "opacity": 1.0, "scaleX": 1.6, "scaleY": 1.6, "radius": 3, "textureScale": 0.5})
 d.type_json("GoalLight", "Light", {"spriteKey": "Glow.sprite.json", "tint": 0xD8FFF8, "opacity": 0.9, "scaleX": 1.8, "scaleY": 1.8, "radius": 4, "textureScale": 0.5})
 for name, parts in DECOR.items():
     for i in range(len(parts)): d.type_json("%s%d" % (name, i + 1), "Sprite", {"spriteKey": "%s%d.sprite.json" % (name, i + 1)})
@@ -270,7 +270,7 @@ for r in range(H):
 place("GreatCrystal1", "GreatCrystal", goal[0], goal[1])
 gino = place("Gino1", "Gino", start[0], start[1])
 # The light Gino carries: his child, so it goes where he goes.
-place("Lantern1", "Lantern", 0, -4, parent=gino["id"])
+place("Lantern1", "Lantern", 20, 13, parent=gino["id"])
 place("Camera1", "Camera", start[0], 135, target="Gino1", smoothing=0.12, keepInBounds=True,
       boundsLeft=0, boundsTop=0, boundsRight=W * CELL, boundsBottom=H * CELL, currentAtStart=True)
 HUD = uid(830)
@@ -372,7 +372,7 @@ d.write("project.json", {"schemaVersion": 2, "name": "Rocky demo", "entryScene":
                 "autoResize": True, "wholeWindowScale": True, "drawnAt": "game"},
     "physics": {"engine": "arcade", "gravity": 760},
     # A dim cave: the light map multiplied over the world, so the lights show as light.
-    "lighting": {"lightMap": True, "ambient": "#4c5560", "blend": "multiply"}})
+    "lighting": {"lightMap": True, "ambient": "#2e343c", "blend": "multiply"}})
 d.write("README.md", """# Rocky demo
 
 A platform level in a cave: run and jump with the arrow keys or WASD (Space
