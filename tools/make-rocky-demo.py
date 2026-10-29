@@ -302,6 +302,9 @@ place("GreatCrystal1", "GreatCrystal", goal[0], goal[1])
 gino = place("Gino1", "Gino", start[0], start[1])
 # The light Gino carries: his child, so it goes where he goes.
 place("Lantern1", "Lantern", 20, 13, parent=gino["id"])
+# Starts the level again when Gino is out of hearts.
+d.type_json("Scenes", "SceneManager", {})
+place("Scenes1", "Scenes", 0, 0)
 place("Camera1", "Camera", start[0], 135, target="Gino1", smoothing=0.12, keepInBounds=True,
       boundsLeft=0, boundsTop=0, boundsRight=W * CELL, boundsBottom=H * CELL, currentAtStart=True)
 HUD = uid(830)
@@ -322,7 +325,7 @@ def setvar(n, v): return line("variables", "Variables", "setVariable", s(n), v)
 def addvar(n, v): return line("variables", "Variables", "addToVariable", s(n), lit(v))
 hurt = [addvar("lives", -1), comp("Gino", "Blink", "blinkFor", lit(1.2)), anim("Gino", "hit"), comp("Gino", "Platformer", "jump"), sound("hurt")]
 safe = not_(comp("Gino", "Blink", "isBlinking"))
-to_start = [line("Gino", "Node", "setPosition", lit(start[0]), lit(start[1])), setvar("lives", lit(3))]
+to_start = [line("Gino", "Node", "setPosition", lit(start[0]), lit(start[1]))]
 gino_rules = [
     rule([once()], [setvar("lives", lit(3)), setvar("diamonds", lit(0))]),
     rule([held("Move Left")], [comp("Gino", "Platformer", "moveLeft")]),
@@ -355,9 +358,10 @@ gino_rules = [
     rule([line("Gino", "Node", "isOverlapping", s("Bat")), safe], hurt),
     rule([line("Gino", "Node", "isOverlapping", s("Plant")), safe], hurt),
     rule([line("Gino", "Node", "isOverlapping", s("Crystals")), safe], hurt),
-    # Out of lives, or down a gap: back to the start with three.
-    rule([compare(lives, LE, lit(0))], to_start),
-    rule([compare(gy, GT, lit(H * CELL + 40))], to_start + [sound("hurt")]),
+    # Down a gap costs a heart and puts Gino back at the start. Out of hearts, the level starts
+    # again: diamonds, hearts and enemies back, three hearts (the first rule), the best kept.
+    rule([compare(gy, GT, lit(H * CELL + 40))], to_start + [addvar("lives", -1), sound("hurt")]),
+    rule([compare(lives, LE, lit(0)), once()], [line("Scenes", "SceneManager", "changeScene", s("scenes/Level.scene.json"))]),
     # The great crystal: the sign, a stop, and a better diamond count than the saved best kept.
     rule([line("Gino", "Node", "onCollisionStarted", s("GreatCrystal"))],
          [line("WinSign", "Node", "show"), comp("Gino", "Platformer", "setEnabled", b(False)), sound("win")],
@@ -409,8 +413,8 @@ d.write("README.md", """# Rocky demo
 A platform level in a cave: run and jump with the arrow keys or WASD (Space
 jumps too), collect the diamonds, stomp the slimes by landing on them, keep
 clear of the bats, the snapping plant and the crystals, and reach the great
-crystal. Three hearts; a heart found gives one back; out of hearts, or down a
-gap, and Gino starts again. Your best diamond count is saved.
+crystal. Three hearts: a hit or a fall down a gap costs one, a heart found gives one
+back, and out of hearts the level starts again. Your best diamond count is saved.
 
 Built on the **Platformer** behavior and a tilemap level. A **Camera** follows
 Gino; the cave behind is three **Layers**, the far ones moving least. The

@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 2,
+  "baseClass": "Light",
+  "defaults": {
+    "spriteKey": "BatGlow.sprite.json",
+    "tint": 16767370,
+    "opacity": 1.0,
+    "radius": 4
+  },
+  "components": []
+}
