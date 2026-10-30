@@ -35,7 +35,7 @@
       "value": 95,
       "spread": 15
     },
-    "spin": {
+    "rotate": {
       "value": 20,
       "spread": 40
     },
@@ -75,7 +75,7 @@
     "speed": {
       "shape": "Hold"
     },
-    "spin": {
+    "rotate": {
       "shape": "Hold"
     },
     "direction": {
@@ -110,7 +110,7 @@
     "onHit": "stick",
     "bounce": 0.6,
     "friction": 0.8,
-    "bounceSpin": 0,
+    "bounceRotate": 0,
     "bounces": 0
   }
 }

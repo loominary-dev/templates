@@ -145,8 +145,8 @@ d.write("vscript/BatchTint.vscript.json", {"rules": [
     rule([line("self", "Node", "onCreated")], [line("self", "Node", "setTintRgb", *[var(c) for c in PARTS])])]})
 
 # Every part of every tree in a batch turns at the batch's speed, picked with its color.
-SPIN = 30   # degrees a second, either way
-tree_rules = [rule([line("self", "Node", "onCreated")], [comp("self", "Rotate", "setSpeed", var("spin"))])]
+ROTATE = 30   # degrees a second, either way
+tree_rules = [rule([line("self", "Node", "onCreated")], [comp("self", "Rotate", "setSpeed", var("rotateSpeed"))])]
 d.write("vscript/TreeRules.vscript.json", {"rules": tree_rules})
 
 FPS_EVERY = 0.5   # seconds between readings of the frame rate, so the number can be read
@@ -158,9 +158,9 @@ def bench(kind, count_scope, make, ready):
         # Each scene starts white; then before the making below, so a press's first ten already take its color.
         # A tint can only darken, so each part starts at 60: no batch is lost against the black.
         rule([once()], [line("variables", "Variables", "setVariable", s(c), lit(255)) for c in PARTS]
-             + [line("variables", "Variables", "setVariable", s("spin"), random(-SPIN, SPIN))]),
+             + [line("variables", "Variables", "setVariable", s("rotateSpeed"), random(-ROTATE, ROTATE))]),
         rule([mouse_pressed(LEFT_BUTTON)], [line("variables", "Variables", "setVariable", s(c), random(60, 256)) for c in PARTS]
-             + [line("variables", "Variables", "setVariable", s("spin"), random(-SPIN, SPIN))]),
+             + [line("variables", "Variables", "setVariable", s("rotateSpeed"), random(-ROTATE, ROTATE))]),
         rule([ready, once(), system("repeat", lit(100))], [make]),
         rule([ready, mouse_down(LEFT_BUTTON), system("repeat", lit(10))], [make]),
         rule([mouse_down(RIGHT_BUTTON)], [sheet("destroyNewest", s(kind), lit(10))]),
