@@ -408,7 +408,7 @@ INPUT = {"Move Left": keys(37, 65), "Move Right": keys(39, 68), "Move Up": keys(
 d.write("project.json", {"schemaVersion": 2, "name": "Rocky demo", "entryScene": "scenes/Level.scene.json", "input": INPUT,
     "collisionLayers": {"1": "Player", "2": "Pickup", "3": "Ground", "4": "Enemy", "5": "Hazard"},
     "display": {"width": 480, "height": 270, "windowWidth": 960, "windowHeight": 540, "presentMode": "fit", "displayMode": "windowed",
-                "autoResize": True, "wholeWindowScale": True, "drawnAt": "game"},
+                "autoResize": True, "wholeWindowScale": True, "drawnAt": "game", "highResolution": "normal"},
     "physics": {"engine": "arcade", "gravity": 760},
     # A dim cave: the light map multiplied over the world, so the lights show as light.
     "lighting": {"lightMap": True, "ambient": "#2e343c", "blend": "multiply"}})

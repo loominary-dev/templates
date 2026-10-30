@@ -116,7 +116,8 @@
     "displayMode": "windowed",
     "autoResize": true,
     "wholeWindowScale": true,
-    "drawnAt": "game"
+    "drawnAt": "game",
+    "highResolution": "normal"
   },
   "physics": {
     "engine": "arcade",
