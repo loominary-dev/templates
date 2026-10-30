@@ -10,8 +10,8 @@ Built on the **Platformer** behavior and a tilemap level. A **Camera** follows
 Gino; the cave behind is three **Layers**, the far ones moving least. The
 slimes and bats **Patrol** (the bats **Oscillate** too), Gino **Blinks** after a
 hit. **Lights** glow over the crystals; each bat carries a glow and Gino
-carries one, so their shadows move; the project's light map dims the cave. Each light has a small core
-that **Glows**, drawn at its own brightness over the dark, and so do the crystals and the diamonds: the
+carries one, so their shadows move; the project's light map dims the cave. What gives the light
+**Glows**, drawn at its own brightness over the dark: the crystals, the bats and the diamonds, so the
 cave shows where its light comes from, not only what it lights. Every rule is in `vscript/`.
 
 Art by Szadi art (Rocky Level pack, public domain). Sounds by
