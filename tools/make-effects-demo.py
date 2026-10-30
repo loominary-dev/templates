@@ -84,12 +84,12 @@ def effect(sprite, **over):
     e = {"version": 1, "sprite": sprite, "animations": [], "animationSpeed": "fixed", "randomness": "normal", "blend": "add",
         "emission": {"mode": "continuous", "rate": 40, "rateOverTime": hold(), "cycle": 2, "repeat": True, "shape": "point", "width": 32, "height": 32, "edgeOnly": False,
                      "direction": "facing", "angle": 0, "spread": 30, "warmUp": 0, "lifetime": spread(1.2, 0.3), "maxParticles": 600, "local": False, "offScreen": True, "under": False},
-        "start": {"speed": spread(120, 30), "spin": spread(0, 0), "angle": "travel", "angleSpread": 0, "size": spread(1, 0),
+        "start": {"speed": spread(120, 30), "rotate": spread(0, 0), "angle": "travel", "angleSpread": 0, "size": spread(1, 0),
                   "opacity": spread(1, 0), "color": argb(255, 0xffffff), "color2": argb(255, 0xffffff), "offsetX": 0, "offsetY": 0},
-        "life": {"size": hold(), "opacity": linear(0), "color": hold(), "speed": hold(), "spin": hold(), "direction": hold()},
+        "life": {"size": hold(), "opacity": linear(0), "color": hold(), "speed": hold(), "rotate": hold(), "direction": hold()},
         "forces": {"gravityX": 0, "gravityY": 0, "drag": 0, "windX": 0, "windY": 0, "windOverTime": hold(), "windCycle": 2, "windRepeat": True, "windSpread": 0,
                    "push": 0, "swirl": 0, "turbulence": 0, "turbulenceStrength": 0, "speedJitter": 0},
-        "collision": {"on": False, "mask": -1, "radius": 0, "onHit": "bounce", "bounce": 0.6, "friction": 0.8, "bounceSpin": 0, "bounces": 0}}
+        "collision": {"on": False, "mask": -1, "radius": 0, "onHit": "bounce", "bounce": 0.6, "friction": 0.8, "bounceRotate": 0, "bounces": 0}}
     for k, v in over.items():
         cur = e
         parts = k.split(".")
@@ -100,19 +100,19 @@ def effect(sprite, **over):
 EFFECTS = {
     # A fire: a line of flames rising, white to orange to dark, each flame tumbling a little and buffeted.
     "Fire": effect("Puff.sprite.json", **{"emission.rate": 110, "emission.shape": "line", "emission.width": 60, "emission.direction": "angle", "emission.angle": -90, "emission.spread": 20,
-        "emission.lifetime": spread(0.9, 0.3), "emission.warmUp": 1, "start.speed": spread(130, 30), "start.spin": spread(0, 40), "start.size": spread(1.3, 0.4),
+        "emission.lifetime": spread(0.9, 0.3), "emission.warmUp": 1, "start.speed": spread(130, 30), "start.rotate": spread(0, 40), "start.size": spread(1.3, 0.4),
         "life.size": linear(0.2, 0.1), "life.opacity": ease(0, "Quad", "In"),
         "life.color": gradient(0, argb(255, 0xfff2b0), 0.3, argb(255, 0xff9a20), 0.7, argb(255, 0xc82a08), 1, argb(0, 0x400000)),
         "forces.gravityY": -170, "forces.drag": 0.8, "forces.turbulence": 1.5, "forces.turbulenceStrength": 0.6}),
     # Smoke: slow gray puffs that swell and fade, the wind on them rising and falling over six seconds.
     "Smoke": effect("Puff.sprite.json", **{"blend": "mix", "emission.rate": 22, "emission.shape": "circle", "emission.width": 36, "emission.height": 36, "emission.direction": "angle", "emission.angle": -90, "emission.spread": 30,
-        "emission.lifetime": spread(3.2, 0.8), "emission.warmUp": 2.5, "emission.maxParticles": 300, "start.speed": spread(40, 15), "start.spin": spread(0, 30), "start.size": spread(1.1, 0.3), "start.opacity": spread(0.5, 0.1),
+        "emission.lifetime": spread(3.2, 0.8), "emission.warmUp": 2.5, "emission.maxParticles": 300, "start.speed": spread(40, 15), "start.rotate": spread(0, 30), "start.size": spread(1.1, 0.3), "start.opacity": spread(0.5, 0.1),
         "life.size": linear(3.2, 0.5), "life.opacity": ease(0, "Quad", "Out"), "life.color": gradient(0, argb(255, 0x9a9a9a), 1, argb(0, 0x404040)),
         "forces.gravityY": -18, "forces.windX": 90, "forces.windOverTime": peak(1, 0), "forces.windCycle": 6, "forces.windRepeat": True, "forces.windSpread": 0.6,
         "forces.drag": 0.3, "forces.turbulence": 0.8, "forces.turbulenceStrength": 0.5}),
     # Embers: a burst flung from a point, falling and dying out.
     "Embers": effect("Spark.sprite.json", **{"emission.mode": "burst", "emission.rate": 50, "emission.spread": 360, "emission.lifetime": spread(1.4, 0.5),
-        "start.speed": spread(220, 80, "even"), "start.spin": spread(0, 300), "start.size": spread(1, 0.3),
+        "start.speed": spread(220, 80, "even"), "start.rotate": spread(0, 300), "start.size": spread(1, 0.3),
         "life.size": linear(0.3), "life.opacity": ease(0, "Quad", "In"), "life.color": gradient(0, argb(255, 0xffe080), 0.5, argb(255, 0xff6a10), 1, argb(0, 0x801000)),
         "forces.gravityY": 420, "forces.drag": 0.6}),
     # Rain: a wide line of drops falling at a slant, bouncing once off what they land on.
@@ -122,14 +122,14 @@ EFFECTS = {
         "forces.gravityY": 300, "collision.on": True, "collision.radius": 3, "collision.onHit": "bounce", "collision.bounce": 0.2, "collision.friction": 0.3, "collision.bounces": 1}),
     # Snow: flakes drifting down, each feeling the wind its own way, turning slowly.
     "Snow": effect("Flake.sprite.json", **{"blend": "mix", "emission.rate": 60, "emission.shape": "line", "emission.width": 1000, "emission.direction": "angle", "emission.angle": 90, "emission.spread": 10,
-        "emission.lifetime": spread(12, 1.5), "emission.warmUp": 10, "emission.maxParticles": 1100, "start.speed": spread(95, 15), "start.spin": spread(20, 40), "start.size": spread(0.7, 0.3), "start.opacity": spread(0.9, 0.1),
+        "emission.lifetime": spread(12, 1.5), "emission.warmUp": 10, "emission.maxParticles": 1100, "start.speed": spread(95, 15), "start.rotate": spread(20, 40), "start.size": spread(0.7, 0.3), "start.opacity": spread(0.9, 0.1),
         "life.opacity": custom(0, 1, 0.8, 1, 1, 0), "life.color": hold(),
         "forces.windX": 40, "forces.windOverTime": peak(1, 0), "forces.windCycle": 5, "forces.windSpread": 0.8, "forces.turbulence": 0.6, "forces.turbulenceStrength": 0.8,
         "collision.on": True, "collision.radius": 4, "collision.onHit": "stick", "collision.mask": 1}),
     # Sparks off a grinder: fast, bright, bouncing twice then gone; what they hit is picked by a rule.
     "Sparks": effect("Spark.sprite.json", **{"emission.rate": 160, "emission.spread": 28, "emission.lifetime": spread(0.9, 0.3), "start.speed": spread(420, 120, "even"), "start.size": spread(1, 0.4),
         "life.size": linear(0.2), "life.opacity": linear(0, 0.3), "life.color": gradient(0, argb(255, 0xffffff), 0.3, argb(255, 0xffd060), 1, argb(0, 0xff4000)),
-        "forces.gravityY": 500, "collision.on": True, "collision.radius": 2, "collision.onHit": "bounce", "collision.bounce": 0.5, "collision.friction": 0.6, "collision.bounceSpin": 400, "collision.bounces": 2}),
+        "forces.gravityY": 500, "collision.on": True, "collision.radius": 2, "collision.onHit": "bounce", "collision.bounce": 0.5, "collision.friction": 0.6, "collision.bounceRotate": 400, "collision.bounces": 2}),
     # Magic: a ring of motes flung outward and swirled round, carried with the wand that makes them.
     "MagicLocal": effect("Puff.sprite.json", **{"emission.rate": 150, "emission.shape": "ring", "emission.width": 40, "emission.height": 40, "emission.direction": "outward", "emission.spread": 40,
         "emission.lifetime": spread(1.2, 0.3), "emission.local": True, "start.speed": spread(40, 20), "start.size": spread(0.5, 0.2),
@@ -240,7 +240,7 @@ def sparks(place):
     place("HitsCaption", "Caption", 160, -120, text="Sparks hitting a crate this step:")
     place("Hits1", "Hits", 400, -120, text="0")
 feature("SparksThatHit", "Sparks that hit", [
-    "Sparks fly off a grinder, bounce twice with spin and then go. The rule 'On particle hit Crate' picks the crates the sparks land on, and tints them; a second later they are plain again.",
+    "Sparks fly off a grinder, bounce twice, rotating, and then go. The rule 'On particle hit Crate' picks the crates the sparks land on, and tints them; a second later they are plain again.",
     "hitCount says how many hit something this step.",
 ], "click: move the grinder to where you point", sparks, [
     rule([pt("Sparks", "onParticleHit", s("Crate"))], [line("Crate", "Node", "setTint", s("#ff9040"))]),
@@ -328,7 +328,7 @@ Keys **1** to **6** change scene (a Scene Manager in the singleton scene
 |---|---|---|
 | 1 | A campfire | a four-stop color gradient, size and opacity curves, turbulence, warm up; smoke on a wind that rises and falls over a cycle; a **Burst** of embers where you click |
 | 2 | Rain and snow | **collision**: rain bouncing once off a roof and the ground, snow sticking where it lands; **Even** against **Normal** randomness; wind each flake feels its own way |
-| 3 | Sparks that hit | **On particle hit** picking the crates the sparks land on; bounce spin and a bounce count; **hitCount** |
+| 3 | Sparks that hit | **On particle hit** picking the crates the sparks land on; bounce rotate and a bounce count; **hitCount** |
 | 4 | Magic | a ring shape, outward direction, push and swirl, a Peak size curve; particles carried with the emitter against left in the world |
 | 5 | Animated particles | each particle playing the sprite's animation, across its life or at its own pace; a box's edge |
 | 6 | A geyser and fireworks | a hand-drawn **rate over time** curve on a repeating cycle; a burst whose speed eases to a stop, with a late fade |

@@ -80,7 +80,7 @@ sprite("Player", 24, [("idle", [char(0)], 400, "loop"), ("walk", [char(0), char(
        [box("body", 12, 13, 14, 20)])
 sprite("Slime", 24, [("walk", [char(18), char(19)], 220, "loop"), ("squashed", [char(20)], 350, "once")],
        [box("head", 12, 11, 14, 4, sensor=True), box("body", 12, 17, 14, 8, sensor=True)])
-sprite("Coin", 18, [("spin", [tile(151), tile(152)], 300, "loop")], [box("coin", 9, 9, 12, 12, sensor=True)])
+sprite("Coin", 18, [("rotate", [tile(151), tile(152)], 300, "loop")], [box("coin", 9, 9, 12, 12, sensor=True)])
 sprite("Spikes", 18, [("still", [tile(68)], 400, "loop")], [box("points", 9, 13, 16, 8, sensor=True)])
 sprite("Flag", 18, [("wave", [tile(111), tile(112)], 400, "loop")], [box("pole", 9, 9, 10, 18, sensor=True)])
 

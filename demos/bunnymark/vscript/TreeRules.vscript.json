@@ -23,7 +23,7 @@
               "params": [
                 {
                   "type": "literal",
-                  "value": "spin",
+                  "value": "rotateSpeed",
                   "valueKind": "string"
                 }
               ],

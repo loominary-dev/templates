@@ -29,7 +29,7 @@
       "type": "Help",
       "x": -470,
       "y": -244,
-      "text": "Sparks fly off a grinder, bounce twice with spin and then go. The rule 'On particle hit Crate' picks the crates the sparks"
+      "text": "Sparks fly off a grinder, bounce twice, rotating, and then go. The rule 'On particle hit Crate' picks the crates the sparks"
     },
     {
       "id": "e1000000-0000-4000-8000-000000002204",

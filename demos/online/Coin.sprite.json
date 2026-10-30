@@ -20,7 +20,7 @@
   "animations": [
     {
       "id": "e0000000-0000-4000-8000-000000000118",
-      "name": "spin",
+      "name": "rotate",
       "loop": true,
       "playMode": "loop",
       "repeatTo": 0,
