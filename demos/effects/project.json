@@ -13,7 +13,7 @@
       "bindings": [
         {
           "kind": "key",
-          "code": 82
+          "code": 87
         }
       ]
     },
@@ -22,6 +22,22 @@
         {
           "kind": "key",
           "code": 83
+        }
+      ]
+    },
+    "NextScene": {
+      "bindings": [
+        {
+          "kind": "key",
+          "code": 39
+        }
+      ]
+    },
+    "PreviousScene": {
+      "bindings": [
+        {
+          "kind": "key",
+          "code": 37
         }
       ]
     },

@@ -294,7 +294,7 @@ def keys(*codes): return [{"kind": "key", "code": c} for c in codes]
 INPUT = {"Move Left": {"bindings": keys(37, 65)}, "Move Right": {"bindings": keys(39, 68)}, "Move Up": {"bindings": keys(38, 87)},
          "Move Down": {"bindings": keys(40, 83)}, "Jump": {"bindings": keys(32, 38, 87) + [{"kind": "pad", "code": 0}]},
          "Fire": {"bindings": [{"kind": "mouse", "code": 0}]}, "Accept": {"bindings": keys(13, 32)}, "Cancel": {"bindings": keys(27)},
-         "Pause": {"bindings": keys(27)}}
+         "Pause": {"bindings": keys(80)}}
 write("project.json", {"schemaVersion": 2, "name": "Platformer demo", "entryScene": "scenes/Level.scene.json",
     "input": INPUT,
     "collisionLayers": {"1": "Player", "2": "Pickup", "3": "Ground", "4": "Enemy", "5": "Hazard"},

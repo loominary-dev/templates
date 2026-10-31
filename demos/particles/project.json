@@ -17,7 +17,7 @@
       "bindings": [
         {
           "kind": "key",
-          "code": 87
+          "code": 84
         }
       ]
     },
@@ -73,7 +73,7 @@
       "bindings": [
         {
           "kind": "key",
-          "code": 77
+          "code": 87
         }
       ]
     },
@@ -85,43 +85,43 @@
         }
       ]
     },
-    "PictureWater": {
+    "Mix": {
       "bindings": [
         {
           "kind": "key",
-          "code": 81
+          "code": 88
         }
       ]
     },
-    "PictureJelly": {
+    "Net": {
       "bindings": [
         {
           "kind": "key",
-          "code": 87
+          "code": 78
         }
       ]
     },
-    "PictureMix": {
+    "Honey": {
       "bindings": [
         {
           "kind": "key",
-          "code": 69
+          "code": 86
         }
       ]
     },
-    "PictureNet": {
+    "NextScene": {
       "bindings": [
         {
           "kind": "key",
-          "code": 82
+          "code": 39
         }
       ]
     },
-    "PictureHoney": {
+    "PreviousScene": {
       "bindings": [
         {
           "kind": "key",
-          "code": 84
+          "code": 37
         }
       ]
     },
@@ -202,14 +202,6 @@
         {
           "kind": "key",
           "code": 48
-        }
-      ]
-    },
-    "SceneP": {
-      "bindings": [
-        {
-          "kind": "key",
-          "code": 80
         }
       ]
     }

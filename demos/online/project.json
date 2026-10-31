@@ -121,7 +121,7 @@
       "bindings": [
         {
           "kind": "key",
-          "code": 27
+          "code": 80
         },
         {
           "kind": "pad",

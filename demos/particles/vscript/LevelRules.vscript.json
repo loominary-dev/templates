@@ -764,6 +764,18 @@
           "onComponent": true
         },
         {
+          "scope": "Fan",
+          "className": "Rotate",
+          "name": "setSpeed",
+          "params": [
+            {
+              "type": "literal",
+              "value": 720
+            }
+          ],
+          "onComponent": true
+        },
+        {
           "scope": "audio",
           "className": "Audio",
           "name": "playSound",
@@ -843,6 +855,18 @@
           "scope": "Breeze",
           "className": "Field",
           "name": "setStrength",
+          "params": [
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "Fan",
+          "className": "Rotate",
+          "name": "setSpeed",
           "params": [
             {
               "type": "literal",

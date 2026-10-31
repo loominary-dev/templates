@@ -49,7 +49,19 @@ d.sprite("Grinder", 36, 36, [("still", [grinder], 400, "loop")], [])
 plug = canvas(60, 10)
 ImageDraw.Draw(plug).rectangle([0, 0, 59, 9], fill=(30, 30, 36, 255))
 d.sprite("Plug", 60, 10, [("still", [plug], 400, "loop")], [box("hole", 30, 5, 60, 10, sensor=True)])
-d.sprite("Breeze", 260, 100, [("still", [panel(260, 100, (255, 255, 255, 16), (255, 255, 255, 40), 8)], 400, "loop")], [box("air", 130, 50, 260, 100, sensor=True)])
+# The fan's wind is a Field over a picture nothing is drawn for; the fan itself is the disc that turns.
+d.sprite("Breeze", 260, 100, [("still", [panel(260, 100, (255, 255, 255, 0), (255, 255, 255, 0), 8)], 400, "loop")], [box("air", 130, 50, 260, 100, sensor=True)])
+def fan_disc(size, fill, edge, spokes, hub):
+    img = canvas(size, size)
+    g = ImageDraw.Draw(img)
+    g.ellipse([1, 1, size - 2, size - 2], fill=fill, outline=edge, width=2)
+    c = (size - 1) / 2
+    for i in range(spokes):
+        a = i * math.pi * 2 / spokes
+        g.line([c, c, c + math.cos(a) * c * 0.75, c + math.sin(a) * c * 0.75], fill=edge, width=2)
+    g.ellipse([c - 4, c - 4, c + 4, c + 4], fill=hub)
+    return img
+d.sprite("Fan", 40, 40, [("still", [fan_disc(40, (200, 200, 210, 255), (90, 90, 100, 255), 3, (90, 90, 100, 255))], 400, "loop")], [])
 peg = canvas(18, 18)
 ImageDraw.Draw(peg).ellipse([1, 1, 16, 16], fill=STONE, outline=STONE_EDGE, width=2)
 d.sprite("Peg", 18, 18, [("still", [peg], 400, "loop")], [circle("body", 9, 9, 9)])
@@ -89,6 +101,7 @@ d.type_json("Plug", "Sprite", {"spriteKey": "Plug.sprite.json", "collision": {"l
             [{"componentClass": "Drain", "system": "Water1", "on": False}])
 d.type_json("Breeze", "Sprite", {"spriteKey": "Breeze.sprite.json", "collision": {"layer": AIR, "mask": 0}},
             [{"componentClass": "Field", "kind": "Wind", "strength": 0, "affects": "Particles"}])
+d.type_json("Fan", "Sprite", {"spriteKey": "Fan.sprite.json", "collisionEnabled": False}, [{"componentClass": "Rotate", "speed": 0}])
 d.type_json("Level", "Node", {}, [{"componentClass": "LevelRules"}])
 for name, size in [("Help", 13), ("Caption", 13), ("Readout", 13)]:
     d.type_json(name, "Label", {"text": "", "fontSize": size, "shadow": True})
@@ -110,8 +123,8 @@ place("Tap1", "Tap", -230, -210, rotation=math.pi / 2)
 place("Hopper1", "Hopper", 200, -200, rotation=math.pi / 2)
 place("Grinder1", "Grinder", 400, -120, rotation=math.pi * 0.85)
 place("Plug1", "Plug", -60, 232)
-place("Breeze1", "Breeze", 0, -40)
-place("Help1", "Help", -470, -262, text="W: the tap   S: the sand   D: the plughole   F: the fan   C: clear   click: splash   right click: pour   drag: the crates")
+place("Breeze1", "Breeze", 0, -40); place("Fan1", "Fan", -150, -40)
+place("Help1", "Help", -470, -262, text="T: the tap   S: the sand   D: the plughole   F: the fan   C: clear   click: splash   right click: pour   drag: the crates")
 place("WaterCaption", "Caption", 380, -262, text="Water"); place("WaterCount1", "WaterCount", 430, -262)
 place("SandCaption", "Caption", 380, -244, text="Sand"); place("SandCount1", "SandCount", 430, -244)
 place("StepCaption", "Caption", 380, -226, text="ms"); place("StepTime1", "StepTime", 430, -226)
@@ -138,7 +151,7 @@ level_rules = (
     toggle("Tap", "tap", [comp("Tap", "Emitter", "setOn", b(True)), click], [comp("Tap", "Emitter", "setOn", b(False)), click])
     + toggle("Sand", "sand", [comp("Hopper", "Emitter", "setOn", b(True)), click], [comp("Hopper", "Emitter", "setOn", b(False)), click])
     + toggle("Drain", "drain", [comp("Plug", "Drain", "setOn", b(True)), click], [comp("Plug", "Drain", "setOn", b(False)), click])
-    + toggle("Fan", "fan", [comp("Breeze", "Field", "setStrength", lit(500)), click], [comp("Breeze", "Field", "setStrength", lit(0)), click])
+    + toggle("Fan", "fan", [comp("Breeze", "Field", "setStrength", lit(500)), comp("Fan", "Rotate", "setSpeed", lit(720)), click], [comp("Breeze", "Field", "setStrength", lit(0)), comp("Fan", "Rotate", "setSpeed", lit(0)), click])
     + [
         rule([once()], [line("variables", "Variables", "setVariable", s("tap"), lit(1)), sheet("preloadObjectType", s("Crate"))]),
         # The crates come once there is water to float them: something resting on the floor has none under it.
@@ -381,7 +394,7 @@ def into(place):
 feature("ObjectsIntoParticles", "Objects into particles",
         ["Turn into particles puts a particle wherever an object's picture is opaque, colored from its pixel.",
          "Made elastic, the pictures fall and bounce looking like themselves; left as water, they melt."],
-        "E turns them into elastic particles.   M melts them into water.   R puts them back.   Click to knock the pieces about.",
+        "E turns them into elastic particles.   W melts them into water.   R puts them back.   Click to knock the pieces about.",
         into,
         [rule([pressed("Elastic")], [a for name, g in PICTURES for a in (fl("Bits", "turnIntoParticles", s(name), s(g), lit(128), lit(1)), fl("Bits", "setGroupKind", s(g), lit(1)))] + [click]),
          # Melting makes jelly plain water again, and turns a picture still whole straight into water.
@@ -414,15 +427,16 @@ def mode(key, *actions):
 water = [fl("Flood", "setKind", s("Water")), fl("Flood", "setViscosity", lit(0.25)), fl("Flood", "setColorMixing", lit(0))]
 feature("PictureIntoWater", "A picture into particles",
         ["Turn into particles on a whole picture, each particle colored from its pixel, then choose what they become."],
-        "Q water   W jelly   E colors that mix, stirred   R a soft net   T honey   P puts it back   Click to splash",
+        "W water   E elastic   X colors that mix, stirred   N a soft net   V viscous honey   R puts it back   Click to splash",
         picture,
-        [mode("PictureWater", *water, fl("Flood", "setGroupKind", s("picture"), lit(0)), *calm),
-         mode("PictureJelly", *water, fl("Flood", "setGroupKind", s("picture"), lit(1)), *calm),
-         mode("PictureMix", fl("Flood", "setKind", s("Water")), fl("Flood", "setViscosity", lit(0.25)), fl("Flood", "setColorMixing", lit(0.5)),
+        [mode("Melt", *water, fl("Flood", "setGroupKind", s("picture"), lit(0)), *calm),
+         mode("Elastic", *water, fl("Flood", "setGroupKind", s("picture"), lit(1)), *calm),
+         mode("Mix", fl("Flood", "setKind", s("Water")), fl("Flood", "setViscosity", lit(0.25)), fl("Flood", "setColorMixing", lit(0.5)),
               fl("Flood", "setGroupKind", s("picture"), lit(0)), comp("Stirrer", "Field", "setStrength", lit(900)), comp("Stirrer", "Rotate", "setSpeed", lit(240)), line("Stirrer", "Node", "show")),
-         mode("PictureNet", *water, fl("Flood", "setGroupKind", s("picture"), lit(2)), *calm),
-         mode("PictureHoney", fl("Flood", "setKind", s("Water")), fl("Flood", "setViscosity", lit(4)), fl("Flood", "setColorMixing", lit(0)),
+         mode("Net", *water, fl("Flood", "setGroupKind", s("picture"), lit(2)), *calm),
+         mode("Honey", fl("Flood", "setKind", s("Water")), fl("Flood", "setViscosity", lit(4)), fl("Flood", "setColorMixing", lit(0)),
               fl("Flood", "setGroupKind", s("picture"), lit(0)), *calm),
+         rule([pressed("Reset")], [line("Scenes", "SceneManager", "changeScene", s("scenes/PictureIntoWater.scene.json"))]),
          rule([mouse_pressed(LEFT_BUTTON)], [fl("Flood", "pushInCircle", px, py, lit(80), lit(0), lit(-500)), line("audio", "Audio", "playSound", s("splash"))])])
 
 # ── the singleton: the Scene Manager, the keys that change scene, and the list of scenes ──
@@ -430,25 +444,39 @@ SCENES = [("Basin", "Basin")] + FEATURES
 d.type_json("Scenes", "SceneManager", {"transition": "Fade", "fadeTime": 0.15})
 d.type_json("Switcher", "Node", {}, [{"componentClass": "SwitchRules"}])
 d.type_json("SceneList", "Label", {"text": "", "fontSize": 13, "shadow": True})
-# 1 to 9 and 0, then P for the picture.
-keys_for = [str((i + 1) % 10) for i in range(min(10, len(SCENES)))] + ["P"] * (len(SCENES) > 10)
-named = ["%s %s" % (k, title) for k, (_, title) in zip(keys_for, SCENES)]
-listing = "   ".join(named[:6]) + "\n" + "   ".join(named[6:])
+# 1 to 9 and 0 for the first ten scenes; the arrows step through them all, which is how the eleventh is reached.
+keys_for = [str((i + 1) % 10) for i in range(min(10, len(SCENES)))]
+named = ["%s %s" % (k, title) for k, (_, title) in zip(keys_for, SCENES)] + ["Right from 0: %s" % title for _, title in SCENES[len(keys_for):]]
+listing = "   ".join(named[:6]) + "\n" + "   ".join(named[6:]) + "   Left and Right step through the scenes"
 d.scene("scenes/singletons/Demo.scene.json", [
     {"id": d.uid(3001), "name": "Demo"},
     {"id": d.uid(3002), "parent": d.uid(3001), "name": "Scenes1", "type": "Scenes"},
     {"id": d.uid(3003), "parent": d.uid(3001), "name": "Switcher1", "type": "Switcher"},
     {"id": d.uid(3004), "parent": d.uid(3001), "name": "SceneList1", "type": "SceneList", "x": -470, "y": 238, "text": listing},
 ])
+# The arrows step through the scenes. A variable holds which scene is up: the arrows move it by one and wrap it,
+# then the rule for that number changes scene. The move comes first and the change rules only read the number,
+# so one press moves one scene.
+def go(i): return line("Scenes", "SceneManager", "changeScene", s("scenes/%s.scene.json" % SCENES[i][0]))
+def at(i): return line("variables", "Variables", "setVariable", s("scene"), lit(i))
+n = len(SCENES)
 d.write("vscript/SwitchRules.vscript.json", {"rules": [
-    rule([pressed("Scene" + k)], [line("Scenes", "SceneManager", "changeScene", s("scenes/%s.scene.json" % f))]) for k, (f, _) in zip(keys_for, SCENES)]})
+    rule([pressed("Scene" + k)], [at(i), go(i)]) for i, k in enumerate(keys_for)]
+    + [rule([pressed("NextScene")], [line("variables", "Variables", "addToVariable", s("scene"), lit(1))]),
+       rule([pressed("PreviousScene")], [line("variables", "Variables", "addToVariable", s("scene"), lit(-1))]),
+       rule([compare(var("scene"), GE, lit(n))], [at(0)]),
+       rule([compare(var("scene"), LT, lit(0))], [at(n - 1)])]
+    + [rule([pressed("NextScene"), compare(var("scene"), EQ, lit(i))], [go(i)]) for i in range(n)]
+    + [rule([pressed("PreviousScene"), compare(var("scene"), EQ, lit(i))], [go(i)]) for i in range(n)]})
 
 d.write("project.json", {"schemaVersion": 2, "name": "Particles demo", "entryScene": "scenes/Basin.scene.json",
     "collisionLayers": {"1": "Solid", "2": "Body", "3": "Drain", "4": "Air", "5": "Mold"},
     "singletons": ["scenes/singletons/Demo.scene.json"],
-    "input": dict({"Tap": keys(87), "Sand": keys(83), "Drain": keys(68), "Fan": keys(70), "Clear": keys(67),
-                   "Act": keys(32), "Elastic": keys(69), "Melt": keys(77), "Reset": keys(82),
-                   "PictureWater": keys(81), "PictureJelly": keys(87), "PictureMix": keys(69), "PictureNet": keys(82), "PictureHoney": keys(84)},
+    # The keys the demos share: Space acts, R puts the scene back, E elastic, W water, V viscous, N net, X mixing colors,
+    # F fan, D drain, T tap, S sand, C clear; 1 to 0 and the arrows choose a scene.
+    "input": dict({"Tap": keys(84), "Sand": keys(83), "Drain": keys(68), "Fan": keys(70), "Clear": keys(67),
+                   "Act": keys(32), "Elastic": keys(69), "Melt": keys(87), "Reset": keys(82),
+                   "Mix": keys(88), "Net": keys(78), "Honey": keys(86), "NextScene": keys(39), "PreviousScene": keys(37)},
                   **{"Scene" + k: keys(ord(k)) for k in keys_for}),
     "display": {"width": W, "height": H, "windowWidth": W, "windowHeight": H, "presentMode": "fit", "displayMode": "windowed", "autoResize": True},
     "physics": {"engine": "box2d", "gravity": 980}})
@@ -460,11 +488,12 @@ particle's color, and the behavior holds the settings (its **Kind**: Water,
 Powder for the sand, and water with no pressure, a lifetime and color over
 life for the sparks).
 
-- **W** turns the tap on and off, **S** the sand hopper (both **Emitters**
+- **T** turns the tap on and off, **S** the sand hopper (both **Emitters**
   that name the object carrying the Fluid).
 - **D** opens the plughole, a **Drain**.
 - **F** starts the fan, a **Field** set to Wind that pushes particles.
 - **C** clears the basin.
+- **1** to **0** choose a scene; **Left** and **Right** step through them.
 - **Click** to splash (**Push particles in a circle**), **right click** to
   pour a drop (**Make particles in a circle**), and drag the crates.
 
@@ -473,7 +502,7 @@ are dropped in once the basin has water, six seconds in.
 
 ## The other scenes
 
-Keys **1** to **0**, and **P**, change scene (a Scene Manager in the singleton scene
+Keys **1** to **0**, and the Left and Right arrows, change scene (a Scene Manager in the singleton scene
 `scenes/singletons/Demo`); each scene says what it shows and its keys.
 
 | Key | Scene | What it shows |
@@ -487,7 +516,7 @@ Keys **1** to **0**, and **P**, change scene (a Scene Manager in the singleton s
 | 8 | Color mixing | **Color mixing**: red and blue water turning purple where they meet |
 | 9 | Color by speed | **Color by speed**: a stream and splashes that foam white |
 | 0 | Objects into particles | **Turn … into particles**: Kenney's animal heads made elastic, then melted |
-| P | A picture into particles | a whole picture in its own colors, about six thousand particles; Q to T make it water, jelly, colors that mix, a soft net or honey |
+| Right from 0 | A picture into particles | a whole picture in its own colors, about six thousand particles; W, E, X, N and V make it water, elastic, colors that mix, a soft net or honey; R puts it back |
 
 The pools and blocks are laid with **Fill … with particles** into hidden
 shapes placed in each scene (the Mold and Dropper objects), so they land

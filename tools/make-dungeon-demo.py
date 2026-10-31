@@ -478,7 +478,7 @@ write("project.json", {"schemaVersion": 2, "name": "Dungeon demo", "entryScene":
     "singletons": ["scenes/singletons/Game.scene.json"],
     "collisionLayers": {"1": "Player", "2": "Walls", "3": "Enemy", "4": "Arrow", "5": "Pickup", "6": "Door"},
     "input": {"Move Left": keys(37, 65), "Move Right": keys(39, 68), "Move Up": keys(38, 87), "Move Down": keys(40, 83),
-              "Shoot": keys(32, 74), "Pause": keys(27)},
+              "Shoot": keys(32, 74), "Pause": keys(80)},
     "display": {"width": 320, "height": 180, "windowWidth": 1280, "windowHeight": 720, "presentMode": "fit", "displayMode": "windowed", "autoResize": True, "wholeWindowScale": True},
     "physics": {"engine": "arcade", "gravity": 0}})
 write("README.md", """# Dungeon demo

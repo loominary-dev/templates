@@ -3,7 +3,7 @@ frame rate drops. Two scenes, each with a HUD of the frame rate and the
 count. Bunnies: plain bouncing bunnies, each moved by its own visual script,
 as pixi.js's bunnymark does it. Trees: each one a bunny turning slowly with
 a smaller bunny on it turning too, and a smaller one again. Hold the left
-button to add ten a frame, the right to take ten away; 1 and 2 change scene.
+button to add ten a frame, the right to take ten away; 1 and 2, or the arrows, change scene.
 
     python3 tools/make-bunnymark-demo.py [demos/bunnymark]
 
@@ -102,7 +102,7 @@ def hud(first_id, what):
         {"id": u(first_id + 3), "parent": u(first_id), "name": "CountCaption", "type": "Caption", "x": 8, "y": 30, "text": what},
         {"id": u(first_id + 4), "parent": u(first_id), "name": "CountText1", "type": "CountText", "x": 60, "y": 28},
         {"id": u(first_id + 5), "parent": u(first_id), "name": "Help", "type": "Caption", "x": 8, "y": H - 24,
-         "text": "Hold left to add ten a frame, each press a new color; right takes ten away. 1 and 2 change scene."},
+         "text": "Hold left to add ten a frame, each press a new color; right takes ten away. 1 and 2, or the arrows, change scene."},
     ]
 d.scene("scenes/Bunnies.scene.json", [{"id": d.uid(1), "name": "Bunnies"},
     {"id": d.uid(2), "parent": d.uid(1), "name": "BunnyBench1", "type": "BunnyBench", "x": 0, "y": 0}] + hud(10, "Bunnies"))
@@ -180,13 +180,19 @@ d.write("vscript/TreeBenchRules.vscript.json", {"vars": BENCH_VARS, "rules": ben
     sheet("sceneIsPreloaded", s("scenes/BunnyTree.scene.json")))})
 d.write("vscript/SwitchRules.vscript.json", {"rules": [
     rule([once()], [sheet("preloadObjectType", s("Bunny")), sheet("preloadScene", s("scenes/BunnyTree.scene.json"))]),
-    rule([pressed("Bunnies")], [line("Benches", "SceneManager", "changeScene", s("Bunnies"))]),
-    rule([pressed("Trees")], [line("Benches", "SceneManager", "changeScene", s("Trees"))]),
+    rule([pressed("Bunnies")], [line("variables", "Variables", "setVariable", s("scene"), lit(0)), line("Benches", "SceneManager", "changeScene", s("Bunnies"))]),
+    rule([pressed("Trees")], [line("variables", "Variables", "setVariable", s("scene"), lit(1)), line("Benches", "SceneManager", "changeScene", s("Trees"))]),
+    # Two scenes: either arrow goes to the other. A variable says which is up, so one press moves once.
+    rule([pressed("NextScene"), compare(var("scene"), EQ, lit(0))], [line("variables", "Variables", "setVariable", s("scene"), lit(2))]),
+    rule([pressed("PreviousScene"), compare(var("scene"), EQ, lit(0))], [line("variables", "Variables", "setVariable", s("scene"), lit(2))]),
+    rule([pressed("NextScene"), compare(var("scene"), EQ, lit(1))], [line("variables", "Variables", "setVariable", s("scene"), lit(0)), line("Benches", "SceneManager", "changeScene", s("Bunnies"))]),
+    rule([pressed("PreviousScene"), compare(var("scene"), EQ, lit(1))], [line("variables", "Variables", "setVariable", s("scene"), lit(0)), line("Benches", "SceneManager", "changeScene", s("Bunnies"))]),
+    rule([compare(var("scene"), EQ, lit(2))], [line("variables", "Variables", "setVariable", s("scene"), lit(1)), line("Benches", "SceneManager", "changeScene", s("Trees"))]),
 ]})
 
 d.write("project.json", {"schemaVersion": 2, "name": "BunnyMark", "entryScene": "scenes/Bunnies.scene.json",
     "singletons": ["scenes/singletons/Bench.scene.json"],
-    "input": {"Bunnies": keys(49), "Trees": keys(50)},
+    "input": {"Bunnies": keys(49), "Trees": keys(50), "NextScene": keys(39), "PreviousScene": keys(37)},
     "display": {"width": W, "height": H, "windowWidth": W, "windowHeight": H, "presentMode": "fit", "displayMode": "windowed", "autoResize": True},
     "physics": {"engine": "arcade", "gravity": 0}})
 d.write("README.md", """# BunnyMark

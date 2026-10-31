@@ -48,7 +48,7 @@ INPUT = {
     "Jump": {"bindings": [key(W), key(SPACE), key(UP_ARROW, RIGHT), pad(PAD_BOTTOM)]},
     "Accept": {"bindings": [key(ENTER), key(SPACE)]},
     "Cancel": {"bindings": [key(27)]},
-    "Pause": {"bindings": [key(27), pad(PAD_START)]},
+    "Pause": {"bindings": [key(80), pad(PAD_START)]},
 }
 project = read("project.json")
 project["name"] = "Two players demo"

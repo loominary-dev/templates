@@ -1,7 +1,7 @@
 """The particle effects demo: a scene for each thing a Particles object does,
 every effect a `.effect.json` of its own in `assets/effects`, on sprites drawn
 here (a soft spot, a spark, a drop, a flake, a ring that grows frame by
-frame). Keys 1 to 6 change scene through a Scene Manager in the singleton
+frame). Keys 1 to 6, or the arrows, change scene through a Scene Manager in the singleton
 scene.
 
     python3 tools/make-effects-demo.py [demos/effects]
@@ -223,7 +223,7 @@ def weather(place):
 feature("RainAndSnow", "Rain and snow", [
     "Rain: a wide line of drops with Even randomness, each swept as a circle through the world's shapes; they bounce once off the roof and the ground, then go.",
     "Snow: flakes with Normal randomness, turning as they fall, on a wind that gusts over five seconds and that each flake feels differently; they stick where they land.",
-], "hold R to stop the rain   hold S for snow instead", weather, [
+], "hold W to stop the rain   hold S for snow instead", weather, [
     rule([held("Rain")], [pt("Rain", "stopEmitting")]),
     rule([not_(held("Rain")), not_(held("Snow"))], [pt("Rain", "startEmitting")]),
     rule([held("Snow")], [pt("Snow", "startEmitting"), pt("Rain", "stopEmitting")]),
@@ -297,20 +297,32 @@ d.type_json("Scenes", "SceneManager", {"transition": "Fade", "fadeTime": 0.15})
 d.type_json("Switcher", "Node", {}, [{"componentClass": "SwitchRules"}])
 d.type_json("SceneList", "Label", {"text": "", "fontSize": 13})
 keys_for = [str(i + 1) for i in range(len(SCENES))]
-listing = "   ".join("%s %s" % (k, title) for k, (_, title) in zip(keys_for, SCENES))
+listing = "   ".join("%s %s" % (k, title) for k, (_, title) in zip(keys_for, SCENES)) + "   Left and Right step through the scenes"
 d.scene("scenes/singletons/Demo.scene.json", [
     {"id": d.uid(3001), "name": "Demo"},
     {"id": d.uid(3002), "parent": d.uid(3001), "name": "Scenes1", "type": "Scenes"},
     {"id": d.uid(3003), "parent": d.uid(3001), "name": "Switcher1", "type": "Switcher"},
     {"id": d.uid(3004), "parent": d.uid(3001), "name": "SceneList1", "type": "SceneList", "x": -470, "y": 238, "text": listing},
 ])
+# The arrows step through the scenes. A variable holds which scene is up: the arrows move it by one and wrap it,
+# then the rule for that number changes scene. The move comes first and the change rules only read the number,
+# so one press moves one scene.
+def go(i): return line("Scenes", "SceneManager", "changeScene", s("scenes/%s.scene.json" % SCENES[i][0]))
+def at(i): return line("variables", "Variables", "setVariable", s("scene"), lit(i))
+n = len(SCENES)
 d.write("vscript/SwitchRules.vscript.json", {"rules": [
-    rule([pressed("Scene" + k)], [line("Scenes", "SceneManager", "changeScene", s("scenes/%s.scene.json" % f))]) for k, (f, _) in zip(keys_for, SCENES)]})
+    rule([pressed("Scene" + k)], [at(i), go(i)]) for i, k in enumerate(keys_for)]
+    + [rule([pressed("NextScene")], [line("variables", "Variables", "addToVariable", s("scene"), lit(1))]),
+       rule([pressed("PreviousScene")], [line("variables", "Variables", "addToVariable", s("scene"), lit(-1))]),
+       rule([compare(var("scene"), GE, lit(n))], [at(0)]),
+       rule([compare(var("scene"), LT, lit(0))], [at(n - 1)])]
+    + [rule([pressed("NextScene"), compare(var("scene"), EQ, lit(i))], [go(i)]) for i in range(n)]
+    + [rule([pressed("PreviousScene"), compare(var("scene"), EQ, lit(i))], [go(i)]) for i in range(n)]})
 
 d.write("project.json", {"schemaVersion": 2, "name": "Particle effects demo", "entryScene": "scenes/Campfire.scene.json",
     "collisionLayers": {"1": "Solid"},
     "singletons": ["scenes/singletons/Demo.scene.json"],
-    "input": dict({"Rain": keys(82), "Snow": keys(83)}, **{"Scene" + k: keys(ord(k)) for k in keys_for}),
+    "input": dict({"Rain": keys(87), "Snow": keys(83), "NextScene": keys(39), "PreviousScene": keys(37)}, **{"Scene" + k: keys(ord(k)) for k in keys_for}),
     "display": {"width": W, "height": H, "windowWidth": W, "windowHeight": H, "presentMode": "fit", "displayMode": "windowed", "autoResize": True},
     "physics": {"engine": "arcade", "gravity": 980}})
 d.write("README.md", """# Particle effects demo

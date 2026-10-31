@@ -21,6 +21,22 @@
           "code": 50
         }
       ]
+    },
+    "NextScene": {
+      "bindings": [
+        {
+          "kind": "key",
+          "code": 39
+        }
+      ]
+    },
+    "PreviousScene": {
+      "bindings": [
+        {
+          "kind": "key",
+          "code": 37
+        }
+      ]
     }
   },
   "display": {
