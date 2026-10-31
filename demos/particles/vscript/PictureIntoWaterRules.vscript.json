@@ -397,7 +397,7 @@
           "params": [
             {
               "type": "literal",
-              "value": 240
+              "value": 720
             }
           ],
           "onComponent": true
