@@ -6,15 +6,13 @@
       "layer": 2,
       "mask": 3
     },
-    "spriteKey": "Bit.sprite.json"
+    "spriteKey": "Cell.sprite.json"
   },
   "components": [
     {
       "componentClass": "PhysicsBody",
-      "bodyType": "Dynamic"
-    },
-    {
-      "componentClass": "DragRules"
+      "bodyType": "Dynamic",
+      "gravityScale": 0.12
     }
   ]
 }

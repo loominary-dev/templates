@@ -48,7 +48,7 @@
           "params": [
             {
               "type": "literal",
-              "value": "burst",
+              "value": "apart",
               "valueKind": "string"
             },
             {
@@ -63,43 +63,100 @@
     {
       "conditions": [
         {
-          "scope": "PairB",
-          "className": "PhysicsBody",
-          "name": "hasJoint",
+          "scope": "maths",
+          "className": "Maths",
+          "name": "compare",
+          "params": [
+            {
+              "type": "value",
+              "scope": "system",
+              "className": "System",
+              "name": "getElapsedTime",
+              "params": [],
+              "returnType": "Float"
+            },
+            {
+              "type": "literal",
+              "value": 4
+            },
+            {
+              "type": "literal",
+              "value": 0.05
+            }
+          ]
+        },
+        {
+          "scope": "system",
+          "className": "VisualScriptComponent",
+          "name": "triggerOnce",
+          "params": []
+        },
+        {
+          "scope": "Core",
+          "className": "Node",
+          "name": "nameIs",
           "params": [
             {
               "type": "literal",
-              "value": "pair",
+              "value": "Core1",
               "valueKind": "string"
             }
+          ]
+        }
+      ],
+      "actions": [],
+      "subRules": [
+        {
+          "conditions": [],
+          "actions": [
+            {
+              "scope": "Cell",
+              "className": "PhysicsBody",
+              "name": "meldTo",
+              "params": [
+                {
+                  "type": "object",
+                  "scope": "Core"
+                }
+              ],
+              "onComponent": true
+            }
           ],
-          "onComponent": true,
-          "not": true
+          "subRules": []
+        }
+      ]
+    },
+    {
+      "conditions": [
+        {
+          "scope": "Core",
+          "className": "Node",
+          "name": "nameIs",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Core1",
+              "valueKind": "string"
+            }
+          ]
         }
       ],
       "actions": [
         {
-          "scope": "PairB",
-          "className": "PhysicsBody",
-          "name": "hingeTo",
+          "scope": "Mass",
+          "className": "Label",
+          "name": "setNumber",
           "params": [
             {
-              "type": "literal",
-              "value": "PairA1",
-              "valueKind": "string"
-            },
-            {
-              "type": "literal",
-              "value": "left",
-              "valueKind": "string"
-            },
-            {
-              "type": "literal",
-              "value": "pair",
-              "valueKind": "string"
+              "type": "value",
+              "scope": "Core",
+              "className": "PhysicsBody",
+              "name": "mass",
+              "params": [],
+              "returnType": "Float",
+              "onComponent": true
             }
-          ],
-          "onComponent": true
+          ]
         }
       ],
       "subRules": []
@@ -107,13 +164,13 @@
     {
       "conditions": [
         {
-          "scope": "Lump",
-          "className": "Node",
-          "name": "nameIs",
+          "scope": "input",
+          "className": "Input",
+          "name": "isCommandPressed",
           "params": [
             {
               "type": "literal",
-              "value": "Lump1",
+              "value": "Act",
               "valueKind": "string"
             }
           ]
@@ -131,7 +188,7 @@
               "params": [
                 {
                   "type": "literal",
-                  "value": "burst",
+                  "value": "apart",
                   "valueKind": "string"
                 }
               ],
@@ -150,18 +207,30 @@
       ],
       "actions": [
         {
-          "scope": "Mass",
-          "className": "Label",
-          "name": "setNumber",
+          "scope": "variables",
+          "className": "Variables",
+          "name": "setVariable",
           "params": [
             {
-              "type": "value",
-              "scope": "Lump",
-              "className": "PhysicsBody",
-              "name": "mass",
-              "params": [],
-              "returnType": "Float",
-              "onComponent": true
+              "type": "literal",
+              "value": "apart",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 2
+            }
+          ]
+        },
+        {
+          "scope": "audio",
+          "className": "Audio",
+          "name": "playSound",
+          "params": [
+            {
+              "type": "literal",
+              "value": "crack",
+              "valueKind": "string"
             }
           ]
         }
@@ -170,203 +239,20 @@
         {
           "conditions": [
             {
-              "scope": "Crate",
-              "className": "Node",
-              "name": "isOverlapping",
-              "params": [
-                {
-                  "type": "literal",
-                  "value": "Lump",
-                  "valueKind": "string"
-                }
-              ]
-            },
-            {
-              "scope": "Crate",
+              "scope": "Cell",
               "className": "PhysicsBody",
               "name": "isMelded",
               "params": [],
-              "onComponent": true,
-              "not": true
+              "onComponent": true
             }
           ],
           "actions": [
             {
-              "scope": "Crate",
+              "scope": "Cell",
               "className": "PhysicsBody",
-              "name": "meldTo",
-              "params": [
-                {
-                  "type": "object",
-                  "scope": "Lump"
-                }
-              ],
-              "onComponent": true
-            },
-            {
-              "scope": "audio",
-              "className": "Audio",
-              "name": "playSound",
-              "params": [
-                {
-                  "type": "literal",
-                  "value": "click",
-                  "valueKind": "string"
-                }
-              ]
-            }
-          ],
-          "subRules": []
-        },
-        {
-          "conditions": [
-            {
-              "scope": "Bit",
-              "className": "Node",
-              "name": "isOverlapping",
-              "params": [
-                {
-                  "type": "literal",
-                  "value": "Lump",
-                  "valueKind": "string"
-                }
-              ]
-            },
-            {
-              "scope": "Bit",
-              "className": "PhysicsBody",
-              "name": "isMelded",
+              "name": "unmeld",
               "params": [],
-              "onComponent": true,
-              "not": true
-            }
-          ],
-          "actions": [
-            {
-              "scope": "Bit",
-              "className": "PhysicsBody",
-              "name": "meldTo",
-              "params": [
-                {
-                  "type": "object",
-                  "scope": "Lump"
-                }
-              ],
               "onComponent": true
-            },
-            {
-              "scope": "audio",
-              "className": "Audio",
-              "name": "playSound",
-              "params": [
-                {
-                  "type": "literal",
-                  "value": "click",
-                  "valueKind": "string"
-                }
-              ]
-            }
-          ],
-          "subRules": []
-        },
-        {
-          "conditions": [
-            {
-              "scope": "PairA",
-              "className": "Node",
-              "name": "isOverlapping",
-              "params": [
-                {
-                  "type": "literal",
-                  "value": "Lump",
-                  "valueKind": "string"
-                }
-              ]
-            },
-            {
-              "scope": "PairA",
-              "className": "PhysicsBody",
-              "name": "isMelded",
-              "params": [],
-              "onComponent": true,
-              "not": true
-            }
-          ],
-          "actions": [
-            {
-              "scope": "PairA",
-              "className": "PhysicsBody",
-              "name": "meldTo",
-              "params": [
-                {
-                  "type": "object",
-                  "scope": "Lump"
-                }
-              ],
-              "onComponent": true
-            },
-            {
-              "scope": "audio",
-              "className": "Audio",
-              "name": "playSound",
-              "params": [
-                {
-                  "type": "literal",
-                  "value": "click",
-                  "valueKind": "string"
-                }
-              ]
-            }
-          ],
-          "subRules": []
-        },
-        {
-          "conditions": [
-            {
-              "scope": "PairB",
-              "className": "Node",
-              "name": "isOverlapping",
-              "params": [
-                {
-                  "type": "literal",
-                  "value": "Lump",
-                  "valueKind": "string"
-                }
-              ]
-            },
-            {
-              "scope": "PairB",
-              "className": "PhysicsBody",
-              "name": "isMelded",
-              "params": [],
-              "onComponent": true,
-              "not": true
-            }
-          ],
-          "actions": [
-            {
-              "scope": "PairB",
-              "className": "PhysicsBody",
-              "name": "meldTo",
-              "params": [
-                {
-                  "type": "object",
-                  "scope": "Lump"
-                }
-              ],
-              "onComponent": true
-            },
-            {
-              "scope": "audio",
-              "className": "Audio",
-              "name": "playSound",
-              "params": [
-                {
-                  "type": "literal",
-                  "value": "click",
-                  "valueKind": "string"
-                }
-              ]
             }
           ],
           "subRules": []
@@ -400,7 +286,7 @@
               "params": [
                 {
                   "type": "literal",
-                  "value": "burst",
+                  "value": "apart",
                   "valueKind": "string"
                 }
               ],
@@ -412,7 +298,19 @@
             },
             {
               "type": "literal",
-              "value": 0
+              "value": 1
+            }
+          ]
+        },
+        {
+          "scope": "Core",
+          "className": "Node",
+          "name": "nameIs",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Core1",
+              "valueKind": "string"
             }
           ]
         }
@@ -425,12 +323,12 @@
           "params": [
             {
               "type": "literal",
-              "value": "burst",
+              "value": "apart",
               "valueKind": "string"
             },
             {
               "type": "literal",
-              "value": 1
+              "value": 0
             }
           ]
         },
@@ -441,7 +339,7 @@
           "params": [
             {
               "type": "literal",
-              "value": "crack",
+              "value": "clank",
               "valueKind": "string"
             }
           ]
@@ -451,88 +349,493 @@
         {
           "conditions": [
             {
-              "scope": "Crate",
+              "scope": "Cell",
               "className": "PhysicsBody",
               "name": "isMelded",
               "params": [],
-              "onComponent": true
+              "onComponent": true,
+              "not": true
             }
           ],
           "actions": [
             {
-              "scope": "Crate",
+              "scope": "Cell",
               "className": "PhysicsBody",
-              "name": "unmeld",
-              "params": [],
-              "onComponent": true
-            }
-          ],
-          "subRules": []
-        },
-        {
-          "conditions": [
-            {
-              "scope": "Bit",
-              "className": "PhysicsBody",
-              "name": "isMelded",
-              "params": [],
-              "onComponent": true
-            }
-          ],
-          "actions": [
-            {
-              "scope": "Bit",
-              "className": "PhysicsBody",
-              "name": "unmeld",
-              "params": [],
-              "onComponent": true
-            }
-          ],
-          "subRules": []
-        },
-        {
-          "conditions": [
-            {
-              "scope": "PairA",
-              "className": "PhysicsBody",
-              "name": "isMelded",
-              "params": [],
-              "onComponent": true
-            }
-          ],
-          "actions": [
-            {
-              "scope": "PairA",
-              "className": "PhysicsBody",
-              "name": "unmeld",
-              "params": [],
-              "onComponent": true
-            }
-          ],
-          "subRules": []
-        },
-        {
-          "conditions": [
-            {
-              "scope": "PairB",
-              "className": "PhysicsBody",
-              "name": "isMelded",
-              "params": [],
-              "onComponent": true
-            }
-          ],
-          "actions": [
-            {
-              "scope": "PairB",
-              "className": "PhysicsBody",
-              "name": "unmeld",
-              "params": [],
+              "name": "meldTo",
+              "params": [
+                {
+                  "type": "object",
+                  "scope": "Core"
+                }
+              ],
               "onComponent": true
             }
           ],
           "subRules": []
         }
       ]
+    },
+    {
+      "conditions": [
+        {
+          "scope": "maths",
+          "className": "Maths",
+          "name": "compare",
+          "params": [
+            {
+              "type": "value",
+              "scope": "variables",
+              "className": "Variables",
+              "name": "getVariable",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "apart",
+                  "valueKind": "string"
+                }
+              ],
+              "returnType": "Float"
+            },
+            {
+              "type": "literal",
+              "value": 0
+            },
+            {
+              "type": "literal",
+              "value": 2
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "variables",
+          "className": "Variables",
+          "name": "setVariable",
+          "params": [
+            {
+              "type": "literal",
+              "value": "apart",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 1
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isMousePressed",
+          "params": [
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "scope": "Cell",
+          "className": "Node",
+          "name": "containsPoint",
+          "params": [
+            {
+              "type": "value",
+              "scope": "input",
+              "className": "Input",
+              "name": "worldPositionX",
+              "params": [],
+              "returnType": "Float"
+            },
+            {
+              "type": "value",
+              "scope": "input",
+              "className": "Input",
+              "name": "worldPositionY",
+              "params": [],
+              "returnType": "Float"
+            }
+          ]
+        },
+        {
+          "scope": "Cell",
+          "className": "PhysicsBody",
+          "name": "isMelded",
+          "params": [],
+          "onComponent": true
+        },
+        {
+          "scope": "Core",
+          "className": "Node",
+          "name": "nameIs",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Core1",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Core",
+          "className": "PhysicsBody",
+          "name": "grabAt",
+          "params": [
+            {
+              "type": "value",
+              "scope": "input",
+              "className": "Input",
+              "name": "worldPositionX",
+              "params": [],
+              "returnType": "Float"
+            },
+            {
+              "type": "value",
+              "scope": "input",
+              "className": "Input",
+              "name": "worldPositionY",
+              "params": [],
+              "returnType": "Float"
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "Core",
+          "className": "PhysicsBody",
+          "name": "dragToward",
+          "params": [
+            {
+              "type": "value",
+              "scope": "input",
+              "className": "Input",
+              "name": "worldPositionX",
+              "params": [],
+              "returnType": "Float"
+            },
+            {
+              "type": "value",
+              "scope": "input",
+              "className": "Input",
+              "name": "worldPositionY",
+              "params": [],
+              "returnType": "Float"
+            }
+          ],
+          "onComponent": true
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isMousePressed",
+          "params": [
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "scope": "Core",
+          "className": "Node",
+          "name": "containsPoint",
+          "params": [
+            {
+              "type": "value",
+              "scope": "input",
+              "className": "Input",
+              "name": "worldPositionX",
+              "params": [],
+              "returnType": "Float"
+            },
+            {
+              "type": "value",
+              "scope": "input",
+              "className": "Input",
+              "name": "worldPositionY",
+              "params": [],
+              "returnType": "Float"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Core",
+          "className": "PhysicsBody",
+          "name": "dragToward",
+          "params": [
+            {
+              "type": "value",
+              "scope": "input",
+              "className": "Input",
+              "name": "worldPositionX",
+              "params": [],
+              "returnType": "Float"
+            },
+            {
+              "type": "value",
+              "scope": "input",
+              "className": "Input",
+              "name": "worldPositionY",
+              "params": [],
+              "returnType": "Float"
+            }
+          ],
+          "onComponent": true
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isMousePressed",
+          "params": [
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "scope": "Cell",
+          "className": "Node",
+          "name": "containsPoint",
+          "params": [
+            {
+              "type": "value",
+              "scope": "input",
+              "className": "Input",
+              "name": "worldPositionX",
+              "params": [],
+              "returnType": "Float"
+            },
+            {
+              "type": "value",
+              "scope": "input",
+              "className": "Input",
+              "name": "worldPositionY",
+              "params": [],
+              "returnType": "Float"
+            }
+          ]
+        },
+        {
+          "scope": "Cell",
+          "className": "PhysicsBody",
+          "name": "isMelded",
+          "params": [],
+          "onComponent": true,
+          "not": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Cell",
+          "className": "PhysicsBody",
+          "name": "dragToward",
+          "params": [
+            {
+              "type": "value",
+              "scope": "input",
+              "className": "Input",
+              "name": "worldPositionX",
+              "params": [],
+              "returnType": "Float"
+            },
+            {
+              "type": "value",
+              "scope": "input",
+              "className": "Input",
+              "name": "worldPositionY",
+              "params": [],
+              "returnType": "Float"
+            }
+          ],
+          "onComponent": true
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isMouseDown",
+          "params": [
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "scope": "Core",
+          "className": "PhysicsBody",
+          "name": "isDragged",
+          "params": [],
+          "onComponent": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Core",
+          "className": "PhysicsBody",
+          "name": "dragToward",
+          "params": [
+            {
+              "type": "value",
+              "scope": "input",
+              "className": "Input",
+              "name": "worldPositionX",
+              "params": [],
+              "returnType": "Float"
+            },
+            {
+              "type": "value",
+              "scope": "input",
+              "className": "Input",
+              "name": "worldPositionY",
+              "params": [],
+              "returnType": "Float"
+            }
+          ],
+          "onComponent": true
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isMouseDown",
+          "params": [
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ],
+          "not": true
+        },
+        {
+          "scope": "Core",
+          "className": "PhysicsBody",
+          "name": "isDragged",
+          "params": [],
+          "onComponent": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Core",
+          "className": "PhysicsBody",
+          "name": "releaseDrag",
+          "params": [],
+          "onComponent": true
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isMouseDown",
+          "params": [
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "scope": "Cell",
+          "className": "PhysicsBody",
+          "name": "isDragged",
+          "params": [],
+          "onComponent": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Cell",
+          "className": "PhysicsBody",
+          "name": "dragToward",
+          "params": [
+            {
+              "type": "value",
+              "scope": "input",
+              "className": "Input",
+              "name": "worldPositionX",
+              "params": [],
+              "returnType": "Float"
+            },
+            {
+              "type": "value",
+              "scope": "input",
+              "className": "Input",
+              "name": "worldPositionY",
+              "params": [],
+              "returnType": "Float"
+            }
+          ],
+          "onComponent": true
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isMouseDown",
+          "params": [
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ],
+          "not": true
+        },
+        {
+          "scope": "Cell",
+          "className": "PhysicsBody",
+          "name": "isDragged",
+          "params": [],
+          "onComponent": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Cell",
+          "className": "PhysicsBody",
+          "name": "releaseDrag",
+          "params": [],
+          "onComponent": true
+        }
+      ],
+      "subRules": []
     }
   ]
 }

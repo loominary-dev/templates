@@ -62,8 +62,9 @@ still("Wheel", 28, 28, disc(28, (40, 40, 44, 255), (12, 12, 14, 255), 5, (180, 1
 still("Bump", 60, 60, disc(60, (92, 140, 70, 255), (54, 90, 40, 255)), [circle("body", 30, 30, 30)])
 still("Lead", 36, 36, panel(36, 36, (60, 120, 220, 255), (24, 52, 110, 255), 4), [box("body", 18, 18, 36, 36)])
 still("Tail", 36, 36, panel(36, 36, (235, 150, 60, 255), (140, 80, 20, 255), 4), [box("body", 18, 18, 36, 36)])
-still("Lump", 48, 48, disc(48, (90, 90, 100, 255), (40, 40, 46, 255), 0, (140, 140, 150, 255)), [circle("body", 24, 24, 24, density=3)])
-still("Bit", 16, 16, disc(16, (232, 92, 80, 255), (140, 40, 40, 255)), [circle("body", 8, 8, 8)])
+# The grid's cells: a hundred 12 px squares, one of them the core the rest meld to.
+still("Cell", 12, 12, panel(12, 12, (120, 190, 255, 255), (40, 90, 160, 255), 2), [box("body", 6, 6, 12, 12)])
+still("Core", 12, 12, panel(12, 12, (255, 120, 90, 255), (160, 50, 30, 255), 2), [box("body", 6, 6, 12, 12)])
 
 d.sounds({"click": (da, "pepSound1.ogg"), "crack": (im, "impactWood_heavy_000.ogg"), "bump": (im, "impactWood_light_002.ogg"),
           "clank": (im, "impactMetal_light_000.ogg"), "kick": (im, "impactSoft_medium_000.ogg")})
@@ -80,9 +81,12 @@ for name in ["Ground", "Wall", "Beam", "Post", "Hook", "Bump"]:
 for name in ["Rail", "Cabinet"]:
     d.type_json(name, "Sprite", {"spriteKey": name + ".sprite.json", "collisionEnabled": False})
 # Dynamic, draggable with the mouse.
-for name in ["Crate", "Ball", "Door", "Link", "Sign", "Drawer", "Lead", "Lump", "Bit"]:
+for name in ["Crate", "Ball", "Door", "Link", "Sign", "Drawer", "Lead"]:
     d.type_json(name, "Sprite", dict(moving(), spriteKey=name + ".sprite.json"), [body(), drag()])
 d.type_json("Shot", "Sprite", dict(moving(), spriteKey="Shot.sprite.json"), [body(bounceX=0.2, bounceY=0.2)])
+# The cells fall at an eighth of gravity, so a shape can be caught before they all lie on the ground; their dragging is the scene's own.
+for name in ["Cell", "Core"]:
+    d.type_json(name, "Sprite", dict(moving(), spriteKey=name + ".sprite.json"), [body(gravityScale=0.12)])
 d.type_json("Lift", "Sprite", dict(moving(), spriteKey="Lift.sprite.json"), [body()])
 d.type_json("Tail", "Sprite", dict(moving(), spriteKey="Tail.sprite.json"), [body()])
 d.type_json("Cart", "Sprite", dict(moving(), spriteKey="Cart.sprite.json"), [body(), drag()])
@@ -279,31 +283,41 @@ feature("Follow", "Follow by force",
          rule([line("Tail", "Node", "nameIs", s("Tail1"))], [line("Holds", "Label", "setText", bvalue("Tail", "jointHolds", s("tow"), returnType="string"))])]
         + toggle("Act", "side", [body_("Tail", "setJointRest", s("tow"), lit(-80), lit(0)), click], [body_("Tail", "setJointRest", s("tow"), lit(80), lit(0)), click]))
 
-# 7. Meld: a lump rolls down a ramp and melds whatever it touches into its own body as it goes; Space bursts it apart.
-RAMP_DEG = 20
-def ramp_y(x): return 20 + (x + 140) * math.tan(math.radians(RAMP_DEG))   # the ramp's middle line, 640 long, about (-140, 20)
+# 7. Meld: a hundred cells melded to one fall as one body and lie over what they land on; Space sets them free,
+# Space again melds them where they are, in whatever shape they make. Not a hundred joints: one body of a hundred shapes.
 def meld(place):
-    place("Ramp", "Beam", -140, 20, rotation=math.radians(RAMP_DEG))
-    place("Lump1", "Lump", -400, ramp_y(-400) - 8.5 - 26)
-    for i, x in enumerate([-300, -230, -160, -90, -20, 50, 110]):
-        if i % 2 == 0: place("Crate%d" % i, "Crate", x, ramp_y(x) - 8.5 - 17)
-        else: place("Bit%d" % i, "Bit", x, ramp_y(x) - 8.5 - 8.5)
-    place("PairA1", "PairA", 250, GROUND - 16); place("PairB1", "PairB", 282, GROUND - 16)
-    for i, x in enumerate([340, 380, 420]): place("Bit%d" % (10 + i), "Bit", x, GROUND - 8)
-    readout(place, "Mass", 200, -190, "The lump's mass:")
-melders = ["Crate", "Bit", "PairA", "PairB"]
+    for x in [-170, -60, 60, 170]: place("Bump%d" % x, "Bump", x, GROUND - 20 + (40 if x in (-60, 60) else 0))
+    place("Post1", "Post", 0, GROUND - 60)
+    # Centers 24 px apart, 12 px of space between 12 px cells: the middle one is the core.
+    for r in range(10):
+        for c in range(10):
+            x, y = -108 + 24 * c, -230 + 24 * r
+            if r == 5 and c == 5: place("Core1", "Core", x, y)
+            else: place("Cell%d" % (r * 10 + c), "Cell", x, y)
+    readout(place, "Mass", 200, -190, "The group's mass:")
+core = obj("Core")
 feature("Meld", "Meld",
-        ["Meld to: an object joins another's body and the two move as one until Unmeld; its shapes, its mass and its joints go with it."],
-        "The lump melds whatever it rolls over; the pair at the foot is hinged, so the second comes along by its hinge.   Space bursts it apart.   R restarts the scene",
+        ["Meld to: an object joins another's body. A hundred cells melded to one are one body of a hundred shapes, not a hundred joints, in whatever shape they are melded."],
+        "Space sets the cells free; Space again melds them where they are.   Drag a cell, or the whole group while they are melded.   R restarts the scene",
         meld,
-        [rule([once()], [set_var("burst", lit(0))]),
-         joint_once("PairB", "pair", body_("PairB", "hingeTo", s("PairA1"), s("left"), s("pair"))),
-         # The lump is picked first, then each piece touching it melds to it: a word that takes an object takes the one picked.
-         # After the burst nothing melds again, or the pieces would rejoin where they lie against it.
-         rule([line("Lump", "Node", "nameIs", s("Lump1")), compare(var("burst"), EQ, lit(0))], [label("Mass", bvalue("Lump", "mass"))],
-              [rule([line(t, "Node", "isOverlapping", s("Lump")), not_(body_(t, "isMelded"))], [body_(t, "meldTo", obj("Lump")), click]) for t in melders]),
-         rule([pressed("Act"), compare(var("burst"), EQ, lit(0))], [set_var("burst", lit(1)), sound("crack")],
-              [rule([body_(t, "isMelded")], [body_(t, "unmeld")]) for t in melders])])
+        [rule([once()], [set_var("apart", lit(0))]),
+         # Melded a moment after the start, once every cell has its body; the core is picked first, then every cell melds to it.
+         rule([compare(value("system", "System", "getElapsedTime"), GT, lit(0.05)), once(), line("Core", "Node", "nameIs", s("Core1"))], [],
+              [rule([], [body_("Cell", "meldTo", core)])]),
+         rule([line("Core", "Node", "nameIs", s("Core1"))], [label("Mass", bvalue("Core", "mass"))]),
+         rule([pressed("Act"), compare(var("apart"), EQ, lit(0))], [set_var("apart", lit(2)), sound("crack")], [rule([body_("Cell", "isMelded")], [body_("Cell", "unmeld")])]),
+         rule([pressed("Act"), compare(var("apart"), EQ, lit(1)), line("Core", "Node", "nameIs", s("Core1"))], [set_var("apart", lit(0)), sound("clank")],
+              [rule([not_(body_("Cell", "isMelded"))], [body_("Cell", "meldTo", core)])]),
+         rule([compare(var("apart"), EQ, lit(2))], [set_var("apart", lit(1))]),
+         # Dragging: a melded cell is part of the core's body, so the core is taken hold of where the pointer is; a free cell is dragged by itself.
+         rule([mouse_pressed(LEFT_BUTTON), line("Cell", "Node", "containsPoint", px, py), body_("Cell", "isMelded"), line("Core", "Node", "nameIs", s("Core1"))],
+              [body_("Core", "grabAt", px, py), body_("Core", "dragToward", px, py)]),
+         rule([mouse_pressed(LEFT_BUTTON), line("Core", "Node", "containsPoint", px, py)], [body_("Core", "dragToward", px, py)]),
+         rule([mouse_pressed(LEFT_BUTTON), line("Cell", "Node", "containsPoint", px, py), not_(body_("Cell", "isMelded"))], [body_("Cell", "dragToward", px, py)]),
+         rule([mouse_down(LEFT_BUTTON), body_("Core", "isDragged")], [body_("Core", "dragToward", px, py)]),
+         rule([not_(mouse_down(LEFT_BUTTON)), body_("Core", "isDragged")], [body_("Core", "releaseDrag")]),
+         rule([mouse_down(LEFT_BUTTON), body_("Cell", "isDragged")], [body_("Cell", "dragToward", px, py)]),
+         rule([not_(mouse_down(LEFT_BUTTON)), body_("Cell", "isDragged")], [body_("Cell", "releaseDrag")])])
 
 # ── the singleton: the Scene Manager, the keys that change scene, and the list of scenes ──
 SCENES = FEATURES
@@ -357,7 +371,7 @@ Space acts, R restarts the scene; drag anything with the mouse.
 | 4 | Springs | **Spring to**: on a spring it bounces, stiff it is a rod, with **Limit** and almost no spring a rope; **Joint force** |
 | 5 | Wheels | **Be a wheel of** with **Drive** (A and D) and **Set the spring** (Space: soft or stiff); **Joint speed**, **Joint position** |
 | 6 | Follow by force | **Follow by force**: the orange block is pulled to a place beside the blue one and shoves crates; **Set the rest** (Space); **Joint holds** |
-| 7 | Meld | **Meld to**: a lump rolling down a ramp makes whatever it touches part of its own body, mass and all, a hinged pair by its hinge; **Unmeld** (Space) bursts it apart, each piece keeping its speed |
+| 7 | Meld | **Meld to**: a hundred cells melded to one fall as one body and lie over what they land on; **Unmeld** (Space) sets them free, falling slowly (**gravity scale** 0.12), and Space melds them again where they are, whatever shape they make; dragged one by one or as the group |
 
 Generated by `tools/make-joints-demo.py`; the pictures are drawn there and
 the sounds are Kenney's (Digital Audio, Impact Sounds), CC0.
