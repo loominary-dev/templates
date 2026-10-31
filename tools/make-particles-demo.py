@@ -60,7 +60,7 @@ def propeller(size, blades, fill, edge, hub):
         g.polygon(pts, fill=fill, outline=edge)
     g.ellipse([c - 5, c - 5, c + 5, c + 5], fill=hub, outline=edge)
     return img
-d.sprite("Propeller", 48, 48, [("still", [propeller(48, 3, (200, 200, 210, 255), (70, 70, 80, 255), (120, 120, 130, 255))], 400, "loop")], [])
+d.sprite("Propeller", 60, 60, [("still", [propeller(60, 3, (200, 200, 210, 255), (70, 70, 80, 255), (120, 120, 130, 255))], 400, "loop")], [])
 plug = canvas(60, 10)
 ImageDraw.Draw(plug).rectangle([0, 0, 59, 9], fill=(30, 30, 36, 255))
 d.sprite("Plug", 60, 10, [("still", [plug], 400, "loop")], [box("hole", 30, 5, 60, 10, sensor=True)])
