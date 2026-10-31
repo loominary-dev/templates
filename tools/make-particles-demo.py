@@ -248,7 +248,7 @@ fill_deep = [fl("PoolOnePass", "destroyAll"), fl("PoolPasses", "destroyAll"),
              fill("PoolOnePass", "PoolA", "pool"), fill("PoolPasses", "PoolB", "pool")]
 feature("DeepPoolInPasses", "Deep pool in passes",
         ["The same deep pool twice. Left, the solver runs once a step: the pool packs down and churns.",
-         "Right, in the passes LiquidFun works out from gravity and the radius (Substeps 0): it keeps its depth and lies still."],
+         "Right, the solver works its passes out from gravity and the radius (Substeps 0): it keeps its depth and lies still."],
         "Space fills both again.   Click to splash.   The numbers are each pool's step time, milliseconds.",
         deep,
         [rule([once()], fill_deep), rule([pressed("Act")], fill_deep),
@@ -475,7 +475,7 @@ Keys **1** to **0**, and **P**, change scene (a Scene Manager in the singleton s
 
 | Key | Scene | What it shows |
 |---|---|---|
-| 2 | Deep pool in passes | the same deep pool stepped once a step and in LiquidFun's passes (**Substeps** 0): one packs down and churns, the other holds |
+| 2 | Deep pool in passes | the same deep pool stepped once a step and in passes worked out from gravity and the radius (**Substeps** 0): one packs down and churns, the other holds |
 | 3 | A settled pool sleeps | **Sleep**: once everything is slow the system stops stepping, and **Particles are asleep** says so |
 | 4 | Elastic jelly | **Make group … elastic**: blocks that keep their shape |
 | 5 | Spring net | **Make group … spring**: a strip that drapes like a net |
