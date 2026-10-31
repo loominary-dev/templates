@@ -6,11 +6,12 @@ particle's color, and the behavior holds the settings (its **Kind**: Water,
 Powder for the sand, and water with no pressure, a lifetime and color over
 life for the sparks).
 
-- **W** turns the tap on and off, **S** the sand hopper (both **Emitters**
+- **T** turns the tap on and off, **S** the sand hopper (both **Emitters**
   that name the object carrying the Fluid).
 - **D** opens the plughole, a **Drain**.
 - **F** starts the fan, a **Field** set to Wind that pushes particles.
 - **C** clears the basin.
+- **1** to **0** choose a scene; **Left** and **Right** step through them.
 - **Click** to splash (**Push particles in a circle**), **right click** to
   pour a drop (**Make particles in a circle**), and drag the crates.
 
@@ -19,7 +20,7 @@ are dropped in once the basin has water, six seconds in.
 
 ## The other scenes
 
-Keys **1** to **0**, and **P**, change scene (a Scene Manager in the singleton scene
+Keys **1** to **0**, and the Left and Right arrows, change scene (a Scene Manager in the singleton scene
 `scenes/singletons/Demo`); each scene says what it shows and its keys.
 
 | Key | Scene | What it shows |
@@ -33,7 +34,7 @@ Keys **1** to **0**, and **P**, change scene (a Scene Manager in the singleton s
 | 8 | Color mixing | **Color mixing**: red and blue water turning purple where they meet |
 | 9 | Color by speed | **Color by speed**: a stream and splashes that foam white |
 | 0 | Objects into particles | **Turn … into particles**: Kenney's animal heads made elastic, then melted |
-| P | A picture into particles | a whole picture in its own colors, about six thousand particles; Q to T make it water, jelly, colors that mix, a soft net or honey |
+| Right from 0 | A picture into particles | a whole picture in its own colors, about six thousand particles; W, E, X, N and V make it water, elastic, colors that mix, a soft net or honey; R puts it back |
 
 The pools and blocks are laid with **Fill … with particles** into hidden
 shapes placed in each scene (the Mold and Dropper objects), so they land

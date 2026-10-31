@@ -11,7 +11,7 @@ rules on each scene's root Type:
   rumbles the pad, and a rebind row per command — *Change* listens for the
   next input, *An input was captured* binds it and saves the controls, and the
   labels show each command's first binding.
-- **Game**: a block that walks and jumps; Escape or Start opens a pause menu
+- **Game**: a block that walks and jumps; P or Start opens a pause menu
   over it, with Resume, Options and the title screen.
 
 Made by `tools/make-menus-demo.py`.

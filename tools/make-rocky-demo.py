@@ -405,7 +405,7 @@ d.write("vscript/EffectRules.vscript.json", {"rules": [rule([line("self:Sprite",
 
 INPUT = {"Move Left": keys(37, 65), "Move Right": keys(39, 68), "Move Up": keys(38, 87), "Move Down": keys(40, 83),
          "Jump": {"bindings": [{"kind": "key", "code": c} for c in (32, 38, 87)] + [{"kind": "pad", "code": 0}]},
-         "Accept": keys(13, 32), "Cancel": keys(27), "Pause": keys(27)}
+         "Accept": keys(13, 32), "Cancel": keys(27), "Pause": keys(80)}
 d.write("project.json", {"schemaVersion": 2, "name": "Rocky demo", "entryScene": "scenes/Level.scene.json", "input": INPUT,
     "collisionLayers": {"1": "Player", "2": "Pickup", "3": "Ground", "4": "Enemy", "5": "Hazard"},
     "display": {"width": 480, "height": 270, "windowWidth": 960, "windowHeight": 540, "presentMode": "fit", "displayMode": "windowed",

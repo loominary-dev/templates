@@ -133,7 +133,7 @@ def game(place):
     place("Floor1", "Floor", 0, FLOOR + 18)
     place("Hero1", "Hero", 0, FLOOR)
     hud = place("Screen1", "Screen", 0, 0)
-    place("Hint1", "Help", 20, 20, parent=hud, text="Left and Right (or A and D, or a pad) walk, Space (or the pad's bottom button) jumps, Escape (or Start) pauses.")
+    place("Hint1", "Help", 20, 20, parent=hud, text="Left and Right (or A and D, or a pad) walk, Space (or the pad's bottom button) jumps, P (or Start) pauses.")
     menu = place("Pause1", "PauseMenu", 0, 0)
     place("Card1", "Card", 330, 130, parent=menu, boxHeight=260)
     place("Heading1", "Heading", 380, 150, parent=menu, text="Paused")
@@ -175,7 +175,7 @@ d.write("project.json", {"schemaVersion": 2, "name": "Menus demo", "entryScene":
         "Left": {"bindings": [{"kind": "key", "code": 37}, {"kind": "key", "code": 65}, pad(14), axis(0, -1)]},
         "Right": {"bindings": [{"kind": "key", "code": 39}, {"kind": "key", "code": 68}, pad(15), axis(0, 1)]},
         "Jump": {"bindings": [{"kind": "key", "code": 32}, {"kind": "key", "code": 38}, pad(0)]},
-        "Pause": {"bindings": [{"kind": "key", "code": 27}, pad(9)]},
+        "Pause": {"bindings": [{"kind": "key", "code": 80}, pad(9)]},
     },
     "display": {"width": W, "height": H, "windowWidth": W, "windowHeight": H, "presentMode": "fit", "displayMode": "windowed", "autoResize": True},
     "physics": {"engine": "arcade", "gravity": 980}})
@@ -192,7 +192,7 @@ rules on each scene's root Type:
   rumbles the pad, and a rebind row per command — *Change* listens for the
   next input, *An input was captured* binds it and saves the controls, and the
   labels show each command's first binding.
-- **Game**: a block that walks and jumps; Escape or Start opens a pause menu
+- **Game**: a block that walks and jumps; P or Start opens a pause menu
   over it, with Resume, Options and the title screen.
 
 Made by `tools/make-menus-demo.py`.

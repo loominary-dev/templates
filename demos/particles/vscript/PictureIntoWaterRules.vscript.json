@@ -9,7 +9,7 @@
           "params": [
             {
               "type": "literal",
-              "value": "PictureWater",
+              "value": "Melt",
               "valueKind": "string"
             }
           ]
@@ -150,7 +150,7 @@
           "params": [
             {
               "type": "literal",
-              "value": "PictureJelly",
+              "value": "Elastic",
               "valueKind": "string"
             }
           ]
@@ -291,7 +291,7 @@
           "params": [
             {
               "type": "literal",
-              "value": "PictureMix",
+              "value": "Mix",
               "valueKind": "string"
             }
           ]
@@ -432,7 +432,7 @@
           "params": [
             {
               "type": "literal",
-              "value": "PictureNet",
+              "value": "Net",
               "valueKind": "string"
             }
           ]
@@ -573,7 +573,7 @@
           "params": [
             {
               "type": "literal",
-              "value": "PictureHoney",
+              "value": "Honey",
               "valueKind": "string"
             }
           ]
@@ -698,6 +698,37 @@
             {
               "type": "literal",
               "value": "click",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isCommandPressed",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Reset",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Scenes",
+          "className": "SceneManager",
+          "name": "changeScene",
+          "params": [
+            {
+              "type": "literal",
+              "value": "scenes/PictureIntoWater.scene.json",
               "valueKind": "string"
             }
           ]
