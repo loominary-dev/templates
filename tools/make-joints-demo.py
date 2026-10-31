@@ -62,7 +62,8 @@ still("Wheel", 28, 28, disc(28, (40, 40, 44, 255), (12, 12, 14, 255), 5, (180, 1
 still("Bump", 60, 60, disc(60, (92, 140, 70, 255), (54, 90, 40, 255)), [circle("body", 30, 30, 30)])
 still("Lead", 36, 36, panel(36, 36, (60, 120, 220, 255), (24, 52, 110, 255), 4), [box("body", 18, 18, 36, 36)])
 still("Tail", 36, 36, panel(36, 36, (235, 150, 60, 255), (140, 80, 20, 255), 4), [box("body", 18, 18, 36, 36)])
-still("Magnet", 80, 18, panel(80, 18, (200, 60, 60, 255), (110, 30, 30, 255), 3, [(40, 2, 40, 16)]), [box("body", 40, 9, 80, 18, density=3)])
+still("Lump", 48, 48, disc(48, (90, 90, 100, 255), (40, 40, 46, 255), 0, (140, 140, 150, 255)), [circle("body", 24, 24, 24, density=3)])
+still("Bit", 16, 16, disc(16, (232, 92, 80, 255), (140, 40, 40, 255)), [circle("body", 8, 8, 8)])
 
 d.sounds({"click": (da, "pepSound1.ogg"), "crack": (im, "impactWood_heavy_000.ogg"), "bump": (im, "impactWood_light_002.ogg"),
           "clank": (im, "impactMetal_light_000.ogg"), "kick": (im, "impactSoft_medium_000.ogg")})
@@ -79,7 +80,7 @@ for name in ["Ground", "Wall", "Beam", "Post", "Hook", "Bump"]:
 for name in ["Rail", "Cabinet"]:
     d.type_json(name, "Sprite", {"spriteKey": name + ".sprite.json", "collisionEnabled": False})
 # Dynamic, draggable with the mouse.
-for name in ["Crate", "Ball", "Door", "Link", "Sign", "Drawer", "Lead", "Magnet"]:
+for name in ["Crate", "Ball", "Door", "Link", "Sign", "Drawer", "Lead", "Lump", "Bit"]:
     d.type_json(name, "Sprite", dict(moving(), spriteKey=name + ".sprite.json"), [body(), drag()])
 d.type_json("Shot", "Sprite", dict(moving(), spriteKey="Shot.sprite.json"), [body(bounceX=0.2, bounceY=0.2)])
 d.type_json("Lift", "Sprite", dict(moving(), spriteKey="Lift.sprite.json"), [body()])
@@ -278,28 +279,31 @@ feature("Follow", "Follow by force",
          rule([line("Tail", "Node", "nameIs", s("Tail1"))], [line("Holds", "Label", "setText", bvalue("Tail", "jointHolds", s("tow"), returnType="string"))])]
         + toggle("Act", "side", [body_("Tail", "setJointRest", s("tow"), lit(-80), lit(0)), click], [body_("Tail", "setJointRest", s("tow"), lit(80), lit(0)), click]))
 
-# 7. Meld: a magnet that makes the crates it touches part of its own body, and lets them go again; a hinged pair comes along, hinge and all.
+# 7. Meld: a lump rolls down a ramp and melds whatever it touches into its own body as it goes; Space bursts it apart.
+RAMP_DEG = 20
+def ramp_y(x): return 20 + (x + 140) * math.tan(math.radians(RAMP_DEG))   # the ramp's middle line, 640 long, about (-140, 20)
 def meld(place):
-    place("Magnet1", "Magnet", -150, GROUND - 9)
-    for i, x in enumerate([-60, 0, 60]): place("Crate%d" % (i + 1), "Crate", x, GROUND - 16)
-    place("PairA1", "PairA", -280, GROUND - 16); place("PairB1", "PairB", -248, GROUND - 16)
-    readout(place, "Melded", 200, -190, "Melded to the magnet:")
-melders = ["Crate", "PairA", "PairB"]
+    place("Ramp", "Beam", -140, 20, rotation=math.radians(RAMP_DEG))
+    place("Lump1", "Lump", -400, ramp_y(-400) - 8.5 - 26)
+    for i, x in enumerate([-300, -230, -160, -90, -20, 50, 110]):
+        if i % 2 == 0: place("Crate%d" % i, "Crate", x, ramp_y(x) - 8.5 - 17)
+        else: place("Bit%d" % i, "Bit", x, ramp_y(x) - 8.5 - 8.5)
+    place("PairA1", "PairA", 250, GROUND - 16); place("PairB1", "PairB", 282, GROUND - 16)
+    for i, x in enumerate([340, 380, 420]): place("Bit%d" % (10 + i), "Bit", x, GROUND - 8)
+    readout(place, "Mass", 200, -190, "The lump's mass:")
+melders = ["Crate", "Bit", "PairA", "PairB"]
 feature("Meld", "Meld",
-        ["Meld to: an object joins another's body and the two move as one until Unmeld. Its joints come along: the pair at the left is hinged."],
-        "Drag the magnet onto the crates.   Space melds the crates touching it into one body with it; Space again lets them go.   R restarts the scene",
+        ["Meld to: an object joins another's body and the two move as one until Unmeld; its shapes, its mass and its joints go with it."],
+        "The lump melds whatever it rolls over; the pair at the foot is hinged, so the second comes along by its hinge.   Space bursts it apart.   R restarts the scene",
         meld,
-        [rule([once()], [set_var("melded", lit(0))]),
+        [rule([once()], [set_var("burst", lit(0))]),
          joint_once("PairB", "pair", body_("PairB", "hingeTo", s("PairA1"), s("left"), s("pair"))),
-         # The magnet is picked first, then each crate on it melds to it: a word that takes an object takes the one picked.
-         rule([pressed("Act"), compare(var("melded"), EQ, lit(0))], [set_var("melded", lit(2)), sound("clank")],
-              [rule([line("Magnet", "Node", "nameIs", s("Magnet1"))], [],
-                    [rule([line(t, "Node", "isOverlapping", s("Magnet"))], [body_(t, "meldTo", obj("Magnet"))]) for t in melders])]),
-         rule([pressed("Act"), compare(var("melded"), EQ, lit(1))], [set_var("melded", lit(0)), click],
-              [rule([body_(t, "isMelded")], [body_(t, "unmeld")]) for t in melders]),
-         rule([compare(var("melded"), EQ, lit(2))], [set_var("melded", lit(1))]),
-         rule([compare(var("melded"), EQ, lit(0))], [line("Melded", "Label", "setText", s("nothing"))]),
-         rule([compare(var("melded"), GT, lit(0))], [line("Melded", "Label", "setText", s("what it touched"))])])
+         # The lump is picked first, then each piece touching it melds to it: a word that takes an object takes the one picked.
+         # After the burst nothing melds again, or the pieces would rejoin where they lie against it.
+         rule([line("Lump", "Node", "nameIs", s("Lump1")), compare(var("burst"), EQ, lit(0))], [label("Mass", bvalue("Lump", "mass"))],
+              [rule([line(t, "Node", "isOverlapping", s("Lump")), not_(body_(t, "isMelded"))], [body_(t, "meldTo", obj("Lump")), click]) for t in melders]),
+         rule([pressed("Act"), compare(var("burst"), EQ, lit(0))], [set_var("burst", lit(1)), sound("crack")],
+              [rule([body_(t, "isMelded")], [body_(t, "unmeld")]) for t in melders])])
 
 # ── the singleton: the Scene Manager, the keys that change scene, and the list of scenes ──
 SCENES = FEATURES
@@ -353,7 +357,7 @@ Space acts, R restarts the scene; drag anything with the mouse.
 | 4 | Springs | **Spring to**: on a spring it bounces, stiff it is a rod, with **Limit** and almost no spring a rope; **Joint force** |
 | 5 | Wheels | **Be a wheel of** with **Drive** (A and D) and **Set the spring** (Space: soft or stiff); **Joint speed**, **Joint position** |
 | 6 | Follow by force | **Follow by force**: the orange block is pulled to a place beside the blue one and shoves crates; **Set the rest** (Space); **Joint holds** |
-| 7 | Meld | **Meld to** and **Unmeld** (Space): the crates touching the magnet become part of its body; a hinged pair comes along, hinge and all |
+| 7 | Meld | **Meld to**: a lump rolling down a ramp makes whatever it touches part of its own body, mass and all, a hinged pair by its hinge; **Unmeld** (Space) bursts it apart, each piece keeping its speed |
 
 Generated by `tools/make-joints-demo.py`; the pictures are drawn there and
 the sounds are Kenney's (Digital Audio, Impact Sounds), CC0.

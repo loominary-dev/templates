@@ -48,7 +48,7 @@
           "params": [
             {
               "type": "literal",
-              "value": "melded",
+              "value": "burst",
               "valueKind": "string"
             },
             {
@@ -107,13 +107,13 @@
     {
       "conditions": [
         {
-          "scope": "input",
-          "className": "Input",
-          "name": "isCommandPressed",
+          "scope": "Lump",
+          "className": "Node",
+          "name": "nameIs",
           "params": [
             {
               "type": "literal",
-              "value": "Act",
+              "value": "Lump1",
               "valueKind": "string"
             }
           ]
@@ -131,7 +131,7 @@
               "params": [
                 {
                   "type": "literal",
-                  "value": "melded",
+                  "value": "burst",
                   "valueKind": "string"
                 }
               ],
@@ -150,30 +150,18 @@
       ],
       "actions": [
         {
-          "scope": "variables",
-          "className": "Variables",
-          "name": "setVariable",
+          "scope": "Mass",
+          "className": "Label",
+          "name": "setNumber",
           "params": [
             {
-              "type": "literal",
-              "value": "melded",
-              "valueKind": "string"
-            },
-            {
-              "type": "literal",
-              "value": 2
-            }
-          ]
-        },
-        {
-          "scope": "audio",
-          "className": "Audio",
-          "name": "playSound",
-          "params": [
-            {
-              "type": "literal",
-              "value": "clank",
-              "valueKind": "string"
+              "type": "value",
+              "scope": "Lump",
+              "className": "PhysicsBody",
+              "name": "mass",
+              "params": [],
+              "returnType": "Float",
+              "onComponent": true
             }
           ]
         }
@@ -182,114 +170,206 @@
         {
           "conditions": [
             {
-              "scope": "Magnet",
+              "scope": "Crate",
               "className": "Node",
-              "name": "nameIs",
+              "name": "isOverlapping",
               "params": [
                 {
                   "type": "literal",
-                  "value": "Magnet1",
+                  "value": "Lump",
+                  "valueKind": "string"
+                }
+              ]
+            },
+            {
+              "scope": "Crate",
+              "className": "PhysicsBody",
+              "name": "isMelded",
+              "params": [],
+              "onComponent": true,
+              "not": true
+            }
+          ],
+          "actions": [
+            {
+              "scope": "Crate",
+              "className": "PhysicsBody",
+              "name": "meldTo",
+              "params": [
+                {
+                  "type": "object",
+                  "scope": "Lump"
+                }
+              ],
+              "onComponent": true
+            },
+            {
+              "scope": "audio",
+              "className": "Audio",
+              "name": "playSound",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "click",
                   "valueKind": "string"
                 }
               ]
             }
           ],
-          "actions": [],
-          "subRules": [
+          "subRules": []
+        },
+        {
+          "conditions": [
             {
-              "conditions": [
+              "scope": "Bit",
+              "className": "Node",
+              "name": "isOverlapping",
+              "params": [
                 {
-                  "scope": "Crate",
-                  "className": "Node",
-                  "name": "isOverlapping",
-                  "params": [
-                    {
-                      "type": "literal",
-                      "value": "Magnet",
-                      "valueKind": "string"
-                    }
-                  ]
+                  "type": "literal",
+                  "value": "Lump",
+                  "valueKind": "string"
                 }
-              ],
-              "actions": [
-                {
-                  "scope": "Crate",
-                  "className": "PhysicsBody",
-                  "name": "meldTo",
-                  "params": [
-                    {
-                      "type": "object",
-                      "scope": "Magnet"
-                    }
-                  ],
-                  "onComponent": true
-                }
-              ],
-              "subRules": []
+              ]
             },
             {
-              "conditions": [
-                {
-                  "scope": "PairA",
-                  "className": "Node",
-                  "name": "isOverlapping",
-                  "params": [
-                    {
-                      "type": "literal",
-                      "value": "Magnet",
-                      "valueKind": "string"
-                    }
-                  ]
-                }
-              ],
-              "actions": [
-                {
-                  "scope": "PairA",
-                  "className": "PhysicsBody",
-                  "name": "meldTo",
-                  "params": [
-                    {
-                      "type": "object",
-                      "scope": "Magnet"
-                    }
-                  ],
-                  "onComponent": true
-                }
-              ],
-              "subRules": []
-            },
-            {
-              "conditions": [
-                {
-                  "scope": "PairB",
-                  "className": "Node",
-                  "name": "isOverlapping",
-                  "params": [
-                    {
-                      "type": "literal",
-                      "value": "Magnet",
-                      "valueKind": "string"
-                    }
-                  ]
-                }
-              ],
-              "actions": [
-                {
-                  "scope": "PairB",
-                  "className": "PhysicsBody",
-                  "name": "meldTo",
-                  "params": [
-                    {
-                      "type": "object",
-                      "scope": "Magnet"
-                    }
-                  ],
-                  "onComponent": true
-                }
-              ],
-              "subRules": []
+              "scope": "Bit",
+              "className": "PhysicsBody",
+              "name": "isMelded",
+              "params": [],
+              "onComponent": true,
+              "not": true
             }
-          ]
+          ],
+          "actions": [
+            {
+              "scope": "Bit",
+              "className": "PhysicsBody",
+              "name": "meldTo",
+              "params": [
+                {
+                  "type": "object",
+                  "scope": "Lump"
+                }
+              ],
+              "onComponent": true
+            },
+            {
+              "scope": "audio",
+              "className": "Audio",
+              "name": "playSound",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "click",
+                  "valueKind": "string"
+                }
+              ]
+            }
+          ],
+          "subRules": []
+        },
+        {
+          "conditions": [
+            {
+              "scope": "PairA",
+              "className": "Node",
+              "name": "isOverlapping",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "Lump",
+                  "valueKind": "string"
+                }
+              ]
+            },
+            {
+              "scope": "PairA",
+              "className": "PhysicsBody",
+              "name": "isMelded",
+              "params": [],
+              "onComponent": true,
+              "not": true
+            }
+          ],
+          "actions": [
+            {
+              "scope": "PairA",
+              "className": "PhysicsBody",
+              "name": "meldTo",
+              "params": [
+                {
+                  "type": "object",
+                  "scope": "Lump"
+                }
+              ],
+              "onComponent": true
+            },
+            {
+              "scope": "audio",
+              "className": "Audio",
+              "name": "playSound",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "click",
+                  "valueKind": "string"
+                }
+              ]
+            }
+          ],
+          "subRules": []
+        },
+        {
+          "conditions": [
+            {
+              "scope": "PairB",
+              "className": "Node",
+              "name": "isOverlapping",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "Lump",
+                  "valueKind": "string"
+                }
+              ]
+            },
+            {
+              "scope": "PairB",
+              "className": "PhysicsBody",
+              "name": "isMelded",
+              "params": [],
+              "onComponent": true,
+              "not": true
+            }
+          ],
+          "actions": [
+            {
+              "scope": "PairB",
+              "className": "PhysicsBody",
+              "name": "meldTo",
+              "params": [
+                {
+                  "type": "object",
+                  "scope": "Lump"
+                }
+              ],
+              "onComponent": true
+            },
+            {
+              "scope": "audio",
+              "className": "Audio",
+              "name": "playSound",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "click",
+                  "valueKind": "string"
+                }
+              ]
+            }
+          ],
+          "subRules": []
         }
       ]
     },
@@ -320,7 +400,7 @@
               "params": [
                 {
                   "type": "literal",
-                  "value": "melded",
+                  "value": "burst",
                   "valueKind": "string"
                 }
               ],
@@ -332,7 +412,7 @@
             },
             {
               "type": "literal",
-              "value": 1
+              "value": 0
             }
           ]
         }
@@ -345,12 +425,12 @@
           "params": [
             {
               "type": "literal",
-              "value": "melded",
+              "value": "burst",
               "valueKind": "string"
             },
             {
               "type": "literal",
-              "value": 0
+              "value": 1
             }
           ]
         },
@@ -361,7 +441,7 @@
           "params": [
             {
               "type": "literal",
-              "value": "click",
+              "value": "crack",
               "valueKind": "string"
             }
           ]
@@ -381,6 +461,27 @@
           "actions": [
             {
               "scope": "Crate",
+              "className": "PhysicsBody",
+              "name": "unmeld",
+              "params": [],
+              "onComponent": true
+            }
+          ],
+          "subRules": []
+        },
+        {
+          "conditions": [
+            {
+              "scope": "Bit",
+              "className": "PhysicsBody",
+              "name": "isMelded",
+              "params": [],
+              "onComponent": true
+            }
+          ],
+          "actions": [
+            {
+              "scope": "Bit",
               "className": "PhysicsBody",
               "name": "unmeld",
               "params": [],
@@ -432,154 +533,6 @@
           "subRules": []
         }
       ]
-    },
-    {
-      "conditions": [
-        {
-          "scope": "maths",
-          "className": "Maths",
-          "name": "compare",
-          "params": [
-            {
-              "type": "value",
-              "scope": "variables",
-              "className": "Variables",
-              "name": "getVariable",
-              "params": [
-                {
-                  "type": "literal",
-                  "value": "melded",
-                  "valueKind": "string"
-                }
-              ],
-              "returnType": "Float"
-            },
-            {
-              "type": "literal",
-              "value": 0
-            },
-            {
-              "type": "literal",
-              "value": 2
-            }
-          ]
-        }
-      ],
-      "actions": [
-        {
-          "scope": "variables",
-          "className": "Variables",
-          "name": "setVariable",
-          "params": [
-            {
-              "type": "literal",
-              "value": "melded",
-              "valueKind": "string"
-            },
-            {
-              "type": "literal",
-              "value": 1
-            }
-          ]
-        }
-      ],
-      "subRules": []
-    },
-    {
-      "conditions": [
-        {
-          "scope": "maths",
-          "className": "Maths",
-          "name": "compare",
-          "params": [
-            {
-              "type": "value",
-              "scope": "variables",
-              "className": "Variables",
-              "name": "getVariable",
-              "params": [
-                {
-                  "type": "literal",
-                  "value": "melded",
-                  "valueKind": "string"
-                }
-              ],
-              "returnType": "Float"
-            },
-            {
-              "type": "literal",
-              "value": 0
-            },
-            {
-              "type": "literal",
-              "value": 0
-            }
-          ]
-        }
-      ],
-      "actions": [
-        {
-          "scope": "Melded",
-          "className": "Label",
-          "name": "setText",
-          "params": [
-            {
-              "type": "literal",
-              "value": "nothing",
-              "valueKind": "string"
-            }
-          ]
-        }
-      ],
-      "subRules": []
-    },
-    {
-      "conditions": [
-        {
-          "scope": "maths",
-          "className": "Maths",
-          "name": "compare",
-          "params": [
-            {
-              "type": "value",
-              "scope": "variables",
-              "className": "Variables",
-              "name": "getVariable",
-              "params": [
-                {
-                  "type": "literal",
-                  "value": "melded",
-                  "valueKind": "string"
-                }
-              ],
-              "returnType": "Float"
-            },
-            {
-              "type": "literal",
-              "value": 4
-            },
-            {
-              "type": "literal",
-              "value": 0
-            }
-          ]
-        }
-      ],
-      "actions": [
-        {
-          "scope": "Melded",
-          "className": "Label",
-          "name": "setText",
-          "params": [
-            {
-              "type": "literal",
-              "value": "what it touched",
-              "valueKind": "string"
-            }
-          ]
-        }
-      ],
-      "subRules": []
     }
   ]
 }

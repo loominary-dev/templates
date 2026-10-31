@@ -1,6 +1,6 @@
 {
-  "width": 80,
-  "height": 18,
+  "width": 48,
+  "height": 48,
   "colorMode": "rgba",
   "sheet": {
     "columns": 1
@@ -28,11 +28,10 @@
       "collision": [
         {
           "name": "body",
-          "kind": "box",
+          "kind": "circle",
           "cx": 0,
           "cy": 0,
-          "w": 80,
-          "h": 18,
+          "r": 24,
           "density": 3
         }
       ],

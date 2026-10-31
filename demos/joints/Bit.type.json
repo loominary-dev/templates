@@ -6,7 +6,7 @@
       "layer": 2,
       "mask": 3
     },
-    "spriteKey": "Magnet.sprite.json"
+    "spriteKey": "Bit.sprite.json"
   },
   "components": [
     {
