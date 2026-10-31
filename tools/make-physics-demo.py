@@ -115,8 +115,8 @@ for i, (x, y) in enumerate([(-305, 214), (-271, 214), (-288, 182)]): place("Crat
 # The see-saw, a crate on one end.
 place("Fulcrum1", "Fulcrum", -110, 215); place("Board1", "Board", -110, 194)
 place("Crate7", "Crate", -190, 170); place("Ball1", "Ball", -30, 60)
-# The pool, and a raft on it.
-place("Pool1", "Pool", 120, 180); place("Raft1", "Raft", 100, 120); place("Ball2", "Ball", 160, 80)
+# A raft and a ball over where the pool goes.
+place("Raft1", "Raft", 100, 120); place("Ball2", "Ball", 160, 80)
 # The wrecking ball at the right, hanging from a pin above it, and a stack of crates for it.
 place("WreckingBall1", "WreckingBall", 400, 148)
 # The chain is a child of the ball, half way to its pin, so it swings with it; it has no shapes, so it is no part of the ball's body.
@@ -126,6 +126,8 @@ objects.append({"id": d.uid(n[0]), "parent": objects[-1]["id"], "name": "Chain1"
 for i in range(4): place("Crate%d" % (i + 8), "Crate", 330, 214 - 32 * i)
 # The fan and its breeze, over the bridge.
 place("Fan1", "Fan", -440, -80); place("Breeze1", "Breeze", -220, -80)
+# The pool is placed after every body, so the water is drawn over whatever is in it.
+place("Pool1", "Pool", 120, 180)
 help_text = ("Joints: the bridge is planks hinged to each other and to the posts; the wrecking ball and the see-saw hinge to the world.\n"
              "Motors: each wheel is a wheel joint of the car, on a spring, and the arrows drive its motor. The pool is a fluid zone; the fan, a wind field.\n"
              "Arrows drive the car. G picks up crates near it, H puts them down. Drag anything with the mouse. B swings the ball, F starts the fan.")
