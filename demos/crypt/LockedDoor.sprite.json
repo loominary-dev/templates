@@ -1,0 +1,69 @@
+{
+  "width": 16,
+  "height": 16,
+  "colorMode": "rgba",
+  "sheet": {
+    "columns": 1
+  },
+  "palette": [],
+  "layers": [
+    {
+      "id": "c1000000-0000-4000-8000-000000000133",
+      "name": "Layer 1",
+      "visible": true,
+      "opacity": 1,
+      "locked": false,
+      "blendMode": "normal",
+      "reference": false
+    }
+  ],
+  "animations": [
+    {
+      "id": "c1000000-0000-4000-8000-000000000135",
+      "name": "shut",
+      "loop": true,
+      "playMode": "loop",
+      "repeatTo": 0,
+      "repeatCount": 0,
+      "collision": [
+        {
+          "name": "door",
+          "kind": "box",
+          "cx": 0,
+          "cy": 0,
+          "w": 16,
+          "h": 16
+        },
+        {
+          "name": "lock",
+          "kind": "box",
+          "cx": 0,
+          "cy": 0,
+          "w": 22,
+          "h": 22,
+          "sensor": true
+        }
+      ],
+      "points": [],
+      "collisionShared": true,
+      "pointsShared": false,
+      "frames": [
+        {
+          "id": "c1000000-0000-4000-8000-000000000134",
+          "duration": 400,
+          "collision": [],
+          "points": [],
+          "originX": 0.5,
+          "originY": 0.5
+        }
+      ]
+    }
+  ],
+  "cels": [
+    {
+      "layerId": "c1000000-0000-4000-8000-000000000133",
+      "frameId": "c1000000-0000-4000-8000-000000000134",
+      "at": 0
+    }
+  ]
+}

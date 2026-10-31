@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 2,
+  "baseClass": "Sprite",
+  "defaults": {
+    "spriteKey": "Dagger.sprite.json",
+    "collision": {
+      "layer": 8,
+      "mask": 6
+    }
+  },
+  "components": [
+    {
+      "componentClass": "PhysicsBody",
+      "bodyType": "Dynamic"
+    },
+    {
+      "componentClass": "Bullet",
+      "speed": 220,
+      "range": 150
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 2,
+  "baseClass": "Node",
+  "defaults": {
+    "collision": {
+      "layer": 32,
+      "mask": 1,
+      "shapes": [
+        {
+          "name": "way",
+          "kind": "box",
+          "cx": 0,
+          "cy": 0,
+          "w": 14,
+          "h": 14,
+          "sensor": true
+        }
+      ]
+    }
+  },
+  "components": []
+}

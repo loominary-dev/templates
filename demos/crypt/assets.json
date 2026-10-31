@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "assets": [
+    {
+      "uuid": "c1000000-0000-4000-8000-000000000900",
+      "key": "shoot",
+      "path": "assets/sounds/shoot.ogg"
+    },
+    {
+      "uuid": "c1000000-0000-4000-8000-000000000901",
+      "key": "hit",
+      "path": "assets/sounds/hit.ogg"
+    },
+    {
+      "uuid": "c1000000-0000-4000-8000-000000000902",
+      "key": "hurt",
+      "path": "assets/sounds/hurt.ogg"
+    },
+    {
+      "uuid": "c1000000-0000-4000-8000-000000000903",
+      "key": "key",
+      "path": "assets/sounds/key.ogg"
+    },
+    {
+      "uuid": "c1000000-0000-4000-8000-000000000904",
+      "key": "unlock",
+      "path": "assets/sounds/unlock.ogg"
+    },
+    {
+      "uuid": "c1000000-0000-4000-8000-000000000905",
+      "key": "potion",
+      "path": "assets/sounds/potion.ogg"
+    },
+    {
+      "uuid": "c1000000-0000-4000-8000-000000000906",
+      "key": "win",
+      "path": "assets/sounds/win.ogg"
+    }
+  ]
+}

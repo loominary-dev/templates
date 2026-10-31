@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 2,
+  "baseClass": "Sprite",
+  "defaults": {
+    "spriteKey": "Player.sprite.json",
+    "collision": {
+      "layer": 1,
+      "mask": 54
+    }
+  },
+  "components": [
+    {
+      "componentClass": "PhysicsBody",
+      "bodyType": "Dynamic"
+    },
+    {
+      "componentClass": "TopDownMovement",
+      "maxSpeed": 90,
+      "acceleration": 900,
+      "deceleration": 1200,
+      "face": "Mirror"
+    },
+    {
+      "componentClass": "Health",
+      "max": 3,
+      "current": 3
+    },
+    {
+      "componentClass": "PlayerRules"
+    }
+  ]
+}

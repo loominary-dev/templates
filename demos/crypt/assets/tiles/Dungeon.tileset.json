@@ -1,0 +1,200 @@
+{
+  "schemaVersion": 1,
+  "image": "assets/art/tilemap_packed.png",
+  "tileWidth": 16,
+  "tileHeight": 16,
+  "tiles": [
+    {
+      "id": 0,
+      "x": 0,
+      "y": 0,
+      "collision": []
+    },
+    {
+      "id": 1,
+      "x": 16,
+      "y": 0,
+      "collision": []
+    },
+    {
+      "id": 2,
+      "x": 32,
+      "y": 0,
+      "collision": []
+    },
+    {
+      "id": 3,
+      "x": 48,
+      "y": 0,
+      "collision": []
+    },
+    {
+      "id": 4,
+      "x": 64,
+      "y": 0,
+      "collision": []
+    },
+    {
+      "id": 5,
+      "x": 80,
+      "y": 0,
+      "collision": []
+    },
+    {
+      "id": 6,
+      "x": 96,
+      "y": 0,
+      "collision": []
+    },
+    {
+      "id": 7,
+      "x": 112,
+      "y": 0,
+      "collision": [
+        {
+          "kind": "box",
+          "cx": 8,
+          "cy": 8,
+          "w": 16,
+          "h": 16,
+          "occluder": 1
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "x": 128,
+      "y": 0,
+      "collision": [
+        {
+          "kind": "box",
+          "cx": 8,
+          "cy": 8,
+          "w": 16,
+          "h": 16,
+          "occluder": 1
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "x": 144,
+      "y": 0,
+      "collision": [
+        {
+          "kind": "box",
+          "cx": 8,
+          "cy": 8,
+          "w": 16,
+          "h": 16,
+          "occluder": 1
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "x": 160,
+      "y": 0,
+      "collision": [
+        {
+          "kind": "box",
+          "cx": 8,
+          "cy": 8,
+          "w": 16,
+          "h": 16,
+          "occluder": 1
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "x": 176,
+      "y": 0,
+      "collision": [
+        {
+          "kind": "box",
+          "cx": 8,
+          "cy": 8,
+          "w": 16,
+          "h": 16,
+          "occluder": 1
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "x": 0,
+      "y": 16,
+      "collision": [
+        {
+          "kind": "box",
+          "cx": 8,
+          "cy": 8,
+          "w": 16,
+          "h": 16,
+          "occluder": 1
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "x": 16,
+      "y": 16,
+      "collision": [
+        {
+          "kind": "box",
+          "cx": 8,
+          "cy": 8,
+          "w": 16,
+          "h": 16,
+          "occluder": 1
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "x": 32,
+      "y": 16,
+      "collision": [
+        {
+          "kind": "box",
+          "cx": 8,
+          "cy": 8,
+          "w": 16,
+          "h": 16,
+          "occluder": 1
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "x": 48,
+      "y": 16,
+      "collision": [
+        {
+          "kind": "box",
+          "cx": 8,
+          "cy": 8,
+          "w": 16,
+          "h": 16,
+          "occluder": 1
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "x": 64,
+      "y": 16,
+      "collision": [
+        {
+          "kind": "box",
+          "cx": 8,
+          "cy": 8,
+          "w": 16,
+          "h": 16,
+          "occluder": 1
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1219 @@
+{
+  "rules": [
+    {
+      "conditions": [
+        {
+          "scope": "Player",
+          "className": "Node",
+          "name": "onCreated",
+          "params": []
+        }
+      ],
+      "actions": [
+        {
+          "scope": "objects",
+          "className": "VisualScriptComponent",
+          "name": "keepReady",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Dagger",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 8
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isCommandOn",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Move Left",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Player",
+          "className": "TopDownMovement",
+          "name": "moveLeft",
+          "params": [],
+          "onComponent": true
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isCommandOn",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Move Right",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Player",
+          "className": "TopDownMovement",
+          "name": "moveRight",
+          "params": [],
+          "onComponent": true
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isCommandOn",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Move Up",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Player",
+          "className": "TopDownMovement",
+          "name": "moveUp",
+          "params": [],
+          "onComponent": true
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isCommandOn",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Move Down",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Player",
+          "className": "TopDownMovement",
+          "name": "moveDown",
+          "params": [],
+          "onComponent": true
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isCommandPressed",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Shoot",
+              "valueKind": "string"
+            }
+          ]
+        },
+        {
+          "scope": "Player",
+          "className": "TopDownMovement",
+          "name": "isBeingPushed",
+          "params": [],
+          "onComponent": true,
+          "not": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "objects",
+          "className": "VisualScriptComponent",
+          "name": "createObject",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Dagger",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "scope": "Dagger",
+          "className": "Node",
+          "name": "setPosition",
+          "params": [
+            {
+              "type": "value",
+              "scope": "self",
+              "className": "Node",
+              "name": "getPositionX",
+              "params": [],
+              "returnType": "Float"
+            },
+            {
+              "type": "value",
+              "scope": "self",
+              "className": "Node",
+              "name": "getPositionY",
+              "params": [],
+              "returnType": "Float"
+            }
+          ]
+        },
+        {
+          "scope": "Dagger",
+          "className": "Bullet",
+          "name": "setHeading",
+          "params": [
+            {
+              "type": "value",
+              "scope": "self",
+              "className": "TopDownMovement",
+              "name": "facingAngle",
+              "params": [],
+              "returnType": "Float",
+              "onComponent": true
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "audio",
+          "className": "Audio",
+          "name": "playSound",
+          "params": [
+            {
+              "type": "literal",
+              "value": "shoot",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "Player",
+          "className": "Node",
+          "name": "onCreated",
+          "params": []
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Rooms",
+          "className": "SceneManager",
+          "name": "place",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Player1",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "Entry",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "Player",
+          "className": "Node",
+          "name": "onCollisionStarted",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Doorway",
+              "valueKind": "string"
+            }
+          ]
+        },
+        {
+          "scope": "Rooms",
+          "className": "SceneManager",
+          "name": "isChanging",
+          "params": [],
+          "not": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Rooms",
+          "className": "SceneManager",
+          "name": "changeScene",
+          "params": [
+            {
+              "type": "value",
+              "scope": "Doorway",
+              "className": "Node",
+              "name": "overlappingObject",
+              "params": [],
+              "returnType": "String"
+            }
+          ]
+        },
+        {
+          "scope": "Rooms",
+          "className": "SceneManager",
+          "name": "place",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Player1",
+              "valueKind": "string"
+            },
+            {
+              "type": "op",
+              "op": "+",
+              "left": {
+                "type": "literal",
+                "value": "From",
+                "valueKind": "string"
+              },
+              "right": {
+                "type": "value",
+                "scope": "Rooms",
+                "className": "SceneManager",
+                "name": "currentScene",
+                "params": [],
+                "returnType": "String"
+              }
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "Player",
+          "className": "Node",
+          "name": "onCollisionStarted",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Bat",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Player",
+          "className": "Health",
+          "name": "damage",
+          "params": [
+            {
+              "type": "literal",
+              "value": 1
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "Player",
+          "className": "TopDownMovement",
+          "name": "push",
+          "params": [
+            {
+              "type": "op",
+              "op": "+",
+              "left": {
+                "type": "value",
+                "scope": "self",
+                "className": "Node",
+                "name": "angleToNearest",
+                "params": [
+                  {
+                    "type": "literal",
+                    "value": "Bat",
+                    "valueKind": "string"
+                  }
+                ],
+                "returnType": "Float"
+              },
+              "right": {
+                "type": "literal",
+                "value": 180
+              }
+            },
+            {
+              "type": "literal",
+              "value": 180
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "audio",
+          "className": "Audio",
+          "name": "playSound",
+          "params": [
+            {
+              "type": "literal",
+              "value": "hurt",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "Player",
+          "className": "Node",
+          "name": "onCollisionStarted",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Goblin",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Player",
+          "className": "Health",
+          "name": "damage",
+          "params": [
+            {
+              "type": "literal",
+              "value": 1
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "Player",
+          "className": "TopDownMovement",
+          "name": "push",
+          "params": [
+            {
+              "type": "op",
+              "op": "+",
+              "left": {
+                "type": "value",
+                "scope": "self",
+                "className": "Node",
+                "name": "angleToNearest",
+                "params": [
+                  {
+                    "type": "literal",
+                    "value": "Goblin",
+                    "valueKind": "string"
+                  }
+                ],
+                "returnType": "Float"
+              },
+              "right": {
+                "type": "literal",
+                "value": 180
+              }
+            },
+            {
+              "type": "literal",
+              "value": 180
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "audio",
+          "className": "Audio",
+          "name": "playSound",
+          "params": [
+            {
+              "type": "literal",
+              "value": "hurt",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "Player",
+          "className": "Node",
+          "name": "onCollisionStarted",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Slime",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Player",
+          "className": "Health",
+          "name": "damage",
+          "params": [
+            {
+              "type": "literal",
+              "value": 1
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "Player",
+          "className": "TopDownMovement",
+          "name": "push",
+          "params": [
+            {
+              "type": "op",
+              "op": "+",
+              "left": {
+                "type": "value",
+                "scope": "self",
+                "className": "Node",
+                "name": "angleToNearest",
+                "params": [
+                  {
+                    "type": "literal",
+                    "value": "Slime",
+                    "valueKind": "string"
+                  }
+                ],
+                "returnType": "Float"
+              },
+              "right": {
+                "type": "literal",
+                "value": 180
+              }
+            },
+            {
+              "type": "literal",
+              "value": 180
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "audio",
+          "className": "Audio",
+          "name": "playSound",
+          "params": [
+            {
+              "type": "literal",
+              "value": "hurt",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "Player",
+          "className": "Node",
+          "name": "onCollisionStarted",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Key",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "variables",
+          "className": "Variables",
+          "name": "addToVariable",
+          "params": [
+            {
+              "type": "literal",
+              "value": "keys",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "scope": "variables",
+          "className": "Variables",
+          "name": "setVariable",
+          "params": [
+            {
+              "type": "literal",
+              "value": "gotKey",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "scope": "Key",
+          "className": "Node",
+          "name": "queueDestroy",
+          "params": []
+        },
+        {
+          "scope": "audio",
+          "className": "Audio",
+          "name": "playSound",
+          "params": [
+            {
+              "type": "literal",
+              "value": "key",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "Player",
+          "className": "Node",
+          "name": "onCollisionStarted",
+          "params": [
+            {
+              "type": "literal",
+              "value": "LockedDoor",
+              "valueKind": "string"
+            }
+          ]
+        },
+        {
+          "scope": "maths",
+          "className": "Maths",
+          "name": "compare",
+          "params": [
+            {
+              "type": "value",
+              "scope": "variables",
+              "className": "Variables",
+              "name": "getVariable",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "keys",
+                  "valueKind": "string"
+                }
+              ],
+              "returnType": "Float"
+            },
+            {
+              "type": "literal",
+              "value": 4
+            },
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "variables",
+          "className": "Variables",
+          "name": "addToVariable",
+          "params": [
+            {
+              "type": "literal",
+              "value": "keys",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": -1
+            }
+          ]
+        },
+        {
+          "scope": "variables",
+          "className": "Variables",
+          "name": "setVariable",
+          "params": [
+            {
+              "type": "literal",
+              "value": "doorOpen",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "scope": "LockedDoor",
+          "className": "Node",
+          "name": "queueDestroy",
+          "params": []
+        },
+        {
+          "scope": "audio",
+          "className": "Audio",
+          "name": "playSound",
+          "params": [
+            {
+              "type": "literal",
+              "value": "unlock",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "Player",
+          "className": "Node",
+          "name": "onCollisionStarted",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Potion",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Player",
+          "className": "Health",
+          "name": "heal",
+          "params": [
+            {
+              "type": "literal",
+              "value": 1
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "Potion",
+          "className": "Node",
+          "name": "queueDestroy",
+          "params": []
+        },
+        {
+          "scope": "audio",
+          "className": "Audio",
+          "name": "playSound",
+          "params": [
+            {
+              "type": "literal",
+              "value": "potion",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "Player",
+          "className": "Node",
+          "name": "onCollisionStarted",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Chest",
+              "valueKind": "string"
+            }
+          ]
+        },
+        {
+          "scope": "system",
+          "className": "VisualScriptComponent",
+          "name": "triggerOnce",
+          "params": []
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Chest",
+          "className": "Sprite",
+          "name": "setAnimation",
+          "params": [
+            {
+              "type": "literal",
+              "value": "open",
+              "valueKind": "string"
+            }
+          ]
+        },
+        {
+          "scope": "WinSign",
+          "className": "Node",
+          "name": "show",
+          "params": []
+        },
+        {
+          "scope": "TimeLabel",
+          "className": "Node",
+          "name": "show",
+          "params": []
+        },
+        {
+          "scope": "TimeLabel",
+          "className": "Label",
+          "name": "setNumber",
+          "params": [
+            {
+              "type": "value",
+              "scope": "variables",
+              "className": "Variables",
+              "name": "getVariable",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "time",
+                  "valueKind": "string"
+                }
+              ],
+              "returnType": "Float"
+            }
+          ]
+        },
+        {
+          "scope": "Player",
+          "className": "TopDownMovement",
+          "name": "setEnabled",
+          "params": [
+            {
+              "type": "literal",
+              "value": false,
+              "valueKind": "bool"
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "variables",
+          "className": "Variables",
+          "name": "setVariable",
+          "params": [
+            {
+              "type": "literal",
+              "value": "won",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "scope": "audio",
+          "className": "Audio",
+          "name": "playSound",
+          "params": [
+            {
+              "type": "literal",
+              "value": "win",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": [
+        {
+          "conditions": [
+            {
+              "scope": "save",
+              "className": "Save",
+              "name": "isSaved",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "best",
+                  "valueKind": "string"
+                }
+              ],
+              "not": true
+            }
+          ],
+          "actions": [
+            {
+              "scope": "save",
+              "className": "Save",
+              "name": "saveNumber",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "best",
+                  "valueKind": "string"
+                },
+                {
+                  "type": "value",
+                  "scope": "variables",
+                  "className": "Variables",
+                  "name": "getVariable",
+                  "params": [
+                    {
+                      "type": "literal",
+                      "value": "time",
+                      "valueKind": "string"
+                    }
+                  ],
+                  "returnType": "Float"
+                }
+              ]
+            }
+          ],
+          "subRules": []
+        },
+        {
+          "conditions": [
+            {
+              "scope": "maths",
+              "className": "Maths",
+              "name": "compare",
+              "params": [
+                {
+                  "type": "value",
+                  "scope": "variables",
+                  "className": "Variables",
+                  "name": "getVariable",
+                  "params": [
+                    {
+                      "type": "literal",
+                      "value": "time",
+                      "valueKind": "string"
+                    }
+                  ],
+                  "returnType": "Float"
+                },
+                {
+                  "type": "literal",
+                  "value": 2
+                },
+                {
+                  "type": "value",
+                  "scope": "save",
+                  "className": "Save",
+                  "name": "savedNumber",
+                  "params": [
+                    {
+                      "type": "literal",
+                      "value": "best",
+                      "valueKind": "string"
+                    }
+                  ],
+                  "returnType": "Float"
+                }
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "scope": "save",
+              "className": "Save",
+              "name": "saveNumber",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "best",
+                  "valueKind": "string"
+                },
+                {
+                  "type": "value",
+                  "scope": "variables",
+                  "className": "Variables",
+                  "name": "getVariable",
+                  "params": [
+                    {
+                      "type": "literal",
+                      "value": "time",
+                      "valueKind": "string"
+                    }
+                  ],
+                  "returnType": "Float"
+                }
+              ]
+            }
+          ],
+          "subRules": []
+        }
+      ]
+    },
+    {
+      "conditions": [
+        {
+          "scope": "Player",
+          "className": "Health",
+          "name": "isDead",
+          "params": [],
+          "onComponent": true
+        },
+        {
+          "scope": "system",
+          "className": "VisualScriptComponent",
+          "name": "triggerOnce",
+          "params": []
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Player",
+          "className": "Health",
+          "name": "restore",
+          "params": [],
+          "onComponent": true
+        },
+        {
+          "scope": "Rooms",
+          "className": "SceneManager",
+          "name": "changeScene",
+          "params": [
+            {
+              "type": "value",
+              "scope": "Rooms",
+              "className": "SceneManager",
+              "name": "currentScene",
+              "params": [],
+              "returnType": "String"
+            }
+          ]
+        },
+        {
+          "scope": "Rooms",
+          "className": "SceneManager",
+          "name": "place",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Player1",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "Entry",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "maths",
+          "className": "Maths",
+          "name": "compare",
+          "params": [
+            {
+              "type": "value",
+              "scope": "variables",
+              "className": "Variables",
+              "name": "getVariable",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "won",
+                  "valueKind": "string"
+                }
+              ],
+              "returnType": "Float"
+            },
+            {
+              "type": "literal",
+              "value": 0
+            },
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "variables",
+          "className": "Variables",
+          "name": "addToVariable",
+          "params": [
+            {
+              "type": "literal",
+              "value": "time",
+              "valueKind": "string"
+            },
+            {
+              "type": "value",
+              "scope": "system",
+              "className": "System",
+              "name": "getDeltaTime",
+              "params": [],
+              "returnType": "Float"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [],
+      "actions": [
+        {
+          "scope": "HealthCount",
+          "className": "Label",
+          "name": "setNumber",
+          "params": [
+            {
+              "type": "value",
+              "scope": "self",
+              "className": "Health",
+              "name": "health",
+              "params": [],
+              "returnType": "Float",
+              "onComponent": true
+            }
+          ]
+        },
+        {
+          "scope": "KeyCount",
+          "className": "Label",
+          "name": "setNumber",
+          "params": [
+            {
+              "type": "value",
+              "scope": "variables",
+              "className": "Variables",
+              "name": "getVariable",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "keys",
+                  "valueKind": "string"
+                }
+              ],
+              "returnType": "Float"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "Rooms",
+          "className": "SceneManager",
+          "name": "isLoaded",
+          "params": [
+            {
+              "type": "literal",
+              "value": "DarkRoom",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Lantern",
+          "className": "Node",
+          "name": "show",
+          "params": []
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "Rooms",
+          "className": "SceneManager",
+          "name": "isLoaded",
+          "params": [
+            {
+              "type": "literal",
+              "value": "DarkRoom",
+              "valueKind": "string"
+            }
+          ],
+          "not": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Lantern",
+          "className": "Node",
+          "name": "hide",
+          "params": []
+        }
+      ],
+      "subRules": []
+    }
+  ],
+  "vars": []
+}

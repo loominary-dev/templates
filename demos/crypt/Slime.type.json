@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 2,
+  "baseClass": "Sprite",
+  "defaults": {
+    "spriteKey": "Slime.sprite.json",
+    "collision": {
+      "layer": 4,
+      "mask": 9
+    }
+  },
+  "components": [
+    {
+      "componentClass": "Patrol",
+      "axis": "Vertical",
+      "distance": 96,
+      "speed": 55
+    },
+    {
+      "componentClass": "Health",
+      "max": 1,
+      "current": 1
+    },
+    {
+      "componentClass": "EnemyRules"
+    }
+  ]
+}
