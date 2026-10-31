@@ -160,11 +160,12 @@ sprite("Arrow", 16, 16, [("fly", [arrow], 400, "loop")], [box("tip", 8, 8, 8, 4)
 sprite("Key", 16, 16, [("still", [key_img], 400, "loop")], [box("key", 8, 7, 14, 8, sensor=True)])
 sprite("Potion", 16, 16, [("still", [tile(115)], 400, "loop")], [box("potion", 8, 9, 8, 10, sensor=True)])
 sprite("Heart", 16, 16, [("still", [heart_img], 400, "loop")], [])
-sprite("Chest", 16, 16, [("shut", [tile(89)], 400, "loop"), ("open", [tile(91)], 400, "loop")], [box("chest", 8, 9, 14, 12, sensor=True, occluder=1)])
+# Not occluders: a light inside its own occluder is swallowed by it, and the chest holds its glow, the brazier its flame.
+sprite("Chest", 16, 16, [("shut", [tile(89)], 400, "loop"), ("open", [tile(91)], 400, "loop")], [box("chest", 8, 9, 14, 12, sensor=True)])
 sprite("Sign", 16, 16, [("still", [tile(66)], 400, "loop")], [box("sign", 8, 9, 12, 12, occluder=1)])
 sprite("LockedDoor", 16, 16, [("shut", [shaded(tile(45), WALL_SHADE)], 400, "loop")], [box("door", 8, 8, 16, 16, occluder=1), box("lock", 8, 8, 22, 22, sensor=True)])
 sprite("Pillar", 16, 32, [("still", [pillar], 400, "loop")], [box("base", 8, 24, 14, 14, occluder=1)])
-sprite("Brazier", 16, 16, [("burn", [flame1, flame2], 160, "loop")], [box("base", 8, 11, 12, 10, occluder=1)])
+sprite("Brazier", 16, 16, [("burn", [flame1, flame2], 160, "loop")], [box("base", 8, 11, 12, 10)])
 sprite("Glow", 96, 96, [("still", [glow(96)], 400, "loop")], [])
 
 # ── sounds ──

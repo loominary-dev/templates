@@ -33,8 +33,7 @@
           "cy": 1,
           "w": 14,
           "h": 12,
-          "sensor": true,
-          "occluder": 1
+          "sensor": true
         }
       ],
       "points": [],
@@ -66,8 +65,7 @@
           "cy": 1,
           "w": 14,
           "h": 12,
-          "sensor": true,
-          "occluder": 1
+          "sensor": true
         }
       ],
       "points": [],
