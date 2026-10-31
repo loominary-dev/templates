@@ -38,7 +38,7 @@
       "type": "Help",
       "x": -470,
       "y": -226,
-      "text": "Right, in the passes LiquidFun works out from gravity and the radius (Substeps 0): it keeps its depth and lies still."
+      "text": "Right, the solver works its passes out from gravity and the radius (Substeps 0): it keeps its depth and lies still."
     },
     {
       "id": "f1000000-0000-4000-8000-000000002005",
