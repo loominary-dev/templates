@@ -40,6 +40,8 @@ def still(name, w, h, img, collision, points=()): d.sprite(name, w, h, [("still"
 
 still("Ground", 960, 40, panel(960, 40, (92, 140, 70, 255), (54, 90, 40, 255), 0), [box("body", 480, 20, 960, 40)])
 still("Wall", 20, 540, panel(20, 540, (100, 100, 110, 255), (60, 60, 70, 255), 0), [box("body", 10, 270, 20, 540)])
+# A ceiling far above the view, nothing drawn: with the walls stretched up to it, nothing leaves the scene.
+still("Ceiling", 960, 40, canvas(960, 40), [box("body", 480, 20, 960, 40)])
 still("Beam", 640, 16, panel(640, 16, STEEL, STEEL_EDGE, 2), [box("body", 320, 8, 640, 16)])
 still("Post", 20, 20, panel(20, 20, STEEL, STEEL_EDGE), [box("body", 10, 10, 20, 20)])
 still("Crate", 32, 32, panel(32, 32, WOOD, WOOD_LINE, 2, [(3, 3, 28, 28), (28, 3, 3, 28)]), [box("body", 16, 16, 32, 32)],
@@ -76,7 +78,7 @@ def body(**k): return dict({"componentClass": "PhysicsBody", "bodyType": "Dynami
 def solid(): return {"collision": {"layer": SOLID, "mask": EVERYTHING}}
 def moving(): return {"collision": {"layer": BODY, "mask": SOLID | BODY}}
 def drag(): return {"componentClass": "DragRules"}
-for name in ["Ground", "Wall", "Beam", "Post", "Hook", "Bump"]:
+for name in ["Ground", "Wall", "Ceiling", "Beam", "Post", "Hook", "Bump"]:
     d.type_json(name, "Sprite", dict(solid(), spriteKey=name + ".sprite.json"))
 for name in ["Rail", "Cabinet"]:
     d.type_json(name, "Sprite", {"spriteKey": name + ".sprite.json", "collisionEnabled": False})
@@ -140,8 +142,9 @@ def feature(file, title, about, controls, build, rules):
     level = file + "Level"
     d.type_json(level, "Node", {}, [{"componentClass": sheet_name}])
     place(level + "1", level, 0, 0)
-    # The walls first, so the lines of text are drawn over them, and the text starts inside them.
-    place("WallL", "Wall", -470, 0); place("WallR", "Wall", 470, 0)
+    # The walls first, so the lines of text are drawn over them, and the text starts inside them; they reach up four screens to a ceiling.
+    place("WallL", "Wall", -470, -810, scaleY=4); place("WallR", "Wall", 470, -810, scaleY=4)
+    place("Ceiling1", "Ceiling", 0, -1910)
     place("Title", "Caption", -452, -262, text=title)
     lines = about if isinstance(about, list) else [about]
     for k, text in enumerate(lines): place("About%d" % (k + 1), "Help", -452, -244 + 18 * k, text=text)
