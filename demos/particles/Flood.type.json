@@ -12,7 +12,7 @@
       "kind": "Water",
       "radius": 2,
       "pictureScale": 1.15,
-      "maxCount": 20000
+      "maxCount": 8000
     },
     {
       "componentClass": "FloodReadout"

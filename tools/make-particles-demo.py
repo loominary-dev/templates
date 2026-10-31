@@ -395,14 +395,15 @@ feature("ObjectsIntoParticles", "Objects into particles",
 forest = Image.open(os.path.join(ART, "forest-deer.png")).convert("RGBA")
 d.sprite("Forest", forest.width, forest.height, [("still", [forest], 400, "loop")], [])
 d.type_json("Forest", "Sprite", {"spriteKey": "Forest.sprite.json", "collisionEnabled": False})
-water_type("Flood", picture="Pixel", radius=2, maxCount=20000, pictureScale=1.15,
+water_type("Flood", picture="Pixel", radius=2, maxCount=8000, pictureScale=1.15,
            readout=[rule([], [line("WaterCount", "Label", "setNumber", cvalue("self", "Fluid", "particleCount")),
                               line("StepTime", "Label", "setNumber", cvalue("self", "Fluid", "stepTime"))])])
 def picture(place):
     # Walls start below the captions, just above the picture; its water fills less than that.
     tank(place, 0, 262, 912, 440, "")
     place("Flood1", "Flood", -500, 250)
-    place("Forest1", "Forest", 0, 60, scaleX=0.8, scaleY=0.8)
+    # At 0.8 the picture made 17,000 particles and 80 ms steps on a laptop; 0.48 makes about 6,000.
+    place("Forest1", "Forest", 0, 60, scaleX=0.48, scaleY=0.48)
     place("Stirrer1", "Stirrer", 0, 170, visible=False)
     place("CountCaption", "Caption", 380, -262, text="Particles"); place("WaterCount1", "WaterCount", 440, -262)
     place("StepCaption", "Caption", 380, -244, text="ms"); place("StepTime1", "StepTime", 440, -244)
@@ -486,7 +487,7 @@ Keys **1** to **0**, and **P**, change scene (a Scene Manager in the singleton s
 | 8 | Color mixing | **Color mixing**: red and blue water turning purple where they meet |
 | 9 | Color by speed | **Color by speed**: a stream and splashes that foam white |
 | 0 | Objects into particles | **Turn … into particles**: Kenney's animal heads made elastic, then melted |
-| P | A picture into particles | a whole picture in its own colors, about seventeen thousand particles; Q to T make it water, jelly, colors that mix, a soft net or honey |
+| P | A picture into particles | a whole picture in its own colors, about six thousand particles; Q to T make it water, jelly, colors that mix, a soft net or honey |
 
 The pools and blocks are laid with **Fill … with particles** into hidden
 shapes placed in each scene (the Mold and Dropper objects), so they land
