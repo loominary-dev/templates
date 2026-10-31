@@ -151,7 +151,8 @@ pillar.paste(shaded(tile(6), WALL_SHADE), (0, 0)); pillar.paste(shaded(tile(18),
 arrow = tile(131).rotate(-90)  # the pack's points up; a Bullet's heading 0 is right
 
 # The player collides by its feet, so a doorway one cell wide is easy to walk through.
-sprite("Player", 16, 16, [("idle", [tile(112)], 400, "loop")], [box("body", 8, 8, 10, 8)])
+# The shape reaches the feet: against the wall below, the feet stop at it and the body is never drawn over the wall.
+sprite("Player", 16, 16, [("idle", [tile(112)], 400, "loop")], [box("body", 8, 9, 10, 14)])
 sprite("Bat", 16, 16, [("fly", [tile(120)], 400, "loop")], [box("body", 8, 8, 12, 10, sensor=True)])
 sprite("Spider", 16, 16, [("walk", [tile(122)], 400, "loop")], [box("body", 8, 9, 12, 10, sensor=True)])
 sprite("Rat", 16, 16, [("run", [tile(123)], 400, "loop")], [box("body", 8, 10, 12, 8, sensor=True)])
@@ -159,11 +160,11 @@ sprite("Arrow", 16, 16, [("fly", [arrow], 400, "loop")], [box("tip", 8, 8, 8, 4)
 sprite("Key", 16, 16, [("still", [key_img], 400, "loop")], [box("key", 8, 7, 14, 8, sensor=True)])
 sprite("Potion", 16, 16, [("still", [tile(115)], 400, "loop")], [box("potion", 8, 9, 8, 10, sensor=True)])
 sprite("Heart", 16, 16, [("still", [heart_img], 400, "loop")], [])
-sprite("Chest", 16, 16, [("shut", [tile(89)], 400, "loop"), ("open", [tile(91)], 400, "loop")], [box("chest", 8, 9, 14, 12, sensor=True)])
+sprite("Chest", 16, 16, [("shut", [tile(89)], 400, "loop"), ("open", [tile(91)], 400, "loop")], [box("chest", 8, 9, 14, 12, sensor=True, occluder=1)])
 sprite("Sign", 16, 16, [("still", [tile(66)], 400, "loop")], [box("sign", 8, 9, 12, 12, occluder=1)])
-sprite("LockedDoor", 16, 16, [("shut", [shaded(tile(45), WALL_SHADE)], 400, "loop")], [box("door", 8, 8, 16, 16), box("lock", 8, 8, 22, 22, sensor=True)])
+sprite("LockedDoor", 16, 16, [("shut", [shaded(tile(45), WALL_SHADE)], 400, "loop")], [box("door", 8, 8, 16, 16, occluder=1), box("lock", 8, 8, 22, 22, sensor=True)])
 sprite("Pillar", 16, 32, [("still", [pillar], 400, "loop")], [box("base", 8, 24, 14, 14, occluder=1)])
-sprite("Brazier", 16, 16, [("burn", [flame1, flame2], 160, "loop")], [box("base", 8, 12, 12, 6)])
+sprite("Brazier", 16, 16, [("burn", [flame1, flame2], 160, "loop")], [box("base", 8, 11, 12, 10, occluder=1)])
 sprite("Glow", 96, 96, [("still", [glow(96)], 400, "loop")], [])
 
 # ── sounds ──
@@ -192,8 +193,9 @@ type_json("Sprite", {"_name": "Player", "spriteKey": "Player.sprite.json",
 type_json("Sprite", {"_name": "Arrow", "spriteKey": "Arrow.sprite.json", "collision": {"layer": ARROW, "mask": SOLID | ENEMY}},
           [{"componentClass": "PhysicsBody", "bodyType": "Dynamic"},
            {"componentClass": "Bullet", "speed": 220, "range": 150}])
-type_json("Sprite", {"_name": "Bat", "spriteKey": "Bat.sprite.json", "collision": {"layer": ENEMY, "mask": PLAYER | ARROW}},
-          [{"componentClass": "Follow", "speed": 45, "stopWithin": 0}, {"componentClass": "Health", "max": 1, "current": 1},
+# A bat has a body, so Follow moves it by velocity and the walls stop it.
+type_json("Sprite", {"_name": "Bat", "spriteKey": "Bat.sprite.json", "collision": {"layer": ENEMY, "mask": PLAYER | ARROW | SOLID}},
+          [{"componentClass": "PhysicsBody", "bodyType": "Dynamic"}, {"componentClass": "Follow", "speed": 45, "stopWithin": 0}, {"componentClass": "Health", "max": 1, "current": 1},
            {"componentClass": "EnemyRules"}, {"componentClass": "BatRules"}])
 type_json("Sprite", {"_name": "Spider", "spriteKey": "Spider.sprite.json", "collision": {"layer": ENEMY, "mask": PLAYER | ARROW}},
           [{"componentClass": "Patrol", "axis": "Horizontal", "distance": 64, "speed": 30}, {"componentClass": "Health", "max": 3, "current": 3},
@@ -211,10 +213,10 @@ type_json("Sprite", {"_name": "Pillar", "spriteKey": "Pillar.sprite.json", "coll
 type_json("Sprite", {"_name": "Brazier", "spriteKey": "Brazier.sprite.json", "collision": {"layer": SOLID, "mask": EVERYTHING}})
 type_json("Node", {"_name": "Doorway", "collision": {"layer": DOOR, "mask": PLAYER, "shapes": [box("way", 0, 0, 14, 14, sensor=True)]}})
 type_json("Node", {"_name": "Marker"})
-type_json("Light", {"_name": "Lantern", "spriteKey": "Glow.sprite.json", "tint": 0xFFD9A0, "opacity": 0.55, "scaleX": 1.3, "scaleY": 1.3, "radius": 2, "lightHeight": 12})
-type_json("Light", {"_name": "FireLight", "spriteKey": "Glow.sprite.json", "tint": 0xFF9A40, "scaleX": 1.4, "scaleY": 1.4, "radius": 3, "lightHeight": 16})
+type_json("Light", {"_name": "Lantern", "spriteKey": "Glow.sprite.json", "tint": 0xFFD9A0, "opacity": 0.32, "scaleX": 1.15, "scaleY": 1.15, "radius": 2, "lightHeight": 12})
+type_json("Light", {"_name": "FireLight", "spriteKey": "Glow.sprite.json", "tint": 0xFF9A40, "opacity": 0.8, "scaleX": 1.3, "scaleY": 1.3, "radius": 3, "lightHeight": 16})
 # The chest's own cool glow, beside the braziers' warm ones.
-type_json("Light", {"_name": "GemLight", "spriteKey": "Glow.sprite.json", "tint": 0x8CC8FF, "opacity": 0.7, "scaleX": 1.1, "scaleY": 1.1, "radius": 2, "lightHeight": 10})
+type_json("Light", {"_name": "GemLight", "spriteKey": "Glow.sprite.json", "tint": 0x8CC8FF, "opacity": 0.4, "scaleX": 0.9, "scaleY": 0.9, "radius": 2, "lightHeight": 10})
 type_json("Sprite", {"_name": "HeartIcon", "spriteKey": "Heart.sprite.json"})
 type_json("Sprite", {"_name": "KeyIcon", "spriteKey": "Key.sprite.json"})
 for counter in ["HealthCount", "KeyCount", "TimeLabel"]:
@@ -392,7 +394,8 @@ game = [
     {"id": uid(1), "name": "Game"},
     {"id": uid(2), "parent": uid(1), "name": "Rooms1", "type": "Rooms"},
     {"id": uid(3), "parent": uid(1), "name": "Player1", "type": "Player", "x": ex, "y": ey},
-    {"id": uid(4), "parent": uid(3), "name": "Lantern1", "type": "Lantern", "x": 0, "y": 0},
+    # At the player's middle (a child is placed from its parent's top-left here, and moved to the origin rule after).
+    {"id": uid(4), "parent": uid(3), "name": "Lantern1", "type": "Lantern", "x": 8, "y": 8},
     # The HUD: a Layer fixed to the screen, its children in the game's own pixels from the view's top-left.
     {"id": uid(5), "parent": uid(1), "name": "HUD", "type": "Layer", "parallaxX": 0, "parallaxY": 0, "zoomWithCamera": False},
     {"id": uid(6), "parent": uid(5), "name": "HeartIcon1", "type": "HeartIcon", "x": 12, "y": 12},

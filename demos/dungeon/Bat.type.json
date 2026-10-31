@@ -5,10 +5,14 @@
     "spriteKey": "Bat.sprite.json",
     "collision": {
       "layer": 4,
-      "mask": 9
+      "mask": 11
     }
   },
   "components": [
+    {
+      "componentClass": "PhysicsBody",
+      "bodyType": "Dynamic"
+    },
     {
       "componentClass": "Follow",
       "speed": 45,
