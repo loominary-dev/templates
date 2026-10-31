@@ -18,6 +18,22 @@
               "onComponent": true
             }
           ]
+        },
+        {
+          "scope": "PassCount",
+          "className": "Label",
+          "name": "setNumber",
+          "params": [
+            {
+              "type": "value",
+              "scope": "self",
+              "className": "Fluid",
+              "name": "passes",
+              "params": [],
+              "returnType": "Float",
+              "onComponent": true
+            }
+          ]
         }
       ],
       "subRules": []
