@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 2,
+  "baseClass": "Light",
+  "defaults": {
+    "spriteKey": "Glow.sprite.json",
+    "tint": 16751168,
+    "scaleX": 1.4,
+    "scaleY": 1.4,
+    "radius": 3,
+    "lightHeight": 16
+  },
+  "components": []
+}

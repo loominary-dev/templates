@@ -1,0 +1,75 @@
+{
+  "rules": [
+    {
+      "conditions": [
+        {
+          "scope": "self",
+          "className": "Node",
+          "name": "onCollisionStarted",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Dagger",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "self",
+          "className": "Health",
+          "name": "damage",
+          "params": [
+            {
+              "type": "literal",
+              "value": 1
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "Dagger",
+          "className": "Bullet",
+          "name": "endNow",
+          "params": [],
+          "onComponent": true
+        },
+        {
+          "scope": "audio",
+          "className": "Audio",
+          "name": "playSound",
+          "params": [
+            {
+              "type": "literal",
+              "value": "hit",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "self",
+          "className": "Health",
+          "name": "isDead",
+          "params": [],
+          "onComponent": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "self",
+          "className": "Node",
+          "name": "queueDestroy",
+          "params": []
+        }
+      ],
+      "subRules": []
+    }
+  ],
+  "vars": []
+}

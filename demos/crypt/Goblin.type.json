@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 2,
+  "baseClass": "Sprite",
+  "defaults": {
+    "spriteKey": "Goblin.sprite.json",
+    "collision": {
+      "layer": 4,
+      "mask": 9
+    }
+  },
+  "components": [
+    {
+      "componentClass": "Patrol",
+      "axis": "Horizontal",
+      "distance": 64,
+      "speed": 30
+    },
+    {
+      "componentClass": "Health",
+      "max": 3,
+      "current": 3
+    },
+    {
+      "componentClass": "EnemyRules"
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "rules": [
+    {
+      "conditions": [
+        {
+          "scope": "self",
+          "className": "Node",
+          "name": "isWithinDistanceOf",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Player",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 80
+            }
+          ]
+        },
+        {
+          "scope": "system",
+          "className": "VisualScriptComponent",
+          "name": "triggerOnce",
+          "params": []
+        }
+      ],
+      "actions": [
+        {
+          "scope": "self",
+          "className": "Follow",
+          "name": "follow",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Player1",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true
+        }
+      ],
+      "subRules": []
+    }
+  ],
+  "vars": []
+}

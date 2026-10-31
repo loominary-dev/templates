@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 2,
+  "baseClass": "Label",
+  "defaults": {
+    "text": "You found the treasure!",
+    "fontSize": 14,
+    "shadow": true,
+    "visible": false
+  },
+  "components": []
+}

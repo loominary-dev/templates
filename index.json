@@ -46,6 +46,13 @@
       "minEditor": "1.0.46"
     },
     {
+      "id": "crypt",
+      "name": "Crypt demo",
+      "description": "The Dungeon demo's six rooms on 0x72's 16x16 Dungeon Tileset: a knight who throws daggers, bats that chase, goblins and slimes on patrol, a dark room lit by a lantern and torches, a key, a locked door and a chest. Each room is its own scene, changed by a Scene Manager in a singleton that keeps the player and the HUD.",
+      "path": "demos/crypt",
+      "minEditor": "1.0.61"
+    },
+    {
       "id": "physics",
       "name": "Physics demo",
       "description": "A playground on the Box2D solver: a rope bridge of hinged planks, a car on wheel joints that picks up crates, a wrecking ball, a see-saw, a pool that floats what falls in, a fan, and everything draggable with the mouse.",

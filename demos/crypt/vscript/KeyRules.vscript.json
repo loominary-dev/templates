@@ -1,0 +1,53 @@
+{
+  "rules": [
+    {
+      "conditions": [
+        {
+          "scope": "self",
+          "className": "Node",
+          "name": "onCreated",
+          "params": []
+        },
+        {
+          "scope": "maths",
+          "className": "Maths",
+          "name": "compare",
+          "params": [
+            {
+              "type": "value",
+              "scope": "variables",
+              "className": "Variables",
+              "name": "getVariable",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "gotKey",
+                  "valueKind": "string"
+                }
+              ],
+              "returnType": "Float"
+            },
+            {
+              "type": "literal",
+              "value": 0
+            },
+            {
+              "type": "literal",
+              "value": 1
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "self",
+          "className": "Node",
+          "name": "queueDestroy",
+          "params": []
+        }
+      ],
+      "subRules": []
+    }
+  ],
+  "vars": []
+}

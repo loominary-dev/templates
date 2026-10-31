@@ -1,0 +1,98 @@
+{
+  "width": 16,
+  "height": 16,
+  "colorMode": "rgba",
+  "sheet": {
+    "columns": 2
+  },
+  "palette": [],
+  "layers": [
+    {
+      "id": "c1000000-0000-4000-8000-000000000125",
+      "name": "Layer 1",
+      "visible": true,
+      "opacity": 1,
+      "locked": false,
+      "blendMode": "normal",
+      "reference": false
+    }
+  ],
+  "animations": [
+    {
+      "id": "c1000000-0000-4000-8000-000000000127",
+      "name": "shut",
+      "loop": true,
+      "playMode": "loop",
+      "repeatTo": 0,
+      "repeatCount": 0,
+      "collision": [
+        {
+          "name": "chest",
+          "kind": "box",
+          "cx": 0,
+          "cy": 1,
+          "w": 14,
+          "h": 12,
+          "sensor": true
+        }
+      ],
+      "points": [],
+      "collisionShared": true,
+      "pointsShared": false,
+      "frames": [
+        {
+          "id": "c1000000-0000-4000-8000-000000000126",
+          "duration": 400,
+          "collision": [],
+          "points": [],
+          "originX": 0.5,
+          "originY": 0.5
+        }
+      ]
+    },
+    {
+      "id": "c1000000-0000-4000-8000-000000000129",
+      "name": "open",
+      "loop": true,
+      "playMode": "loop",
+      "repeatTo": 0,
+      "repeatCount": 0,
+      "collision": [
+        {
+          "name": "chest",
+          "kind": "box",
+          "cx": 0,
+          "cy": 1,
+          "w": 14,
+          "h": 12,
+          "sensor": true
+        }
+      ],
+      "points": [],
+      "collisionShared": true,
+      "pointsShared": false,
+      "frames": [
+        {
+          "id": "c1000000-0000-4000-8000-000000000128",
+          "duration": 400,
+          "collision": [],
+          "points": [],
+          "originX": 0.5,
+          "originY": 0.5
+        }
+      ]
+    }
+  ],
+  "cels": [
+    {
+      "layerId": "c1000000-0000-4000-8000-000000000125",
+      "frameId": "c1000000-0000-4000-8000-000000000126",
+      "at": 0
+    },
+    {
+      "layerId": "c1000000-0000-4000-8000-000000000125",
+      "frameId": "c1000000-0000-4000-8000-000000000128",
+      "at": 1
+    }
+  ]
+}

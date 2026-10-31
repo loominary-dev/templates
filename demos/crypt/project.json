@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 2,
+  "name": "Crypt demo",
+  "entryScene": "scenes/Entrance.scene.json",
+  "singletons": [
+    "scenes/singletons/Game.scene.json"
+  ],
+  "collisionLayers": {
+    "1": "Player",
+    "2": "Walls",
+    "3": "Enemy",
+    "4": "Dagger",
+    "5": "Pickup",
+    "6": "Door"
+  },
+  "input": {
+    "Move Left": {
+      "bindings": [
+        {
+          "kind": "key",
+          "code": 37
+        },
+        {
+          "kind": "key",
+          "code": 65
+        }
+      ]
+    },
+    "Move Right": {
+      "bindings": [
+        {
+          "kind": "key",
+          "code": 39
+        },
+        {
+          "kind": "key",
+          "code": 68
+        }
+      ]
+    },
+    "Move Up": {
+      "bindings": [
+        {
+          "kind": "key",
+          "code": 38
+        },
+        {
+          "kind": "key",
+          "code": 87
+        }
+      ]
+    },
+    "Move Down": {
+      "bindings": [
+        {
+          "kind": "key",
+          "code": 40
+        },
+        {
+          "kind": "key",
+          "code": 83
+        }
+      ]
+    },
+    "Shoot": {
+      "bindings": [
+        {
+          "kind": "key",
+          "code": 32
+        },
+        {
+          "kind": "key",
+          "code": 74
+        }
+      ]
+    },
+    "Pause": {
+      "bindings": [
+        {
+          "kind": "key",
+          "code": 80
+        }
+      ]
+    }
+  },
+  "display": {
+    "width": 320,
+    "height": 180,
+    "windowWidth": 1280,
+    "windowHeight": 720,
+    "presentMode": "fit",
+    "displayMode": "windowed",
+    "autoResize": true,
+    "wholeWindowScale": true
+  },
+  "physics": {
+    "engine": "arcade",
+    "gravity": 0
+  }
+}

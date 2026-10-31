@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 2,
+  "baseClass": "Sprite",
+  "defaults": {
+    "spriteKey": "Bat.sprite.json",
+    "collision": {
+      "layer": 4,
+      "mask": 9
+    }
+  },
+  "components": [
+    {
+      "componentClass": "Follow",
+      "speed": 45,
+      "stopWithin": 0
+    },
+    {
+      "componentClass": "Health",
+      "max": 1,
+      "current": 1
+    },
+    {
+      "componentClass": "EnemyRules"
+    },
+    {
+      "componentClass": "BatRules"
+    }
+  ]
+}

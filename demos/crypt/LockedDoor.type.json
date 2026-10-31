@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 2,
+  "baseClass": "Sprite",
+  "defaults": {
+    "spriteKey": "LockedDoor.sprite.json",
+    "collision": {
+      "layer": 34,
+      "mask": -1
+    }
+  },
+  "components": [
+    {
+      "componentClass": "DoorRules"
+    }
+  ]
+}
