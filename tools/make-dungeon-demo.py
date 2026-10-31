@@ -214,6 +214,16 @@ type_json("SceneManager", {"_name": "Rooms", "transition": "Fade", "fadeTime": 0
 # ── the tiles: walls solid and casting shadows, floors open ──
 WALLS = [40, 57, 58, 59]
 FLOORS = [48, 48, 48, 49, 42, 48, 50]
+# The floor is dark stone: the pack's sandy floor tiles, darkened and cooled in the copied sheet, the walls as they are.
+STONE = (0.40, 0.41, 0.47)
+for i in sorted(set(FLOORS)):
+    x, y = (i % 12) * T, (i // 12) * T
+    for px_ in range(x, x + T):
+        for py_ in range(y, y + T):
+            r, g, b_, a_ = sheet.getpixel((px_, py_))
+            lum = 0.299 * r + 0.587 * g + 0.114 * b_
+            sheet.putpixel((px_, py_), (int(lum * STONE[0]), int(lum * STONE[1]), int(lum * STONE[2]), a_))
+sheet.save(os.path.join(out, "assets", "art", TILES))
 tiles = []
 for i in range(132):
     t = {"id": i, "x": (i % 12) * T, "y": (i // 12) * T, "collision": []}
