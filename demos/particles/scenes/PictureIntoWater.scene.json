@@ -29,7 +29,7 @@
       "type": "Help",
       "x": -470,
       "y": -244,
-      "text": "Turn into particles on a whole picture, each particle colored from its pixel, then choose what they become."
+      "text": "Turn a picture's pixels into particles of different types."
     },
     {
       "id": "f1000000-0000-4000-8000-000000002904",
@@ -38,7 +38,7 @@
       "type": "Help",
       "x": -470,
       "y": -226,
-      "text": "W water   E elastic   X colors that mix, stirred   N a soft net   V viscous honey   R puts it back   Click to splash"
+      "text": "W water   E elastic   X colors that mix, stirred   N a soft net   V viscous honey   R restarts the scene   Click to splash"
     },
     {
       "id": "f1000000-0000-4000-8000-000000002905",

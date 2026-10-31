@@ -2,7 +2,7 @@
   "schemaVersion": 2,
   "baseClass": "Sprite",
   "defaults": {
-    "spriteKey": "Grinder.sprite.json",
+    "spriteKey": "Propeller.sprite.json",
     "collisionEnabled": false
   },
   "components": [
