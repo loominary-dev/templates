@@ -53,6 +53,13 @@
       "minEditor": "1.0.46"
     },
     {
+      "id": "joints",
+      "name": "Joints demo",
+      "description": "A scene for each way two bodies can be joined on the Box2D solver: hinges with a motor, a spring and a chain; welds that break or give; sliders with a motor and a spring; springs, a rod and a rope; wheels on sprung axles; a follow by force; and Meld, which makes two objects one body and back.",
+      "path": "demos/joints",
+      "minEditor": "1.0.61"
+    },
+    {
       "id": "cascade",
       "name": "Cascade demo",
       "description": "Water and shapes down a flight of ramps and conveyor belts on the Box2D solver and the Fluid behavior: discs, squares, triangles and pentagons drop in with a random gravity scale, the belts carry them by their surface speed, a drain takes the water, and every contact point is drawn. Click to splash, drag to stir; with Space held the left button makes water, with D it takes water away.",

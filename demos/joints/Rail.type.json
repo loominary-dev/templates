@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 2,
+  "baseClass": "Sprite",
+  "defaults": {
+    "spriteKey": "Rail.sprite.json",
+    "collisionEnabled": false
+  },
+  "components": []
+}

@@ -1,0 +1,437 @@
+{
+  "rules": [
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isCommandPressed",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Reset",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Scenes",
+          "className": "SceneManager",
+          "name": "changeScene",
+          "params": [
+            {
+              "type": "literal",
+              "value": "scenes/Springs.scene.json",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "Ball",
+          "className": "Node",
+          "name": "nameIs",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Bouncer",
+              "valueKind": "string"
+            }
+          ]
+        },
+        {
+          "scope": "Ball",
+          "className": "PhysicsBody",
+          "name": "hasJoint",
+          "params": [
+            {
+              "type": "literal",
+              "value": "spring",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true,
+          "not": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Ball",
+          "className": "PhysicsBody",
+          "name": "springTo",
+          "params": [
+            {
+              "type": "literal",
+              "value": "HookA",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 130
+            },
+            {
+              "type": "literal",
+              "value": "spring",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "Ball",
+          "className": "PhysicsBody",
+          "name": "setJointSpring",
+          "params": [
+            {
+              "type": "literal",
+              "value": "spring",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 1.2
+            },
+            {
+              "type": "literal",
+              "value": 0.1
+            }
+          ],
+          "onComponent": true
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "Crate",
+          "className": "PhysicsBody",
+          "name": "hasJoint",
+          "params": [
+            {
+              "type": "literal",
+              "value": "rope",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true,
+          "not": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Crate",
+          "className": "PhysicsBody",
+          "name": "springTo",
+          "params": [
+            {
+              "type": "literal",
+              "value": "HookB",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "top",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 150
+            },
+            {
+              "type": "literal",
+              "value": "rope",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "Crate",
+          "className": "PhysicsBody",
+          "name": "setJointSpring",
+          "params": [
+            {
+              "type": "literal",
+              "value": "rope",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 0.05
+            },
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "Crate",
+          "className": "PhysicsBody",
+          "name": "setJointLimits",
+          "params": [
+            {
+              "type": "literal",
+              "value": "rope",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 0
+            },
+            {
+              "type": "literal",
+              "value": 150
+            }
+          ],
+          "onComponent": true
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "Ball",
+          "className": "Node",
+          "name": "nameIs",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Swinger",
+              "valueKind": "string"
+            }
+          ]
+        },
+        {
+          "scope": "Ball",
+          "className": "PhysicsBody",
+          "name": "hasJoint",
+          "params": [
+            {
+              "type": "literal",
+              "value": "rod",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true,
+          "not": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Ball",
+          "className": "PhysicsBody",
+          "name": "springTo",
+          "params": [
+            {
+              "type": "literal",
+              "value": "HookC",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 150
+            },
+            {
+              "type": "literal",
+              "value": "rod",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isCommandPressed",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Act",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Ball",
+          "className": "PhysicsBody",
+          "name": "applyImpulse",
+          "params": [
+            {
+              "type": "op",
+              "op": "*",
+              "left": {
+                "type": "value",
+                "scope": "Ball",
+                "className": "PhysicsBody",
+                "name": "mass",
+                "params": [],
+                "returnType": "Float",
+                "onComponent": true
+              },
+              "right": {
+                "type": "literal",
+                "value": 500
+              }
+            },
+            {
+              "type": "op",
+              "op": "*",
+              "left": {
+                "type": "value",
+                "scope": "Ball",
+                "className": "PhysicsBody",
+                "name": "mass",
+                "params": [],
+                "returnType": "Float",
+                "onComponent": true
+              },
+              "right": {
+                "type": "literal",
+                "value": -300
+              }
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "Crate",
+          "className": "PhysicsBody",
+          "name": "applyImpulse",
+          "params": [
+            {
+              "type": "op",
+              "op": "*",
+              "left": {
+                "type": "value",
+                "scope": "Crate",
+                "className": "PhysicsBody",
+                "name": "mass",
+                "params": [],
+                "returnType": "Float",
+                "onComponent": true
+              },
+              "right": {
+                "type": "literal",
+                "value": 500
+              }
+            },
+            {
+              "type": "op",
+              "op": "*",
+              "left": {
+                "type": "value",
+                "scope": "Crate",
+                "className": "PhysicsBody",
+                "name": "mass",
+                "params": [],
+                "returnType": "Float",
+                "onComponent": true
+              },
+              "right": {
+                "type": "literal",
+                "value": -300
+              }
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "audio",
+          "className": "Audio",
+          "name": "playSound",
+          "params": [
+            {
+              "type": "literal",
+              "value": "kick",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "Ball",
+          "className": "Node",
+          "name": "nameIs",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Bouncer",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Force",
+          "className": "Label",
+          "name": "setNumber",
+          "params": [
+            {
+              "type": "value",
+              "scope": "Ball",
+              "className": "PhysicsBody",
+              "name": "jointForce",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "spring",
+                  "valueKind": "string"
+                }
+              ],
+              "returnType": "Float",
+              "onComponent": true
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    }
+  ]
+}

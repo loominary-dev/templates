@@ -1,0 +1,1249 @@
+{
+  "rules": [
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isCommandPressed",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Reset",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Scenes",
+          "className": "SceneManager",
+          "name": "changeScene",
+          "params": [
+            {
+              "type": "literal",
+              "value": "scenes/Welds.scene.json",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "system",
+          "className": "VisualScriptComponent",
+          "name": "triggerOnce",
+          "params": []
+        }
+      ],
+      "actions": [
+        {
+          "scope": "variables",
+          "className": "Variables",
+          "name": "setVariable",
+          "params": [
+            {
+              "type": "literal",
+              "value": "broken",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "scope": "variables",
+          "className": "Variables",
+          "name": "setVariable",
+          "params": [
+            {
+              "type": "literal",
+              "value": "cut",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "Block",
+          "className": "Node",
+          "name": "nameIs",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Block1",
+              "valueKind": "string"
+            }
+          ]
+        },
+        {
+          "scope": "maths",
+          "className": "Maths",
+          "name": "compare",
+          "params": [
+            {
+              "type": "value",
+              "scope": "variables",
+              "className": "Variables",
+              "name": "getVariable",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "broken",
+                  "valueKind": "string"
+                }
+              ],
+              "returnType": "Float"
+            },
+            {
+              "type": "literal",
+              "value": 0
+            },
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "scope": "maths",
+          "className": "Maths",
+          "name": "compare",
+          "params": [
+            {
+              "type": "value",
+              "scope": "variables",
+              "className": "Variables",
+              "name": "getVariable",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "cut",
+                  "valueKind": "string"
+                }
+              ],
+              "returnType": "Float"
+            },
+            {
+              "type": "literal",
+              "value": 0
+            },
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "scope": "Block",
+          "className": "PhysicsBody",
+          "name": "hasJoint",
+          "params": [
+            {
+              "type": "literal",
+              "value": "weld1",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true,
+          "not": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Block",
+          "className": "PhysicsBody",
+          "name": "weldTo",
+          "params": [
+            {
+              "type": "literal",
+              "value": "",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "bottom",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "weld1",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "Block",
+          "className": "PhysicsBody",
+          "name": "setJointBreakForce",
+          "params": [
+            {
+              "type": "literal",
+              "value": "weld1",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 6000
+            }
+          ],
+          "onComponent": true
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "Block",
+          "className": "Node",
+          "name": "nameIs",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Block2",
+              "valueKind": "string"
+            }
+          ]
+        },
+        {
+          "scope": "maths",
+          "className": "Maths",
+          "name": "compare",
+          "params": [
+            {
+              "type": "value",
+              "scope": "variables",
+              "className": "Variables",
+              "name": "getVariable",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "broken",
+                  "valueKind": "string"
+                }
+              ],
+              "returnType": "Float"
+            },
+            {
+              "type": "literal",
+              "value": 0
+            },
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "scope": "maths",
+          "className": "Maths",
+          "name": "compare",
+          "params": [
+            {
+              "type": "value",
+              "scope": "variables",
+              "className": "Variables",
+              "name": "getVariable",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "cut",
+                  "valueKind": "string"
+                }
+              ],
+              "returnType": "Float"
+            },
+            {
+              "type": "literal",
+              "value": 0
+            },
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "scope": "Block",
+          "className": "PhysicsBody",
+          "name": "hasJoint",
+          "params": [
+            {
+              "type": "literal",
+              "value": "weld2",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true,
+          "not": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Block",
+          "className": "PhysicsBody",
+          "name": "weldTo",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Block1",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "bottom",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "weld2",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "Block",
+          "className": "PhysicsBody",
+          "name": "setJointBreakForce",
+          "params": [
+            {
+              "type": "literal",
+              "value": "weld2",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 6000
+            }
+          ],
+          "onComponent": true
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "Block",
+          "className": "Node",
+          "name": "nameIs",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Block3",
+              "valueKind": "string"
+            }
+          ]
+        },
+        {
+          "scope": "maths",
+          "className": "Maths",
+          "name": "compare",
+          "params": [
+            {
+              "type": "value",
+              "scope": "variables",
+              "className": "Variables",
+              "name": "getVariable",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "broken",
+                  "valueKind": "string"
+                }
+              ],
+              "returnType": "Float"
+            },
+            {
+              "type": "literal",
+              "value": 0
+            },
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "scope": "maths",
+          "className": "Maths",
+          "name": "compare",
+          "params": [
+            {
+              "type": "value",
+              "scope": "variables",
+              "className": "Variables",
+              "name": "getVariable",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "cut",
+                  "valueKind": "string"
+                }
+              ],
+              "returnType": "Float"
+            },
+            {
+              "type": "literal",
+              "value": 0
+            },
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "scope": "Block",
+          "className": "PhysicsBody",
+          "name": "hasJoint",
+          "params": [
+            {
+              "type": "literal",
+              "value": "weld3",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true,
+          "not": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Block",
+          "className": "PhysicsBody",
+          "name": "weldTo",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Block2",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "bottom",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "weld3",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "Block",
+          "className": "PhysicsBody",
+          "name": "setJointBreakForce",
+          "params": [
+            {
+              "type": "literal",
+              "value": "weld3",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 6000
+            }
+          ],
+          "onComponent": true
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "Block",
+          "className": "Node",
+          "name": "nameIs",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Block4",
+              "valueKind": "string"
+            }
+          ]
+        },
+        {
+          "scope": "maths",
+          "className": "Maths",
+          "name": "compare",
+          "params": [
+            {
+              "type": "value",
+              "scope": "variables",
+              "className": "Variables",
+              "name": "getVariable",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "broken",
+                  "valueKind": "string"
+                }
+              ],
+              "returnType": "Float"
+            },
+            {
+              "type": "literal",
+              "value": 0
+            },
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "scope": "maths",
+          "className": "Maths",
+          "name": "compare",
+          "params": [
+            {
+              "type": "value",
+              "scope": "variables",
+              "className": "Variables",
+              "name": "getVariable",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "cut",
+                  "valueKind": "string"
+                }
+              ],
+              "returnType": "Float"
+            },
+            {
+              "type": "literal",
+              "value": 0
+            },
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "scope": "Block",
+          "className": "PhysicsBody",
+          "name": "hasJoint",
+          "params": [
+            {
+              "type": "literal",
+              "value": "weld4",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true,
+          "not": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Block",
+          "className": "PhysicsBody",
+          "name": "weldTo",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Block3",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "bottom",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "weld4",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "Block",
+          "className": "PhysicsBody",
+          "name": "setJointBreakForce",
+          "params": [
+            {
+              "type": "literal",
+              "value": "weld4",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 6000
+            }
+          ],
+          "onComponent": true
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "Block",
+          "className": "Node",
+          "name": "nameIs",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Block5",
+              "valueKind": "string"
+            }
+          ]
+        },
+        {
+          "scope": "maths",
+          "className": "Maths",
+          "name": "compare",
+          "params": [
+            {
+              "type": "value",
+              "scope": "variables",
+              "className": "Variables",
+              "name": "getVariable",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "broken",
+                  "valueKind": "string"
+                }
+              ],
+              "returnType": "Float"
+            },
+            {
+              "type": "literal",
+              "value": 0
+            },
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "scope": "maths",
+          "className": "Maths",
+          "name": "compare",
+          "params": [
+            {
+              "type": "value",
+              "scope": "variables",
+              "className": "Variables",
+              "name": "getVariable",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "cut",
+                  "valueKind": "string"
+                }
+              ],
+              "returnType": "Float"
+            },
+            {
+              "type": "literal",
+              "value": 0
+            },
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "scope": "Block",
+          "className": "PhysicsBody",
+          "name": "hasJoint",
+          "params": [
+            {
+              "type": "literal",
+              "value": "weld5",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true,
+          "not": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Block",
+          "className": "PhysicsBody",
+          "name": "weldTo",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Block4",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "bottom",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "weld5",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "Block",
+          "className": "PhysicsBody",
+          "name": "setJointBreakForce",
+          "params": [
+            {
+              "type": "literal",
+              "value": "weld5",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 6000
+            }
+          ],
+          "onComponent": true
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "Block",
+          "className": "Node",
+          "name": "nameIs",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Block1",
+              "valueKind": "string"
+            }
+          ]
+        },
+        {
+          "scope": "Block",
+          "className": "PhysicsBody",
+          "name": "onJointBroke",
+          "params": [
+            {
+              "type": "literal",
+              "value": "weld1",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "variables",
+          "className": "Variables",
+          "name": "addToVariable",
+          "params": [
+            {
+              "type": "literal",
+              "value": "broken",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "scope": "audio",
+          "className": "Audio",
+          "name": "playSound",
+          "params": [
+            {
+              "type": "literal",
+              "value": "crack",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "Block",
+          "className": "Node",
+          "name": "nameIs",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Block2",
+              "valueKind": "string"
+            }
+          ]
+        },
+        {
+          "scope": "Block",
+          "className": "PhysicsBody",
+          "name": "onJointBroke",
+          "params": [
+            {
+              "type": "literal",
+              "value": "weld2",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "variables",
+          "className": "Variables",
+          "name": "addToVariable",
+          "params": [
+            {
+              "type": "literal",
+              "value": "broken",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "scope": "audio",
+          "className": "Audio",
+          "name": "playSound",
+          "params": [
+            {
+              "type": "literal",
+              "value": "crack",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "Block",
+          "className": "Node",
+          "name": "nameIs",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Block3",
+              "valueKind": "string"
+            }
+          ]
+        },
+        {
+          "scope": "Block",
+          "className": "PhysicsBody",
+          "name": "onJointBroke",
+          "params": [
+            {
+              "type": "literal",
+              "value": "weld3",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "variables",
+          "className": "Variables",
+          "name": "addToVariable",
+          "params": [
+            {
+              "type": "literal",
+              "value": "broken",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "scope": "audio",
+          "className": "Audio",
+          "name": "playSound",
+          "params": [
+            {
+              "type": "literal",
+              "value": "crack",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "Block",
+          "className": "Node",
+          "name": "nameIs",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Block4",
+              "valueKind": "string"
+            }
+          ]
+        },
+        {
+          "scope": "Block",
+          "className": "PhysicsBody",
+          "name": "onJointBroke",
+          "params": [
+            {
+              "type": "literal",
+              "value": "weld4",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "variables",
+          "className": "Variables",
+          "name": "addToVariable",
+          "params": [
+            {
+              "type": "literal",
+              "value": "broken",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "scope": "audio",
+          "className": "Audio",
+          "name": "playSound",
+          "params": [
+            {
+              "type": "literal",
+              "value": "crack",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "Block",
+          "className": "Node",
+          "name": "nameIs",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Block5",
+              "valueKind": "string"
+            }
+          ]
+        },
+        {
+          "scope": "Block",
+          "className": "PhysicsBody",
+          "name": "onJointBroke",
+          "params": [
+            {
+              "type": "literal",
+              "value": "weld5",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "variables",
+          "className": "Variables",
+          "name": "addToVariable",
+          "params": [
+            {
+              "type": "literal",
+              "value": "broken",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "scope": "audio",
+          "className": "Audio",
+          "name": "playSound",
+          "params": [
+            {
+              "type": "literal",
+              "value": "crack",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "Sign",
+          "className": "PhysicsBody",
+          "name": "hasJoint",
+          "params": [
+            {
+              "type": "literal",
+              "value": "mount",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true,
+          "not": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Sign",
+          "className": "PhysicsBody",
+          "name": "weldTo",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Post1",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "foot",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "mount",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "Sign",
+          "className": "PhysicsBody",
+          "name": "setJointSpring",
+          "params": [
+            {
+              "type": "literal",
+              "value": "mount",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 2.5
+            },
+            {
+              "type": "literal",
+              "value": 0.1
+            }
+          ],
+          "onComponent": true
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isCommandPressed",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Act",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Shot",
+          "className": "Node",
+          "name": "setPosition",
+          "params": [
+            {
+              "type": "literal",
+              "value": -430
+            },
+            {
+              "type": "literal",
+              "value": 60
+            }
+          ]
+        },
+        {
+          "scope": "Shot",
+          "className": "PhysicsBody",
+          "name": "setVelocity",
+          "params": [
+            {
+              "type": "literal",
+              "value": 1800
+            },
+            {
+              "type": "literal",
+              "value": -100
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "audio",
+          "className": "Audio",
+          "name": "playSound",
+          "params": [
+            {
+              "type": "literal",
+              "value": "kick",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isCommandPressed",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Cut",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "variables",
+          "className": "Variables",
+          "name": "setVariable",
+          "params": [
+            {
+              "type": "literal",
+              "value": "cut",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "scope": "Block",
+          "className": "PhysicsBody",
+          "name": "disconnectJoint",
+          "params": [
+            {
+              "type": "literal",
+              "value": "",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "audio",
+          "className": "Audio",
+          "name": "playSound",
+          "params": [
+            {
+              "type": "literal",
+              "value": "click",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [],
+      "actions": [
+        {
+          "scope": "Broken",
+          "className": "Label",
+          "name": "setNumber",
+          "params": [
+            {
+              "type": "value",
+              "scope": "variables",
+              "className": "Variables",
+              "name": "getVariable",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "broken",
+                  "valueKind": "string"
+                }
+              ],
+              "returnType": "Float"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    }
+  ]
+}

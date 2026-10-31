@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 2,
+  "baseClass": "Sprite",
+  "defaults": {
+    "collision": {
+      "layer": 2,
+      "mask": 3
+    },
+    "spriteKey": "Shot.sprite.json"
+  },
+  "components": [
+    {
+      "componentClass": "PhysicsBody",
+      "bodyType": "Dynamic",
+      "bounceX": 0.2,
+      "bounceY": 0.2
+    }
+  ]
+}
