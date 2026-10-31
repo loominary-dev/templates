@@ -13,8 +13,10 @@ part of it a word of the **Physics Body** or a behavior:
 - **The wrecking ball** hangs from its `pin` point, a hinge to the world;
   **B** gives it a push (**Give an impulse**).
 - **The see-saw** is a board hinged to the world at its middle.
-- **The pool** is a **Fluid Zone**: what falls in floats by its density and is
-  slowed; the raft's shape has a density of 0.4.
+- **The pool** is a **Fluid Zone** of density 1.25: what falls in floats by its
+  density and is slowed. The crates' shapes have a density of 1, so they sit a
+  fifth out of the water, tops level (a square half as dense as the water floats
+  corner down); the raft's is 0.4.
 - **The fan** drives a **Field** set to Wind; **F** starts and stops it.
 - **Drag** anything with the mouse: `vscript/DragRules` uses **Contains point**
   to take hold of the object under the pointer and **Drag toward** to pull it.
