@@ -34,7 +34,7 @@ Keys **1** to **0**, and the Left and Right arrows, change scene (a Scene Manage
 | 8 | Color mixing | **Color mixing**: red and blue water turning purple where they meet |
 | 9 | Color by speed | **Color by speed**: a stream and splashes that foam white |
 | 0 | Objects into particles | **Turn … into particles**: Kenney's animal heads made elastic, then melted |
-| Right from 0 | A picture into particles | a whole picture in its own colors, about six thousand particles; W, E, X, N and V make it water, elastic, colors that mix, a soft net or honey; R puts it back |
+| Right from 0 | A picture into particles | a whole picture in its own colors, about six thousand particles; W, E, X, N and V make it water, elastic, colors that mix, a soft net or honey; R restarts the scene |
 
 The pools and blocks are laid with **Fill … with particles** into hidden
 shapes placed in each scene (the Mold and Dropper objects), so they land

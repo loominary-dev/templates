@@ -46,6 +46,21 @@ d.sprite("Hopper", 50, 40, [("still", [hopper], 400, "loop")], [])
 grinder = canvas(36, 36)
 ImageDraw.Draw(grinder).ellipse([1, 1, 34, 34], fill=(120, 120, 130, 255), outline=(60, 60, 66, 255), width=3)
 d.sprite("Grinder", 36, 36, [("still", [grinder], 400, "loop")], [])
+# The stirrer: a propeller, three blades on a hub, turned by Rotate while it stirs.
+def propeller(size, blades, fill, edge, hub):
+    img = canvas(size, size)
+    g = ImageDraw.Draw(img)
+    c = (size - 1) / 2
+    r = c - 1
+    leaf = [(0.12, 0), (0.3, -0.16), (0.7, -0.2), (0.95, -0.08), (1.0, 0.04), (0.85, 0.16), (0.5, 0.18), (0.25, 0.1)]
+    for i in range(blades):
+        a = i * math.pi * 2 / blades
+        ca, sa = math.cos(a), math.sin(a)
+        pts = [(c + (x * ca - y * sa) * r, c + (x * sa + y * ca) * r) for x, y in leaf]
+        g.polygon(pts, fill=fill, outline=edge)
+    g.ellipse([c - 5, c - 5, c + 5, c + 5], fill=hub, outline=edge)
+    return img
+d.sprite("Propeller", 48, 48, [("still", [propeller(48, 3, (200, 200, 210, 255), (70, 70, 80, 255), (120, 120, 130, 255))], 400, "loop")], [])
 plug = canvas(60, 10)
 ImageDraw.Draw(plug).rectangle([0, 0, 59, 9], fill=(30, 30, 36, 255))
 d.sprite("Plug", 60, 10, [("still", [plug], 400, "loop")], [box("hole", 30, 5, 60, 10, sensor=True)])
@@ -210,7 +225,7 @@ d.type_json("FoamTap", "Sprite", {"spriteKey": "Tap.sprite.json", "collisionEnab
             [emitter(system="Foam1", group="water", on=True, rate=110, speed=420, speedVariation=0.1, spread=6, shape="Line", width=24)])
 d.type_json("FoamPlug", "Sprite", {"spriteKey": "Plug.sprite.json", "collision": {"layer": DRAIN, "mask": 0}},
             [{"componentClass": "Drain", "system": "Foam1", "on": True}])
-d.type_json("Stirrer", "Sprite", {"spriteKey": "Grinder.sprite.json", "collisionEnabled": False},
+d.type_json("Stirrer", "Sprite", {"spriteKey": "Propeller.sprite.json", "collisionEnabled": False},
             [{"componentClass": "Field", "kind": "Vortex", "strength": 0, "range": 170, "pull": 0.2, "affects": "Particles"}, {"componentClass": "Rotate", "speed": 0}])
 for name in ["OneMs", "PassesMs", "PassCount", "StillMs", "SleepState"]:
     d.type_json(name, "Label", {"text": "", "fontSize": 13})
@@ -331,7 +346,7 @@ def walls(place):
     place("CupTap1", "CupTap", -10, -160, rotation=math.pi / 2)
 feature("WallsOfParticles", "Walls made of particles",
         ["The cup is particles laid in three hidden shapes and made a wall group: they stand where they are,", "and the water poured in rests on them."],
-        "Space makes the cup plain water, and it gives way.   R builds it again.   Click to splash.",
+        "Space makes the cup plain water, and it gives way.   R restarts the scene.   Click to splash.",
         walls,
         [rule([once()], cup_build), rule([pressed("Reset")], cup_build),
          rule([pressed("Act")], [fl("Walled", "setGroupKind", s("cup"), lit(0)), fl("Walled", "colorGroup", s("cup"), lit(0x4AA8FF)), click]),
@@ -347,7 +362,7 @@ def oil(place):
     mould(place, "WaterSpot", -120, 150, 230, 150); mould(place, "OilSpot", 120, 150, 230, 150); mould(place, "OilDrop", 0, -120, 70, 70)
 feature("OilAndWaterRepel", "Oil and water repel",
         ["Two groups in one fluid, the amber one made repulsive: it pushes the blue away wherever they meet,", "so however hard they are stirred they part again."],
-        "Click to splash them together.   Space pours more oil into the middle.   R starts again.",
+        "Click to splash them together.   Space pours more oil into the middle.   R restarts the scene.",
         oil,
         [rule([once()], oil_start), rule([pressed("Reset")], oil_start),
          rule([mouse_pressed(LEFT_BUTTON)], [fl("OilWater", "pushInCircle", px, py, lit(110), lit(0), lit(-500))]),
@@ -364,7 +379,7 @@ def mixing(place):
     place("Stirrer1", "Stirrer", 0, 160)
 feature("ColorMixing", "Color mixing",
         ["Red and blue water with Color mixing on: touching particles' colors drift toward each other's,", "so where they meet it turns purple, and stirred it all does."],
-        "Space starts and stops the stirrer.   Click to splash.   R starts again.",
+        "Space starts and stops the stirrer.   Click to splash.   R restarts the scene.",
         mixing,
         [rule([once()], mix_start + [line("variables", "Variables", "setVariable", s("stir"), lit(0))]), rule([pressed("Reset")], mix_start)]
         + toggle("Act", "stir", [comp("Stirrer", "Field", "setStrength", lit(900)), comp("Stirrer", "Rotate", "setSpeed", lit(240)), click],
@@ -394,7 +409,7 @@ def into(place):
 feature("ObjectsIntoParticles", "Objects into particles",
         ["Turn into particles puts a particle wherever an object's picture is opaque, colored from its pixel.",
          "Made elastic, the pictures fall and bounce looking like themselves; left as water, they melt."],
-        "E turns them into elastic particles.   W melts them into water.   R puts them back.   Click to knock the pieces about.",
+        "E turns them into elastic particles.   W melts them into water.   R restarts the scene.   Click to knock the pieces about.",
         into,
         [rule([pressed("Elastic")], [a for name, g in PICTURES for a in (fl("Bits", "turnIntoParticles", s(name), s(g), lit(128), lit(1)), fl("Bits", "setGroupKind", s(g), lit(1)))] + [click]),
          # Melting makes jelly plain water again, and turns a picture still whole straight into water.
@@ -426,8 +441,8 @@ def mode(key, *actions):
     return rule([pressed(key)], [melt] + list(actions) + [click])
 water = [fl("Flood", "setKind", s("Water")), fl("Flood", "setViscosity", lit(0.25)), fl("Flood", "setColorMixing", lit(0))]
 feature("PictureIntoWater", "A picture into particles",
-        ["Turn into particles on a whole picture, each particle colored from its pixel, then choose what they become."],
-        "W water   E elastic   X colors that mix, stirred   N a soft net   V viscous honey   R puts it back   Click to splash",
+        ["Turn a picture's pixels into particles of different types."],
+        "W water   E elastic   X colors that mix, stirred   N a soft net   V viscous honey   R restarts the scene   Click to splash",
         picture,
         [mode("Melt", *water, fl("Flood", "setGroupKind", s("picture"), lit(0)), *calm),
          mode("Elastic", *water, fl("Flood", "setGroupKind", s("picture"), lit(1)), *calm),
@@ -516,7 +531,7 @@ Keys **1** to **0**, and the Left and Right arrows, change scene (a Scene Manage
 | 8 | Color mixing | **Color mixing**: red and blue water turning purple where they meet |
 | 9 | Color by speed | **Color by speed**: a stream and splashes that foam white |
 | 0 | Objects into particles | **Turn … into particles**: Kenney's animal heads made elastic, then melted |
-| Right from 0 | A picture into particles | a whole picture in its own colors, about six thousand particles; W, E, X, N and V make it water, elastic, colors that mix, a soft net or honey; R puts it back |
+| Right from 0 | A picture into particles | a whole picture in its own colors, about six thousand particles; W, E, X, N and V make it water, elastic, colors that mix, a soft net or honey; R restarts the scene |
 
 The pools and blocks are laid with **Fill … with particles** into hidden
 shapes placed in each scene (the Mold and Dropper objects), so they land
