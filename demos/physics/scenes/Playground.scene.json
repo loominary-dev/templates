@@ -332,7 +332,7 @@
       "type": "Help",
       "x": -470,
       "y": -262,
-      "text": "Arrows drive the car. G picks up crates near it, H puts them down. Drag anything with the mouse. B swings the ball, F starts the fan."
+      "text": "Joints: the bridge is planks hinged to each other and to the posts; the wrecking ball and the see-saw hinge to the world.\nMotors: each wheel is a wheel joint of the car, on a spring, and the arrows drive its motor. The pool is a fluid zone; the fan, a wind field.\nArrows drive the car. G picks up crates near it, H puts them down. Drag anything with the mouse. B swings the ball, F starts the fan."
     }
   ]
 }

@@ -87,7 +87,7 @@ d.type_json("Chain", "Sprite", {"spriteKey": "Chain.sprite.json", "collisionEnab
 d.type_json("Buggy", "Sprite", dict(moving(), spriteKey="Buggy.sprite.json"), [body(), {"componentClass": "DragRules"}])
 d.type_json("Wheel", "Sprite", dict(moving(), spriteKey="Wheel.sprite.json"), [body(friction=0.95), {"componentClass": "WheelRules"}])
 d.type_json("Pool", "Sprite", {"spriteKey": "Pool.sprite.json", "collision": {"layer": WATER, "mask": BODY}},
-            [{"componentClass": "FluidZone", "density": 2, "drag": 2.5, "angularDrag": 2}])
+            [{"componentClass": "FluidZone", "density": 1.25, "drag": 2.5, "angularDrag": 2}])
 d.type_json("Fan", "Sprite", {"spriteKey": "Fan.sprite.json", "collisionEnabled": False}, [{"componentClass": "Rotate", "speed": 0}])
 d.type_json("Breeze", "Sprite", {"spriteKey": "Breeze.sprite.json", "collision": {"layer": AIR, "mask": BODY}},
             [{"componentClass": "Field", "kind": "Wind", "strength": 0, "affects": "Bodies"}])
@@ -126,7 +126,9 @@ objects.append({"id": d.uid(n[0]), "parent": objects[-1]["id"], "name": "Chain1"
 for i in range(4): place("Crate%d" % (i + 8), "Crate", 330, 214 - 32 * i)
 # The fan and its breeze, over the bridge.
 place("Fan1", "Fan", -440, -80); place("Breeze1", "Breeze", -220, -80)
-help_text = "Arrows drive the car. G picks up crates near it, H puts them down. Drag anything with the mouse. B swings the ball, F starts the fan."
+help_text = ("Joints: the bridge is planks hinged to each other and to the posts; the wrecking ball and the see-saw hinge to the world.\n"
+             "Motors: each wheel is a wheel joint of the car, on a spring, and the arrows drive its motor. The pool is a fluid zone; the fan, a wind field.\n"
+             "Arrows drive the car. G picks up crates near it, H puts them down. Drag anything with the mouse. B swings the ball, F starts the fan.")
 place("Help1", "Help", -470, -262, text=help_text)
 d.scene("scenes/Playground.scene.json", objects)
 
@@ -203,8 +205,10 @@ part of it a word of the **Physics Body** or a behavior:
 - **The wrecking ball** hangs from its `pin` point, a hinge to the world;
   **B** gives it a push (**Give an impulse**).
 - **The see-saw** is a board hinged to the world at its middle.
-- **The pool** is a **Fluid Zone**: what falls in floats by its density and is
-  slowed; the raft's shape has a density of 0.4.
+- **The pool** is a **Fluid Zone** of density 1.25: what falls in floats by its
+  density and is slowed. The crates' shapes have a density of 1, so they sit a
+  fifth out of the water, tops level (a square half as dense as the water floats
+  corner down); the raft's is 0.4.
 - **The fan** drives a **Field** set to Wind; **F** starts and stops it.
 - **Drag** anything with the mouse: `vscript/DragRules` uses **Contains point**
   to take hold of the object under the pointer and **Drag toward** to pull it.
