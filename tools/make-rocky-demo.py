@@ -75,10 +75,11 @@ d.sprite("Slime", 24, 20, [("walk", framed(seq(("Sprites", "Enemy02"), "walk", 6
                           ("squashed", framed(seq(("Sprites", "Enemy02"), "hit", 3), BBOX), 90, "once")],
          [box("head", 11, 5, 16, 5, sensor=True), box("body", 11, 13, 18, 12, sensor=True)])
 d.sprite("Bat", 32, 32, [("fly", seq(("Sprites", "Enemy01"), "fly", 7), 80, "loop")], [box("body", 16, 15, 20, 16, sensor=True)])
-PBOX = (16, 16, 48, 64)
-d.sprite("Plant", 32, 48, [("idle", framed(seq(("Sprites", "Enemy03"), "idle", 8), PBOX), 120, "loop"),
+# The snap reaches 16 px past the stem: a window the width of the source frame, about the stem, keeps it whole.
+PBOX = (0, 16, 64, 64)
+d.sprite("Plant", 64, 48, [("idle", framed(seq(("Sprites", "Enemy03"), "idle", 8), PBOX), 120, "loop"),
                            ("snap", framed(seq(("Sprites", "Enemy03"), "attack_right", 8), PBOX), 70, "loop")],
-         [box("body", 16, 30, 18, 34, sensor=True)])
+         [box("body", 32, 30, 18, 34, sensor=True)])
 
 d.sprite("Diamond", 16, 14, [("shine", seq(("Collectible",), "diamond_big_", 6), 110, "loop")], [box("gem", 8, 7, 12, 10, sensor=True)])
 d.sprite("Heart", 13, 13, [("beat", seq(("Collectible",), "heart", 6), 110, "loop")], [box("heart", 6, 6, 11, 11, sensor=True)])
@@ -148,10 +149,10 @@ def ledge(c0, c1, r):
 def put(ch, c, r): grid[r][c] = ch
 ground(0, 30, 12); ground(31, 38, 10); ground(39, 44, 12); ground(48, 66, 12)
 ground(71, 82, 9); ground(83, 90, 13); ground(91, 104, 11); ground(109, 124, 12); ground(125, 139, 10)
-ledge(22, 25, 8); ledge(45, 47, 9); ledge(56, 59, 7); ledge(67, 70, 10); ledge(93, 96, 6); ledge(99, 102, 8); ledge(105, 108, 9)
+ledge(22, 25, 8); ledge(45, 47, 9); ledge(56, 59, 8); ledge(67, 70, 10); ledge(93, 96, 6); ledge(99, 102, 8); ledge(105, 108, 9)
 for c, r, ch in [(3, 11, "P"), (8, 11, "g"), (11, 11, "s"), (12, 9, "d"), (16, 9, "d"), (20, 11, "t"), (24, 7, "d"), (27, 11, "B"),
                  (33, 9, "g"), (36, 9, "d"), (40, 11, "^"), (42, 11, "^"), (41, 9, "L"), (46, 8, "d"), (41, 5, "V"), (52, 11, "r"),
-                 (57, 6, "d"), (58, 6, "h"), (61, 11, "B"), (64, 11, "s"), (68, 9, "d"), (74, 8, "m"), (77, 8, "d"), (80, 8, "g"),
+                 (57, 7, "d"), (58, 7, "h"), (61, 11, "B"), (64, 11, "s"), (68, 9, "d"), (74, 8, "m"), (77, 8, "d"), (80, 8, "g"),
                  (86, 12, "X"), (88, 10, "d"), (94, 5, "d"), (95, 5, "d"), (97, 3, "V"), (100, 7, "d"), (102, 10, "t"), (106, 8, "d"),
                  (111, 11, "g"), (113, 11, "^"), (115, 11, "^"), (114, 9, "L"), (118, 11, "B"), (121, 11, "s"), (127, 9, "X"),
                  (130, 9, "r"), (132, 9, "h"), (136, 9, "G"), (136, 6, "L"), (5, 11, "r")]:
@@ -389,7 +390,7 @@ d.write("vscript/BatRules.vscript.json", {"rules": [
     rule([comp("Bat", "Patrol", "isHeadingOut")], [line("Bat", "Node", "setMirrored", b(False))]),
     rule([not_(comp("Bat", "Patrol", "isHeadingOut"))], [line("Bat", "Node", "setMirrored", b(True))]),
 ], "vars": []})
-# The plant snaps while Gino is near, facing him.
+# The plant snaps while Gino is near, facing him: the pack's "attack_right" frames lunge to the LEFT.
 px = value("self", "Node", "getPositionX")
 near = compare(value("maths", "Maths", "absolute", op("-", gx, px)), LT, lit(64))
 far = compare(value("maths", "Maths", "absolute", op("-", gx, px)), GE, lit(64))
@@ -397,8 +398,8 @@ pick_gino = {"scope": "Gino", "name": "pickAll", "params": []}
 d.write("vscript/PlantRules.vscript.json", {"rules": [
     rule([pick_gino, near, not_(playing("self:Plant", "snap"))], [anim("self:Plant", "snap")]),
     rule([pick_gino, far, not_(playing("self:Plant", "idle"))], [anim("self:Plant", "idle")]),
-    rule([pick_gino, compare(gx, LT, px)], [line("self", "Node", "setMirrored", b(True))]),
-    rule([pick_gino, compare(gx, GE, px)], [line("self", "Node", "setMirrored", b(False))]),
+    rule([pick_gino, compare(gx, LT, px)], [line("self", "Node", "setMirrored", b(False))]),
+    rule([pick_gino, compare(gx, GE, px)], [line("self", "Node", "setMirrored", b(True))]),
 ], "vars": []})
 d.write("vscript/EffectRules.vscript.json", {"rules": [rule([line("self:Sprite", "Sprite", "onAnimationFinished")], [line("self", "Node", "queueDestroy")])], "vars": []})
 
