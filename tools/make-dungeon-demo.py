@@ -160,7 +160,7 @@ sprite("Key", 16, 16, [("still", [key_img], 400, "loop")], [box("key", 8, 7, 14,
 sprite("Potion", 16, 16, [("still", [tile(115)], 400, "loop")], [box("potion", 8, 9, 8, 10, sensor=True)])
 sprite("Heart", 16, 16, [("still", [heart_img], 400, "loop")], [])
 sprite("Chest", 16, 16, [("shut", [tile(89)], 400, "loop"), ("open", [tile(91)], 400, "loop")], [box("chest", 8, 9, 14, 12, sensor=True)])
-sprite("Sign", 16, 16, [("still", [tile(66)], 400, "loop")], [box("sign", 8, 9, 12, 12)])
+sprite("Sign", 16, 16, [("still", [tile(66)], 400, "loop")], [box("sign", 8, 9, 12, 12, occluder=1)])
 sprite("LockedDoor", 16, 16, [("shut", [shaded(tile(45), WALL_SHADE)], 400, "loop")], [box("door", 8, 8, 16, 16), box("lock", 8, 8, 22, 22, sensor=True)])
 sprite("Pillar", 16, 32, [("still", [pillar], 400, "loop")], [box("base", 8, 24, 14, 14, occluder=1)])
 sprite("Brazier", 16, 16, [("burn", [flame1, flame2], 160, "loop")], [box("base", 8, 12, 12, 6)])
@@ -213,6 +213,8 @@ type_json("Node", {"_name": "Doorway", "collision": {"layer": DOOR, "mask": PLAY
 type_json("Node", {"_name": "Marker"})
 type_json("Light", {"_name": "Lantern", "spriteKey": "Glow.sprite.json", "tint": 0xFFD9A0, "opacity": 0.55, "scaleX": 1.3, "scaleY": 1.3, "radius": 2, "lightHeight": 12})
 type_json("Light", {"_name": "FireLight", "spriteKey": "Glow.sprite.json", "tint": 0xFF9A40, "scaleX": 1.4, "scaleY": 1.4, "radius": 3, "lightHeight": 16})
+# The chest's own cool glow, beside the braziers' warm ones.
+type_json("Light", {"_name": "GemLight", "spriteKey": "Glow.sprite.json", "tint": 0x8CC8FF, "opacity": 0.7, "scaleX": 1.1, "scaleY": 1.1, "radius": 2, "lightHeight": 10})
 type_json("Sprite", {"_name": "HeartIcon", "spriteKey": "Heart.sprite.json"})
 type_json("Sprite", {"_name": "KeyIcon", "spriteKey": "Key.sprite.json"})
 for counter in ["HealthCount", "KeyCount", "TimeLabel"]:
@@ -254,25 +256,25 @@ write("assets/tiles/Dungeon.tileset.json", {"schemaVersion": 1, "image": "assets
 ROOMS = {
     "Entrance": ["####################",
                  "#..................#",
-                 "#..................#",
+                 "#......f.....f.....#",
                  "#....S.............#",
                  "#..................#",
                  "#..e...............D",
                  "#..................#",
+                 "#..........o.......#",
                  "#..................#",
-                 "#..................#",
-                 "#..................#",
+                 "#......f.....f.....#",
                  "####################"],
     "BatHall": ["####################",
                 "#..................#",
-                "#...b.......b......#",
+                "#.f.b.......b....f.#",
                 "#..................#",
                 "#........b.........#",
-                "D..................D",
+                "D......o......o....D",
                 "#..................#",
                 "#..##..........##..#",
                 "#..##..........##..#",
-                "#...........e......#",
+                "#.f.........e....f.#",
                 "#########D##########"],
     "DarkRoom": ["####################",
                  "#..................#",
@@ -287,36 +289,36 @@ ROOMS = {
                  "####################"],
     "Crossing": ["#########D##########",
                  "#..................#",
-                 "#....r.......r.....#",
+                 "#..f.r.......r..f..#",
                  "#..................#",
-                 "#..................#",
+                 "#......o.....o.....#",
                  "D.........e.......LD",
+                 "#......o.....o.....#",
                  "#..................#",
                  "#..................#",
-                 "#..................#",
-                 "#..................#",
+                 "#..f............f..#",
                  "####################"],
     "Armoury": ["####################",
                 "#..................#",
-                "#..x...............#",
+                "#..x..f............#",
                 "#..........##......#",
                 "#..........##..h...#",
                 "#..............e...D",
                 "#....x.............#",
+                "#.............o....#",
                 "#..................#",
-                "#..................#",
-                "#..................#",
+                "#.....f.......f....#",
                 "####################"],
     "Treasury": ["####################",
                  "#..................#",
-                 "#..................#",
-                 "#.........C........#",
+                 "#.....f......f.....#",
+                 "#.......o.C.o......#",
                  "#..................#",
                  "D..e...............#",
+                 "#.......o...o......#",
                  "#..................#",
                  "#..................#",
-                 "#..................#",
-                 "#..................#",
+                 "#.....f......f.....#",
                  "####################"],
 }
 # Who is through each side's doorway.
@@ -349,7 +351,8 @@ for room, rows in ROOMS.items():
         for c in range(COLS):
             ch = rows[r][c]
             cells.append([c, r, WALLS[(c * 7 + r * 3) % 4] if ch == "#" else FLOORS[(c * 5 + r * 11) % len(FLOORS)]])
-    tint = {"tint": 0x2E2A38} if dark else {}
+    # Every room is dim and lit by its braziers and the lantern, with the walls, pillars and signs throwing shadows; the dark room darkest.
+    tint = {"tint": 0x2E2A38} if dark else {"tint": 0x6E6A7A}
     # The walls' collision filter is the tile map's own: on the Walls layer, meeting everything.
     objects.append(dict({"id": uid(2), "parent": root, "name": "Floor", "type": "Tilemap", "tilesetKey": "assets/tiles/Dungeon.tileset.json",
                          "x": LEFT, "y": TOP, "cellWidth": T, "cellHeight": T, "cells": cells, "collisionLayer": SOLID, "collisionMask": EVERYTHING}, **tint))
@@ -380,6 +383,7 @@ for room, rows in ROOMS.items():
                 counts[t] = counts.get(t, 0) + 1
                 place("%s%d" % (t, counts[t]), t, x, y)
                 if t == "Brazier": place("FireLight%d" % counts[t], "FireLight", x, y - 4)
+                if t == "Chest": place("GemLight%d" % counts[t], "GemLight", x, y)
     write("scenes/%s.scene.json" % room, {"schemaVersion": 3, "objects": objects})
 
 # ── the singleton: the Scene Manager, the player and the HUD, loaded once and kept ──
@@ -388,7 +392,7 @@ game = [
     {"id": uid(1), "name": "Game"},
     {"id": uid(2), "parent": uid(1), "name": "Rooms1", "type": "Rooms"},
     {"id": uid(3), "parent": uid(1), "name": "Player1", "type": "Player", "x": ex, "y": ey},
-    {"id": uid(4), "parent": uid(3), "name": "Lantern1", "type": "Lantern", "x": 0, "y": 0, "visible": False},
+    {"id": uid(4), "parent": uid(3), "name": "Lantern1", "type": "Lantern", "x": 0, "y": 0},
     # The HUD: a Layer fixed to the screen, its children in the game's own pixels from the view's top-left.
     {"id": uid(5), "parent": uid(1), "name": "HUD", "type": "Layer", "parallaxX": 0, "parallaxY": 0, "zoomWithCamera": False},
     {"id": uid(6), "parent": uid(5), "name": "HeartIcon1", "type": "HeartIcon", "x": 12, "y": 12},
@@ -476,9 +480,6 @@ player_rules = [
     # The time, and the HUD.
     rule([compare(var("won"), EQ, lit(0))], [line("variables", "Variables", "addToVariable", s("time"), value("system", "System", "getDeltaTime"))]),
     rule([], [line("HealthCount", "Label", "setNumber", health), line("KeyCount", "Label", "setNumber", var("keys"))]),
-    # The lantern is lit only in the dark room.
-    rule([line("Rooms", "SceneManager", "isLoaded", s("DarkRoom"))], [line("Lantern", "Node", "show")]),
-    rule([line("Rooms", "SceneManager", "isLoaded", s("DarkRoom"), **{"not": True})], [line("Lantern", "Node", "hide")]),
 ]
 write("vscript/PlayerRules.vscript.json", {"rules": player_rules, "vars": []})
 
@@ -506,10 +507,13 @@ write("project.json", {"schemaVersion": 2, "name": "Dungeon demo", "entryScene":
     "physics": {"engine": "arcade", "gravity": 0}})
 write("README.md", """# Dungeon demo
 
-Six rooms seen from above. Walk with the arrow keys or WASD and shoot with
-Space or J. Bats chase you once you are close, spiders and rats keep to
-their rounds. The key is in the dark room; the locked door is in the
-Crossing, and the chest behind it. Your best time is saved.
+Six rooms seen from above, each dim and lit by the braziers along its walls
+and the lantern you carry, the walls, pillars and signs throwing shadows
+(**Light** objects over the tile map's occluders). Walk with the arrow keys
+or WASD and shoot with Space or J. Bats chase you once you are close,
+spiders and rats keep to their rounds. The key is in the dark room; the
+locked door is in the Crossing, and the chest, glowing, behind it. Your best
+time is saved.
 
 Each room is its own scene, and the game starts in the Entrance. The
 singleton scene `scenes/singletons/Game` is loaded once beside the rooms and

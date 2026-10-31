@@ -1,9 +1,12 @@
 # Dungeon demo
 
-Six rooms seen from above. Walk with the arrow keys or WASD and shoot with
-Space or J. Bats chase you once you are close, spiders and rats keep to
-their rounds. The key is in the dark room; the locked door is in the
-Crossing, and the chest behind it. Your best time is saved.
+Six rooms seen from above, each dim and lit by the braziers along its walls
+and the lantern you carry, the walls, pillars and signs throwing shadows
+(**Light** objects over the tile map's occluders). Walk with the arrow keys
+or WASD and shoot with Space or J. Bats chase you once you are close,
+spiders and rats keep to their rounds. The key is in the dark room; the
+locked door is in the Crossing, and the chest, glowing, behind it. Your best
+time is saved.
 
 Each room is its own scene, and the game starts in the Entrance. The
 singleton scene `scenes/singletons/Game` is loaded once beside the rooms and

@@ -1162,57 +1162,6 @@
         }
       ],
       "subRules": []
-    },
-    {
-      "conditions": [
-        {
-          "scope": "Rooms",
-          "className": "SceneManager",
-          "name": "isLoaded",
-          "params": [
-            {
-              "type": "literal",
-              "value": "DarkRoom",
-              "valueKind": "string"
-            }
-          ]
-        }
-      ],
-      "actions": [
-        {
-          "scope": "Lantern",
-          "className": "Node",
-          "name": "show",
-          "params": []
-        }
-      ],
-      "subRules": []
-    },
-    {
-      "conditions": [
-        {
-          "scope": "Rooms",
-          "className": "SceneManager",
-          "name": "isLoaded",
-          "params": [
-            {
-              "type": "literal",
-              "value": "DarkRoom",
-              "valueKind": "string"
-            }
-          ],
-          "not": true
-        }
-      ],
-      "actions": [
-        {
-          "scope": "Lantern",
-          "className": "Node",
-          "name": "hide",
-          "params": []
-        }
-      ],
-      "subRules": []
     }
   ],
   "vars": []
