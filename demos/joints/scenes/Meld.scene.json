@@ -45,7 +45,7 @@
       "type": "Help",
       "x": -452,
       "y": -244,
-      "text": "Meld to: an object joins another's body and the two move as one until Unmeld. Its joints come along: the pair at the left is hinged."
+      "text": "Meld to: an object joins another's body and the two move as one until Unmeld; its shapes, its mass and its joints go with it."
     },
     {
       "id": "j1000000-0000-4000-8000-000000002606",
@@ -54,75 +54,140 @@
       "type": "Help",
       "x": -452,
       "y": -226,
-      "text": "Drag the magnet onto the crates.   Space melds the crates touching it into one body with it; Space again lets them go.   R restarts the scene"
+      "text": "The lump melds whatever it rolls over; the pair at the foot is hinged, so the second comes along by its hinge.   Space bursts it apart.   R restarts the scene"
     },
     {
       "id": "j1000000-0000-4000-8000-000000002607",
       "parent": "j1000000-0000-4000-8000-000000002600",
-      "name": "Magnet1",
-      "type": "Magnet",
-      "x": -150,
-      "y": 221
+      "name": "Ramp",
+      "type": "Beam",
+      "x": -140,
+      "y": 20,
+      "rotation": 0.3490658503988659
     },
     {
       "id": "j1000000-0000-4000-8000-000000002608",
       "parent": "j1000000-0000-4000-8000-000000002600",
-      "name": "Crate1",
-      "type": "Crate",
-      "x": -60,
-      "y": 214
+      "name": "Lump1",
+      "type": "Lump",
+      "x": -400,
+      "y": -109.1322609092126
     },
     {
       "id": "j1000000-0000-4000-8000-000000002609",
       "parent": "j1000000-0000-4000-8000-000000002600",
-      "name": "Crate2",
+      "name": "Crate0",
       "type": "Crate",
-      "x": 0,
-      "y": 214
+      "x": -300,
+      "y": -63.735237482592375
     },
     {
       "id": "j1000000-0000-4000-8000-000000002610",
       "parent": "j1000000-0000-4000-8000-000000002600",
-      "name": "Crate3",
-      "type": "Crate",
-      "x": 60,
-      "y": 214
+      "name": "Bit1",
+      "type": "Bit",
+      "x": -230,
+      "y": -29.75732108395821
     },
     {
       "id": "j1000000-0000-4000-8000-000000002611",
       "parent": "j1000000-0000-4000-8000-000000002600",
-      "name": "PairA1",
-      "type": "PairA",
-      "x": -280,
-      "y": 214
+      "name": "Crate2",
+      "type": "Crate",
+      "x": -160,
+      "y": -12.779404685324046
     },
     {
       "id": "j1000000-0000-4000-8000-000000002612",
       "parent": "j1000000-0000-4000-8000-000000002600",
-      "name": "PairB1",
-      "type": "PairB",
-      "x": -248,
-      "y": 214
+      "name": "Bit3",
+      "type": "Bit",
+      "x": -90,
+      "y": 21.19851171331012
     },
     {
       "id": "j1000000-0000-4000-8000-000000002613",
       "parent": "j1000000-0000-4000-8000-000000002600",
-      "name": "MeldedCaption",
-      "type": "Readout",
-      "x": 200,
-      "y": -190,
-      "text": "Melded to the magnet:"
+      "name": "Crate4",
+      "type": "Crate",
+      "x": -20,
+      "y": 38.17642811194428
     },
     {
       "id": "j1000000-0000-4000-8000-000000002614",
       "parent": "j1000000-0000-4000-8000-000000002600",
-      "name": "Melded1",
-      "type": "Melded",
-      "x": 342.4,
-      "y": -190
+      "name": "Bit5",
+      "type": "Bit",
+      "x": 50,
+      "y": 72.15434451057844
     },
     {
       "id": "j1000000-0000-4000-8000-000000002615",
+      "parent": "j1000000-0000-4000-8000-000000002600",
+      "name": "Crate6",
+      "type": "Crate",
+      "x": 110,
+      "y": 85.49255856655058
+    },
+    {
+      "id": "j1000000-0000-4000-8000-000000002616",
+      "parent": "j1000000-0000-4000-8000-000000002600",
+      "name": "PairA1",
+      "type": "PairA",
+      "x": 250,
+      "y": 214
+    },
+    {
+      "id": "j1000000-0000-4000-8000-000000002617",
+      "parent": "j1000000-0000-4000-8000-000000002600",
+      "name": "PairB1",
+      "type": "PairB",
+      "x": 282,
+      "y": 214
+    },
+    {
+      "id": "j1000000-0000-4000-8000-000000002618",
+      "parent": "j1000000-0000-4000-8000-000000002600",
+      "name": "Bit10",
+      "type": "Bit",
+      "x": 340,
+      "y": 222
+    },
+    {
+      "id": "j1000000-0000-4000-8000-000000002619",
+      "parent": "j1000000-0000-4000-8000-000000002600",
+      "name": "Bit11",
+      "type": "Bit",
+      "x": 380,
+      "y": 222
+    },
+    {
+      "id": "j1000000-0000-4000-8000-000000002620",
+      "parent": "j1000000-0000-4000-8000-000000002600",
+      "name": "Bit12",
+      "type": "Bit",
+      "x": 420,
+      "y": 222
+    },
+    {
+      "id": "j1000000-0000-4000-8000-000000002621",
+      "parent": "j1000000-0000-4000-8000-000000002600",
+      "name": "MassCaption",
+      "type": "Readout",
+      "x": 200,
+      "y": -190,
+      "text": "The lump's mass:"
+    },
+    {
+      "id": "j1000000-0000-4000-8000-000000002622",
+      "parent": "j1000000-0000-4000-8000-000000002600",
+      "name": "Mass1",
+      "type": "Mass",
+      "x": 310.4,
+      "y": -190
+    },
+    {
+      "id": "j1000000-0000-4000-8000-000000002623",
       "parent": "j1000000-0000-4000-8000-000000002600",
       "name": "Ground1",
       "type": "Ground",
