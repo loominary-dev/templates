@@ -135,14 +135,15 @@ def feature(file, title, about, controls, build, rules):
     level = file + "Level"
     d.type_json(level, "Node", {}, [{"componentClass": sheet_name}])
     place(level + "1", level, 0, 0)
-    place("Title", "Caption", -470, -262, text=title)
+    # The walls first, so the lines of text are drawn over them, and the text starts inside them.
+    place("WallL", "Wall", -470, 0); place("WallR", "Wall", 470, 0)
+    place("Title", "Caption", -452, -262, text=title)
     lines = about if isinstance(about, list) else [about]
-    for k, text in enumerate(lines): place("About%d" % (k + 1), "Help", -470, -244 + 18 * k, text=text)
-    place("Controls", "Help", -470, -244 + 18 * len(lines), text=controls)
+    for k, text in enumerate(lines): place("About%d" % (k + 1), "Help", -452, -244 + 18 * k, text=text)
+    place("Controls", "Help", -452, -244 + 18 * len(lines), text=controls)
     build(place)
     # Drawn after the scene's things: a bump is a disc half under the ground.
     place("Ground1", "Ground", 0, GROUND + 20)
-    place("WallL", "Wall", -470, 0); place("WallR", "Wall", 470, 0)
     d.scene("scenes/%s.scene.json" % file, objects)
     d.write("vscript/%s.vscript.json" % sheet_name, {"rules": [rule([pressed("Reset")], [line("Scenes", "SceneManager", "changeScene", s("scenes/%s.scene.json" % file))])] + rules})
     FEATURES.append((file, title))
@@ -311,7 +312,7 @@ d.scene("scenes/singletons/Demo.scene.json", [
     {"id": d.uid(3001), "name": "Demo"},
     {"id": d.uid(3002), "parent": d.uid(3001), "name": "Scenes1", "type": "Scenes"},
     {"id": d.uid(3003), "parent": d.uid(3001), "name": "Switcher1", "type": "Switcher"},
-    {"id": d.uid(3004), "parent": d.uid(3001), "name": "SceneList1", "type": "SceneList", "x": -470, "y": 238, "text": listing},
+    {"id": d.uid(3004), "parent": d.uid(3001), "name": "SceneList1", "type": "SceneList", "x": -452, "y": 238, "text": listing},
 ])
 # The arrows step through the scenes. A variable holds which scene is up: the arrows move it by one and wrap it,
 # then the rule for that number changes scene. The move comes first and the change rules only read the number,
