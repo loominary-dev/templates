@@ -1,0 +1,704 @@
+{
+  "rules": [
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isCommandPressed",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Reset",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Scenes",
+          "className": "SceneManager",
+          "name": "changeScene",
+          "params": [
+            {
+              "type": "literal",
+              "value": "scenes/Hinges.scene.json",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "Door",
+          "className": "PhysicsBody",
+          "name": "hasJoint",
+          "params": [
+            {
+              "type": "literal",
+              "value": "hinge",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true,
+          "not": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Door",
+          "className": "PhysicsBody",
+          "name": "hingeTo",
+          "params": [
+            {
+              "type": "literal",
+              "value": "",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "top",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "hinge",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "Door",
+          "className": "PhysicsBody",
+          "name": "setJointLimits",
+          "params": [
+            {
+              "type": "literal",
+              "value": "hinge",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": -110
+            },
+            {
+              "type": "literal",
+              "value": 110
+            }
+          ],
+          "onComponent": true
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "Door",
+          "className": "Node",
+          "name": "nameIs",
+          "params": [
+            {
+              "type": "literal",
+              "value": "SpringDoor",
+              "valueKind": "string"
+            }
+          ]
+        },
+        {
+          "scope": "Door",
+          "className": "PhysicsBody",
+          "name": "hasJoint",
+          "params": [
+            {
+              "type": "literal",
+              "value": "hinge",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "system",
+          "className": "VisualScriptComponent",
+          "name": "triggerOnce",
+          "params": []
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Door",
+          "className": "PhysicsBody",
+          "name": "setJointSpring",
+          "params": [
+            {
+              "type": "literal",
+              "value": "hinge",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 1.5
+            },
+            {
+              "type": "literal",
+              "value": 0.15
+            }
+          ],
+          "onComponent": true
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "Door",
+          "className": "Node",
+          "name": "nameIs",
+          "params": [
+            {
+              "type": "literal",
+              "value": "MotorDoor",
+              "valueKind": "string"
+            }
+          ]
+        },
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isCommandOn",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Act",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Door",
+          "className": "PhysicsBody",
+          "name": "setJointMotor",
+          "params": [
+            {
+              "type": "literal",
+              "value": "hinge",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 240
+            },
+            {
+              "type": "literal",
+              "value": 1500000
+            }
+          ],
+          "onComponent": true
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "Door",
+          "className": "Node",
+          "name": "nameIs",
+          "params": [
+            {
+              "type": "literal",
+              "value": "MotorDoor",
+              "valueKind": "string"
+            }
+          ]
+        },
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isCommandOn",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Act",
+              "valueKind": "string"
+            }
+          ],
+          "not": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Door",
+          "className": "PhysicsBody",
+          "name": "setJointMotorOn",
+          "params": [
+            {
+              "type": "literal",
+              "value": "hinge",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": false,
+              "valueKind": "bool"
+            }
+          ],
+          "onComponent": true
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "Link",
+          "className": "Node",
+          "name": "nameIs",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Link1",
+              "valueKind": "string"
+            }
+          ]
+        },
+        {
+          "scope": "Link",
+          "className": "PhysicsBody",
+          "name": "hasJoint",
+          "params": [
+            {
+              "type": "literal",
+              "value": "chain",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true,
+          "not": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Link",
+          "className": "PhysicsBody",
+          "name": "hingeTo",
+          "params": [
+            {
+              "type": "literal",
+              "value": "",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "top",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "chain",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "Link",
+          "className": "Node",
+          "name": "nameIs",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Link2",
+              "valueKind": "string"
+            }
+          ]
+        },
+        {
+          "scope": "Link",
+          "className": "PhysicsBody",
+          "name": "hasJoint",
+          "params": [
+            {
+              "type": "literal",
+              "value": "chain",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true,
+          "not": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Link",
+          "className": "PhysicsBody",
+          "name": "hingeTo",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Link1",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "top",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "chain",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "Link",
+          "className": "Node",
+          "name": "nameIs",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Link3",
+              "valueKind": "string"
+            }
+          ]
+        },
+        {
+          "scope": "Link",
+          "className": "PhysicsBody",
+          "name": "hasJoint",
+          "params": [
+            {
+              "type": "literal",
+              "value": "chain",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true,
+          "not": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Link",
+          "className": "PhysicsBody",
+          "name": "hingeTo",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Link2",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "top",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "chain",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "Link",
+          "className": "Node",
+          "name": "nameIs",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Link4",
+              "valueKind": "string"
+            }
+          ]
+        },
+        {
+          "scope": "Link",
+          "className": "PhysicsBody",
+          "name": "hasJoint",
+          "params": [
+            {
+              "type": "literal",
+              "value": "chain",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true,
+          "not": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Link",
+          "className": "PhysicsBody",
+          "name": "hingeTo",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Link3",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "top",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "chain",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "Link",
+          "className": "Node",
+          "name": "nameIs",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Link5",
+              "valueKind": "string"
+            }
+          ]
+        },
+        {
+          "scope": "Link",
+          "className": "PhysicsBody",
+          "name": "hasJoint",
+          "params": [
+            {
+              "type": "literal",
+              "value": "chain",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true,
+          "not": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Link",
+          "className": "PhysicsBody",
+          "name": "hingeTo",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Link4",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "top",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "chain",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "Link",
+          "className": "Node",
+          "name": "nameIs",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Link6",
+              "valueKind": "string"
+            }
+          ]
+        },
+        {
+          "scope": "Link",
+          "className": "PhysicsBody",
+          "name": "hasJoint",
+          "params": [
+            {
+              "type": "literal",
+              "value": "chain",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true,
+          "not": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Link",
+          "className": "PhysicsBody",
+          "name": "hingeTo",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Link5",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "top",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "chain",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "Ball",
+          "className": "PhysicsBody",
+          "name": "hasJoint",
+          "params": [
+            {
+              "type": "literal",
+              "value": "chain",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true,
+          "not": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Ball",
+          "className": "PhysicsBody",
+          "name": "hingeTo",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Link6",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "top",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "chain",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "Door",
+          "className": "Node",
+          "name": "nameIs",
+          "params": [
+            {
+              "type": "literal",
+              "value": "MotorDoor",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Angle",
+          "className": "Label",
+          "name": "setNumber",
+          "params": [
+            {
+              "type": "value",
+              "scope": "Door",
+              "className": "PhysicsBody",
+              "name": "jointPosition",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "hinge",
+                  "valueKind": "string"
+                }
+              ],
+              "returnType": "Float",
+              "onComponent": true
+            }
+          ]
+        },
+        {
+          "scope": "Effort",
+          "className": "Label",
+          "name": "setNumber",
+          "params": [
+            {
+              "type": "value",
+              "scope": "Door",
+              "className": "PhysicsBody",
+              "name": "jointMotorEffort",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "hinge",
+                  "valueKind": "string"
+                }
+              ],
+              "returnType": "Float",
+              "onComponent": true
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "width": 90,
+  "height": 56,
+  "colorMode": "rgba",
+  "sheet": {
+    "columns": 1
+  },
+  "palette": [],
+  "layers": [
+    {
+      "id": "j1000000-0000-4000-8000-000000000131",
+      "name": "Layer 1",
+      "visible": true,
+      "opacity": 1,
+      "locked": false,
+      "blendMode": "normal",
+      "reference": false
+    }
+  ],
+  "animations": [
+    {
+      "id": "j1000000-0000-4000-8000-000000000133",
+      "name": "still",
+      "loop": true,
+      "playMode": "loop",
+      "repeatTo": 0,
+      "repeatCount": 0,
+      "collision": [
+        {
+          "name": "body",
+          "kind": "box",
+          "cx": 0,
+          "cy": 0,
+          "w": 90,
+          "h": 56
+        }
+      ],
+      "points": [
+        {
+          "name": "foot",
+          "x": 0,
+          "y": 28
+        }
+      ],
+      "collisionShared": true,
+      "pointsShared": true,
+      "frames": [
+        {
+          "id": "j1000000-0000-4000-8000-000000000132",
+          "duration": 400,
+          "collision": [],
+          "points": [],
+          "originX": 0.5,
+          "originY": 0.5
+        }
+      ]
+    }
+  ],
+  "cels": [
+    {
+      "layerId": "j1000000-0000-4000-8000-000000000131",
+      "frameId": "j1000000-0000-4000-8000-000000000132",
+      "at": 0
+    }
+  ]
+}

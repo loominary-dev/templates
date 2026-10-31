@@ -1,0 +1,151 @@
+{
+  "rules": [
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isMousePressed",
+          "params": [
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "scope": "self",
+          "className": "Node",
+          "name": "containsPoint",
+          "params": [
+            {
+              "type": "value",
+              "scope": "input",
+              "className": "Input",
+              "name": "worldPositionX",
+              "params": [],
+              "returnType": "Float"
+            },
+            {
+              "type": "value",
+              "scope": "input",
+              "className": "Input",
+              "name": "worldPositionY",
+              "params": [],
+              "returnType": "Float"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "self",
+          "className": "PhysicsBody",
+          "name": "dragToward",
+          "params": [
+            {
+              "type": "value",
+              "scope": "input",
+              "className": "Input",
+              "name": "worldPositionX",
+              "params": [],
+              "returnType": "Float"
+            },
+            {
+              "type": "value",
+              "scope": "input",
+              "className": "Input",
+              "name": "worldPositionY",
+              "params": [],
+              "returnType": "Float"
+            }
+          ],
+          "onComponent": true
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isMouseDown",
+          "params": [
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "scope": "self",
+          "className": "PhysicsBody",
+          "name": "isDragged",
+          "params": [],
+          "onComponent": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "self",
+          "className": "PhysicsBody",
+          "name": "dragToward",
+          "params": [
+            {
+              "type": "value",
+              "scope": "input",
+              "className": "Input",
+              "name": "worldPositionX",
+              "params": [],
+              "returnType": "Float"
+            },
+            {
+              "type": "value",
+              "scope": "input",
+              "className": "Input",
+              "name": "worldPositionY",
+              "params": [],
+              "returnType": "Float"
+            }
+          ],
+          "onComponent": true
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isMouseDown",
+          "params": [
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ],
+          "not": true
+        },
+        {
+          "scope": "self",
+          "className": "PhysicsBody",
+          "name": "isDragged",
+          "params": [],
+          "onComponent": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "self",
+          "className": "PhysicsBody",
+          "name": "releaseDrag",
+          "params": [],
+          "onComponent": true
+        }
+      ],
+      "subRules": []
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 3,
+  "objects": [
+    {
+      "id": "j1000000-0000-4000-8000-000000003001",
+      "name": "Demo"
+    },
+    {
+      "id": "j1000000-0000-4000-8000-000000003002",
+      "parent": "j1000000-0000-4000-8000-000000003001",
+      "name": "Scenes1",
+      "type": "Scenes"
+    },
+    {
+      "id": "j1000000-0000-4000-8000-000000003003",
+      "parent": "j1000000-0000-4000-8000-000000003001",
+      "name": "Switcher1",
+      "type": "Switcher"
+    },
+    {
+      "id": "j1000000-0000-4000-8000-000000003004",
+      "parent": "j1000000-0000-4000-8000-000000003001",
+      "name": "SceneList1",
+      "type": "SceneList",
+      "x": -470,
+      "y": 238,
+      "text": "1 Hinges   2 Welds   3 Sliders   4 Springs   5 Wheels   6 Follow by force   7 Meld   Left and Right step through the scenes"
+    }
+  ]
+}

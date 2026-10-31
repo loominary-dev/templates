@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 2,
+  "baseClass": "Sprite",
+  "defaults": {
+    "collision": {
+      "layer": 2,
+      "mask": 3
+    },
+    "spriteKey": "Tail.sprite.json"
+  },
+  "components": [
+    {
+      "componentClass": "PhysicsBody",
+      "bodyType": "Dynamic"
+    }
+  ]
+}

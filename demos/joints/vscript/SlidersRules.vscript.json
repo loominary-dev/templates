@@ -1,0 +1,531 @@
+{
+  "rules": [
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isCommandPressed",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Reset",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Scenes",
+          "className": "SceneManager",
+          "name": "changeScene",
+          "params": [
+            {
+              "type": "literal",
+              "value": "scenes/Sliders.scene.json",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "system",
+          "className": "VisualScriptComponent",
+          "name": "triggerOnce",
+          "params": []
+        }
+      ],
+      "actions": [
+        {
+          "scope": "variables",
+          "className": "Variables",
+          "name": "setVariable",
+          "params": [
+            {
+              "type": "literal",
+              "value": "up",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "Lift",
+          "className": "PhysicsBody",
+          "name": "hasJoint",
+          "params": [
+            {
+              "type": "literal",
+              "value": "lift",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true,
+          "not": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Lift",
+          "className": "PhysicsBody",
+          "name": "slideOn",
+          "params": [
+            {
+              "type": "literal",
+              "value": "",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 90
+            },
+            {
+              "type": "literal",
+              "value": "",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "lift",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "Lift",
+          "className": "PhysicsBody",
+          "name": "setJointLimits",
+          "params": [
+            {
+              "type": "literal",
+              "value": "lift",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": -180
+            },
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "Lift",
+          "className": "PhysicsBody",
+          "name": "setJointMotor",
+          "params": [
+            {
+              "type": "literal",
+              "value": "lift",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 90
+            },
+            {
+              "type": "literal",
+              "value": 8000
+            }
+          ],
+          "onComponent": true
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "Drawer",
+          "className": "PhysicsBody",
+          "name": "hasJoint",
+          "params": [
+            {
+              "type": "literal",
+              "value": "slide",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true,
+          "not": true
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Drawer",
+          "className": "PhysicsBody",
+          "name": "slideOn",
+          "params": [
+            {
+              "type": "literal",
+              "value": "",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 0
+            },
+            {
+              "type": "literal",
+              "value": "",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": "slide",
+              "valueKind": "string"
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "Drawer",
+          "className": "PhysicsBody",
+          "name": "setJointLimits",
+          "params": [
+            {
+              "type": "literal",
+              "value": "slide",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 0
+            },
+            {
+              "type": "literal",
+              "value": 110
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "Drawer",
+          "className": "PhysicsBody",
+          "name": "setJointSpring",
+          "params": [
+            {
+              "type": "literal",
+              "value": "slide",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 1.2
+            },
+            {
+              "type": "literal",
+              "value": 0.3
+            }
+          ],
+          "onComponent": true
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "Lift",
+          "className": "Node",
+          "name": "nameIs",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Lift1",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "Travel",
+          "className": "Label",
+          "name": "setNumber",
+          "params": [
+            {
+              "type": "value",
+              "scope": "Lift",
+              "className": "PhysicsBody",
+              "name": "jointPosition",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "lift",
+                  "valueKind": "string"
+                }
+              ],
+              "returnType": "Float",
+              "onComponent": true
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isCommandPressed",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Act",
+              "valueKind": "string"
+            }
+          ]
+        },
+        {
+          "scope": "maths",
+          "className": "Maths",
+          "name": "compare",
+          "params": [
+            {
+              "type": "value",
+              "scope": "variables",
+              "className": "Variables",
+              "name": "getVariable",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "up",
+                  "valueKind": "string"
+                }
+              ],
+              "returnType": "Float"
+            },
+            {
+              "type": "literal",
+              "value": 0
+            },
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "variables",
+          "className": "Variables",
+          "name": "setVariable",
+          "params": [
+            {
+              "type": "literal",
+              "value": "up",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 2
+            }
+          ]
+        },
+        {
+          "scope": "Lift",
+          "className": "PhysicsBody",
+          "name": "setJointMotor",
+          "params": [
+            {
+              "type": "literal",
+              "value": "lift",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": -90
+            },
+            {
+              "type": "literal",
+              "value": 8000
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "audio",
+          "className": "Audio",
+          "name": "playSound",
+          "params": [
+            {
+              "type": "literal",
+              "value": "click",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "input",
+          "className": "Input",
+          "name": "isCommandPressed",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Act",
+              "valueKind": "string"
+            }
+          ]
+        },
+        {
+          "scope": "maths",
+          "className": "Maths",
+          "name": "compare",
+          "params": [
+            {
+              "type": "value",
+              "scope": "variables",
+              "className": "Variables",
+              "name": "getVariable",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "up",
+                  "valueKind": "string"
+                }
+              ],
+              "returnType": "Float"
+            },
+            {
+              "type": "literal",
+              "value": 0
+            },
+            {
+              "type": "literal",
+              "value": 1
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "variables",
+          "className": "Variables",
+          "name": "setVariable",
+          "params": [
+            {
+              "type": "literal",
+              "value": "up",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "scope": "Lift",
+          "className": "PhysicsBody",
+          "name": "setJointMotor",
+          "params": [
+            {
+              "type": "literal",
+              "value": "lift",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 90
+            },
+            {
+              "type": "literal",
+              "value": 8000
+            }
+          ],
+          "onComponent": true
+        },
+        {
+          "scope": "audio",
+          "className": "Audio",
+          "name": "playSound",
+          "params": [
+            {
+              "type": "literal",
+              "value": "click",
+              "valueKind": "string"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "maths",
+          "className": "Maths",
+          "name": "compare",
+          "params": [
+            {
+              "type": "value",
+              "scope": "variables",
+              "className": "Variables",
+              "name": "getVariable",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "up",
+                  "valueKind": "string"
+                }
+              ],
+              "returnType": "Float"
+            },
+            {
+              "type": "literal",
+              "value": 0
+            },
+            {
+              "type": "literal",
+              "value": 2
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "scope": "variables",
+          "className": "Variables",
+          "name": "setVariable",
+          "params": [
+            {
+              "type": "literal",
+              "value": "up",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 1
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    }
+  ]
+}

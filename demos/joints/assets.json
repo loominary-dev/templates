@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "assets": [
+    {
+      "uuid": "j1000000-0000-4000-8000-000000000900",
+      "key": "click",
+      "path": "assets/sounds/click.ogg"
+    },
+    {
+      "uuid": "j1000000-0000-4000-8000-000000000901",
+      "key": "crack",
+      "path": "assets/sounds/crack.ogg"
+    },
+    {
+      "uuid": "j1000000-0000-4000-8000-000000000902",
+      "key": "bump",
+      "path": "assets/sounds/bump.ogg"
+    },
+    {
+      "uuid": "j1000000-0000-4000-8000-000000000903",
+      "key": "clank",
+      "path": "assets/sounds/clank.ogg"
+    },
+    {
+      "uuid": "j1000000-0000-4000-8000-000000000904",
+      "key": "kick",
+      "path": "assets/sounds/kick.ogg"
+    }
+  ]
+}
