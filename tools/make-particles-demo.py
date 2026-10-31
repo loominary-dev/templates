@@ -178,7 +178,8 @@ def water_type(name, picture="Drop", readout=None, **k):
 water_type("PoolOnePass", maxCount=1500, color=0x4AA8FF, substeps=1, sleep=False,
            readout=[rule([], [line("OneMs", "Label", "setNumber", cvalue("self", "Fluid", "stepTime"))])])
 water_type("PoolPasses", maxCount=1500, color=0x4AA8FF, substeps=0, sleep=False,
-           readout=[rule([], [line("PassesMs", "Label", "setNumber", cvalue("self", "Fluid", "stepTime"))])])
+           readout=[rule([], [line("PassesMs", "Label", "setNumber", cvalue("self", "Fluid", "stepTime")),
+                             line("PassCount", "Label", "setNumber", cvalue("self", "Fluid", "passes"))])])
 water_type("StillWater", radius=5, maxCount=1500, color=0x4AA8FF, readout=[
     rule([], [line("StillMs", "Label", "setNumber", cvalue("self", "Fluid", "stepTime"))]),
     rule([comp("self", "Fluid", "isAsleep")], [line("SleepState", "Label", "setText", s("asleep: nothing is stepped"))]),
@@ -198,7 +199,7 @@ d.type_json("FoamPlug", "Sprite", {"spriteKey": "Plug.sprite.json", "collision":
             [{"componentClass": "Drain", "system": "Foam1", "on": True}])
 d.type_json("Stirrer", "Sprite", {"spriteKey": "Grinder.sprite.json", "collisionEnabled": False},
             [{"componentClass": "Field", "kind": "Vortex", "strength": 0, "range": 170, "pull": 0.2, "affects": "Particles"}, {"componentClass": "Rotate", "speed": 0}])
-for name in ["OneMs", "PassesMs", "StillMs", "SleepState"]:
+for name in ["OneMs", "PassesMs", "PassCount", "StillMs", "SleepState"]:
     d.type_json(name, "Label", {"text": "", "fontSize": 13})
 
 def mould(place, name, cx, cy, w, h, type_name="Mold", **extra):
@@ -243,7 +244,8 @@ def deep(place):
     place("PoolOnePass1", "PoolOnePass", -460, 250); place("PoolPasses1", "PoolPasses", -460, 250)
     mould(place, "PoolA", -200, 30, 170, 380); mould(place, "PoolB", 200, 30, 170, 380)
     place("LeftCaption", "Caption", -290, -150, text="One pass a step, ms:"); place("OneMs1", "OneMs", -150, -150)
-    place("RightCaption", "Caption", 110, -150, text="Passes worked out, ms:"); place("PassesMs1", "PassesMs", 265, -150)
+    # The solver says how many passes it worked out: "3 passes a step, ms: 4".
+    place("PassCount1", "PassCount", 110, -150); place("RightCaption", "Caption", 122, -150, text="passes a step, ms:"); place("PassesMs1", "PassesMs", 265, -150)
 fill_deep = [fl("PoolOnePass", "destroyAll"), fl("PoolPasses", "destroyAll"),
              fill("PoolOnePass", "PoolA", "pool"), fill("PoolPasses", "PoolB", "pool")]
 feature("DeepPoolInPasses", "Deep pool in passes",

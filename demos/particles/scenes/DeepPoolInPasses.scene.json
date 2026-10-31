@@ -159,14 +159,22 @@
     {
       "id": "f1000000-0000-4000-8000-000000002018",
       "parent": "f1000000-0000-4000-8000-000000002000",
-      "name": "RightCaption",
-      "type": "Caption",
+      "name": "PassCount1",
+      "type": "PassCount",
       "x": 110,
-      "y": -150,
-      "text": "Passes worked out, ms:"
+      "y": -150
     },
     {
       "id": "f1000000-0000-4000-8000-000000002019",
+      "parent": "f1000000-0000-4000-8000-000000002000",
+      "name": "RightCaption",
+      "type": "Caption",
+      "x": 122,
+      "y": -150,
+      "text": "passes a step, ms:"
+    },
+    {
+      "id": "f1000000-0000-4000-8000-000000002020",
       "parent": "f1000000-0000-4000-8000-000000002000",
       "name": "PassesMs1",
       "type": "PassesMs",
