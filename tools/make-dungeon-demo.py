@@ -136,8 +136,18 @@ def glow(size):
             if d < 1: img.putpixel((x, y), (255, 255, 255, int(255 * (1 - d) ** 1.6)))
     return img
 
+# The walls are a shade darker than the pack draws them (the tiles below), and so are the wall pieces that stand as
+# objects, the pillar and the locked door, so they match the walls they belong to.
+WALL_SHADE = (0.72, 0.72, 0.74)
+def shaded(img, k):
+    img = img.copy(); px = img.load()
+    for y in range(img.height):
+        for x in range(img.width):
+            r, g, b_, a_ = px[x, y]
+            px[x, y] = (int(r * k[0]), int(g * k[1]), int(b_ * k[2]), a_)
+    return img
 pillar = Image.new("RGBA", (16, 32))
-pillar.paste(tile(6), (0, 0)); pillar.paste(tile(18), (0, 16))
+pillar.paste(shaded(tile(6), WALL_SHADE), (0, 0)); pillar.paste(shaded(tile(18), WALL_SHADE), (0, 16))
 arrow = tile(131).rotate(-90)  # the pack's points up; a Bullet's heading 0 is right
 
 # The player collides by its feet, so a doorway one cell wide is easy to walk through.
@@ -151,7 +161,7 @@ sprite("Potion", 16, 16, [("still", [tile(115)], 400, "loop")], [box("potion", 8
 sprite("Heart", 16, 16, [("still", [heart_img], 400, "loop")], [])
 sprite("Chest", 16, 16, [("shut", [tile(89)], 400, "loop"), ("open", [tile(91)], 400, "loop")], [box("chest", 8, 9, 14, 12, sensor=True)])
 sprite("Sign", 16, 16, [("still", [tile(66)], 400, "loop")], [box("sign", 8, 9, 12, 12)])
-sprite("LockedDoor", 16, 16, [("shut", [tile(45)], 400, "loop")], [box("door", 8, 8, 16, 16), box("lock", 8, 8, 22, 22, sensor=True)])
+sprite("LockedDoor", 16, 16, [("shut", [shaded(tile(45), WALL_SHADE)], 400, "loop")], [box("door", 8, 8, 16, 16), box("lock", 8, 8, 22, 22, sensor=True)])
 sprite("Pillar", 16, 32, [("still", [pillar], 400, "loop")], [box("base", 8, 24, 14, 14, occluder=1)])
 sprite("Brazier", 16, 16, [("burn", [flame1, flame2], 160, "loop")], [box("base", 8, 12, 12, 6)])
 sprite("Glow", 96, 96, [("still", [glow(96)], 400, "loop")], [])
@@ -225,7 +235,7 @@ def shade(indices, f):
                 r, g, b_, a_ = sheet.getpixel((px_, py_))
                 sheet.putpixel((px_, py_), f(r, g, b_) + (a_,))
 shade(FLOORS, lambda r, g, b_: tuple(int((0.299 * r + 0.587 * g + 0.114 * b_) * k) for k in STONE))
-shade(WALLS, lambda r, g, b_: (int(r * 0.72), int(g * 0.72), int(b_ * 0.74)))
+shade(WALLS, lambda r, g, b_: (int(r * WALL_SHADE[0]), int(g * WALL_SHADE[1]), int(b_ * WALL_SHADE[2])))
 sheet.save(os.path.join(out, "assets", "art", TILES))
 tiles = []
 for i in range(132):
