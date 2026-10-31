@@ -33,7 +33,7 @@ Keys **1** to **0**, and **P**, change scene (a Scene Manager in the singleton s
 | 8 | Color mixing | **Color mixing**: red and blue water turning purple where they meet |
 | 9 | Color by speed | **Color by speed**: a stream and splashes that foam white |
 | 0 | Objects into particles | **Turn … into particles**: Kenney's animal heads made elastic, then melted |
-| P | A picture into particles | a whole picture in its own colors, about seventeen thousand particles; Q to T make it water, jelly, colors that mix, a soft net or honey |
+| P | A picture into particles | a whole picture in its own colors, about six thousand particles; Q to T make it water, jelly, colors that mix, a soft net or honey |
 
 The pools and blocks are laid with **Fill … with particles** into hidden
 shapes placed in each scene (the Mold and Dropper objects), so they land
