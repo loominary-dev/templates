@@ -11,7 +11,8 @@ HUD shows the frames a second and the count.
   bunny 0.6 its size on it turning too, and a smaller one again on that. Every
   part of every tree in a batch turns at that batch's speed, picked at random
   between 30 degrees a second either way with the batch's color. A tree is the
-  scene `scenes/BunnyTree`, made whole by **Create scene**.
+  scene `scenes/BunnyTree`, made whole by **Create scene**. The count is of
+  bunnies drawn, the twigs included: three a tree.
 
 Hold the left mouse button to add ten a frame, the right to take ten away
 (**Destroy the newest**), and watch for stutter, dropped frames and the

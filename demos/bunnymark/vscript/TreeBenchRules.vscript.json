@@ -492,12 +492,24 @@
           "name": "setNumber",
           "params": [
             {
-              "type": "value",
-              "scope": "TreeBunny",
-              "className": "Node",
-              "name": "count",
-              "params": [],
-              "returnType": "Float"
+              "type": "op",
+              "op": "+",
+              "left": {
+                "type": "value",
+                "scope": "TreeBunny",
+                "className": "Node",
+                "name": "count",
+                "params": [],
+                "returnType": "Float"
+              },
+              "right": {
+                "type": "value",
+                "scope": "Twig",
+                "className": "Node",
+                "name": "count",
+                "params": [],
+                "returnType": "Float"
+              }
             }
           ]
         }

@@ -107,7 +107,7 @@ def hud(first_id, what):
 d.scene("scenes/Bunnies.scene.json", [{"id": d.uid(1), "name": "Bunnies"},
     {"id": d.uid(2), "parent": d.uid(1), "name": "BunnyBench1", "type": "BunnyBench", "x": 0, "y": 0}] + hud(10, "Bunnies"))
 d.scene("scenes/Trees.scene.json", [{"id": d.uid(1), "name": "Trees"},
-    {"id": d.uid(2), "parent": d.uid(1), "name": "TreeBench1", "type": "TreeBench", "x": 0, "y": 0}] + hud(10, "Trees"))
+    {"id": d.uid(2), "parent": d.uid(1), "name": "TreeBench1", "type": "TreeBench", "x": 0, "y": 0}] + hud(10, "Bunnies"))
 # One tree, made whole each time: 0.6 the size at each step down, each held off its parent's middle so the turn shows.
 d.scene("scenes/BunnyTree.scene.json", [
     {"id": d.uid(1), "name": "TreeBunny1", "type": "TreeBunny"},
@@ -151,7 +151,7 @@ d.write("vscript/TreeRules.vscript.json", {"rules": tree_rules})
 
 FPS_EVERY = 0.5   # seconds between readings of the frame rate, so the number can be read
 
-def bench(kind, count_scope, make, ready):
+def bench(kind, count, make, ready):
     # Create draws a Type's picture once Preload object type (or Preload scene) has loaded it: nothing is made before.
     frames, elapsed = sheet_var("frames"), sheet_var("elapsed")
     return [
@@ -166,16 +166,16 @@ def bench(kind, count_scope, make, ready):
         rule([mouse_down(RIGHT_BUTTON)], [sheet("destroyNewest", s(kind), lit(10))]),
         # The frames over the last half second, shown as a whole number.
         rule([], [add_sheet_var("frames", lit(1)), add_sheet_var("elapsed", dt()),
-                  line("CountText", "Label", "setNumber", value(count_scope, "Node", "count"))]),
+                  line("CountText", "Label", "setNumber", count)]),
         rule([compare(elapsed, GE, lit(FPS_EVERY))],
              [line("FpsText", "Label", "setNumber", value("maths", "Maths", "round", op("/", frames, elapsed))),
               set_sheet_var("frames", lit(0)), set_sheet_var("elapsed", lit(0))]),
     ]
 BENCH_VARS = [{"name": n, "type": "number", "value": 0} for n in ["frames", "elapsed"]]
-d.write("vscript/BunnyBenchRules.vscript.json", {"vars": BENCH_VARS, "rules": bench("Bunny", "Bunny", sheet("createObject", s("Bunny"), lit(0)),
+d.write("vscript/BunnyBenchRules.vscript.json", {"vars": BENCH_VARS, "rules": bench("Bunny", value("Bunny", "Node", "count"), sheet("createObject", s("Bunny"), lit(0)),
     sheet("objectTypeIsPreloaded", s("Bunny")))})
-# A tree anywhere on the screen, kept a little in from its edges.
-d.write("vscript/TreeBenchRules.vscript.json", {"vars": BENCH_VARS, "rules": bench("TreeBunny", "TreeBunny",
+# A tree anywhere on the screen, kept a little in from its edges. The count is of bunnies drawn, the twigs included: three a tree.
+d.write("vscript/TreeBenchRules.vscript.json", {"vars": BENCH_VARS, "rules": bench("TreeBunny", op("+", value("TreeBunny", "Node", "count"), value("Twig", "Node", "count")),
     sheet("createScene", s("scenes/BunnyTree.scene.json"), lit(0), random(L + 30, -L - 30), random(T + 30, -T - 30)),
     sheet("sceneIsPreloaded", s("scenes/BunnyTree.scene.json")))})
 d.write("vscript/SwitchRules.vscript.json", {"rules": [
@@ -212,7 +212,8 @@ HUD shows the frames a second and the count.
   bunny 0.6 its size on it turning too, and a smaller one again on that. Every
   part of every tree in a batch turns at that batch's speed, picked at random
   between 30 degrees a second either way with the batch's color. A tree is the
-  scene `scenes/BunnyTree`, made whole by **Create scene**.
+  scene `scenes/BunnyTree`, made whole by **Create scene**. The count is of
+  bunnies drawn, the twigs included: three a tree.
 
 Hold the left mouse button to add ten a frame, the right to take ten away
 (**Destroy the newest**), and watch for stutter, dropped frames and the
