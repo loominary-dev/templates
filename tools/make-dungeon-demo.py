@@ -216,10 +216,10 @@ type_json("Sprite", {"_name": "Pillar", "spriteKey": "Pillar.sprite.json", "coll
 type_json("Sprite", {"_name": "Brazier", "spriteKey": "Brazier.sprite.json", "collision": {"layer": SOLID, "mask": EVERYTHING}})
 type_json("Node", {"_name": "Doorway", "collision": {"layer": DOOR, "mask": PLAYER, "shapes": [box("way", 0, 0, 14, 14, sensor=True)]}})
 type_json("Node", {"_name": "Marker"})
-type_json("Light", {"_name": "Lantern", "spriteKey": "Glow.sprite.json", "tint": 0xFFD9A0, "opacity": 0.22, "scaleX": 1.15, "scaleY": 1.15, "radius": 2, "lightHeight": 12})
-type_json("Light", {"_name": "FireLight", "spriteKey": "Glow.sprite.json", "tint": 0xFF9A40, "opacity": 0.45, "scaleX": 1.2, "scaleY": 1.2, "radius": 3, "lightHeight": 16})
+type_json("Light", {"_name": "Lantern", "spriteKey": "Glow.sprite.json", "tint": 0xFFD9A0, "opacity": 0.17, "scaleX": 1.15, "scaleY": 1.15, "radius": 2, "lightHeight": 12})
+type_json("Light", {"_name": "FireLight", "spriteKey": "Glow.sprite.json", "tint": 0xFF9A40, "opacity": 0.35, "scaleX": 1.2, "scaleY": 1.2, "radius": 3, "lightHeight": 16})
 # The chest's own cool glow, beside the braziers' warm ones.
-type_json("Light", {"_name": "GemLight", "spriteKey": "Glow.sprite.json", "tint": 0x8CC8FF, "opacity": 0.28, "scaleX": 0.9, "scaleY": 0.9, "radius": 2, "lightHeight": 10})
+type_json("Light", {"_name": "GemLight", "spriteKey": "Glow.sprite.json", "tint": 0x8CC8FF, "opacity": 0.22, "scaleX": 0.9, "scaleY": 0.9, "radius": 2, "lightHeight": 10})
 type_json("Sprite", {"_name": "HeartIcon", "spriteKey": "Heart.sprite.json"})
 type_json("Sprite", {"_name": "KeyIcon", "spriteKey": "Key.sprite.json"})
 for counter in ["HealthCount", "KeyCount", "TimeLabel"]:
