@@ -152,11 +152,14 @@ arrow = tile(131).rotate(-90)  # the pack's points up; a Bullet's heading 0 is r
 
 # The player collides by its feet, so a doorway one cell wide is easy to walk through.
 # The shape reaches the feet: against the wall below, the feet stop at it and the body is never drawn over the wall.
+# The collision layers, named once for the shapes below and the Types after them.
+PLAYER, SOLID, ENEMY, ARROW, PICKUP, DOOR = 1, 2, 4, 8, 16, 32
 # A narrow box at the feet: a doorway is one tile wide, and a snug box caught on its sides.
 sprite("Player", 16, 16, [("idle", [tile(112)], 400, "loop")], [box("body", 8, 11, 8, 10)])
-sprite("Bat", 16, 16, [("fly", [tile(120)], 400, "loop")], [box("body", 8, 8, 12, 10, sensor=True)])
-sprite("Spider", 16, 16, [("walk", [tile(122)], 400, "loop")], [box("body", 8, 9, 12, 10, sensor=True)])
-sprite("Rat", 16, 16, [("run", [tile(123)], 400, "loop")], [box("body", 8, 10, 12, 8, sensor=True)])
+# Each enemy: a sensor body the player and the arrows meet, and a solid footprint only the walls meet (mask SOLID), so Follow and Patrol are stopped by them.
+sprite("Bat", 16, 16, [("fly", [tile(120)], 400, "loop")], [box("body", 8, 8, 12, 10, sensor=True), box("feet", 8, 11, 8, 6, mask=SOLID)])
+sprite("Spider", 16, 16, [("walk", [tile(122)], 400, "loop")], [box("body", 8, 9, 12, 10, sensor=True), box("feet", 8, 12, 8, 6, mask=SOLID)])
+sprite("Rat", 16, 16, [("run", [tile(123)], 400, "loop")], [box("body", 8, 10, 12, 8, sensor=True), box("feet", 8, 12, 8, 6, mask=SOLID)])
 sprite("Arrow", 16, 16, [("fly", [arrow], 400, "loop")], [box("tip", 8, 8, 8, 4)])
 sprite("Key", 16, 16, [("still", [key_img], 400, "loop")], [box("key", 8, 7, 14, 8, sensor=True)])
 sprite("Potion", 16, 16, [("still", [tile(115)], 400, "loop")], [box("potion", 8, 9, 8, 10, sensor=True)])
@@ -180,7 +183,6 @@ for n, (key, (pack, f)) in enumerate(SOUNDS.items()):
 write("assets.json", {"schemaVersion": 1, "assets": assets})
 
 # ── collision layers, as bits ──
-PLAYER, SOLID, ENEMY, ARROW, PICKUP, DOOR = 1, 2, 4, 8, 16, 32
 EVERYTHING = -1
 
 def type_json(base, defaults, components=()):
@@ -200,11 +202,11 @@ type_json("Sprite", {"_name": "Arrow", "spriteKey": "Arrow.sprite.json", "collis
 type_json("Sprite", {"_name": "Bat", "spriteKey": "Bat.sprite.json", "collision": {"layer": ENEMY, "mask": PLAYER | ARROW | SOLID}},
           [{"componentClass": "PhysicsBody", "bodyType": "Dynamic"}, {"componentClass": "Follow", "speed": 45, "stopWithin": 0}, {"componentClass": "Health", "max": 1, "current": 1},
            {"componentClass": "EnemyRules"}, {"componentClass": "BatRules"}])
-type_json("Sprite", {"_name": "Spider", "spriteKey": "Spider.sprite.json", "collision": {"layer": ENEMY, "mask": PLAYER | ARROW}},
-          [{"componentClass": "Patrol", "axis": "Horizontal", "distance": 64, "speed": 30}, {"componentClass": "Health", "max": 3, "current": 3},
+type_json("Sprite", {"_name": "Spider", "spriteKey": "Spider.sprite.json", "collision": {"layer": ENEMY, "mask": PLAYER | ARROW | SOLID}},
+          [{"componentClass": "PhysicsBody", "bodyType": "Dynamic"}, {"componentClass": "Patrol", "axis": "Horizontal", "distance": 64, "speed": 30}, {"componentClass": "Health", "max": 3, "current": 3},
            {"componentClass": "EnemyRules"}])
-type_json("Sprite", {"_name": "Rat", "spriteKey": "Rat.sprite.json", "collision": {"layer": ENEMY, "mask": PLAYER | ARROW}},
-          [{"componentClass": "Patrol", "axis": "Vertical", "distance": 96, "speed": 55}, {"componentClass": "Health", "max": 1, "current": 1},
+type_json("Sprite", {"_name": "Rat", "spriteKey": "Rat.sprite.json", "collision": {"layer": ENEMY, "mask": PLAYER | ARROW | SOLID}},
+          [{"componentClass": "PhysicsBody", "bodyType": "Dynamic"}, {"componentClass": "Patrol", "axis": "Vertical", "distance": 96, "speed": 55}, {"componentClass": "Health", "max": 1, "current": 1},
            {"componentClass": "EnemyRules"}])
 type_json("Sprite", {"_name": "Key", "spriteKey": "Key.sprite.json", "collision": {"layer": PICKUP, "mask": PLAYER}}, [{"componentClass": "KeyRules"}])
 type_json("Sprite", {"_name": "Potion", "spriteKey": "Potion.sprite.json", "collision": {"layer": PICKUP, "mask": PLAYER}})

@@ -2,13 +2,13 @@
   "schemaVersion": 2,
   "baseClass": "Light",
   "defaults": {
-    "lightHeight": 12,
+    "spriteKey": "Glow.sprite.json",
+    "tint": 16767392,
     "opacity": 0.17,
-    "radius": 2,
     "scaleX": 1.15,
     "scaleY": 1.15,
-    "spriteKey": "Glow.sprite.json",
-    "tint": 16767392
+    "radius": 2,
+    "lightHeight": 12
   },
   "components": []
 }
