@@ -32,7 +32,16 @@
           "cx": 0,
           "cy": 8,
           "w": 14,
-          "h": 14,
+          "h": 14
+        },
+        {
+          "name": "shade",
+          "kind": "box",
+          "cx": 0,
+          "cy": 0,
+          "w": 14,
+          "h": 30,
+          "sensor": true,
           "occluder": 1
         }
       ],

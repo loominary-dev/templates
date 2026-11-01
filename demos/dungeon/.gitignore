@@ -1,0 +1,38 @@
+# Loominary: this machine's own files and build output
+.loominary/
+.loominary-undo/
+.vscode/
+typeTextures.json
+*.log
+
+# Loominary: generated sources, kept up to date by the editor; do not edit between these lines
+/Arrow.hx
+/Bat.hx
+/Brazier.hx
+/Chest.hx
+/Doorway.hx
+/FireLight.hx
+/GemLight.hx
+/HealthCount.hx
+/HeartIcon.hx
+/Key.hx
+/KeyCount.hx
+/KeyIcon.hx
+/Lantern.hx
+/LockedDoor.hx
+/Marker.hx
+/Pillar.hx
+/Player.hx
+/Potion.hx
+/Rat.hx
+/Rooms.hx
+/Sign.hx
+/Spider.hx
+/TimeLabel.hx
+/WinSign.hx
+/vscript/BatRules.hx
+/vscript/DoorRules.hx
+/vscript/EnemyRules.hx
+/vscript/KeyRules.hx
+/vscript/PlayerRules.hx
+# Loominary: end of generated sources

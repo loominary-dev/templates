@@ -4,9 +4,9 @@
   "defaults": {
     "spriteKey": "Glow.sprite.json",
     "tint": 16751168,
-    "opacity": 0.8,
-    "scaleX": 1.3,
-    "scaleY": 1.3,
+    "opacity": 0.45,
+    "scaleX": 1.2,
+    "scaleY": 1.2,
     "radius": 3,
     "lightHeight": 16
   },

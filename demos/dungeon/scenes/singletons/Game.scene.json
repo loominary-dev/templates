@@ -3,13 +3,15 @@
   "objects": [
     {
       "id": "d1000000-0000-4000-8000-000000000001",
-      "name": "Game"
+      "name": "Game",
+      "ySort": true
     },
     {
       "id": "d1000000-0000-4000-8000-000000000002",
       "parent": "d1000000-0000-4000-8000-000000000001",
       "name": "Rooms1",
-      "type": "Rooms"
+      "type": "Rooms",
+      "ySort": true
     },
     {
       "id": "d1000000-0000-4000-8000-000000000003",
@@ -34,7 +36,8 @@
       "type": "Layer",
       "parallaxX": 0,
       "parallaxY": 0,
-      "zoomWithCamera": false
+      "zoomWithCamera": false,
+      "zIndex": 10
     },
     {
       "id": "d1000000-0000-4000-8000-000000000006",
