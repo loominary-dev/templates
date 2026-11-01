@@ -1,0 +1,96 @@
+{
+  "vars": [
+    {
+      "name": "speed",
+      "type": "number",
+      "value": 0
+    }
+  ],
+  "rules": [
+    {
+      "block": {
+        "name": "Spin",
+        "mode": "function",
+        "params": [
+          {
+            "name": "degreesPerSecond",
+            "type": "number"
+          }
+        ]
+      },
+      "subRules": [
+        {
+          "conditions": [],
+          "actions": [
+            {
+              "scope": "system",
+              "className": "VisualScriptComponent",
+              "name": "setSheetVar",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "speed",
+                  "valueKind": "string"
+                },
+                {
+                  "type": "value",
+                  "scope": "system",
+                  "className": "VisualScriptComponent",
+                  "name": "sheetVar",
+                  "params": [
+                    {
+                      "type": "literal",
+                      "value": "degreesPerSecond",
+                      "valueKind": "string"
+                    }
+                  ],
+                  "returnType": "Float"
+                }
+              ]
+            }
+          ],
+          "subRules": []
+        }
+      ]
+    },
+    {
+      "conditions": [],
+      "actions": [
+        {
+          "scope": "self",
+          "className": "Node",
+          "name": "rotate",
+          "params": [
+            {
+              "type": "op",
+              "op": "*",
+              "left": {
+                "type": "value",
+                "scope": "system",
+                "className": "VisualScriptComponent",
+                "name": "sheetVar",
+                "params": [
+                  {
+                    "type": "literal",
+                    "value": "speed",
+                    "valueKind": "string"
+                  }
+                ],
+                "returnType": "Float"
+              },
+              "right": {
+                "type": "value",
+                "scope": "system",
+                "className": "System",
+                "name": "getDeltaTime",
+                "params": [],
+                "returnType": "Float"
+              }
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    }
+  ]
+}

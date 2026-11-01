@@ -1,4 +1,11 @@
 {
+  "vars": [
+    {
+      "name": "speed",
+      "type": "number",
+      "value": 0
+    }
+  ],
   "rules": [
     {
       "conditions": [
@@ -11,10 +18,15 @@
       ],
       "actions": [
         {
-          "scope": "self",
-          "className": "Rotate",
-          "name": "setSpeed",
+          "scope": "system",
+          "className": "VisualScriptComponent",
+          "name": "setSheetVar",
           "params": [
+            {
+              "type": "literal",
+              "value": "speed",
+              "valueKind": "string"
+            },
             {
               "type": "value",
               "scope": "variables",
@@ -29,8 +41,84 @@
               ],
               "returnType": "Float"
             }
+          ]
+        },
+        {
+          "scope": "objects",
+          "className": "VisualScriptComponent",
+          "name": "pickDescendant",
+          "params": [
+            {
+              "type": "literal",
+              "value": "Twig",
+              "valueKind": "string"
+            },
+            {
+              "type": "literal",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "scope": "Twig",
+          "className": "TwigRules",
+          "name": "block_spin",
+          "params": [
+            {
+              "type": "value",
+              "scope": "system",
+              "className": "VisualScriptComponent",
+              "name": "sheetVar",
+              "params": [
+                {
+                  "type": "literal",
+                  "value": "speed",
+                  "valueKind": "string"
+                }
+              ],
+              "returnType": "Float"
+            }
           ],
           "onComponent": true
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [],
+      "actions": [
+        {
+          "scope": "self",
+          "className": "Node",
+          "name": "rotate",
+          "params": [
+            {
+              "type": "op",
+              "op": "*",
+              "left": {
+                "type": "value",
+                "scope": "system",
+                "className": "VisualScriptComponent",
+                "name": "sheetVar",
+                "params": [
+                  {
+                    "type": "literal",
+                    "value": "speed",
+                    "valueKind": "string"
+                  }
+                ],
+                "returnType": "Float"
+              },
+              "right": {
+                "type": "value",
+                "scope": "system",
+                "className": "System",
+                "name": "getDeltaTime",
+                "params": [],
+                "returnType": "Float"
+              }
+            }
+          ]
         }
       ],
       "subRules": []

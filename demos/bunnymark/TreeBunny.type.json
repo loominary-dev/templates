@@ -7,10 +7,6 @@
   },
   "components": [
     {
-      "componentClass": "Rotate",
-      "speed": 0
-    },
-    {
       "componentClass": "TreeRules"
     },
     {

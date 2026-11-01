@@ -7,10 +7,13 @@ HUD shows the frames a second and the count.
   script, `vscript/BunnyRules`: a sideways and an upward speed of its own,
   gravity every step, a bounce off the bottom and the sides, as pixi.js's
   bunnymark does it, at three fifths of its pace so the smooth motion shows.
-- **Trees** (press 2): each one a bunny with a **Rotate** behavior, with a
-  bunny 0.6 its size on it turning too, and a smaller one again on that. Every
-  part of every tree in a batch turns at that batch's speed, picked at random
-  between 30 degrees a second either way with the batch's color. A tree is the
+- **Trees** (press 2): each one a bunny turning, with a bunny 0.6 its size on
+  it turning too, and a smaller one again on that. No behavior turns them: each
+  part's visual script rotates it every step by a speed it keeps, and the root's
+  script, when the tree is made, takes the batch's speed and hands it to every
+  twig below it by calling the twig script's **Spin** block. Every part of every
+  tree in a batch turns at that batch's speed, picked at random between 30
+  degrees a second either way with the batch's color. A tree is the
   scene `scenes/BunnyTree`, made whole by **Create scene**. The count is of
   bunnies drawn, the twigs included: three a tree.
 

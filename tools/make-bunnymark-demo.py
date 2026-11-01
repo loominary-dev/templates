@@ -76,10 +76,10 @@ d.sprite("Strip", W, 26, [("still", [strip], 400, "loop")], [])
 # ── Types ──
 no_collision = {"collisionEnabled": False}
 d.type_json("Bunny", "Sprite", dict(no_collision, spriteKey="Bunny.sprite.json"), [{"componentClass": "BunnyRules"}, {"componentClass": "BatchTint"}])
-# The trees: a bunny turning, a smaller one on it turning, and a smaller one again. Only the root is tinted: a tint carries down to the twigs.
-for name in ["TreeBunny", "Twig"]:
-    d.type_json(name, "Sprite", dict(no_collision, spriteKey="Bunny.sprite.json"), [{"componentClass": "Rotate", "speed": 0}, {"componentClass": "TreeRules"}]
-                + ([{"componentClass": "BatchTint"}] if name == "TreeBunny" else []))
+# The trees: a bunny turning, a smaller one on it turning, and a smaller one again, every one turned by its own visual
+# script. Only the root is tinted: a tint carries down to the twigs.
+d.type_json("TreeBunny", "Sprite", dict(no_collision, spriteKey="Bunny.sprite.json"), [{"componentClass": "TreeRules"}, {"componentClass": "BatchTint"}])
+d.type_json("Twig", "Sprite", dict(no_collision, spriteKey="Bunny.sprite.json"), [{"componentClass": "TwigRules"}])
 d.type_json("Benches", "SceneManager", {"transition": "None"})
 d.type_json("Backing", "Sprite", dict(no_collision, spriteKey="Backing.sprite.json"))
 d.type_json("Strip", "Sprite", dict(no_collision, spriteKey="Strip.sprite.json"))
@@ -146,8 +146,19 @@ d.write("vscript/BatchTint.vscript.json", {"rules": [
 
 # Every part of every tree in a batch turns at the batch's speed, picked with its color.
 ROTATE = 30   # degrees a second, either way
-tree_rules = [rule([line("self", "Node", "onCreated")], [comp("self", "Rotate", "setSpeed", var("rotateSpeed"))])]
-d.write("vscript/TreeRules.vscript.json", {"rules": tree_rules})
+# The turning is the scripts' own, no Rotate behavior: each bunny keeps a speed and rotates by it every step. A tree's root
+# takes the batch's speed when it is made and hands it down to its twigs, calling the twig script's Spin block on every
+# descendant; the twigs do not read the batch themselves.
+SPEED_VAR = [{"name": "speed", "type": "number", "value": 0}]
+turn = rule([], [line("self", "Node", "rotate", op("*", sheet_var("speed"), dt()))])
+d.write("vscript/TreeRules.vscript.json", {"vars": SPEED_VAR, "rules": [
+    rule([line("self", "Node", "onCreated")],
+         [set_sheet_var("speed", var("rotateSpeed")), sheet("pickDescendant", s("Twig"), lit(0)), comp("Twig", "TwigRules", "block_spin", sheet_var("speed"))]),
+    turn]})
+d.write("vscript/TwigRules.vscript.json", {"vars": SPEED_VAR, "rules": [
+    {"block": {"name": "Spin", "mode": "function", "params": [{"name": "degreesPerSecond", "type": "number"}]},
+     "subRules": [rule([], [set_sheet_var("speed", sheet_var("degreesPerSecond"))])]},
+    turn]})
 
 FPS_EVERY = 0.5   # seconds between readings of the frame rate, so the number can be read
 
@@ -208,10 +219,13 @@ HUD shows the frames a second and the count.
   script, `vscript/BunnyRules`: a sideways and an upward speed of its own,
   gravity every step, a bounce off the bottom and the sides, as pixi.js's
   bunnymark does it, at three fifths of its pace so the smooth motion shows.
-- **Trees** (press 2): each one a bunny with a **Rotate** behavior, with a
-  bunny 0.6 its size on it turning too, and a smaller one again on that. Every
-  part of every tree in a batch turns at that batch's speed, picked at random
-  between 30 degrees a second either way with the batch's color. A tree is the
+- **Trees** (press 2): each one a bunny turning, with a bunny 0.6 its size on
+  it turning too, and a smaller one again on that. No behavior turns them: each
+  part's visual script rotates it every step by a speed it keeps, and the root's
+  script, when the tree is made, takes the batch's speed and hands it to every
+  twig below it by calling the twig script's **Spin** block. Every part of every
+  tree in a batch turns at that batch's speed, picked at random between 30
+  degrees a second either way with the batch's color. A tree is the
   scene `scenes/BunnyTree`, made whole by **Create scene**. The count is of
   bunnies drawn, the twigs included: three a tree.
 
