@@ -46,7 +46,9 @@
     "windowHeight": 600,
     "presentMode": "fit",
     "displayMode": "windowed",
-    "autoResize": true
+    "autoResize": true,
+    "drawnAt": "game",
+    "highResolution": "normal"
   },
   "physics": {
     "engine": "arcade",

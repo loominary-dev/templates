@@ -193,7 +193,11 @@ d.write("vscript/SwitchRules.vscript.json", {"rules": [
 d.write("project.json", {"schemaVersion": 2, "name": "BunnyMark", "entryScene": "scenes/Bunnies.scene.json",
     "singletons": ["scenes/singletons/Bench.scene.json"],
     "input": {"Bunnies": keys(49), "Trees": keys(50), "NextScene": keys(39), "PreviousScene": keys(37)},
-    "display": {"width": W, "height": H, "windowWidth": W, "windowHeight": H, "presentMode": "fit", "displayMode": "windowed", "autoResize": True},
+    # Drawn at the game's own size and enlarged once: the count measures the engine, not the screen. Drawn at the
+    # screen's pixels, every bunny in a 5K browser canvas cost 41 times the fill, and a laptop's graphics gave 39 fps
+    # at 2,000 where the same build in a small canvas gave 60 at 9,000.
+    "display": {"width": W, "height": H, "windowWidth": W, "windowHeight": H, "presentMode": "fit", "displayMode": "windowed", "autoResize": True,
+                "drawnAt": "game", "highResolution": "normal"},
     "physics": {"engine": "arcade", "gravity": 0}})
 d.write("README.md", """# BunnyMark
 
