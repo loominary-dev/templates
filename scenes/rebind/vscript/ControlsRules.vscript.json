@@ -1,0 +1,51 @@
+{
+  "rules": [
+    {
+      "conditions": [
+        {
+          "scope": "system",
+          "className": "VisualScriptComponent",
+          "name": "triggerOnce",
+          "params": []
+        }
+      ],
+      "actions": [
+        {
+          "scope": "ControlsList",
+          "className": "Control",
+          "name": "takeFocus",
+          "params": []
+        }
+      ],
+      "subRules": []
+    },
+    {
+      "conditions": [
+        {
+          "scope": "ControlsBack",
+          "className": "Button",
+          "name": "onPressed",
+          "params": []
+        }
+      ],
+      "actions": [
+        {
+          "scope": "ControlsScenes",
+          "className": "SceneManager",
+          "name": "changeScene",
+          "params": [
+            {
+              "type": "value",
+              "scope": "ControlsScenes",
+              "className": "SceneManager",
+              "name": "previousScene",
+              "params": [],
+              "returnType": "Float"
+            }
+          ]
+        }
+      ],
+      "subRules": []
+    }
+  ]
+}

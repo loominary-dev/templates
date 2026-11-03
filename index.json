@@ -122,5 +122,14 @@
       "path": "demos/skeletons",
       "minEditor": "1.0.59"
     }
+  ],
+  "scenes": [
+    {
+      "id": "rebind",
+      "name": "Controls screen",
+      "description": "A screen where the player rebinds the controls: a row per input command of the game it is imported into, with Change, Add, Reset and Back.",
+      "path": "scenes/rebind",
+      "minEditor": "1.0.68"
+    }
   ]
 }

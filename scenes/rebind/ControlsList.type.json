@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 2,
+  "baseClass": "RebindList",
+  "defaults": {
+    "boxWidth": 560,
+    "boxHeight": 330,
+    "fontSize": 14,
+    "labelWidth": 140,
+    "addText": "Add"
+  },
+  "components": []
+}

@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 2,
+  "baseClass": "Label",
+  "defaults": {
+    "text": "Change picks the next key, button or stick you give; Add keeps the old one too.",
+    "fontSize": 12
+  },
+  "components": []
+}

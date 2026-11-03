@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 3,
+  "objects": [
+    {
+      "id": "a2000000-0000-4000-8000-000000003001",
+      "name": "ControlsSingletons"
+    },
+    {
+      "id": "a2000000-0000-4000-8000-000000003002",
+      "parent": "a2000000-0000-4000-8000-000000003001",
+      "name": "ControlsScenes1",
+      "type": "ControlsScenes"
+    }
+  ]
+}
